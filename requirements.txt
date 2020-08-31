@@ -1,0 +1,17 @@
+ImageHash
+discord.py
+six
+tweepy
+opencv_python
+line_bot_sdk
+saucenao_api
+Flask
+lifeeasy
+requests
+filecenter
+Flask_RESTful
+Flask_Cors
+numpy
+beautifulsoup4
+discord
+Pillow

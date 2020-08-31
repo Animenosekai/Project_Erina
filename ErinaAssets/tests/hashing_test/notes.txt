@@ -1,0 +1,12 @@
+aHash and wHash both seem to have great accuracy
+Surprinsingly, dHash does not perform as great as expected (everyone talks about dHash on internet but seems to have bad accuracy (59/157 ; na/160 ; 82/160))
+I thought that phash would have better performance (had high expectation about it but now I'll need to reanalyze the animes I already added to the DB) (110/157 ; 91/160 ; 100/160)
+
+Results
+---------------------
+Test 1:     wHash 129/157   -   aHash 126/157
+Test 2:     wHash 122/160   -   aHash 124/160
+Test 3:     wHash 124/160   -   aHash 124/160
+
+--> Might use aHash for its speed with a threshold (using the hamming distance)
+Thinking of a threshold of 3 〜 5

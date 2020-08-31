@@ -1,0 +1,63 @@
+Project_Erina
+｜
+｜ーー Assets
+｜      ｜
+｜      ｜ーー Tests Assets
+｜      ｜
+｜      ｜ーー Logos
+｜
+｜ーー Twitter ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー Discord ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー Line
+｜      ｜                                                               ｜                                                             ｜
+｜      ｜ーー Twitter Bot Script                                         ｜ーー Discord Bot Script                                       ｜ーー Line Bot (LINE@Account) and API Script
+｜      ｜                                                               ｜                                                             ｜
+｜      ｜ーー Search API Tweet Parser Script                             ｜ーー Search API Discord Reply Parser Script                   ｜ーー Search API Line Reply Parser Script
+｜                                                                                                                                      ｜
+｜                                                                                                                                      ｜ーー Line Images Checker
+｜                                                                                                                                      ｜
+｜                                                                                                                                      ｜ーーーーーーーー Images Directory
+｜                                                                                                                                                ｜
+｜                                                                                                                                                ｜ーー Internal Function to add API endpoints
+｜      
+｜
+｜
+｜
+｜ーー Search API
+｜      ｜
+｜      ｜ーー Searching Script
+｜      ｜
+｜      ｜ーー DB and Cache Reading Script
+｜      ｜
+｜      ｜ーー Result Verification Script (makes variables to the right type)
+｜      ｜
+｜      ｜ーー SauceNAO database index to DB Name translator
+｜
+｜ーー Hash API
+｜      ｜
+｜      ｜ーー Hashing Script
+｜
+｜ーー Database API
+｜      ｜
+｜      ｜ーー Database Merge Script
+｜      ｜
+｜      ｜ーー Manami Project Database (adb/anime_offline_database)
+｜      ｜
+｜      ｜ーー ErinaDB
+｜
+｜ーー Cache API
+｜      ｜
+｜      ｜ーー Caching Script (and IQDB Caching Script)
+｜      ｜
+｜      ｜ーー AniList Caches
+｜      ｜
+｜      ｜ーー TraceMOE Caches
+｜      ｜
+｜      ｜ーー ErinaDB Caches
+｜      ｜
+｜      ｜ーー IQDB Caches
+｜      ｜
+｜      ｜ーー SauceNAO Caches
+
+
+-- The more you go deep in the structure the lower you go in the endpoints (the more you go back-end) --
+--> Bots Scripts (front-end) need to have access to the Search API
+--> Search API (back-end) needs to have access to Hash API, Database API and Cache API
