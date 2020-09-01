@@ -1,1 +1,1 @@
-web: python Erina.py
+web: python -d -v Erina.py
