@@ -74,7 +74,7 @@ line_images_deletion_time = 3600 # The number of seconds before deleting the ima
 
 #### Flask Options
 host = "0.0.0.0"
-port = 5000
+port = os.environ['PORT']
 flask_disable_console_messages = True
 
 enable_lineimages_api = True
