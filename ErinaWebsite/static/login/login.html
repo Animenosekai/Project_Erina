@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErinaSauce Login Page</title>
+    <link rel="stylesheet" href="/erina/assets/login.css">
+</head>
+<body>
+    <script>
+        function login(){
+            var password = document.getElementById("passwordInput").textContent
+            window.localStorage.setItem("Erina_Account_Password", password)
+            window.open("/erina/admin")
+        }
+    </script>
+    <loginform>
+        <input type="password" name="passwordInput" id="passwordInput">
+        <button type="submit" onkeyup="login()"></button>
+    </loginform>
+</body>
+</html>

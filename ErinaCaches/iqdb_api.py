@@ -616,7 +616,7 @@ def search_iqdb(image_hash, image_url='', file_io=None):
         size = ''
 
     #### Getting the image rating (if it is NSFW or not) 
-    if tables[1].find_all('tr')[3].get_text().split()[1].replace('[', '').replace(']', '') == 'Safe':
+    if tables[1].find_all('tr')[3].get_text().split()[1].replace('[', '').replace(']', '').replace(' ', '') == 'Safe':
         is_safe = True
     else:
         is_safe = False
