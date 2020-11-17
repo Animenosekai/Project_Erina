@@ -25,12 +25,14 @@ window.onload = function(){
         newMessage.innerText = data["message"]
         var newWrapper = document.createElement("output")
         newWrapper.appendChild(newDateElement)
-        newWrapper.appendChild(newMessage)
+        var newMessageTextElement = document.createElement("outputmessage")
+        newMessageTextElement.appendChild(newMessage)
         if (parseInt(data["code"]) != 0) {
             var newError = document.createElement("outputerror")
             newError.innerText = "ErinaConsole: [Error] Process returned " + String(data["code"])
-            newWrapper.appendChild(newError)
+            newMessageTextElement.appendChild(newError)
         }
+        newWrapper.appendChild(newMessageTextElement)
         document.getElementById("consoleOutput").appendChild(newWrapper)
         document.getElementById("consoleOutput").scrollTop = document.getElementById("consoleOutput").scrollHeight
     }
