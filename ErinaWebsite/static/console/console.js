@@ -1,5 +1,7 @@
-window.onload = function(){
-    var WSConnection = new WebSocket("ws://127.0.0.1:5555/ErinaConsole")
+var WSConnection = null
+
+function loadErinaConsole(){
+    WSConnection = new WebSocket("ws://127.0.0.1:5555/ErinaConsole")
     var History = []
     var HistoryIndex = 0
     WSConnection.onmessage = function(response){
@@ -74,7 +76,7 @@ window.onload = function(){
 
 
     //Make the DIV element draggagle:
-    dragElement(document.getElementById("console"));
+    dragElement(document.getElementById("erinaConsole"));
 
     function dragElement(elmnt) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -115,5 +117,37 @@ window.onload = function(){
             document.onmouseup = null;
             document.onmousemove = null;
         }
+    }
+}
+
+
+function openErinaConsole() {
+    if (WSConnection == null) {
+        document.getElementById("erinaConsole").classList.remove("erinaConsoleHidden")
+        setTimeout(
+            function(){
+                document.getElementById("erinaConsole").style.transition = "none"
+            },
+            500
+        )
+        loadErinaConsole()
+        document.getElementById("testButton").setAttribute("onclick", "closeErinaConsole()")
+        document.getElementById("testButton").innerText = "CloseConsole"
+    }
+}
+
+function closeErinaConsole() {
+    if (WSConnection != null) {
+        document.getElementById("erinaConsole").style.transition = "all 500ms ease"
+        setTimeout(
+            function(){
+                WSConnection.close()
+                WSConnection = null
+                document.getElementById("erinaConsole").classList.add("erinaConsoleHidden")
+                document.getElementById("testButton").setAttribute("onclick", "openErinaConsole()")
+                document.getElementById("testButton").innerText = "OpenConsole"
+            },
+            500
+        )
     }
 }

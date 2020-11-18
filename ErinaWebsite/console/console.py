@@ -66,6 +66,8 @@ async def console_connection(ws, path):
         except:
             await ws.send(json.dumps({"message": f"ErinaConsole: An error occured ({str(sys.exc_info()[0])})", "code": -1}))
         finally:
+            if currentProcess.poll() is None:
+                currentProcess.terminate()
             print("< ErinaConsole disconnected")
 
 try:
