@@ -7,6 +7,10 @@
     resize: both;
     overflow: auto;
     font-family: Inter, sans-serif;
+    width: 25vw;
+    height: 30vh;
+    min-height: 180px;
+    min-width: 370px;
 }
 
 

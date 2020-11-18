@@ -1,107 +1,79 @@
 import sys
+import time
 import json
 import shlex
-import time
 import asyncio
+import threading
 import subprocess
 import websockets
-import threading
 import fcntl, os
 
-bufferIndex = 0
-
 async def _asyncMessageSending(websocketConnection, message, code):
-    await websocketConnection.send(json.dumps({"message": str(message), "code": code}))
+    await websocketConnection.send(json.dumps({"message": str(message), "code": code})) # Sends messages asynchronously (WebSocket Object is async)
 
 def _sendMessage(websocketConnection, message, code):
-    asyncio.set_event_loop(asyncio.new_event_loop())
-    asyncio.get_event_loop().run_until_complete(_asyncMessageSending(websocketConnection, message, code))
+    """
+    Synchronous function which sends starts the _asyncMessageSending function
+    """
+    asyncio.set_event_loop(asyncio.new_event_loop()) # Creates another async event loop because multi-threaded programs usually have problems with them
+    asyncio.get_event_loop().run_until_complete(_asyncMessageSending(websocketConnection, message, code)) # Starts the _asyncMessageSending function
 
 def _checkOutput(process, websocketConnection):
-    print("ErinaConsole: Start reading...")
-    while process.poll() is None:
+    """
+    Checks the output of stdout and stderr to send it to the WebSocket client
+    """
+    while process.poll() is None: # while the process isn't exited
         try:
-            output = process.stdout.read()
+            output = process.stdout.read() # Read the stdout PIPE (which contains stdout and stderr)
         except:
-            print(sys.exc_info()[0])
-            print(sys.exc_info()[1])
             output = None
         if output:
-            messageSendingThread = threading.Thread(target=_sendMessage, args=[websocketConnection, output.decode("utf-8"), 0])
-            messageSendingThread.daemon = True
-            messageSendingThread.start()
-        time.sleep(0.1)
-    print("ErinaConsole: Process exited")
-    messageSendingThread = threading.Thread(target=_sendMessage, args=[websocketConnection, "ErinaConsole: The process has exited", process.returncode])
+            messageSendingThread = threading.Thread(target=_sendMessage, args=[websocketConnection, output.decode("utf-8"), 0]) # Creates another thread to send the message (continue reading stdout even when sending a message)
+            messageSendingThread.daemon = True # Kill the thread if main thread is killed
+            messageSendingThread.start() # Start the thread
+        time.sleep(0.1) # Wait a lil bit to avoid confusion from the computer
+    ### EXITED THE LOOP ### (process exited)
+    messageSendingThread = threading.Thread(target=_sendMessage, args=[websocketConnection, f"ErinaConsole: The process has exited with code {str(process.returncode)}", process.returncode]) # Send a disconnection message
     messageSendingThread.daemon = True
     messageSendingThread.start()
 
 async def console_connection(ws, path):
-    if path == '/ErinaConsole':
+    """
+    WebSocket Handling Script
+    """
+    if path == '/ErinaConsole': # If connecting to ErinaConsole
         try:
             print("> New ErinaConsole connection!")
-            currentProcess = subprocess.Popen(shlex.split("bash"), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-            fcntl.fcntl(currentProcess.stdout.fileno(), fcntl.F_SETFL, os.O_NONBLOCK)
-            newReadingThread = threading.Thread(target=_checkOutput, args=[currentProcess, ws])
+            currentProcess = subprocess.Popen(shlex.split("bash"), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # Open a bash prompt
+            fcntl.fcntl(currentProcess.stdout.fileno(), fcntl.F_SETFL, os.O_NONBLOCK) # Non blocking stdout and stderr reading
+            newReadingThread = threading.Thread(target=_checkOutput, args=[currentProcess, ws]) # Start checking for new text in stdout and stderr
             newReadingThread.daemon = True
             newReadingThread.start()
-            await ws.send(json.dumps({"message": "ErinaConsole: Connection successfully established", "code": 0}))
+            await ws.send(json.dumps({"message": "ErinaConsole: Connection successfully established", "code": 0})) # Send a message to notifiy that the process has started
             async for message in ws:
                 try:
-                    data = json.loads(message)
+                    data = json.loads(message) # retrieve a message from the client
                     if "input" in data:
                         userInput = str(data["input"])
                         if userInput != "exit":
-                            """
-                            process = subprocess.run(userInput, text=True, stdin=subprocess.PIPE, stderr=subprocess.PIPE, stdout=subprocess.PIPE, check=False, shell=True)
-                            await ws.send(json.dumps({"message": str(process.stdout)[:-1], "code": process.returncode}))
-                            """
-                            """
-                            sendingMessage = ""
-                            for index, message in enumerate(currentProcess.stdout):
-                                if index < bufferIndex:
-                                    continue
-                                else:
-                                    sendingMessage += message
-                            """
-                            currentProcess.stdin.write(str(userInput + "\n").encode("utf-8"))
+                            currentProcess.stdin.write(str(userInput + "\n").encode("utf-8")) # Write user input (ws client) to stdin
+                            currentProcess.stdin.flush() # Run the command
+                            print("ErinaConsole: Admin ran command > " + str(userInput))
                         else:
-                            currentProcess.terminate()
+                            currentProcess.terminate() # If "exit" sent by client, terminate the process
                 except:
                     await ws.send(json.dumps({"message": f"ErinaConsole: An error occured ({str(sys.exc_info()[0])})", "code": -1}))
         except:
             await ws.send(json.dumps({"message": f"ErinaConsole: An error occured ({str(sys.exc_info()[0])})", "code": -1}))
         finally:
             print("< ErinaConsole disconnected")
-            #await ws.send(json.dumps({"message": "ErinaConsole: Disconnection...", "code": 0}))
 
 try:
-    print("Serving WS Server...")
-    ErinaConsole = websockets.serve(console_connection, "127.0.0.1", 5555)
-    asyncio.get_event_loop().run_until_complete(ErinaConsole)
-    asyncio.get_event_loop().run_forever()
+    print("ErinaConsole: Serving WS Server...")
+    ErinaConsole = websockets.serve(console_connection, "127.0.0.1", 5555) # Server the WS Server (on port 5555 for now)
+    asyncio.get_event_loop().run_until_complete(ErinaConsole) # Run the async function
+    asyncio.get_event_loop().run_forever() # Run the WS Server forever
 except KeyboardInterrupt:
-    print("Disconnection...")
+    print("ErinaConsole: Disconnection...")
 except:
-    print("An error occured.")
-"""
-while True:
-    try:
-        try:
-            userInput = input(f"ErinaConsole >> ")
-            if userInput != "exit":
-                process = subprocess.run(userInput, text=True, stdin=subprocess.PIPE, stderr=subprocess.PIPE, stdout=subprocess.PIPE, check=False, shell=True)
-                if process.returncode != 0:
-                    print(f"ErinaConsole: [WARNING] Process terminated with code {str(process.returncode)}")
-                print(process.stdout)
-            else:
-                break
-        except KeyboardInterrupt:
-            print("")
-            print("ErinaConsole: KeyboardInterrupt")
-            continue
-    except KeyboardInterrupt:
-        print("")
-        print("ErinaConsole: KeyboardInterrupt")
-        continue
-"""
+    print("ErinaConsole: An error occured.")
