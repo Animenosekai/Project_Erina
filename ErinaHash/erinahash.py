@@ -71,7 +71,7 @@ def base64_from_image(image_path):
     image = open(image_path, 'rb')
     image_content = image.read()
     image.close()
-    return base64.b64encode(image_content)
+    return str(base64.b64encode(image_content))[2:][:-1]
 
 def hash_image_from_base64(base64_data, algorithm='aHash'):
     """

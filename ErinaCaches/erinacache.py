@@ -9,6 +9,9 @@ import config
 import erina_log
 import env_information
 
+import json
+import requests
+
 from saucenao_api import SauceNao
 from ErinaCaches.utils import anilist, tracemoe, saucenao, erina, Errors
 from ErinaParser.utils import anilist_parser, tracemoe_parser, saucenao_parser, erina_parser
@@ -76,7 +79,7 @@ def anilist_search_caching(query):
     except:
         return Errors.CachingError("UNKNOWN_ERROR", f"An unknown error occured while caching AniList Search API Data ({str(query)})")
 
-def tracemoe_caching(image_hash, api_result):
+def tracemoe_caching(image_hash, image_url=None, base64=None):
     '''
     Caches the given Trace.moe API response\n
     Project Erina
@@ -85,7 +88,22 @@ def tracemoe_caching(image_hash, api_result):
     try:
         erina_log.logcaches('Caching trace.moe data...', 'tracemoe', str(image_hash))
         try:
-            cache = tracemoe.erina_from_json(api_result)
+            if image_url is not None:
+                if config.tracemoe_api_key == '':
+                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_url).text)
+                else:
+                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_url + '&token=' + config.tracemoe_api_key).text)
+            elif base64 is not None:
+                if config.tracemoe_api_key == '':
+                    requestResponse = json.loads(requests.post('https://trace.moe/api/search', json={'image': base64}))
+                else:
+                    requestResponse = json.loads(requests.post('https://trace.moe/api/search?token=' + config.tracemoe_api_key, json={'image': base64}))
+            else:
+                return Errors.CachingError("NOTHING_PROVIDED", "No data got provided to the TraceMOE Caching API, we cannot proceed with the caching process with nothing...")
+        except:
+            return Errors.CachingError("TRACEMOE_API_RESPONSE", "An error occured while retrieving information from the trace.moe API")
+        try:
+            cache = tracemoe.erina_from_json(requestResponse)
         except:
             return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting Trace.moe API Data to a caching format ({str(image_hash)})")
         try:
@@ -97,7 +115,7 @@ def tracemoe_caching(image_hash, api_result):
     except:
         return Errors.CachingError("UNKNOWN_ERROR", f"An unknown error occured while caching trace.moe API Data ({str(image_hash)})")
 
-def saucenao_caching(image_hash, image_url='', file=''):
+def saucenao_caching(image_hash, image_url=None, file=None):
     '''
     Caches the result from the given url\n
     Project Erina\n
@@ -105,12 +123,12 @@ def saucenao_caching(image_hash, image_url='', file=''):
     '''
     try:
         erina_log.logcaches(f'Caching SauceNAO API data...', 'saucenao', str(image_hash))
-        if image_url != '':
+        if image_url is not None:
             try:
                 api_results = saucenao_api.from_url(image_url)[0]
             except:
                 return Errors.CachingError("SAUCENAO_API_RESPONSE", "An error occured while retrieving SauceNAO API Data")
-        elif file != '':
+        elif file is not None:
             try:
                 api_results = saucenao_api.from_file(file)[0]
             except:
@@ -130,7 +148,7 @@ def saucenao_caching(image_hash, image_url='', file=''):
     except:
         return Errors.CachingError("UNKNOWN", "An unknown error occured while caching SauceNAO API Data")
 
-def erina_caching(image_hash, database_path, similarity):
+def erina_caching(image_hash, database_path, similarity, anilist_id):
     '''
     Caches an ErinaDatabase path according to the image_hash\n
     Project Erina
@@ -139,7 +157,7 @@ def erina_caching(image_hash, database_path, similarity):
     try:
         erina_log.logcaches('Caching Erina Database data...', 'erina', {'image_hash': str(image_hash), 'database_path': str(database_path), 'similarity': similarity})
         try:
-            cache = erina.erina_from_data(str(image_hash), database_path, similarity)
+            cache = erina.erina_from_data(str(image_hash), database_path, similarity, anilist_id)
         except:
             return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting Erina Database Data to a caching format ({str(database_path)})")
         try:

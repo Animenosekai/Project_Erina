@@ -31,6 +31,7 @@ class ErinaCache():
         self.data = data.split("\n")
 
         self.path = None
+        self.anilist_id = None
         self.hash = None
         self.similarity = None
         self.cache_timestamp = None
@@ -39,6 +40,8 @@ class ErinaCache():
             element = str(element).replace("\n", "")
             if element[:5] == 'Path:':
                 self.path = str(element[6:])
+            elif element[:11] == 'AniList ID:':
+                self.anilist_id = str(element[12:])
             elif element[:5] == 'Hash:':
                 self.hash = str(element[6:])
             elif element[:11] == 'Similarity:':

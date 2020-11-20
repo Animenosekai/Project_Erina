@@ -4,7 +4,7 @@ from ErinaParser.utils import erinadb_parser
 from ErinaParser.utils import iqdb_parser
 from ErinaParser.utils import saucenao_parser
 from ErinaParser.utils import tracemoe_parser
-from ErinaParser.utils.utils import ParserError
+from ErinaParser.utils.Errors import ParserError
 
 import sys
 sys.path.append('.')

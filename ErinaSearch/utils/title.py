@@ -16,12 +16,12 @@ def searchAnime(query):
     Searches an anime by its title
     """
     for anime in Database.data:
-        if query in Database.data[anime] and f"{str(anime)}.erina" in os.listdir(erina_dir + "/ErinaCaches/AniList_Cache"):
+        if str(query) in Database.data[anime] and f"{str(anime)}.erina" in os.listdir(erina_dir + "/ErinaCaches/AniList_Cache"):
             return parser.ErinaFile("anilist_cache", f"{str(anime)}.erina").content
     
     for cacheFile in os.listdir(erina_dir + "/ErinaCaches/AniList_Cache"):
         current = parser.ErinaFile("anilist_cache", cacheFile)
-        if current.content.title == query:
+        if current.content.title == str(query):
             return current.content
 
-    return anilist_search_caching(query)
+    return anilist_search_caching(str(query))

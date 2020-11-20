@@ -3,14 +3,6 @@ A set of utilities
 """
 import re
 
-class ParserError():
-    """
-    An error with the parser
-    """
-    def __init__(self, type, message) -> None:
-        self.type = str(type)
-        self.message = str(message)
-
 ######## UTILITY FUNCTION ########
 def capitalize_string(string):
     string = str(string).replace("_", " ")
