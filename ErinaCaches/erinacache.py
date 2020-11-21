@@ -79,7 +79,7 @@ def anilist_search_caching(query):
     except:
         return Errors.CachingError("UNKNOWN_ERROR", f"An unknown error occured while caching AniList Search API Data ({str(query)})")
 
-def tracemoe_caching(image_hash, image_url=None, base64=None):
+def tracemoe_caching(image_hash):
     '''
     Caches the given Trace.moe API response\n
     Project Erina
@@ -88,18 +88,16 @@ def tracemoe_caching(image_hash, image_url=None, base64=None):
     try:
         erina_log.logcaches('Caching trace.moe data...', 'tracemoe', str(image_hash))
         try:
-            if image_url is not None:
+            if image_hash.has_url is not None:
                 if config.tracemoe_api_key == '':
-                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_url).text)
+                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_hash.url).text)
                 else:
-                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_url + '&token=' + config.tracemoe_api_key).text)
-            elif base64 is not None:
-                if config.tracemoe_api_key == '':
-                    requestResponse = json.loads(requests.post('https://trace.moe/api/search', json={'image': base64}))
-                else:
-                    requestResponse = json.loads(requests.post('https://trace.moe/api/search?token=' + config.tracemoe_api_key, json={'image': base64}))
+                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_hash.url + '&token=' + config.tracemoe_api_key).text)
             else:
-                return Errors.CachingError("NOTHING_PROVIDED", "No data got provided to the TraceMOE Caching API, we cannot proceed with the caching process with nothing...")
+                if config.tracemoe_api_key == '':
+                    requestResponse = json.loads(requests.post('https://trace.moe/api/search', json={'image': image_hash.base64}))
+                else:
+                    requestResponse = json.loads(requests.post('https://trace.moe/api/search?token=' + config.tracemoe_api_key, json={'image': image_hash.base64}))
         except:
             return Errors.CachingError("TRACEMOE_API_RESPONSE", "An error occured while retrieving information from the trace.moe API")
         try:
@@ -115,7 +113,7 @@ def tracemoe_caching(image_hash, image_url=None, base64=None):
     except:
         return Errors.CachingError("UNKNOWN_ERROR", f"An unknown error occured while caching trace.moe API Data ({str(image_hash)})")
 
-def saucenao_caching(image_hash, image_url=None, file=None):
+def saucenao_caching(image_hash):
     '''
     Caches the result from the given url\n
     Project Erina\n
@@ -123,18 +121,16 @@ def saucenao_caching(image_hash, image_url=None, file=None):
     '''
     try:
         erina_log.logcaches(f'Caching SauceNAO API data...', 'saucenao', str(image_hash))
-        if image_url is not None:
+        if image_hash.has_url:
             try:
-                api_results = saucenao_api.from_url(image_url)[0]
-            except:
-                return Errors.CachingError("SAUCENAO_API_RESPONSE", "An error occured while retrieving SauceNAO API Data")
-        elif file is not None:
-            try:
-                api_results = saucenao_api.from_file(file)[0]
+                api_results = saucenao_api.from_url(image_hash.url)[0]
             except:
                 return Errors.CachingError("SAUCENAO_API_RESPONSE", "An error occured while retrieving SauceNAO API Data")
         else:
-            return Errors.CachingError("NOTHING_PROVIDED", "No data got provided to the SauceNAO Caching API, we cannot proceed with the caching process with nothing...")
+            try:
+                api_results = saucenao_api.from_file(image_hash.ImageIO)[0]
+            except:
+                return Errors.CachingError("SAUCENAO_API_RESPONSE", "An error occured while retrieving SauceNAO API Data")
         try:
             cache = saucenao.erina_from_api(api_results)
         except:

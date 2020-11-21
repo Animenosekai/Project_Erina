@@ -2,7 +2,7 @@
 Hashing API for the Erina Project
 
 @author: Anime no Sekai
-Erina Project - 2020
+Erina Project — 2020
 """
 
 import base64
@@ -20,6 +20,9 @@ import config
 class HashObject():
     """
     An image hash object
+
+    Erina Project — 2020\n
+    © Anime no Sekai
     """
     def __init__(self, hashobj, ImageObj, URL=None) -> None:
         self.ImageHash = hashobj
@@ -40,7 +43,12 @@ class HashObject():
 
 def hash_image(image, algorithm=None):
     """
-    Internal function to hash a given image
+    Hashes a given image
+
+    image: Can be an URL, a path, a base64 encoded string or a PIL.Image.Image instance
+
+    Erina Project — 2020\n
+    © Anime no Sekai
     """
     result = None
     has_url = False
@@ -91,8 +99,9 @@ def hash_image(image, algorithm=None):
 def base64_from_image(image_path):
     """
     Converts an image to base64
-    © Anime no Sekai - 2020
-    Project Erina
+    
+    Erina Project — 2020\n
+    © Anime no Sekai
     """
     erina_log.loghash(f'Converting to base64 ({image_path})', 'base64')
     with open(image_path, "rb") as readingFile:

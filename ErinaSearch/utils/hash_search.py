@@ -1,9 +1,6 @@
 import os
 import operator
 
-from base64 import b64decode
-from io import BytesIO
-
 import numpy
 
 import config
@@ -17,6 +14,7 @@ from ErinaParser.utils.saucenao_parser import SauceNAOCache
 from ErinaParser.utils.iqdb_parser import IQDBCache
 from ErinaParser.utils.Errors import ParserError
 from ErinaCaches.utils.Errors import CachingError
+from ErinaHash.utils.Errors import HashingError
 
 class ImageSearchResult():
     def __init__(self, detectionResut, similarity, animeResult, low_similarity=False) -> None:
@@ -55,14 +53,22 @@ manami_db_path = erina_dir + '/ErinaDB/ManamiDB/'
 
 
 
-def search_anime_by_hash(image_hash, image_url='', image_base64='', anilist_priority=False):
+def search_anime_by_hash(image_hash):
     """
     Let you search through Erina's database and other database (Manami Projects' anime_offline_database and AniList API) with the hash of an image/scene from an anime (average hash/aHash from the image_hash python module)\n
     © Anime no Sekai - 2020
     Project Erina
     """
+    if isinstance(image_hash, HashingError): # If there is no error
+        return image_hash
+
     erina_log.logsearch(f'Searching the image by his hash... ({str(image_hash)})', search_type='hash', value=str(image_hash))
     
+
+    ##########################
+    #     DATABASE SEARCH    #
+    ##########################
+
     def search_anime_in_erina_database():
         if config.erina_database_similarity_threshold > 98.4375:
             erina_log.logdatabase('', stattype='erina_database_access')
@@ -129,30 +135,9 @@ def search_anime_by_hash(image_hash, image_url='', image_base64='', anilist_prio
         return None
 
     ##########################
-    #      API SEARCHING     #
+    #        SEARCHING       #
     ##########################
-
-    def search_anime_in_tracemoe_api():
-        if image_url != '':
-            return erinacache.tracemoe_caching(str(image_hash), image_url=image_url)
-        elif image_base64 != '':
-            return erinacache.tracemoe_caching(str(image_hash), base64=image_base64)
-        return erinacache.tracemoe_caching(str(image_hash))
-
-    def search_anime_in_saucenao_api():
-        if image_url != '':
-            return erinacache.saucenao_caching(str(image_hash), image_url=image_url)
-        elif image_base64 != '':
-            return erinacache.saucenao_caching(str(image_hash), file=BytesIO(b64decode(image_base64)))
-        return erinacache.saucenao_caching(str(image_hash))
-
-    def search_anime_in_iqdb_api():
-        if image_url != '':
-            return iqdb_api.search_iqdb(str(image_hash), image_url=image_url)
-        elif image_base64 != '':
-            return iqdb_api.search_iqdb(str(image_hash), file_io=BytesIO(b64decode(image_base64)))
-        return iqdb_api.search()
-
+        
     similaritiesDict = {}
 
     erina_cache_result = search_anime_in_erina_cache()
@@ -170,17 +155,17 @@ def search_anime_by_hash(image_hash, image_url='', image_base64='', anilist_prio
                     iqdb_cache_result = search_anime_in_iqdb_cache()
                     if iqdb_cache_result is None or isinstance(iqdb_cache_result, ParserError) or iqdb_cache_result.similarity < config.iqdb_similarity_threshold:
                         
-                        tracemoe_api_result = search_anime_in_tracemoe_api()
+                        tracemoe_api_result = erinacache.tracemoe_caching(image_hash)
                         if isinstance(tracemoe_api_result, CachingError) or tracemoe_api_result.similarity < config.tracemoe_similarity_threshold:
                             if not isinstance(tracemoe_api_result, CachingError) and tracemoe_api_result.similarity is not None:
                                 similaritiesDict[tracemoe_api_result] = tracemoe_api_result.similarity
             
-                            saucenao_api_result = search_anime_in_saucenao_api()
+                            saucenao_api_result = erinacache.saucenao_caching(image_hash)
                             if isinstance(saucenao_api_result, CachingError) or saucenao_api_result.similarity < config.saucenao_similarity_threshold:
                                 if not isinstance(saucenao_api_result, CachingError) and saucenao_api_result.similarity is not None:
                                     similaritiesDict[saucenao_api_result] = saucenao_api_result.similarity
 
-                                iqdb_api_result = search_anime_in_iqdb_api()
+                                iqdb_api_result = erinacache.iqdb_caching(image_hash)
                                 if isinstance(iqdb_api_result, CachingError) or iqdb_api_result.similarity < config.iqdb_similarity_threshold:
                                     if not isinstance(iqdb_api_result, CachingError) and iqdb_api_result.similarity is not None:
                                         similaritiesDict[iqdb_api_result] = iqdb_api_result.similarity
