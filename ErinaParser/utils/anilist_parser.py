@@ -88,8 +88,7 @@ class AnilistCache():
         """
         def __init__(self, description) -> None:
             self.html = str(description)
-            self.description = description
-            .replace('<br>', '').replace('<\\br>', '')
+            self.description = description.replace('<br>', '').replace('<\\br>', '')
             for element in ["<i>", "</i>", "\n", "<br>", "</br>"]:
                 self.description = description.replace(element, " ")
         

@@ -4,62 +4,89 @@ Hashing API for the Erina Project
 @author: Anime no Sekai
 Erina Project - 2020
 """
-import sys
-sys.path.append('..')
 
 import base64
 from io import BytesIO
+from os.path import isfile
 
-import lifeeasy
+import requests
 import imagehash
 from PIL import Image
+from ErinaHash.utils import Errors
 
 import erina_log
+import config
 
-def hash_image(image, algorithm='aHash'):
+class HashObject():
     """
-    Hashes the given image with the chosen algorithm (average hash by default)
-    © Anime no Sekai - 2020
-    Project Erina
+    An image hash object
     """
-    erina_log.loghash('Hashing the image')
-    image_hash = ''
-    if algorithm == 'aHash':
-        image_hash = imagehash.average_hash(image) # Needs to be a PIL instance
-    elif algorithm == 'cHash':
-        image_hash = imagehash.colorhash(image)
-    elif algorithm == 'dHash':
-        image_hash = imagehash.dhash(image)
-    elif algorithm == 'dHash_vertical':
-        image_hash = imagehash.dhash_vertical(image)
-    elif algorithm == 'pHash':
-        image_hash = imagehash.phash(image)
-    elif algorithm == 'pHash_simple':
-        image_hash = imagehash.phash_simple(image)
-    elif algorithm == 'wHash':
-        image_hash = imagehash.whash(image)
-    erina_log.loghash('Image hash is ' + str(image_hash), hash_string=str(image_hash))
-    return image_hash
+    def __init__(self, hashobj, ImageObj, URL=None) -> None:
+        self.ImageHash = hashobj
+        self.Image = ImageObj
+        self.ImageIO = BytesIO()
+        self.Image.save(self.ImageIO, format="JPEG")
+        self.hash = str(self.ImageHash)
+        self.base64 = str(base64.b64encode(self.ImageIO.getvalue()).decode("utf-8"))
+        if URL is not None:
+            self.has_url = True
+            self.url = str(URL)
+        else:
+            self.has_url = False
+            self.url = None
+    
+    def __repr__(self) -> str:
+        return str(self.hash)
 
-def hash_image_from_url(image_url, algorithm='aHash'):
+def hash_image(image, algorithm=None):
     """
-    Hashes the given image from the image url with the chosen algorithm (average hash by default)
-    © Anime no Sekai - 2020
-    Project Erina
+    Internal function to hash a given image
     """
-    erina_log.loghash(f'Downloading the image ({image_url})')
-    image_request = lifeeasy.request(image_url, 'get')
-    downloaded_image = Image.open(BytesIO(image_request.content)) # Open the downloaded image as a PIL Image instance
-    return hash_image(image=downloaded_image, algorithm=algorithm)
+    result = None
+    has_url = False
 
-def hash_image_from_path(image_path, algorithm='aHash'):
-    """
-    Hashes the given image from his path with the chosen algorithm (average hash by default)
-    © Anime no Sekai - 2020
-    Project Erina
-    """
-    image = Image.open(image_path)
-    return hash_image(image=image, algorithm=algorithm)
+    # Needs to be a PIL instance
+    if isfile(str(image)):
+        image = Image.open(image)
+    elif isinstance(image, Image.Image):
+        image = image
+    else:
+        try:
+            if base64.b64decode(str(image), validate=True):
+                image = Image.open(BytesIO(base64.b64decode(str(image))))
+            else:
+                raise ValueError("b64decode returned an empty string")
+        except:
+            try:
+                image = Image.open(BytesIO(requests.get(str(image)).content)) # Open the downloaded image as a PIL Image instance
+                has_url  = True
+            except:
+                return Errors.HashingError("INVALID_IMAGE_TYPE", "We couldn't convert the given image to a PIL.Image.Image instance")
+    
+    if algorithm is None:
+        algorithm = str(config.hashing_algorithm)
+
+    algorithm = str(algorithm).lower().replace(" ", "")
+    if algorithm == 'ahash' or algorithm == "a":
+        result = imagehash.average_hash(image)
+    elif algorithm == 'chash' or algorithm == "c":
+        result = imagehash.colorhash(image)
+    elif algorithm == 'dhash' or algorithm == "d":
+        result = imagehash.dhash(image)
+    elif algorithm == 'phash' or algorithm == "p":
+        result = imagehash.phash(image)
+    elif algorithm == 'wHash' or algorithm == "w":
+        result = imagehash.whash(image)
+    else:
+        algorithm = algorithm.replace("_", "")
+        if algorithm == 'dhashvertical' or algorithm == "dvertical" or algorithm == "dvert":
+            result = imagehash.dhash_vertical(image)
+        elif algorithm == 'phashsimple' or algorithm == "psimple":
+            result = imagehash.phash_simple(image)
+        else:
+            return Errors.HashingError("INVALID_ALGORITHM", "We couldn't determine the hashing algorithm you wanted to use.")
+    
+    return HashObject(result, image, has_url)
 
 def base64_from_image(image_path):
     """
@@ -68,16 +95,6 @@ def base64_from_image(image_path):
     Project Erina
     """
     erina_log.loghash(f'Converting to base64 ({image_path})', 'base64')
-    image = open(image_path, 'rb')
-    image_content = image.read()
-    image.close()
-    return str(base64.b64encode(image_content))[2:][:-1]
-
-def hash_image_from_base64(base64_data, algorithm='aHash'):
-    """
-    Hashes the given image from his base64 form with the chosen algorithm (average hash by default)
-    © Anime no Sekai - 2020
-    Project Erina
-    """
-    image = Image.open(BytesIO(base64.b64decode(base64_data)))
-    return hash_image(image=image, algorithm=algorithm)
+    with open(image_path, "rb") as readingFile:
+        image_content = readingFile.read()
+    return base64.b64encode(image_content).decode("utf-8")
