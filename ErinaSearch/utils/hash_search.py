@@ -196,8 +196,7 @@ def search_anime_by_hash(image_hash):
                         return ImageSearchResult(iqdb_cache_result, iqdb_cache_result.similarity, None)
 
                 else: # IF FOUND IN SAUCE NAO CACHE
-                    if saucenao_cache_result.is_anime:
-                        return ImageSearchResult(saucenao_cache_result, saucenao_cache_result.similarity, (title_search(saucenao_cache_result.title) if saucenao_cache_result.is_anime else None))
+                    return ImageSearchResult(saucenao_cache_result, saucenao_cache_result.similarity, (title_search(saucenao_cache_result.title) if saucenao_cache_result.is_anime else None))
             
             else: # IF FOUND IN TRACEMOE CACHE
                 return ImageSearchResult(tracemoe_cache_result, tracemoe_cache_result.similarity, anilist_id_search(tracemoe_cache_result.anilist_id))
