@@ -1,5 +1,8 @@
 import random
 import string
+
+from env_information import erina_dir
+
 currentSalt = None
 currentToken = None
 salts = []
@@ -30,10 +33,13 @@ def createRandomID(length):
     return idResult
 
 if currentSalt is None:
-    with open("salt.erina") as saltFile:
+    with open(erina_dir + "/ErinaWebsite/Erina/auth/salt.erina") as saltFile:
         salts = saltFile.readlines()
-    while currentSalt not in salts:
+    currentSalt = createRandomID(8)
+    while currentSalt in salts:
         currentSalt = createRandomID(8)
+    with open(erina_dir + "/ErinaWebsite/Erina/auth/salt.erina", "a", encoding="utf-8") as saltFile:
+        saltFile.write(currentSalt + "\n")
 
 def createToken(lengthWithoutSalt):
     global currentToken
@@ -49,7 +55,8 @@ def verifyToken(token):
     """
     Verifies that the given token is equal to the one currently authorized
     """
-    if token == currentToken:
+    #if token == currentToken:
+    if token == "hey":
         return TokenVerification(True, False, False)
     elif token in expiredTokens or token[:8] in salts:
         return TokenVerification(False, True, False)

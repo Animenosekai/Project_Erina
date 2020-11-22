@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/erina/admin/static/styles/main.css">
+    <script src="/erina/admin/static/scripts/main.js"></script>
+    
+    <link rel="stylesheet" href="/erina/admin/static/styles/console.css">
+    <script src="/erina/admin/static/scripts/console.js"></script>
+    <link rel="stylesheet" href="/erina/admin/static/styles/loading.css">
+    <script src="/erina/admin/static/scripts/loading.js"></script>
+    
+    <title>ErinaAdmin</title>
+</head>
+<body>
+
+    <loading id="loadingIndicator" class="erinaLoadingIndicator"></loading>
+    
+    <!--ERINA CONSOLE-->
+    <erinaconsole id="erinaConsole" class="erinaConsoleWrapper erinaConsoleHidden">
+        <div id="consoleHeader" class="erinaConsoleHeader"></div>
+        <h1 class="erinaConsoleTitle">ErinaConsole</h1>
+        <div id="consoleOutput" class="erinaConsoleOutputWrapper"></div>
+        <div class="erinaConsoleInputWrapper">
+            <label data-domain="ErinaConsole >> " class="erinaConsoleInputLabel">
+                <input type="text" class="erinaConsoleInput" id="consoleInput" placeholder="" />
+            <label>
+        </div>
+    </erinaconsole>
+
+
+    <sidebar class="sidebar">
+        <sidebar-element class="sidebarElement" onclick="goTo('ErinaAdmin — Overview', 'overview')">
+            <p class="sidebarText">Overview</p>
+            <selection-line id="overviewSelectionLine" class="sidebarLine"></selection-line>
+        </sidebar-element>
+        <sidebar-element class="sidebarElement" onclick="goTo('ErinaAdmin — Stats', 'stats')">
+            <p class="sidebarText">Stats</p>
+            <selection-line id="statsSelectionLine" class="sidebarLine"></selection-line>
+        </sidebar-element>
+        <sidebar-element class="sidebarElement" onclick="goTo('ErinaAdmin — API Docs', 'api')">
+            <p class="sidebarText">API</p>
+            <selection-line id="apiSelectionLine" class="sidebarLine"></selection-line>
+        </sidebar-element>
+        <sidebar-element class="sidebarElement" onclick="goTo('ErinaAdmin — Configuration', 'config')">
+            <p class="sidebarText">Config</p>
+            <selection-line id="configSelectionLine" class="sidebarLine"></selection-line>
+        </sidebar-element>
+    </sidebar>
+
+    <!--ERINA ADMIN-->
+    <erinaadmin id="ErinaAdminBody"></erinaadmin>
+</body>
+</html>

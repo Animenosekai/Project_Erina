@@ -1,0 +1,52 @@
+.erinaLoadingIndicator {
+    background: rgb(0, 204, 255);
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: pulse;
+    -moz-animation-duration: .5s;
+    -moz-animation-direction: alternate;
+    -moz-animation-iteration-count: infinite;
+    animation-name: pulse;
+    animation-duration: .5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    top: 0;
+    height: 5px;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+
+@-webkit-keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

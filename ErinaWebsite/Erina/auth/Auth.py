@@ -2,7 +2,7 @@ import json
 from flask import request
 from flask import Response
 
-import config
+#import config
 from ErinaWebsite.Server import ErinaServer
 from ErinaWebsite.Erina.auth import authManagement
 
@@ -25,7 +25,8 @@ def login():
         if str(requestArgs.get("minify")).replace(" ", "").lower() in ["true", "0", "yes"]:
             minify = True
     if "password" in requestArgs:
-        if requestArgs.get("password") == config.ErinaAdmin_Password:
+        #if requestArgs.get("password") == config.ErinaAdmin_Password:
+        if requestArgs.get("password") == "hey":
             return makeResponse(authManagement.createToken(64), 200, minify)
         else:
             return makeResponse({"error": "WRONG_PASSWORD", "message": "You've entered the wrong password"}, 400, minify)
