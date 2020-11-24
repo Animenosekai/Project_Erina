@@ -1,10 +1,15 @@
 from flask import request
 from flask import redirect
+from flask import send_from_directory
 from ErinaWebsite.Server import ErinaServer
 from ErinaWebsite.Erina.auth import authManagement
+from env_information import erina_dir
 
 resourcePath = "/erina/admin/resource/"
 frontEndPath = "/erina/admin/"
+
+staticLocation = erina_dir + "/ErinaWebsite/Erina/static"
+htmlLocation = staticLocation + "/html"
 
 def verifyToken(args):
     if "token" in args:
@@ -17,7 +22,7 @@ def resourceOverview():
     tokenVerification = verifyToken(request.values)
     if tokenVerification is not None:
         if tokenVerification.success:
-            return "Overview Page"
+            return send_from_directory(htmlLocation, "overview.html")
         else:
             return "ErinaAdminLoginRedirect"
 

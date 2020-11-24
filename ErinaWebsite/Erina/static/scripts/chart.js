@@ -2,7 +2,7 @@
 am4core.useTheme(am4themes_animated);
 
 // Functions that create various sparklines
-function createLine(id, data, color) {
+function createChart(id, data, color) {
     // Create chart instance
     var container = am4core.create(id, am4core.Container);
     container.layout = "grid";
@@ -11,8 +11,9 @@ function createLine(id, data, color) {
     container.height = am4core.percent(100);
 
     var chart = container.createChild(am4charts.XYChart);
-    chart.width = am4core.percent(40);
-    chart.height = 100;
+    chart.width = am4core.percent(100);
+    chart.height = am4core.percent(100);
+    //chart.logo.disabled = true;
 
     chart.data = data;
 
@@ -52,11 +53,25 @@ function createLine(id, data, color) {
     fillModifier.gradient.rotation = 90;
     series.segments.template.fillModifier = fillModifier;
 
+
+    document.querySelector("#" + id + " > div > svg > g > g:nth-child(2) > g:nth-child(2) > g > g:nth-child(3)").style.display = "none"
     return chart;
 }
 
+function updateChart(chart, newData, reloadAnimation=false){
+  //Setting the new data to the graph
+  chart.dataProvider = newData;
+
+  //Updating the graph to show the new data
+  chart.validateData();
+  
+  if (reloadAnimation == true) {
+    chart.animateAgain();
+  }
+}
+
 /****
-createLine("erinaChart-Users", [
+createChart("erinaChart", [
     { "date": new Date(2018, 0, 1, 8, 0, 0), "value": 57 },
     { "date": new Date(2018, 0, 1, 9, 0, 0), "value": 27 },
     { "date": new Date(2018, 0, 1, 10, 0, 0), "value": 24 },
@@ -66,5 +81,5 @@ createLine("erinaChart-Users", [
     { "date": new Date(2018, 0, 1, 14, 0, 0), "value": 20 },
     { "date": new Date(2018, 0, 1, 15, 0, 0), "value": 42 },
     { "date": new Date(2018, 0, 1, 16, 0, 0), "value": 59, "opacity": .9}
-], am4core.color("#7ae2ff"););
- */
+], am4core.color("#7ae2ff"))
+*/

@@ -43,6 +43,10 @@ def consoleCss():
 def loadingCss():
     return send_from_directory(stylesLocation, "loading.css")
 
+@ErinaServer.route(stylesPath + "overview.css")
+def overviewCss():
+    return send_from_directory(stylesLocation, "overview.css")
+
 #######################
 #      JavaScript     #
 #######################
@@ -57,3 +61,11 @@ def consoleJs():
 @ErinaServer.route(scriptsPath + "loading.js")
 def loadingJs():
     return send_from_directory(scriptsLocation, "loading.js")
+
+@ErinaServer.route(scriptsPath + "chart.js")
+def chartJs():
+    return send_from_directory(scriptsLocation, "chart.js")
+
+@ErinaServer.route(scriptsPath + "overview.js")
+def overviewJs():
+    return send_from_directory(scriptsLocation, "overview.js")

@@ -1,3 +1,4 @@
+var scriptsLoadingQueue = []
 
 function _hideSelectionLine(){
     document.getElementById("overviewSelectionLine").style.opacity = 0;
@@ -5,7 +6,6 @@ function _hideSelectionLine(){
     document.getElementById("apiSelectionLine").style.opacity = 0;
     document.getElementById("configSelectionLine").style.opacity = 0;
 }
-
 
 window.onload = function(){
     startLoading()
@@ -25,6 +25,20 @@ window.onload = function(){
     stopLoading()
 }
 
+function loadNextScript() {
+    console.log("Hey")
+    scriptsLoadingQueue.shift()
+    if (scriptsLoadingQueue.length == 0) {
+        PageInitialize()
+        stopLoading()
+    } else {
+        var newScript = document.createElement("script");
+        newScript.src = scriptsLoadingQueue[0]
+        newScript.classList.add("ErinaExternalJS")
+        newScript.addEventListener("load", loadNextScript)
+        document.getElementsByTagName("head")[0].appendChild(newScript)
+    }
+}
 
 function goTo(title, url, resourceLocation=null) {
     startLoading()
@@ -50,7 +64,17 @@ function goTo(title, url, resourceLocation=null) {
                 document.getElementById(url + "SelectionLine").style.opacity = 1;
                 document.getElementById("ErinaAdminBody").innerHTML = data
                 history.pushState({page: title}, title, "/erina/admin/" + url);
-                stopLoading()
+                
+                scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
+                if (scriptsLoadingQueue.length == 0) {
+                    stopLoading()
+                } else {
+                    var newScript = document.createElement("script");
+                    newScript.src = scriptsLoadingQueue[0]
+                    newScript.classList.add("ErinaExternalJS")
+                    newScript.addEventListener("load", loadNextScript)
+                    document.getElementsByTagName("head")[0].appendChild(newScript)
+                }
             })
         } catch {
             window.location.assign("/erina/admin/" + url)

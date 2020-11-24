@@ -1,4 +1,51 @@
-<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-<div id="erinaChart"></div>
+<import id="ErinaExternalJS-Sources" style="display: none;">
+[
+    "https://cdn.amcharts.com/lib/4/core.js",
+    "https://cdn.amcharts.com/lib/4/charts.js",
+    "https://cdn.amcharts.com/lib/4/themes/animated.js",
+    "/erina/admin/static/scripts/chart.js",
+    "/erina/admin/static/scripts/overview.js"
+]
+</import>
+<link rel="stylesheet" href="/erina/admin/static/styles/overview.css">
+<erinatitle class="pageTitle">Erina Overview</erinatitle>
+
+<erinastats class="erinastats">
+    <erinastat class="statCard" id="overview-stats-animesearch">
+        <label class="statLabel" id="erinaStats-animesearch-title">Anime Search</label>
+        <p class="statValue" id="erinaStats-current-number-animesearch">380</p>
+        <div class="erinaChart" id="erinaChart-animesearch"></div>
+    </erinastat>
+    <erinastat class="statCard" id="overview-stats-tweets">
+        <label class="statLabel" id="erinaStats-tweets-title">Tweets</label>
+        <p class="statValue" id="erinaStats-current-number-tweets">155</p>
+        <div class="erinaChart" id="erinaChart-tweets"></div>
+    </erinastat>
+</erinastats>
+
+<erinawidgets>
+    <erinawidget id="overview-widget-errors">
+        <label id="erinaWidget-errors-title">Errors in the past month</label>
+        <p id="erinaWidget-errors-value"></p>
+    </erinawidget>
+    <erinawidget id="overview-widget-bestuser">
+        <label id="erinaWidget-bestuser-title">Biggest User</label>
+        <p id="erinaWidget-bestuser-value"></p>
+    </erinawidget>
+    <erinawidget id="overview-widget-errors">
+        <label id="erinaWidget-errors-title">Errors in the past month</label>
+        <p id="erinaWidget-errors-value"></p>
+    </erinawidget>
+</erinawidgets>
+
+<erinatraceback>
+    <erinalogs>
+        <label id="erinalogs-title">Logs</label>
+        <logs id="erinalogs-container"></logs>
+    </erinalogs>
+    
+    <erinafeedbacks>
+        <label>Feedbacks</label>
+        <feedbacks id="erinafeedbacks-container"></feedbacks>
+    </erinafeedbacks>
+</erinatraceback>
