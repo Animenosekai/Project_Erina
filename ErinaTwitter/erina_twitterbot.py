@@ -31,6 +31,13 @@ import config
 import erina_log
 from . import erina_twitter_infoparser
 
+class ErinaTwitter():
+    def __init__(self) -> None:
+        self.authentification = tweepy.OAuthHandler(config.twitter_consumer_key, config.twitter_consumer_secret)
+        self.authentification.set_access_token(config.twitter_access_token_key, config.twitter_access_token_secret)
+
+        self.api = tweepy.API(self.authentification)
+
 def TwitterClient():
     '''
     Erina Twitter Client for the Erina Project\n

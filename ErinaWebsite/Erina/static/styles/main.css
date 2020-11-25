@@ -3,6 +3,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: SF Pro Display, Inter, Helvetica, Arial;
+    background: rgb(255 254 248 / 15%);
 }
 
 .sidebar {
@@ -42,7 +43,7 @@ body {
 
 #ErinaAdminBody {
     position: absolute;
-    left: 300px;
+    left: 15%;
     top: 30px;
-    width: calc(100vw - 300px);
+    width: calc(100vw - 15%);
 }

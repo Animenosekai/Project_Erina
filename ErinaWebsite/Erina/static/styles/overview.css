@@ -5,12 +5,17 @@
     font-weight: bold;
     margin-bottom: 100px;
 }
+/*************************************************************************/
+
+/************************
+    Overview — ErinaStats 
+*************************/
 
 .erinastats {
     position: relative;
     display: flex;
     flex-direction: row;
-    left: 28%;
+    left: 25%;
 }
 
 .statCard {
@@ -22,9 +27,10 @@
     margin-right: 80px;
     align-items: center;
     align-content: center;
-    background: rgba(220, 220, 220, 0.2);
+    background: rgba(255, 244, 208, 0.2);
     border-radius: 15px;
-    padding: 30px 10px 30px 10px;
+    padding: 30px 10px;
+    box-shadow: 1px 0px 10px 1px #ececec;
 }
 
 .statLabel {
@@ -40,4 +46,138 @@
 .erinaChart {
     height: 80px;
     width: 220px;
+}
+/*************************************************************************/
+
+/************************
+    Overview — ErinaWidgets 
+*************************/
+
+.erinaWidgets {
+    display: flex;
+    flex-direction: row;
+    left: 10%;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.erinaWidget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin-left: 80px;
+    margin-right: 80px;
+    align-items: center;
+    align-content: center;
+    background: rgba(255, 244, 208, 0.2);
+    border-radius: 15px;
+    padding: 30px 10px;
+    box-shadow: 1px 0px 10px 1px #ececec;
+    width: 15%;
+    height: 50px;
+}
+
+.erinaWidget-title {
+    left: 20px;
+    position: absolute;
+    top: 20px;
+    color: #5a5a5a;
+}
+
+.erinaWidget-value-number {
+    font-size: 2vw;
+    margin-top: 15px;
+}
+
+.erinaWidget-value-text {
+    font-size: 1.5vw;
+    margin-top: 15px;
+}
+
+/*************************************************************************/
+
+/************************
+    Overview — ErinaWidgets 
+*************************/
+
+.erinaTraceback {
+    display: flex;
+    flex-direction: row;
+}
+
+.erinaLogs {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 60px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 20px 15px;
+    align-items: center;
+    align-content: center;
+    border-radius: 15px;
+    background: rgba(255, 244, 208, 0.2);
+    box-shadow: 1px 0px 10px 1px #ececec;
+    height: 250px;
+    width: 35%;
+}
+
+#erinalogs-title {
+    left: 20px;
+    position: absolute;
+    top: 20px;
+    color: #808080d9;
+}
+
+#erinalogs-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 20px;
+    margin-top: 10px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+erinaLog {
+    margin: 5px 0px;
+    width: 100%;
+    left: 15px;
+    position: relative;
+}
+
+erinalog-timestamp {
+    color: gray;
+    margin-right: 10px;
+    font-size: 0.8em;
+}
+
+erinalog-message {
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.erinaFeedbacks {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 60px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 20px 15px;
+    align-items: center;
+    align-content: center;
+    border-radius: 15px;
+    background: rgba(255, 244, 208, 0.2);
+    box-shadow: 1px 0px 10px 1px #ececec;
+    height: 250px;
+    width: 35%;
+}
+
+.erinaFeedbacks-title {
+    left: 20px;
+    position: absolute;
+    top: 20px;
+    color: #808080d9;
 }
