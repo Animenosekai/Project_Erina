@@ -16,6 +16,9 @@ def capitalize_string(string):
     return final_string
 
 def create_nice_list(input_list):
+    """
+    Creates a list a nice string
+    """
     result = ''
     try:
         result = capitalize_string(str(input_list[0]))

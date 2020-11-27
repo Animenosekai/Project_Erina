@@ -41,7 +41,7 @@ class ErinaCache():
             if element[:5] == 'Path:':
                 self.path = str(element[6:])
             elif element[:11] == 'AniList ID:':
-                self.anilist_id = str(element[12:])
+                self.anilist_id = utils.convert_to_int(element[12:])
             elif element[:5] == 'Hash:':
                 self.hash = str(element[6:])
             elif element[:11] == 'Similarity:':

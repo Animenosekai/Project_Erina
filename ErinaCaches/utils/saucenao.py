@@ -18,7 +18,7 @@ Thumbnail: {str(api_results.thumbnail)}
     elif isinstance(api_results, VideoSauce):
         cache_content += "isManga: False\n"
         cache_content += "isAnime: True\n"
-        cache_content += f"Episode: {str(api_results.part)}\n"
+        cache_content += f"Part: {str(api_results.part)}\n"
         cache_content += f"Year: {str(api_results.year)}\n"
         cache_content += f"Estimated Time: {str(api_results.est_time)}\n"
     else:

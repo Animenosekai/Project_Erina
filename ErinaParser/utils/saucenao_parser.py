@@ -229,7 +229,6 @@ class SauceNAOCache():
         self.is_manga = None
         self.is_anime = None
         self.part = None
-        self.episode = None
         self.year = None
         self.timing = None
         self.cache_timestamp = None
@@ -255,8 +254,8 @@ class SauceNAOCache():
                 self.part = utils.convert_to_int(element[6:])
             elif element[:8] == 'isAnime:':
                 self.is_anime = utils.convert_to_boolean(element[9:])
-            elif element[:8] == 'Episode:':
-                self.episode = utils.convert_to_int(element[9:])
+            elif element[:8] == 'Episode:': #### COMPATIBILITY WITH OLD SAUCENAO CACHE
+                self.part = utils.convert_to_int(element[9:])
             elif element[:5] == 'Year:':
                 self.year = utils.convert_to_int(element[6:])
             elif element[:15] == 'Estimated Time:':

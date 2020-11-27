@@ -19,7 +19,7 @@ from ErinaHash.utils.Errors import HashingError
 class ImageSearchResult():
     def __init__(self, detectionResut, similarity, animeResult, low_similarity=False) -> None:
         self.detectionResult = detectionResut
-        self.simialrity = similarity
+        self.similarity = similarity
         self.animeResult = animeResult
         self.low_similarity = low_similarity
     

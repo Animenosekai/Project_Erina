@@ -3,8 +3,12 @@ Twitter Stream Manager
 """
 
 import tweepy
+import config
 from ErinaTwitter.utils.Errors import TwitterError
-
+from ErinaTwitter.utils import Twitter
+from ErinaTwitter.erina_twitterbot import ErinaTwitter
+from ErinaTwitter.utils.Parser import makeTweet
+from ErinaSearch.erinasearch import imageSearch
 class Listener(tweepy.StreamListener):
         """
         Tweet Listener Class (Twitter Stream Handler)
@@ -17,15 +21,30 @@ class Listener(tweepy.StreamListener):
             """
             Connection
             """
-            pass
+            print("ErinaTwitter is connected to the Twitter API")
 
         def on_status(self, tweet):
             """
             Tweet Receiving
             """
-            pass
+            if config.Twitter.ignore_rt and Twitter.isRetweet(tweet):
+                return
+            
+            imageURL = Twitter.findImage(tweet)
+            if imageURL is not None and Twitter.isAskingForSauce(tweet):
+                searchResult = imageSearch(imageURL)
+                tweetResponse = makeTweet(searchResult)
+                if tweetResponse is not None:
+                    ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
+                if Twitter.isMention(tweet):
+                    ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
+                else:
+                    return
+            else:
+                return
 
-        def on_direct_message(self, status):
+
+        def on_direct_message(self, message):
             """
             DM Receiving
             """
@@ -69,3 +88,13 @@ class Listener(tweepy.StreamListener):
             Disconnection from Twitter
             """
             return TwitterError("STREAM_DISCONNECTION", f"A disconnection notice came: {str(notice)}")
+
+Erina = tweepy.Stream(auth=ErinaTwitter.api.auth, listener=Listener())
+if isinstance(config.twitter_monitored_accounts, list) and len(config.twitter_monitored_accounts) > 0:
+    user_ids = [user.id_str for user in ErinaTwitter.api.lookup_users(screen_names=config.twitter_monitored_accounts)]
+    Erina.filter(follow=user_ids)
+else:
+    if not isinstance(config.twitter_stream_track_flags, list) or config.twitter_stream_track_flags == []:
+        Erina.filter(languages=config.twitter_stream_languages, track=config.twitter_flags)
+    else:
+        Erina.filter(languages=config.twitter_stream_languages, track=config.twitter_stream_track_flags)
