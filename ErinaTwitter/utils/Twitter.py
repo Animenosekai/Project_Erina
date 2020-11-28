@@ -1,6 +1,5 @@
 from ErinaTwitter.erina_twitterbot import ErinaTwitter
 
-
 def findImage(tweet):
     """
     Searches for an image in the tweet
@@ -10,22 +9,34 @@ def findImage(tweet):
             return media['media_url']
     return None
 
+def findParentImage(tweet):
+    """
+    Searches for an image in the parent tweet (if reply)
+    """
+    parent = parentTweet(tweet)
+    if parent is not None:
+        return findImage(parent)
+    return None
+
 def isRetweet(tweet):
     """
     Checks if the given tweet is an RT
     """
     if hasattr(tweet, 'retweeted_status') or tweet.text[:4] == 'RT @':
         return True
-    else:
-        return False
+    return False
 
 def isAskingForSauce(tweet):
     """
     Checks if the given tweet is really asking for the sauce
     """
-    if tweet.in_reply_to_status_id is not None:
-        if ErinaTwitter.api.get_status(tweet.in_reply_to_status_id).user.screen_name == ErinaTwitter._screen_name:
-            return False
+    accountsChain = []
+    currentStatus = "ErinaSauceRecursiveTweetSearching"
+    while currentStatus is not None:
+        accountsChain.append(currentStatus.user.screen_name)
+        currentStatus = parentTweet(currentStatus)
+    if ErinaTwitter.me.screen_name in accountsChain:
+        return False
     if tweet.user.screen_name == ErinaTwitter._screen_name:
         return False
 
@@ -43,8 +54,9 @@ def isMention(tweet):
     cleanText = tweet.text.replace(" ", '').lower()
     if '@' + ErinaTwitter._screen_name in cleanText:
         return True
-    else:
-        return False
+    elif "user_mentions" in tweet._json and any([currentMention["screen_name"].replace("", "").lower() == ErinaTwitter._screen_name for currentMention in tweet._json["user_mentions"]]):
+        return True
+    return False
 
 def isReplyingToErina(tweet):
     """
@@ -59,6 +71,8 @@ def isReply(tweet):
     """
     Checks if the given tweet is a reply
     """
+    if tweet is None:
+        return False
     if tweet.in_reply_to_status_id is not None:
         return True
     return False
@@ -69,4 +83,4 @@ def parentTweet(tweet):
     """
     if isReply(tweet):
         return ErinaTwitter.api.get_status(tweet.in_reply_to_status_id)
-    return False
+    return None

@@ -30,18 +30,35 @@ class Listener(tweepy.StreamListener):
             if config.Twitter.ignore_rt and Twitter.isRetweet(tweet):
                 return
             
-            imageURL = Twitter.findImage(tweet)
-            if imageURL is not None and Twitter.isAskingForSauce(tweet):
-                searchResult = imageSearch(imageURL)
-                tweetResponse = makeTweet(searchResult)
-                if tweetResponse is not None:
-                    ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
-                if Twitter.isMention(tweet):
-                    ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
-                else:
-                    return
-            else:
-                return
+            if isinstance(config.Twitter.monitored_accounts, (list, tuple)) and len(config.Twitter.monitored_accounts) > 0:
+                if config.Twitter.monitored_check_replies and Twitter.isReplyingToErina(tweet): # Monitor Mode ON, Check Replies to Monitored ON
+                    imageURL = Twitter.findImage(tweet)
+                    if imageURL is None:
+                        imageURL = Twitter.findParentImage(tweet)
+                    if imageURL is not None:
+                        searchResult = imageSearch(imageURL)
+                        tweetResponse = makeTweet(searchResult)
+                        if tweetResponse is not None:
+                            ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
+                elif tweet.user.screen_name == ErinaTwitter.me.screen_name: # Monitor Mode ON, Check Replies to Monitored OFF
+                    imageURL = Twitter.findImage(tweet)
+                    if imageURL is not None:
+                        searchResult = imageSearch(imageURL)
+                        tweetResponse = makeTweet(searchResult)
+                        if tweetResponse is not None:
+                            ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
+            else: # Monitor Mode OFF, Public Account
+                imageURL = Twitter.findImage(tweet)
+                if imageURL is None:
+                    imageURL = Twitter.findParentImage(tweet)
+                if imageURL is not None and Twitter.isAskingForSauce(tweet):
+                    searchResult = imageSearch(imageURL)
+                    tweetResponse = makeTweet(searchResult)
+                    if tweetResponse is not None:
+                        ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
+                    elif Twitter.isMention(tweet):
+                        ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
+            return
 
 
         def on_direct_message(self, message):
