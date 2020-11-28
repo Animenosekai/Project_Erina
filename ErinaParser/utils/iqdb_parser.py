@@ -1,7 +1,7 @@
 import datetime
 from ErinaParser.utils import utils
 
-class ErinaCache():
+class IQDBCache():
     class Size():
         """
         An image size object

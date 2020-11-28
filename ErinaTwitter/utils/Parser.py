@@ -27,37 +27,58 @@ def makeTweet(erinaSearchResponse):
                 episode = detectionResult.part
             elif detectionResult.episode is not None:
                 episode = detectionResult.episode
-            tweetResult = f"""Here is the sauce!
+            tweetResult = """Here is the sauce!
 
-Anime: {(str(animeResult.title) if animeResult.title is not None else "Unknown")}
-Episode: {str(episode)}/{(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?")} {('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''})
-Studio: {(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown")}
-Genres: {(str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"}
+Anime: {anime}
+Episode: {episode}/{episodes} {timing}
+Studio: {studios}
+Genres: {genres}
 
-{(str(animeResult.link)) if animeResult.link is not None else ""}
-{(str(animeResult.description)) if animeResult.description is not None else ""}
-"""
+{link}
+{description}
+""".format(
+    anime=(str(animeResult.title) if animeResult.title is not None else "Unknown"),
+    episode=str(episode),
+    episodes=(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?"),
+    timing=(('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''),
+    studios=(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown"),
+    genres=((str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"),
+    link=((str(animeResult.link)) if animeResult.link is not None else ""),
+    description=((str(animeResult.description)) if animeResult.description is not None else "")
+)
         elif isinstance(detectionResult, SauceNAOCache): # if it comes from SauceNAO
             if detectionResult.is_manga: # if it is a manga
-                tweetResult = f"""Here is the sauce!
+                tweetResult = """Here is the sauce!
 
-Manga: {(str(detectionResult.title)) if detectionResult.title is not None else "Unknown"}
-Author: {(str(detectionResult.author)) if detectionResult.author is not None else "Unknown"}
-Chapter: {(str(detectionResult.part)) if detectionResult.part is not None else "??"}
-Similarity: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+**Manga**: {manga}
+**Author**: {author}
+**Chapter**: {chapter}
+**Similarity**: {similarity}%
 
-{(str(detectionResult.link)) if detectionResult.link is not None else ""}
-"""
+{link}
+""".format(
+    manga=((str(detectionResult.title)) if detectionResult.title is not None else "Unknown"),
+    author=((str(detectionResult.author)) if detectionResult.author is not None else "Unknown"),
+    chapter=((str(detectionResult.part)) if detectionResult.part is not None else "??"),
+    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    link=((str(detectionResult.link)) if detectionResult.link is not None else "")
+)
         else:
-            tweetResult = f"""Here is the sauce!
+            tweetResult = """Here is the sauce!
 
-Title: {(str(detectionResult.title)) if detectionResult.title is not None else "Unknown"}
-Author: {(str(detectionResult.author)) if detectionResult.author is not None else "Unknown"}
-Database: {(str(detectionResult.database)) if detectionResult.database is not None else "Unknown"}
-Similarity: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+**Title**: {title}
+**Author**: {author}
+**Database**: {database}
+**Similarity**: {similarity}%
 
-{(str(detectionResult.link)) if detectionResult.link is not None else ""}
-"""
+{link}
+""".format(
+    title=((str(detectionResult.title)) if detectionResult.title is not None else "Unknown"),
+    author=((str(detectionResult.author)) if detectionResult.author is not None else "Unknown"),
+    database=((str(detectionResult.database)) if detectionResult.database is not None else "Unknown"),
+    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    link=((str(detectionResult.link)) if detectionResult.link is not None else "")
+)
 
         if len(tweetResult) >= 280:
             tweetResult = tweetResult[:277] + "..."

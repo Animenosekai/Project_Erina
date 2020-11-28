@@ -1,16 +1,24 @@
-import datetime
+from datetime import datetime
 from saucenao_api.containers import BookSauce, VideoSauce
 
 def erina_from_api(api_results):
-    cache_content = f"""   --- SAUCENAO CACHE ---   
-Similarity: {str(api_results.similarity)}
-Index ID: {str(api_results.index_id)}
-Index Name: {str(api_results.index_name)}
-Title: {str(api_results.title)}
-URL: {str(api_results.url)}
-Author: {str(api_results.author)}
-Thumbnail: {str(api_results.thumbnail)}
-"""
+    cache_content = """   --- SAUCENAO CACHE ---   
+Similarity: {similarity}
+Index ID: {indexID}
+Index Name: {indexName}
+Title: {title}
+URL: {link}
+Author: {author}
+Thumbnail: {thumbnail}
+""".format(
+    similarity=str(api_results.similarity),
+    indexID=str(api_results.index_id),
+    indexName=str(api_results.index_name),
+    title=str(api_results.title),
+    link=str(api_results.url),
+    author=str(api_results.author),
+    thumbnail=str(api_results.thumbnail)
+)
     if isinstance(api_results, BookSauce):
         cache_content += "isManga: True\n"
         cache_content += "isAnime: False\n"

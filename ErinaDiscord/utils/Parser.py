@@ -13,26 +13,40 @@ def makeInfoResponse(erinaSearchResponse):
     """
     Makes the response for info queries on Discord
     """
-    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""**Anime**: {(str(erinaSearchResponse.title) if erinaSearchResponse.title is not None else "Unknown")}
-**Season**: {(str(erinaSearchResponse.season) if erinaSearchResponse.season is not None else (str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "N/A"))}{(("of " + str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "") if erinaSearchResponse.season is None else "")}
-**Number of episodes**: {(str(erinaSearchResponse.number_of_episodes) if erinaSearchResponse.number_of_episodes is not None else "??")}
-**Average Duration**: {(str(erinaSearchResponse.episode_duration) if erinaSearchResponse.episode_duration is not None else "??")}min
-**Status**: {(str(erinaSearchResponse.status) if erinaSearchResponse.status is not None else "Unknown")}
-**Genres**: {(str(create_nice_list(erinaSearchResponse.genres)))}
-**Studio**: {(str([studio for studio in erinaSearchResponse.studios if studio.is_animation_studio]) if erinaSearchResponse.studios is not None else "Unknown")}
+    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), """**Anime**: {anime}
+**Season**: {season}{year}
+**Number of episodes**: {episodes}
+**Average Duration**: {duration}min
+**Status**: {status}
+**Genres**: {genres}
+**Studio**: {studios}
 
-{(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= 200 else str(erinaSearchResponse.description)[:177] + "...")}
-{(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")}
-"""
+{description}
+{link}
+""".format(
+    anime=(str(erinaSearchResponse.title) if erinaSearchResponse.title is not None else "Unknown"),
+    season=(str(erinaSearchResponse.season) if erinaSearchResponse.season is not None else (str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "N/A")),
+    year=(("of " + str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "") if erinaSearchResponse.season is None else ""),
+    episodes=(str(erinaSearchResponse.number_of_episodes) if erinaSearchResponse.number_of_episodes is not None else "??"),
+    duration=(str(erinaSearchResponse.episode_duration) if erinaSearchResponse.episode_duration is not None else "??"),
+    status=(str(erinaSearchResponse.status) if erinaSearchResponse.status is not None else "Unknown"),
+    genres=(str(create_nice_list(erinaSearchResponse.genres))),
+    studios=(str([studio for studio in erinaSearchResponse.studios if studio.is_animation_studio]) if erinaSearchResponse.studios is not None else "Unknown"),
+    description=(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= 200 else str(erinaSearchResponse.description)[:177] + "..."),
+    link=(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")
+)
 
 def makeDescriptionResponse(erinaSearchResponse):
     """
     Makes the response for description queries on Discord
     """
     limit = 1020 - len(str(erinaSearchResponse.link))
-    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""{(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= limit else str(erinaSearchResponse.description)[:limit - 3] + "...")}
-{(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")}
-"""
+    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), """{description}
+{link}
+""".format(
+    description=(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= limit else str(erinaSearchResponse.description)[:limit - 3] + "..."),
+    link=(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")
+)
 
 
 
@@ -54,39 +68,60 @@ def makeImageResponse(erinaSearchResponse):
                 episode = detectionResult.part
             elif detectionResult.episode is not None:
                 episode = detectionResult.episode
-            discordResult = f"""Here is the sauce!
+            discordResult = """Here is the sauce!
 
-**Anime**: {(str(animeResult.title) if animeResult.title is not None else "Unknown")}
-**Episode**: {str(episode)}/{(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?")} {('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''})
-**Studio**: {(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown")}
-**Genres**: {(str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"}
-**Similarity**: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+**Anime**: {anime}
+**Episode**: {episode}/{episodes} {timestamp}
+**Studio**: {studios}
+**Genres**: {genres}
+**Similarity**: {similarity}%
 
-{(str(animeResult.link)) if animeResult.link is not None else ""}
-{(str(animeResult.description)) if animeResult.description is not None else ""}
-"""
+{link}
+{description}
+""".format(
+    anime=(str(animeResult.title) if animeResult.title is not None else "Unknown"),
+    episode=str(episode),
+    episodes=(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?"),
+    timestamp=(('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''),
+    studios=(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown"),
+    genres=((str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"),
+    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    link=((str(animeResult.link)) if animeResult.link is not None else ""),
+    description=((str(animeResult.description)) if animeResult.description is not None else "")
+)
         elif isinstance(detectionResult, SauceNAOCache): # if it comes from SauceNAO
             if detectionResult.is_manga: # if it is a manga
-                discordResult = f"""Here is the sauce!
+                discordResult = """Here is the sauce!
 
-**Manga**: {(str(detectionResult.title)) if detectionResult.title is not None else "Unknown"}
-**Author**: {(str(detectionResult.author)) if detectionResult.author is not None else "Unknown"}
-**Chapter**: {(str(detectionResult.part)) if detectionResult.part is not None else "??"}
-**Similarity**: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+**Manga**: {manga}
+**Author**: {author}
+**Chapter**: {chapter}
+**Similarity**: {similarity}%
 
-{(str(detectionResult.link)) if detectionResult.link is not None else ""}
-"""
+{link}
+""".format(
+    manga=((str(detectionResult.title)) if detectionResult.title is not None else "Unknown"),
+    author=((str(detectionResult.author)) if detectionResult.author is not None else "Unknown"),
+    chapter=((str(detectionResult.part)) if detectionResult.part is not None else "??"),
+    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    link=((str(detectionResult.link)) if detectionResult.link is not None else "")
+)
         else:
-            discordResult = f"""
-Here is the sauce!
+            discordResult = """Here is the sauce!
 
-**Title**: {(str(detectionResult.title)) if detectionResult.title is not None else "Unknown"}
-**Author**: {(str(detectionResult.author)) if detectionResult.author is not None else "Unknown"}
-**Database**: {(str(detectionResult.database)) if detectionResult.database is not None else "Unknown"}
-**Similarity**: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+**Title**: {title}
+**Author**: {author}
+**Database**: {database}
+**Similarity**: {similarity}%
 
-{(str(detectionResult.link)) if detectionResult.link is not None else ""}
-"""
+{link}
+""".format(
+    title=((str(detectionResult.title)) if detectionResult.title is not None else "Unknown"),
+    author=((str(detectionResult.author)) if detectionResult.author is not None else "Unknown"),
+    database=((str(detectionResult.database)) if detectionResult.database is not None else "Unknown"),
+    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    link=((str(detectionResult.link)) if detectionResult.link is not None else "")
+)
 
         if len(discordResult) >= 1000:
             discordResult = discordResult[:997] + "..."

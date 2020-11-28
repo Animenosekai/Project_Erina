@@ -9,9 +9,9 @@ Erina Project\n
 import os
 import sys
 import pkg_resources
-import lifeeasy
+#import lifeeasy
 
-
+"""
 ##### SYSTEM INFO
 start_date = lifeeasy.today(), lifeeasy.current_time()
 system = lifeeasy.system()
@@ -30,7 +30,7 @@ used_ram_percentage = str(lifeeasy.used_ram_percentage()) + '%'
 total_swap = lifeeasy.total_swap_memory()
 total_swap_percentage = str(lifeeasy.used_swap_memory_percentage()) + '%'
 disks_info = lifeeasy.disks_info()
-
+"""
 
 ##### PYTHON INFO
 python_version = sys.version

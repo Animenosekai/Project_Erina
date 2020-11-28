@@ -1,12 +1,18 @@
-import datetime
+from datetime import datetime
 
 def erina_from_data(image_hash, database_path, similarity, anilist_id):
-    cache_content = f"""   --- ERINA CACHE ---   
-AniList ID: {str(anilist_id)}
-Path: {str(database_path)}
-Hash: {str(image_hash)}
-Similarity: {str(similarity)}
+    cache_content = """   --- ERINA CACHE ---   
+AniList ID: {anilistID}
+Path: {path}
+Hash: {hash}
+Similarity: {similarity}
 
-Cache Timestamp: {str(datetime.timestamp(datetime.today()))}
-"""
+Cache Timestamp: {cache_timestamp}
+""".format(
+    anilistID=str(anilist_id),
+    path=str(database_path),
+    hash=str(image_hash),
+    similarity=str(similarity),
+    cache_timestamp=str(datetime.timestamp(datetime.today()))
+)
     return cache_content

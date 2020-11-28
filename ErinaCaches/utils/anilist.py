@@ -1,6 +1,6 @@
 import json
 import requests
-import datetime
+from datetime import datetime
 
 anilistApiQuery = '''
 {
@@ -162,35 +162,61 @@ def anilist_json_to_cache(anilist_api_result):
     Project Erina
     © Anime no Sekai - 2020
     """
-    cache_content = f"""   --- ANILIST CACHE ---   
-AniList ID: {str(anilist_api_result['id'])}
-MyAnimeList ID: {str(anilist_api_result['idMal'])}
-Romaji Title: {str(anilist_api_result['title']['romaji'])}
-English Title: {str(anilist_api_result['title']['english'])}
-Native Title: {str(anilist_api_result['title']['native'])}
-Type: {str(anilist_api_result['type'])}
-Format: {str(anilist_api_result['format'])}
-Status: {str(anilist_api_result['status'])}
-Description: {str(anilist_api_result['description']).replace('\n', ' ')}
-Season: {str(anilist_api_result['season'])}
-Year: {str(anilist_api_result['seasonYear'])}
-Episodes: {str(anilist_api_result['episodes'])}
-Average Duration: {str(anilist_api_result['duration'])}
-First Episode Release Date: {str(anilist_api_result['startDate']['year'])}-{str(anilist_api_result['startDate']['month'])}-{str(anilist_api_result['startDate']['day'])}
-Last Episode Release Date: {str(anilist_api_result['endDate']['year'])}-{str(anilist_api_result['endDate']['month'])}-{str(anilist_api_result['endDate']['day'])}
-Country: {str(anilist_api_result['countryOfOrigin'])}
-Source Media Type: {str(anilist_api_result['source'])}
-Licensed? {str(anilist_api_result['isLicensed'])}
-Hentai? {str(anilist_api_result['isAdult'])}
-Twitter Hashtag: {str(anilist_api_result['hashtag'])}
-Average Score: {str(anilist_api_result['averageScore'])}
-Cover Image: {str(anilist_api_result['coverImage']['extraLarge'])}
-Banner Image: {str(anilist_api_result['bannerImage'])}
-Genres: {':::'.join(anilist_api_result['genres'])}
-Alternative Title(s): {':::'.join(anilist_api_result['synonyms'])}
-"""
+    cache_content = """   --- ANILIST CACHE ---   
+AniList ID: {anilistID}
+MyAnimeList ID: {malID}
+Romaji Title: {title_romaji}
+English Title: {title_english}
+Native Title: {title_native}
+Type: {type}
+Format: {format}
+Status: {status}
+Description: {description}
+Season: {season}
+Year: {year}
+Episodes: {episodes}
+Average Duration: {duration}
+First Episode Release Date: {release_first}
+Last Episode Release Date: {release_last}
+Country: {country}
+Source Media Type: {source_type}
+Licensed? {licensed}
+Hentai? {hentai}
+Twitter Hashtag: {hashtag}
+Average Score: {score}
+Cover Image: {cover}
+Banner Image: {banner}
+Genres: {genres}
+Alternative Title(s): {alt_titles}
+""".format(
+    anilistID=str(anilist_api_result['id']),
+    malID=str(anilist_api_result['idMal']),
+    title_romaji=str(anilist_api_result['title']['romaji']),
+    title_english=str(anilist_api_result['title']['english']),
+    title_native=str(anilist_api_result['title']['native']),
+    type=str(anilist_api_result['type']),
+    format=str(anilist_api_result['format']),
+    status=str(anilist_api_result['status']),
+    description=str(anilist_api_result['description']).replace('\n', ' '),
+    season=str(anilist_api_result['season']),
+    year=str(anilist_api_result['seasonYear']),
+    episodes=str(anilist_api_result['episodes']),
+    duration=str(anilist_api_result['duration']),
+    release_first=str(anilist_api_result['startDate']['year']) + "-" + str(anilist_api_result['startDate']['month']) + "-" + str(anilist_api_result['startDate']['day']),
+    release_last=str(anilist_api_result['endDate']['year']) + "-" + str(anilist_api_result['endDate']['month']) + "-" + str(anilist_api_result['endDate']['day']),
+    country=str(anilist_api_result['countryOfOrigin']),
+    source_type=str(anilist_api_result['source']),
+    licensed=str(anilist_api_result['isLicensed']),
+    hentai=str(anilist_api_result['isAdult']),
+    hashtag=str(anilist_api_result['hashtag']),
+    score=str(anilist_api_result['averageScore']),
+    cover=str(anilist_api_result['coverImage']['extraLarge']),
+    banner=str(anilist_api_result['bannerImage']),
+    genres=':::'.join(anilist_api_result['genres']),
+    alt_titles=':::'.join(anilist_api_result['synonyms'])
+)
     try:
-        cache_content += f"Average Cover Color: {str(anilist_api_result['coverImage']['color'])}\n"
+        cache_content += "Average Cover Color: " + str(anilist_api_result['coverImage']['color']) + "\n"
     except:
         cache_content += 'Average Cover Color: Unknown\n'
     try:
