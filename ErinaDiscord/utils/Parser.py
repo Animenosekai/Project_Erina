@@ -1,95 +1,97 @@
 """
 Parses ErinaSearch for Discord
 """
-
+from ErinaParser.utils.utils import create_nice_list
+from ErinaParser.utils.saucenao_parser import SauceNAOCache
+from ErinaCaches.utils.Errors import CachingError
+from ErinaDB.utils.Errors import DatabaseError
+from ErinaHash.utils.Errors import HashingError
+from ErinaParser.utils.Errors import ParserError
+from ErinaSearch.utils.Errors import SearchingError
 
 def makeInfoResponse(erinaSearchResponse):
-    return "Hey"
+    """
+    Makes the response for info queries on Discord
+    """
+    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""
+**Anime**: {(str(erinaSearchResponse.title) if erinaSearchResponse.title is not None else "Unknown")}
+**Season**: {(str(erinaSearchResponse.season) if erinaSearchResponse.season is not None else (str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "N/A"))}{(("of " + str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "") if erinaSearchResponse.season is None else "")}
+**Number of episodes**: {(str(erinaSearchResponse.number_of_episodes) if erinaSearchResponse.number_of_episodes is not None else "??")}
+**Average Duration**: {(str(erinaSearchResponse.episode_duration) if erinaSearchResponse.episode_duration is not None else "??")}min
+**Status**: {(str(erinaSearchResponse.status) if erinaSearchResponse.status is not None else "Unknown")}
+**Genres**: {(str(create_nice_list(erinaSearchResponse.genres)))}
+**Studio**: {(str([studio for studio in erinaSearchResponse.studios if studio.is_animation_studio]) if erinaSearchResponse.studios is not None else "Unknown")}
 
-def makeImageResponse(erinaSearchResponse):
-    return "Hey"
+{(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= 200 else str(erinaSearchResponse.description)[:177] + "...")}
+{(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")}
+"""
 
 def makeDescriptionResponse(erinaSearchResponse):
-    return "Hey"
-
-
-
-
-
-
-
-
-####### OLD
-
-async def anime_search(channel, search):
     """
-    When someone wants to search about an anime
+    Makes the response for description queries on Discord
     """
-    anime_info = erina_discord_infoparser.search_anime_by_title(search)
-    reply_text = ''
-    if anime_info['anime'] != 'unknown':
-        anime = anime_info['anime']
-        reply_text += f'**Anime:** {anime}\n'
-    if anime_info['year'] != 'unknown':
-        if anime_info['season'] != 'unknown':
-            season = anime_info['season']
-            year = anime_info['year']
-            reply_text += f'**Season:** {season} of {year}\n'
-        else:
-            year = anime_info['year']
-            reply_text += f'**Year:** {year}\n'
-    if anime_info['episodes'] != 'unknown':
-        episodes = anime_info['episodes'] 
-        reply_text += f'**Number of episodes:** {episodes}\n'
-    if anime_info['average_duration'] != 'unknown':
-        avg_duration = anime_info['average_duration']
-        reply_text += f'**Average Duration:** {avg_duration}\n'
-    if anime_info['status'] != 'unknown':
-        status = anime_info['status']
-        reply_text += f'**Status:** {status}\n'
-    if anime_info['genres'] != 'unknown':
-        genres = anime_info['genres']
-        reply_text += f'**Genres:** {genres}\n'
-    if anime_info['studios'] != 'unknown':
-        studios = anime_info['studios']
-        reply_text += f'**Studio:** {studios}\n'
-    if anime_info['description'] != 'unknown':
-        description = anime_info['description']
-        if len(description) > 200:
-            reply_text += '\n' + description[:200] + '...' + '\n'
-        else:
-            reply_text += '\n' + description + '\n'
-    if anime_info['is_hentai'] != 'unknown':
-        if str(anime_info['is_hentai']) == 'True':
-            reply_text += '**⚠️ Seems to be a Hentai!**\n'
-    if anime_info['anilist_url'] != 'unknwon':
-        reply_text += anime_info['anilist_url'] 
+    limit = 1020 - len(str(erinaSearchResponse.link))
+    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""
+{(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= limit else str(erinaSearchResponse.description)[:limit - 3] + "...")}
+{(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")}
+"""
 
-    reply_embed = discord.Embed(title=f'Anime Info', colour=discord.Colour.blue())
-    reply_embed.add_field(name=anime_info['anime'], value=reply_text)
 
-    if anime_info['image'] != 'unknown':
-        reply_embed.set_thumbnail(url=anime_info['image'])
-    
-    await channel.send(embed=reply_embed)
 
-async def anime_description(channel, query):
-    '''
-    When someone wants the description of an anime
-    '''
-    anime_info = erina_discord_infoparser.search_anime_by_title(query)
-    reply_text = ''
-    anime = anime_info['anime']
-    description = anime_info['description']
-    if len(description) > 2000:
-        reply_text += '\n' + description[:2000] + '...' + '\n'
+def makeImageResponse(erinaSearchResponse):
+    """
+    Makes the response for image queries on Discord
+    """
+    errorTuple = (CachingError, DatabaseError, HashingError, ParserError, SearchingError)
+    if isinstance(erinaSearchResponse, errorTuple) or isinstance(erinaSearchResponse.detectionResult, errorTuple) or isinstance(erinaSearchResponse.animeResult, errorTuple):
+        return None, None, None
     else:
-        reply_text += '\n' + description + '\n'
-    if anime_info['anilist_url'] != 'unknwon':
-        reply_text += anime_info['anilist_url'] 
-    reply_embed = discord.Embed(title=f'Anime Description: {anime}', description=reply_text, colour=discord.Colour.blue())
+        discordResult = ""
+        animeResult = erinaSearchResponse.animeResult
+        detectionResult = erinaSearchResponse.detectionResult
+        
+        if animeResult is not None: # If it is an anime
+            episode = "?"
+            if isinstance(detectionResult, SauceNAOCache) and detectionResult.part is not None:
+                episode = detectionResult.part
+            elif detectionResult.episode is not None:
+                episode = detectionResult.episode
+            discordResult = f"""
+Here is the sauce!
 
-    if anime_info['image'] != 'unknown':
-        reply_embed.set_thumbnail(url=anime_info['image'])
-    
-    await channel.send(embed=reply_embed)
+**Anime**: {(str(animeResult.title) if animeResult.title is not None else "Unknown")}
+**Episode**: {str(episode)}/{(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?")} {('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''})
+**Studio**: {(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown")}
+**Genres**: {(str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"}
+**Similarity**: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+
+{(str(animeResult.link)) if animeResult.link is not None else ""}
+{(str(animeResult.description)) if animeResult.description is not None else ""}
+"""
+        elif isinstance(detectionResult, SauceNAOCache): # if it comes from SauceNAO
+            if detectionResult.is_manga: # if it is a manga
+                discordResult = f"""
+Here is the sauce!
+
+**Manga**: {(str(detectionResult.title)) if detectionResult.title is not None else "Unknown"}
+**Author**: {(str(detectionResult.author)) if detectionResult.author is not None else "Unknown"}
+**Chapter**: {(str(detectionResult.part)) if detectionResult.part is not None else "??"}
+**Similarity**: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+
+{(str(detectionResult.link)) if detectionResult.link is not None else ""}
+"""
+        else:
+            discordResult = f"""
+Here is the sauce!
+
+**Title**: {(str(detectionResult.title)) if detectionResult.title is not None else "Unknown"}
+**Author**: {(str(detectionResult.author)) if detectionResult.author is not None else "Unknown"}
+**Database**: {(str(detectionResult.database)) if detectionResult.database is not None else "Unknown"}
+**Similarity**: {(str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"}%
+
+{(str(detectionResult.link)) if detectionResult.link is not None else ""}
+"""
+
+        if len(discordResult) >= 280:
+            discordResult = discordResult[:277] + "..."
+        return str(detectionResult.title), (str(animeResult.cover_image) if animeResult.cover_image is not None else None), discordResult

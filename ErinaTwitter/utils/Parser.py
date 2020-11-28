@@ -32,8 +32,8 @@ Here is the sauce!
 
 Anime: {(str(animeResult.title) if animeResult.title is not None else "Unknown")}
 Episode: {str(episode)}/{(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?")} {('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''})
-Studio: {(str(create_nice_list(animeResult.studios)) if animeResult.studios is not None else "Unknown")}
-Genres: {(str(animeResult.genres)) if animeResult.genres is not None else "Unknown"}
+Studio: {(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown")}
+Genres: {(str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"}
 
 {(str(animeResult.link)) if animeResult.link is not None else ""}
 {(str(animeResult.description)) if animeResult.description is not None else ""}
