@@ -9,7 +9,9 @@
   "base64": 0,
   "caches": {
     "anilist_caching": [],
-    "anilist_search_caching": [],
+    "anilist_search_caching": [
+      "KonoSuba"
+    ],
     "erina_caching": [],
     "iqdb_caching": [],
     "saucenao_caching": [],
@@ -39,8 +41,7 @@
   },
   "error": [],
   "hash": [],
-  "launch": [
-  ],
+  "launch": [],
   "line": {
     "anime_description_request": [],
     "anime_info_request": [],
@@ -52,7 +53,9 @@
     "successful_source_search": []
   },
   "search": {
-    "aniliistid_search": [],
+    "aniliistid_search": [
+      "18"
+    ],
     "hash_search": [],
     "title_search": []
   },

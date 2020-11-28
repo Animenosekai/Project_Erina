@@ -60,27 +60,27 @@ class ErinaFile():
         if type is not None and filename is not None:
             self.type = str(type)
             if self.type == "anilist_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/AniList_Cache/" + filename, "r", encoding='utf-8') as dataFile:
+                with open(env_information.erina_dir + "/ErinaCaches/AniList_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
                     self.data = dataFile.read()
             
             elif self.type == "erina_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/Erina_Cache/" + filename, "r", encoding='utf-8') as dataFile:
+                with open(env_information.erina_dir + "/ErinaCaches/Erina_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
                     self.data = dataFile.read()
             
             elif self.type == "erina_database":
-                with open(env_information.erina_dir + "/ErinaDB/ErinaDatabase/" + filename, "r", encoding='utf-8') as dataFile:
+                with open(env_information.erina_dir + "/ErinaDB/ErinaDatabase/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
                     self.data = dataFile.read()
             
             elif self.type == "iqdb_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/IQDB_Cache/" + filename, "r", encoding='utf-8') as dataFile:
+                with open(env_information.erina_dir + "/ErinaCaches/IQDB_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
                     self.data = dataFile.read()
             
             elif self.type == "saucenao_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/SauceNAO_Cache/" + filename, "r", encoding='utf-8') as dataFile:
+                with open(env_information.erina_dir + "/ErinaCaches/SauceNAO_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
                     self.data = dataFile.read()
             
             elif self.type == "tracemoe_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/TraceMOE_Cache/" + filename, "r", encoding='utf-8') as dataFile:
+                with open(env_information.erina_dir + "/ErinaCaches/TraceMOE_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
                     self.data = dataFile.read()
             
         elif data is not None:

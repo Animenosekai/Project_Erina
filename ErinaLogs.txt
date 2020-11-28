@@ -1,1 +1,2 @@
-############### LOG START ###############
+############### LOG START ###############2020-11-28 23:11:26   [ErinaSearch] Searching the anime by his AniList ID... (18)
+2020-11-28 23:23:51   [ErinaCaches] Caching from AniList Search API...

@@ -207,7 +207,10 @@ class AnilistCache():
             self.role = str(data[0])
             self.anilist_id = utils.convert_to_int(data[1])
             self.name = str(data[2])
-            self.native_name = str(data[3])
+            try:
+                self.native_name = str(data[3])
+            except:
+                self.native_name = None
 
         def __repr__(self) -> str:
             if self.name is not None:
@@ -233,7 +236,10 @@ class AnilistCache():
             self.role = str(data[0])
             self.anilist_id = utils.convert_to_int(data[1])
             self.name = str(data[2])
-            self.native_name = str(data[3])
+            try:
+                self.native_name = str(data[3])
+            except:
+                self.native_name = None
 
         def __repr__(self) -> str:
             if self.name is not None:
@@ -472,22 +478,26 @@ class AnilistCache():
             elif element[:16] == '[streaming link]':
                 episode_fallback += 1
                 # Info extraction
-                element = element[17:]
-                link = re.findall("(https?:\/\/\S+)", element)[0]
-                if link.find('www.crunchyroll.com') != -1:
-                    element = element.split(": http")[0].split(" - ")
-                    episode = utils.convert_to_int(element[0].lower().replace("episode", ""))
-                    title = str(element[1])
-                else:
-                    element = element.split(": http")[0]
-                    episode = episode_fallback + 1
-                    title = str(element[0])
-
-                # Appending results
-                if self.streaming_links is None:
-                    self.streaming_links = [self.AnimeStreamingLink(link=link, episode=episode, title=title)]
-                else:
-                    self.streaming_links.append(self.AnimeStreamingLink(link=link, episode=episode, title=title))
+                try:
+                    element = element[17:]
+                    link = re.findall("(https?:\/\/\S+)", element)[0]
+                    if link.find('www.crunchyroll.com') != -1:
+                        element = element.split(": http")[0].split(" - ")
+                        episode = utils.convert_to_int(element[0].lower().replace("episode", ""))
+                        title = str(element[1])
+                    else:
+                        element = element.split(": http")[0]
+                        episode = episode_fallback + 1
+                        title = str(element[0])
+                    
+                    # Appending results
+                    if self.streaming_links is None:
+                        self.streaming_links = [self.AnimeStreamingLink(link=link, episode=episode, title=title)]
+                    else:
+                        self.streaming_links.append(self.AnimeStreamingLink(link=link, episode=episode, title=title))
+                except:
+                    pass
+                
             elif element[:15] == '[external link]':
                 element = element[16:]
                 link = re.findall("(https?:\/\/\S+)", element)[0]
