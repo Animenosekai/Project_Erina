@@ -1,5 +1,6 @@
 from ErinaWebsite.Server import ErinaServer
 
-@ErinaServer.route("/hey", methods=["GET"])
-def Hey():
-    return "Hey"
+@ErinaServer.route("/keepalive", methods=["GET"])
+def noSleep():
+    return '{"message": "success"}', 200
+

@@ -1,7 +1,7 @@
 import datetime
 
 def erina_from_data(image_hash, database_path, similarity, anilist_id):
-    cache_content = f"""
+    cache_content = f"""   --- ERINA CACHE ---   
 AniList ID: {str(anilist_id)}
 Path: {str(database_path)}
 Hash: {str(image_hash)}

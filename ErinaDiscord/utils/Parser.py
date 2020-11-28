@@ -13,8 +13,7 @@ def makeInfoResponse(erinaSearchResponse):
     """
     Makes the response for info queries on Discord
     """
-    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""
-**Anime**: {(str(erinaSearchResponse.title) if erinaSearchResponse.title is not None else "Unknown")}
+    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""**Anime**: {(str(erinaSearchResponse.title) if erinaSearchResponse.title is not None else "Unknown")}
 **Season**: {(str(erinaSearchResponse.season) if erinaSearchResponse.season is not None else (str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "N/A"))}{(("of " + str(erinaSearchResponse.year) if erinaSearchResponse.year is not None else "") if erinaSearchResponse.season is None else "")}
 **Number of episodes**: {(str(erinaSearchResponse.number_of_episodes) if erinaSearchResponse.number_of_episodes is not None else "??")}
 **Average Duration**: {(str(erinaSearchResponse.episode_duration) if erinaSearchResponse.episode_duration is not None else "??")}min
@@ -31,8 +30,7 @@ def makeDescriptionResponse(erinaSearchResponse):
     Makes the response for description queries on Discord
     """
     limit = 1020 - len(str(erinaSearchResponse.link))
-    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""
-{(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= limit else str(erinaSearchResponse.description)[:limit - 3] + "...")}
+    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), f"""{(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= limit else str(erinaSearchResponse.description)[:limit - 3] + "...")}
 {(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")}
 """
 
@@ -56,8 +54,7 @@ def makeImageResponse(erinaSearchResponse):
                 episode = detectionResult.part
             elif detectionResult.episode is not None:
                 episode = detectionResult.episode
-            discordResult = f"""
-Here is the sauce!
+            discordResult = f"""Here is the sauce!
 
 **Anime**: {(str(animeResult.title) if animeResult.title is not None else "Unknown")}
 **Episode**: {str(episode)}/{(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?")} {('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''})
@@ -70,8 +67,7 @@ Here is the sauce!
 """
         elif isinstance(detectionResult, SauceNAOCache): # if it comes from SauceNAO
             if detectionResult.is_manga: # if it is a manga
-                discordResult = f"""
-Here is the sauce!
+                discordResult = f"""Here is the sauce!
 
 **Manga**: {(str(detectionResult.title)) if detectionResult.title is not None else "Unknown"}
 **Author**: {(str(detectionResult.author)) if detectionResult.author is not None else "Unknown"}
@@ -92,6 +88,6 @@ Here is the sauce!
 {(str(detectionResult.link)) if detectionResult.link is not None else ""}
 """
 
-        if len(discordResult) >= 280:
-            discordResult = discordResult[:277] + "..."
+        if len(discordResult) >= 1000:
+            discordResult = discordResult[:997] + "..."
         return str(detectionResult.title), (str(animeResult.cover_image) if animeResult.cover_image is not None else None), discordResult

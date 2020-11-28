@@ -2,16 +2,17 @@ print("Initializing the server")
 from ErinaWebsite.Server import ErinaServer
 
 ## RECORDING Endpoints
-print("Importing Static")
+print("Initializing Static")
 from ErinaWebsite.Erina import Static
-#print("Importing API")
-#from ErinaWebsite.Erina.api import API
-print("Importing Admin")
+print("Initializing API")
+from ErinaWebsite.Erina.api import API
+print("Initializing Admin")
 from ErinaWebsite.Erina.admin import Admin
-print("Importing Auth")
+print("Initializing Auth")
 from ErinaWebsite.Erina.auth import Auth
-print("Importing Custom")
+print("Initializing Custom")
 from ErinaWebsite import Custom
+
 
 print("Running the server")
 ## RUNNING ErinaServer (HTTP)
