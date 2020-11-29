@@ -133,8 +133,11 @@ def anilist_api(anilist_id):
     variables = {
         'id': anilist_id
     }
-    response = requests.post(url='https://graphql.anilist.co', json={'query': query, 'variables': variables}).text
-    return json.loads(response.replace('null', '""'))['data']['Media']
+    response = requests.post(url='https://graphql.anilist.co', json={'query': query, 'variables': variables})
+    if response.status_code == 200:
+        return json.loads(response.text.replace('null', '""'))['data']['Media']
+    else:
+        return json.loads(response.text)
 
 def anilist_api_search(query_string):
     """
@@ -150,8 +153,15 @@ def anilist_api_search(query_string):
     variables = {
         'search': query_string
     }
-    response = requests.post(url='https://graphql.anilist.co', json={'query': query, 'variables': variables}).text
-    return json.loads(response.replace('null', '""'))['data']['anime']['results'][0]
+    response = requests.post(url='https://graphql.anilist.co', json={'query': query, 'variables': variables})
+    if response.status_code == 200:
+        anilistResponse = json.loads(response.text.replace('null', '""'))['data']['anime']['results']
+        if len(anilistResponse) > 0:
+            return anilistResponse[0]
+        else:
+            return {"errors": [{"message": "Not found.", "status": 404}]}
+    else:
+        return json.loads(response.text)
 
 
 

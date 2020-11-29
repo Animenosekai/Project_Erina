@@ -41,9 +41,12 @@ def anilist_caching(anilist_id):
         try:
             apiResponse = anilist.anilist_api(anilist_id)
         except:
-            print(sys.exc_info()[0])
-            print(sys.exc_info()[1])
             return Errors.CachingError("ANILIST_API_RESPONSE", f"An error occured while retrieving AniList API Data ({str(anilist_id)})")
+        if "errors" in apiResponse:
+            if apiResponse["errors"][0]["status"] == 404:
+                return Errors.CachingError("ANILIST_NOT_FOUND", str(anilist_id) + " has not been found")
+            else:
+                return Errors.CachingError("ANILIST_SERVER_ERROR", f"An error occured with the AniList API: {apiResponse['errors'][0]['message']}")
         try:
             cache = anilist.anilist_json_to_cache(apiResponse)
         except:
@@ -69,7 +72,14 @@ def anilist_search_caching(query):
         try:
             apiResponse = anilist.anilist_api_search(query)
         except:
+            print(sys.exc_info()[0])
+            print(sys.exc_info()[1])
             return Errors.CachingError("ANILIST_SEARCH_API_RESPONSE", f"An error occured while retrieving AniList Search API Data ({str(query)})")
+        if "errors" in apiResponse:
+            if apiResponse["errors"][0]["status"] == 404:
+                return Errors.CachingError("ANILIST_NOT_FOUND", str(query) + " has not been found")
+            else:
+                return Errors.CachingError("ANILIST_SERVER_ERROR", f"An error occured with the AniList API: {apiResponse['errors'][0]['message']}")
         try:
             cache = anilist.anilist_json_to_cache(apiResponse)
         except:

@@ -8,7 +8,13 @@
   },
   "base64": 0,
   "caches": {
-    "anilist_caching": [],
+    "anilist_caching": [
+      "5453432",
+      "5453432",
+      "5453432",
+      "5453432",
+      "5453432"
+    ],
     "anilist_search_caching": [
       "KonoSuba",
       "KonoSuba",
@@ -43,7 +49,17 @@
       "A",
       "azeijf",
       "dslhfksdjfhkqjfkzsqqsdqsd7454df",
-      "dslhfksdjfhkqjfkzsqqsdqsd7454df"
+      "dslhfksdjfhkqjfkzsqqsdqsd7454df",
+      "jsldfjlsdkfjklsdjfsldjf",
+      "qsodqsldjlqsjflksdj",
+      "qsodqsldjlqsjflksdj",
+      "qsodqsldjlqsjflksdj",
+      "qsodqsldjlqsjflksdj",
+      "qsodqsldjlqsjflksdj",
+      "qsodqsldjlqsjflksdj",
+      "qsodqsldjlqsjflksdj",
+      "qsodqsldjlqsjflksdj",
+      "kekegurui"
     ],
     "erina_caching": [],
     "iqdb_caching": [],
@@ -87,6 +103,12 @@
   },
   "search": {
     "aniliistid_search": [
+      "18",
+      "5453432",
+      "5453432",
+      "5453432",
+      "5453432",
+      "5453432",
       "18"
     ],
     "hash_search": [],
