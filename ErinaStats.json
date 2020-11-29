@@ -59,15 +59,33 @@
       "qsodqsldjlqsjflksdj",
       "qsodqsldjlqsjflksdj",
       "qsodqsldjlqsjflksdj",
-      "kekegurui"
+      "kekegurui",
+      "sdfosdkhfjsfd",
+      "sdfosdkhfjsfd"
     ],
     "erina_caching": [],
     "iqdb_caching": [],
-    "saucenao_caching": [],
-    "tracemoe_caching": []
+    "saucenao_caching": [
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20"
+    ],
+    "tracemoe_caching": [
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20"
+    ]
   },
   "database": {
-    "erina_database_access": 0,
+    "erina_database_access": 8,
     "erina_database_entry_lookup": 0,
     "manamai_database_entry_lookup": 0,
     "manami_database_access": 0,
@@ -111,7 +129,16 @@
       "5453432",
       "18"
     ],
-    "hash_search": [],
+    "hash_search": [
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20",
+      "4c4c787c3c0c3c20"
+    ],
     "title_search": []
   },
   "twitter": {

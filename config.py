@@ -91,3 +91,5 @@ saucenao_api_key = ""
 '''
 NO CONFIG FOR ANILIST
 '''
+
+hashing_algorithm = "ahash"

@@ -13,7 +13,7 @@ def makeInfoResponse(erinaSearchResponse):
     """
     Makes the response for info queries on Line
     """
-    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), """Anime: {anime}
+    return """Anime: {anime}
 Season: {season}{year}
 Number of episodes: {episodes}
 Average Duration: {duration}min
@@ -41,7 +41,7 @@ def makeDescriptionResponse(erinaSearchResponse):
     Makes the response for description queries on Line
     """
     limit = 1020 - len(str(erinaSearchResponse.link))
-    return str(erinaSearchResponse.title), str(erinaSearchResponse.cover_image), """{description}
+    return """{description}
 {link}
 """.format(
     description=(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= limit else str(erinaSearchResponse.description)[:limit - 3] + "..."),
@@ -56,7 +56,7 @@ def makeImageResponse(erinaSearchResponse):
     """
     errorTuple = (CachingError, DatabaseError, HashingError, ParserError, SearchingError)
     if isinstance(erinaSearchResponse, errorTuple) or isinstance(erinaSearchResponse.detectionResult, errorTuple) or isinstance(erinaSearchResponse.animeResult, errorTuple):
-        return None, None, None
+        return None
     else:
         lineResult = ""
         animeResult = erinaSearchResponse.animeResult
@@ -125,4 +125,4 @@ Similarity: {similarity}%
 
         if len(lineResult) >= 1000:
             lineResult = lineResult[:997] + "..."
-        return str(detectionResult.title), (str(animeResult.cover_image) if animeResult.cover_image is not None else None), lineResult
+        return lineResult

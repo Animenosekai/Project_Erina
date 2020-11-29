@@ -72,8 +72,6 @@ def anilist_search_caching(query):
         try:
             apiResponse = anilist.anilist_api_search(query)
         except:
-            print(sys.exc_info()[0])
-            print(sys.exc_info()[1])
             return Errors.CachingError("ANILIST_SEARCH_API_RESPONSE", f"An error occured while retrieving AniList Search API Data ({str(query)})")
         if "errors" in apiResponse:
             if apiResponse["errors"][0]["status"] == 404:
@@ -178,3 +176,8 @@ def erina_caching(image_hash, database_path, similarity, anilist_id):
         return erina_parser.ErinaCache(cache)
     except:
         return Errors.CachingError("UNKNOWN", "An unknown error occured while caching Erina Database Data")
+
+
+
+def iqdb_caching(a):
+    return Errors.CachingError("NOT_IMPLEMENTED", "Not implemented yet.")
