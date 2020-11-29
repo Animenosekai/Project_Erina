@@ -87,11 +87,9 @@ class AnilistCache():
         An anime description
         """
         def __init__(self, description) -> None:
-            self.html = str(description)
-            self.description = description.replace('<br>', '').replace('<\\br>', '')
-            for element in ["<i>", "</i>", "\n", "<br>", "</br>"]:
-                self.description = description.replace(element, " ")
-        
+            self.html = str(description).replace("\n", " ")
+            self.description = utils.textFromHTML(self.html)
+            
         def __repr__(self) -> str:
             return str(self.description)
 

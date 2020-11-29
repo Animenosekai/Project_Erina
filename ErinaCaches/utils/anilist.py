@@ -127,9 +127,9 @@ def anilist_api(anilist_id):
     # query is the response structure requested to the GraphQL AniList API (→ See GraphQL and AniList API documentation to learn more about this data structure)
     query = '''
     query ($id: Int) {
-        Media(id: $id, type: ANIME) {queryInside}
+        Media(id: $id, type: ANIME)''' + anilistApiQuery + '''
     }
-    '''.format(queryInside=anilistApiQuery)
+    '''
     variables = {
         'id': anilist_id
     }
@@ -141,13 +141,12 @@ def anilist_api_search(query_string):
     Internal Function for the cache API of Erina to request a search from the AniList API (GraphQL)
     """
     # query is the response structure requested to the GraphQL AniList API (→ See GraphQL and AniList API documentation to learn more about this data structure)
-    query = '''
-    query ($search: String) {
-        anime: Page(perPage: 1) {
-            results: media(type: ANIME, search: $search) {queryInside}
-        }
+    query = '''query ($search: String) {
+    anime: Page(perPage: 1) {
+        results: media(type: ANIME, search: $search)''' + anilistApiQuery + '''
     }
-    '''.format(queryInside=anilistApiQuery)
+}
+    '''
     variables = {
         'search': query_string
     }

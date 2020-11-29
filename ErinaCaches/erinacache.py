@@ -5,6 +5,8 @@ Caching API for the Erina Project
 Erina Project - 2020
 """
 
+import sys
+
 import config
 import erina_log
 import env_information
@@ -39,6 +41,8 @@ def anilist_caching(anilist_id):
         try:
             apiResponse = anilist.anilist_api(anilist_id)
         except:
+            print(sys.exc_info()[0])
+            print(sys.exc_info()[1])
             return Errors.CachingError("ANILIST_API_RESPONSE", f"An error occured while retrieving AniList API Data ({str(anilist_id)})")
         try:
             cache = anilist.anilist_json_to_cache(apiResponse)

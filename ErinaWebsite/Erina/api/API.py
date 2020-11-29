@@ -21,7 +21,7 @@ def error(result):
 
 def makeResponse(responseBody, code, minify=False):
     if minify:
-        response = Response(json.dumps(responseBody, ensure_ascii=False))
+        response = Response(json.dumps(responseBody, ensure_ascii=False, separators=(',', ':')))
     else:
         response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))
     response.headers["Server"] = "ErinaServer v1.0"
