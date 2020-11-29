@@ -33,16 +33,14 @@ def verify_manami_adb():
     Checks for a new version of the database on GitHub
     """
     start_time = time.time()
+
+    ## Checking if new week
     with open(manami_database_path + 'current_release.txt') as current_release_file:
         current_release_week = str(current_release_file.read()).replace(" ", '').replace("\n", '')
     iso_calendar = datetime.date.today().isocalendar()
     current_week = str(iso_calendar[0]) + '-' + str(iso_calendar[1])
-    if current_release_week != current_week:
-        """
-        erina_log.logdatabase('[ManamiDB] New ADB release found!')
-        erina_log.logdatabase('[ManamiDB] ADB auto-update...', stattype='manami_auto_update')
-        """
-        print("new adb")
+    
+    if current_release_week != current_week: # If new week
         manami_adb = json.loads(requests.get('https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database.json').text)
         data = {}
         for anime in manami_adb["data"]:
@@ -51,19 +49,18 @@ def verify_manami_adb():
             for sourceLink in anime["sources"]:
                 if sourceLink.find("anilist.co") != -1:
                     link = sourceLink
-            if link is not None:
+            if link is not None: # parser the data
                 anilist_id = convert_to_int(link[link.rfind("/"):])
-                data[anilist_id] = [ str(anime["title"]).lower() ]
-                data[anilist_id].extend([str(title).lower() for title in anime["synonyms"]])
+                data[anilist_id] = [ str(anime["title"]).lower().replace(" ", '') ]
+                data[anilist_id].extend([str(title).lower().replace(" ", '') for title in anime["synonyms"]])
             else:
                 continue
+        # write out the data
         with open(manami_database_path + 'manami_database_data.json', 'w', encoding="utf-8") as newFile:
             json.dump(data, newFile, ensure_ascii=False)
         with open(manami_database_path + 'current_release.txt', 'w', encoding="utf-8") as newReleaseFile:
             newReleaseFile.write(current_week)
         Database.updateData(data)
-    else:
-        #erina_log.logdatabase('[ManamiDB] less than a week from last check.')
+    else: # not new week
         print("less than a week")
-    end_time = time.time()
-    print(end_time - start_time)
+    print(time.time() - start_time)
