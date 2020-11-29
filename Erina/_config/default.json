@@ -1,0 +1,73 @@
+{
+    "Erina": {
+        "flags": ["what is this anime", "what's this anime", "anime sauce", "anime source", "what anime this is", "what anime is this", "called this anime", "name of this anime", "what's that anime", "what anime is it", "name of anime", "sauce to that anime"],
+        "consoleLog": true,
+        "fileLog": true,
+        "stats": true
+    },
+    "Twitter": {
+        "run": true,
+        "ignoredUsers": [],
+        "flags": [],
+        "ignoreRT": true,
+        "keys": {
+            "consumerKey": null,
+            "consumerSecret": null,
+            "accessTokenKey": null,
+            "accessTokenSecret": null
+        },
+        "stream": {
+            "languages": [],
+            "flags": []
+        },
+        "monitoring": {
+            "accounts": [],
+            "checkReplies": false
+        }
+    },
+    "Discord": {
+        "run": true,
+        "flags": [],
+        "keys": {
+            "token": null
+        }
+    },
+    "Line": {
+        "run": true,
+        "flags": [],
+        "keys": {
+            "channelAccessToken": null,
+            "channelSecret": null
+        },
+        "imagesTimeout": 3600
+    },
+    "Caches": {
+        "encoding": "utf-8"
+    },
+    "Database": {
+
+    },
+    "Hash": {
+        "algorithm": "Average Hash"
+    },
+    "Parser": {
+
+    },
+    "Search": {
+        "apiKeys": {
+            "tracemoe": null,
+            "saucenao": null
+        },
+        "thresholds": {
+            "erinaSimilarity": 100,
+            "tracemoeSimilarity": 90,
+            "saucenaoSimilarity": 90,
+            "iqdbSimilarity": 90
+        }
+    },
+    "Server": {
+        "host": "127.0.0.1",
+        "port": 5000,
+        "disableConsoleMessages": true
+    }
+}
