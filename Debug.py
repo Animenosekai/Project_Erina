@@ -1,19 +1,21 @@
+print("Initializing Erina configuration")
+from Erina.config import Server as ServerConfig
 print("Initializing the server")
-from ErinaWebsite.Server import ErinaServer
+from ErinaServer.Server import ErinaServer
 
 ## RECORDING Endpoints
 print("Initializing Static")
-from ErinaWebsite.Erina import Static
+from ErinaServer.Erina import Static
 print("Initializing API")
-from ErinaWebsite.Erina.api import API
+from ErinaServer.Erina.api import API
 print("Initializing Admin")
-from ErinaWebsite.Erina.admin import Admin
+from ErinaServer.Erina.admin import Admin
 print("Initializing Auth")
-from ErinaWebsite.Erina.auth import Auth
+from ErinaServer.Erina.auth import Auth
 print("Initializing Custom")
-from ErinaWebsite import Custom
+from ErinaServer import Custom
 
 
 print("Running the server")
 ## RUNNING ErinaServer (HTTP)
-ErinaServer.run("127.0.0.1", "5000", True)
+ErinaServer.run(ServerConfig.host, ServerConfig.port, True)

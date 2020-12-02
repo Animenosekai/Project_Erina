@@ -3,8 +3,8 @@ from flask import request
 from flask import Response
 
 #import config
-from ErinaWebsite.Server import ErinaServer
-from ErinaWebsite.Erina.auth import authManagement
+from ErinaServer.Server import ErinaServer
+from ErinaServer.Erina.auth import authManagement
 
 authEndpoint = "/erina/auth"
 

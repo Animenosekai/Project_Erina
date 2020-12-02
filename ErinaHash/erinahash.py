@@ -11,11 +11,12 @@ from os.path import isfile
 
 import requests
 import imagehash
+from safeIO import BinaryFile
 from PIL import Image
 from ErinaHash.utils import Errors
 
-import erina_log
-import config
+from Erina import erina_log
+from Erina import config
 
 class HashObject():
     """
@@ -72,24 +73,24 @@ def hash_image(image, algorithm=None):
                 return Errors.HashingError("INVALID_IMAGE_TYPE", "We couldn't convert the given image to a PIL.Image.Image instance")
     
     if algorithm is None:
-        algorithm = str(config.hashing_algorithm)
+        algorithm = str(config.Hash.algorithm)
 
     algorithm = str(algorithm).lower().replace(" ", "")
-    if algorithm == 'ahash' or algorithm == "a":
+    if algorithm in ['ahash', 'a', 'averagehash', 'average']:
         result = imagehash.average_hash(image)
-    elif algorithm == 'chash' or algorithm == "c":
+    elif algorithm in ['chash', 'c']:
         result = imagehash.colorhash(image)
-    elif algorithm == 'dhash' or algorithm == "d":
+    elif algorithm in ['dhash', 'd']:
         result = imagehash.dhash(image)
-    elif algorithm == 'phash' or algorithm == "p":
+    elif algorithm in ['phash', 'p', 'perceptual', 'perceptualhash']:
         result = imagehash.phash(image)
-    elif algorithm == 'wHash' or algorithm == "w":
+    elif algorithm in ['wHash', 'w']:
         result = imagehash.whash(image)
     else:
         algorithm = algorithm.replace("_", "")
-        if algorithm == 'dhashvertical' or algorithm == "dvertical" or algorithm == "dvert":
+        if algorithm in ['dhashvertical', 'dvertical', 'dvert', 'verticald', 'verticaldhash']:
             result = imagehash.dhash_vertical(image)
-        elif algorithm == 'phashsimple' or algorithm == "psimple":
+        elif algorithm in ['phashsimple', 'psimple', 'perceptualsimple', 'simpleperceptual', 'simplep', 'simplephash', 'simpleperceptualhas']:
             result = imagehash.phash_simple(image)
         else:
             return Errors.HashingError("INVALID_ALGORITHM", "We couldn't determine the hashing algorithm you wanted to use.")
@@ -104,6 +105,5 @@ def base64_from_image(image_path):
     © Anime no Sekai
     """
     erina_log.loghash(f'Converting to base64 ({image_path})', 'base64')
-    with open(image_path, "rb") as readingFile:
-        image_content = readingFile.read()
+    image_content = BinaryFile(image_path).read()
     return base64.b64encode(image_content).decode("utf-8")

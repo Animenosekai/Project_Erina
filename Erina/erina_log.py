@@ -7,7 +7,7 @@ Erina Project
 
 import json
 import lifeeasy
-import config
+from Erina import config
 
 def resetstats():
     """
@@ -20,11 +20,11 @@ def logerror(text):
     """
     Logging Errors.
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         print('[Error] ' + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [Error] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
         errors_list = data["error"]
@@ -37,16 +37,16 @@ def loglaunch(text):
     """
     Logging Launch Events.
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         if text != '':
             print("[Erina] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         if text == '':
             lifeeasy.write_file('ErinaLogs.txt', '\n', append=True)
             lifeeasy.write_file('ErinaLogs.txt', '\n', append=True)
             lifeeasy.write_file('ErinaLogs.txt', '\n', append=True)
             lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   ########## STARTING ########## " + text + '\n', append=True)
-            if config.keep_stats:
+            if config.Erina.stats:
                 with open("ErinaStats.json", "r") as jsonFile:
                     data = json.load(jsonFile)
                 launch_list = data["launch"]
@@ -63,11 +63,11 @@ def logtwitter(text, add_to_stream_hit=False, add_to_hit=False, add_to_media_hit
     Logging Twitter Messages.
     """
     if text != '':
-        if config.output_to_console:
+        if config.Erina.console_log:
             print("[ErinaTwitter] " + text)
-        if config.output_to_file:
+        if config.Erina.file_log:
             lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [ErinaTwitter] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
         if add_to_stream_hit:
@@ -91,11 +91,11 @@ def logsearch(text, search_type='', value=''):
     """
     Logging Search Queries.
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         print("[ErinaSearch] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [ErinaSearch] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
         if search_type == 'anilistid':
@@ -117,13 +117,13 @@ def logline(text, stattype='', value=None):
     """
     Logging Line Actions
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         if text != '':
             print("[ErinaLine] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         if text != '':
             lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [ErinaLine] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
         if stattype == 'image_reception':
@@ -165,11 +165,11 @@ def logapi(text, apitype=''):
     """
     Logging API Actions
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         print("[API] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [API] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
         if apitype == 'line_images':
@@ -187,11 +187,11 @@ def loghash(text, hash_string=''):
     """
     Logging Hash Actions
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         print("[ErinaHash] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [ErinaHash] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         if hash_string != '':
             with open("ErinaStats.json", "r") as jsonFile:
                 data = json.load(jsonFile)
@@ -212,14 +212,14 @@ def logdiscord(text='', stattype='', value=''):
     """
     Logging Discord Actions
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         if text != '':
             print("[ErinaDiscord] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         if text != '':
             lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [ErinaDiscord] " + text + '\n', append=True)
 
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
 
@@ -267,13 +267,13 @@ def logdatabase(text='', stattype='', value=0):
     """
     Logging Database Actions
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         if text != '':
             print("[ErinaDB] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         if text != '':
             lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [ErinaDB] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
         if stattype == 'manami_auto_update':
@@ -295,11 +295,11 @@ def logcaches(text, stattype='', value=''):
     """
     Logging ErinaCaches Actions
     """
-    if config.output_to_console:
+    if config.Erina.console_log:
         print("[ErinaCaches] " + text)
-    if config.output_to_file:
+    if config.Erina.file_log:
         lifeeasy.write_file('ErinaLogs.txt', lifeeasy.today() + ' ' + lifeeasy.current_time() + "   [ErinaCaches] " + text + '\n', append=True)
-    if config.keep_stats:
+    if config.Erina.stats:
         with open("ErinaStats.json", "r") as jsonFile:
             data = json.load(jsonFile)
         if stattype == 'anilist':

@@ -1,14 +1,11 @@
 """
 Erina Project Configuration File
 
-You can add your API Keys and Configure Erina with this file.
-
 Erina Project
 © Anime no Sekai - 2020
 """
-import json
-from Erina.env_information import erina_dir
 from Erina._config import classes
+from Erina._config.files import configFile, defaultFile
 
 Erina = classes.ErinaConfig()
 Twitter = classes.TwitterConfig()
@@ -65,14 +62,13 @@ def update(path, value):
     elif category == "Server":
         Server.update(path[1:], value)
 
-    with open(erina_dir + "/Erina/_config/config.json", "w", encoding="utf-8") as configFile:
-        json.dump(export(), configFile, ensure_ascii=False, indent=4)
+
+    configFile.write(export())
 
 def default():
     """
     Backs up the configuration to the default values
     """
-    with open(erina_dir + "/Erina/_config/default.json", "w", encoding="utf-8") as defaultFile:
-        data = json.load(defaultFile)
-    with open(erina_dir + "/Erina/_config/config.json", "w", encoding="utf-8") as configFile:
-        json.dump(data, configFile, ensure_ascii=False, indent=4)
+    defaultData = defaultFile.read()
+    configFile.write(defaultData)
+    

@@ -4,8 +4,8 @@ Anime Database API for the Erina Project
 @author: Anime no Sekai
 Erina Project - 2020
 """
-import env_information
-import erina_log
+from Erina.env_information import erina_dir
+from Erina import erina_log
 from ErinaDB.ManamiDB import manami_db_verification
 from ErinaDB.ManamiDB.manami_db_data import Database
 
@@ -13,7 +13,7 @@ def erina_database():
     """
     Returns Erina Database Path
     """
-    return env_information.erina_dir + '/ErinaDB/ErinaDatabase/'
+    return erina_dir + '/ErinaDB/ErinaDatabase/'
 
 def manami_database():
     """

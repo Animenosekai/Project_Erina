@@ -3,7 +3,7 @@ from flask import Response
 from flask import request
 
 from ErinaSearch import erinasearch
-from ErinaWebsite.Server import ErinaServer
+from ErinaServer.Server import ErinaServer
 
 from ErinaCaches.utils.Errors import CachingError
 from ErinaDB.utils.Errors import DatabaseError

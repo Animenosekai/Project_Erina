@@ -8,7 +8,7 @@ import sys
 sys.path.append('.')
 sys.path.append('..')
 
-import env_information
+import Erina.env_information as env_information
 import erina_log
 from ErinaSearch import result_python_translation
 

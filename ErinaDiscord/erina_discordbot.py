@@ -10,8 +10,8 @@ import filecenter
 import discord
 from discord.ext import commands as DiscordCommands
 
-import config
-import erina_log
+from Erina import config
+from Erina import erina_log
 from ErinaSearch import erinasearch
 from ErinaDiscord.utils import utils
 from ErinaDiscord.utils import Parser
@@ -82,7 +82,7 @@ async def on_message(message):
             elif command == "invite":
                 StaticResponse.erinainvite(message.channel)
     else:
-        if any([flag in str(message.content).lower() for flag in config.Discord.flags]):
+        if any([flag in str(message.content).lower() for flag in (config.Discord.flags if str(config.Discord.flags).replace(" ", "") not in ["None", ""] else config.Erina.flags)]):
             listOfResults = []
             await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND
             for file in message.attachments:

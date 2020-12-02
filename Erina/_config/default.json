@@ -42,7 +42,11 @@
         "imagesTimeout": 3600
     },
     "Caches": {
-        "encoding": "utf-8"
+        "encoding": "utf-8",
+        "apiKeys": {
+            "tracemoe": null,
+            "saucenao": null
+        }
     },
     "Database": {
 
@@ -54,10 +58,6 @@
 
     },
     "Search": {
-        "apiKeys": {
-            "tracemoe": null,
-            "saucenao": null
-        },
         "thresholds": {
             "erinaSimilarity": 100,
             "tracemoeSimilarity": 90,

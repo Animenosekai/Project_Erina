@@ -25,17 +25,17 @@ import tweepy
 import requests
 from io import BytesIO
 
-import config
+from Erina.config import Erina, Twitter as TwitterConfig
 
 class ErinaTwitterAPI():
     def __init__(self) -> None:
-        self.authentification = tweepy.OAuthHandler(config.twitter_consumer_key, config.twitter_consumer_secret)
-        self.authentification.set_access_token(config.twitter_access_token_key, config.twitter_access_token_secret)
+        self.authentification = tweepy.OAuthHandler(TwitterConfig.keys.consumer_key, TwitterConfig.keys.consumer_secret)
+        self.authentification.set_access_token(TwitterConfig.keys.access_token_key, TwitterConfig.keys.access_token_secret)
 
         self.api = tweepy.API(self.authentification)
         self.me = self.api.me()
         self._screen_name = str(self.me.screen_name).lower().replace(" ", '')
-        self._twitter_flags = [flag.lower().replace(" ", '') for flag in config.Twitter.flags]
+        self._twitter_flags = [flag.lower().replace(" ", '') for flag in (TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else Erina.flags)]
 
     def tweet(self, message, replyID=None, imageURL=None):
         """

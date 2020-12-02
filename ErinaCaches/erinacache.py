@@ -5,13 +5,13 @@ Caching API for the Erina Project
 Erina Project - 2020
 """
 
-import sys
-
-import config
-import erina_log
-import env_information
+from Erina import erina_log
+from Erina import config
+from Erina.env_information import erina_dir
 
 import json
+
+from safeIO import TextFile
 import requests
 
 from saucenao_api import SauceNao
@@ -19,14 +19,14 @@ from ErinaCaches.utils import anilist, tracemoe, saucenao, erina, Errors
 from ErinaParser.utils import anilist_parser, tracemoe_parser, saucenao_parser, erina_parser
 
 
-caches_dir_path = env_information.erina_dir + '/ErinaCaches/'
+caches_dir_path = erina_dir + '/ErinaCaches/'
 anilist_cache_path = caches_dir_path + 'AniList_Cache/'
 erina_cache_path = caches_dir_path + 'Erina_Cache/'
 tracemoe_cache_path = caches_dir_path + 'TraceMoe_Cache/'
 saucenao_cache_path = caches_dir_path + 'SauceNAO_Cache/'
 
-if config.saucenao_api_key != '':
-    saucenao_api = SauceNao(api_key=config.saucenao_api_key, numres=1)
+if str(config.Caches.keys.saucenao).replace(" ", "") not in ["None", ""]:
+    saucenao_api = SauceNao(api_key=config.Caches.keys.saucenao, numres=1)
 else:
     saucenao_api = SauceNao(numres=1)
 
@@ -52,8 +52,7 @@ def anilist_caching(anilist_id):
         except:
             return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting AniList's API Data to a caching format ({str(anilist_id)})")
         try:
-            with open(anilist_cache_path + cache['filename'], "w", encoding="utf-8") as newFile:
-                newFile.read(cache["content"])
+            TextFile(anilist_cache_path + cache['filename'], blocking=False).write(cache["content"])
         except:
             return Errors.CachingError("FILE_WRITE", f"An error occured while writing out the cache data to a file ({str(anilist_id)})")
         return anilist_parser.AnilistCache(cache["content"])
@@ -83,8 +82,7 @@ def anilist_search_caching(query):
         except:
             return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting AniList's Search API Data to a caching format ({str(query)})")
         try:
-            with open(anilist_cache_path + cache['filename'], "w", encoding="utf-8") as newFile:
-                newFile.write(cache["content"])
+            TextFile(anilist_cache_path + cache['filename'], blocking=False).write(cache["content"])
         except:
             return Errors.CachingError("FILE_WRITE", f"An error occured while writing out the cache data to a file ({str(query)})")
         return anilist_parser.AnilistCache(cache["content"])
@@ -101,15 +99,15 @@ def tracemoe_caching(image_hash):
         erina_log.logcaches('Caching trace.moe data...', 'tracemoe', str(image_hash))
         try:
             if image_hash.has_url is not None:
-                if config.tracemoe_api_key == '':
+                if str(config.Caches.keys.tracemoe).replace(" ", "") not in ["None", ""]:
                     requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_hash.url).text)
                 else:
-                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_hash.url + '&token=' + config.tracemoe_api_key).text)
+                    requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_hash.url + '&token=' + str(config.Caches.keys.tracemoe)).text)
             else:
-                if config.tracemoe_api_key == '':
+                if str(config.Caches.keys.tracemoe).replace(" ", "") not in ["None", ""]:
                     requestResponse = json.loads(requests.post('https://trace.moe/api/search', json={'image': image_hash.base64}))
                 else:
-                    requestResponse = json.loads(requests.post('https://trace.moe/api/search?token=' + config.tracemoe_api_key, json={'image': image_hash.base64}))
+                    requestResponse = json.loads(requests.post('https://trace.moe/api/search?token=' + str(config.Caches.keys.tracemoe), json={'image': image_hash.base64}))
         except:
             return Errors.CachingError("TRACEMOE_API_RESPONSE", "An error occured while retrieving information from the trace.moe API")
         try:
@@ -117,8 +115,7 @@ def tracemoe_caching(image_hash):
         except:
             return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting Trace.moe API Data to a caching format ({str(image_hash)})")
         try:
-            with open(tracemoe_cache_path + str(image_hash) + '.erina', "r", encoding="utf-8") as newFile:
-                newFile.write(cache)
+            TextFile(tracemoe_cache_path + str(image_hash) + '.erina', blocking=False).write(cache)
         except:
             return Errors.CachingError("FILE_WRITE", f"An error occured while writing out the cache data to a file ({str(image_hash)})")
         return tracemoe_parser.TraceMOECache(cache)
@@ -148,8 +145,7 @@ def saucenao_caching(image_hash):
         except:
             return Errors.CachingError("ERINA_CONVERSION", "An error occured while converting SauceNAO API Data to a caching format")
         try:
-            with open(saucenao_cache_path + str(image_hash) + '.erina', "w", encoding="utf-8") as newFile:
-                newFile.write(cache)
+            TextFile(saucenao_cache_path + str(image_hash) + '.erina', blocking=False).write(cache)
         except:
             return Errors.CachingError("FILE_WRITE", "An error occured while writing out the cache data to a file")
         return saucenao_parser.SauceNAOCache(cache)
@@ -169,8 +165,7 @@ def erina_caching(image_hash, database_path, similarity, anilist_id):
         except:
             return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting Erina Database Data to a caching format ({str(database_path)})")
         try:
-            with open(erina_cache_path + str(image_hash) + '.erina', "w", encoding="utf-8") as newFile:
-                newFile.write(cache)
+            TextFile(erina_cache_path + str(image_hash) + '.erina', blocking=False).write(cache)
         except:
             return Errors.CachingError("FILE_WRITE", f"An error occured while writing out the cache data to a file {str(database_path)}")
         return erina_parser.ErinaCache(cache)

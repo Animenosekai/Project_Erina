@@ -3,7 +3,8 @@ Twitter Stream Manager
 """
 
 import tweepy
-import config
+from Erina.config import Twitter as TwitterConfig
+from Erina.config import Erina as ErinaConfig
 from ErinaTwitter.utils.Errors import TwitterError
 from ErinaTwitter.utils import Twitter
 from ErinaTwitter.erina_twitterbot import ErinaTwitter
@@ -27,11 +28,11 @@ class Listener(tweepy.StreamListener):
             """
             Tweet Receiving
             """
-            if config.Twitter.ignore_rt and Twitter.isRetweet(tweet):
+            if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
                 return
             
-            if isinstance(config.Twitter.monitored_accounts, (list, tuple)) and len(config.Twitter.monitored_accounts) > 0:
-                if config.Twitter.monitored_check_replies and Twitter.isReplyingToErina(tweet): # Monitor Mode ON, Check Replies to Monitored ON
+            if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
+                if TwitterConfig.monitoring.check_replies and Twitter.isReplyingToErina(tweet): # Monitor Mode ON, Check Replies to Monitored ON
                     imageURL = Twitter.findImage(tweet)
                     if imageURL is None:
                         imageURL = Twitter.findParentImage(tweet)
@@ -107,11 +108,11 @@ class Listener(tweepy.StreamListener):
             return TwitterError("STREAM_DISCONNECTION", f"A disconnection notice came: {str(notice)}")
 
 Erina = tweepy.Stream(auth=ErinaTwitter.api.auth, listener=Listener())
-if isinstance(config.twitter_monitored_accounts, list) and len(config.twitter_monitored_accounts) > 0:
-    user_ids = [user.id_str for user in ErinaTwitter.api.lookup_users(screen_names=config.twitter_monitored_accounts)]
+if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
+    user_ids = [user.id_str for user in ErinaTwitter.api.lookup_users(screen_names=list(TwitterConfig.monitoring.accounts))]
     Erina.filter(follow=user_ids)
 else:
-    if not isinstance(config.twitter_stream_track_flags, list) or config.twitter_stream_track_flags == []:
-        Erina.filter(languages=config.twitter_stream_languages, track=config.twitter_flags)
+    if not isinstance(TwitterConfig.stream.flags, (list, tuple)) or len(TwitterConfig.stream.flags) <= 0:
+        Erina.filter(languages=TwitterConfig.stream.languages, track=(TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else ErinaConfig.flags))
     else:
-        Erina.filter(languages=config.twitter_stream_languages, track=config.twitter_stream_track_flags)
+        Erina.filter(languages=TwitterConfig.stream.languages, track=TwitterConfig.stream.flags)

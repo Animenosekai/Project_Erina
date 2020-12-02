@@ -8,9 +8,9 @@ import time
 
 import filecenter
 
-import config
-import erina_log
-import env_information
+from Erina.config import Line as LineConfig
+from Erina import erina_log
+import Erina.env_information as env_information
 
 images_path = env_information.erina_dir + '/ErinaLine/images/'
 current_images_dict = {}
@@ -30,7 +30,7 @@ def start_check():
     while True:
         number_of_deleted_files = 0 # logging purposes
         for entry in current_images_dict:
-            if time.time() - current_images_dict[entry] > config.line_images_deletion_time:
+            if time.time() - current_images_dict[entry] > LineConfig.images_timeout:
                 if filecenter.delete(images_path + entry + '.erina_image') == 0:
                     current_images_dict.pop(entry, None)
                     number_of_deleted_files += 1 # logging purposes

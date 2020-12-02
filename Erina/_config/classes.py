@@ -4,14 +4,9 @@ ErinaConfig Python Parser
 © Anime no Sekai
 Erina Project — 2020
 """
-import json
-from Erina.env_information import erina_dir
-
-storedData = {'Erina': {'flags': ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime'], 'consoleLog': True, 'fileLog': True, 'stats': True}, 'Twitter': {'run': True, 'ignoredUsers': [], 'flags': [], 'ignoreRT': True, 'keys': {'consumerKey': None, 'consumerSecret': None, 'accessTokenKey': None, 'accessTokenSecret': None}, 'stream': {'languages': [], 'flags': []}, 'monitoring': {'accounts': [], 'checkReplies': False}}, 'Discord': {'run': True, 'flags': [], 'keys': {'token': None}}, 'Line': {'run': True, 'flags': [], 'keys': {'channelAccessToken': None, 'channelSecret': None}}, 'Caches': {'encoding': 'utf-8'}, 'Database': {}, 'Hash': {'algorithm': 'Average Hash'}, 'Parser': {}, 'Search': {'apiKeys': {'tracemoe': None, 'saucenao': None}, 'thresholds': {'erinaSimilarity': 100, 'tracemoeSimilarity': 90, 'saucenaoSimilarity': 90, 'iqdbSimilarity': 90}}, 'Server': {'host': '127.0.0.1', 'port': 5000, 'disableConsoleMessages': True}}
-
-with open(erina_dir + "/Erina/config/config.json", "r", encoding="utf-8") as configFile:
-    tempData = json.load(configFile)
-
+from Erina._config.files import configFile
+storedData = {'Erina': {'flags': ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime'], 'consoleLog': True, 'fileLog': True, 'stats': True}, 'Twitter': {'run': True, 'ignoredUsers': [], 'flags': [], 'ignoreRT': True, 'keys': {'consumerKey': None, 'consumerSecret': None, 'accessTokenKey': None, 'accessTokenSecret': None}, 'stream': {'languages': [], 'flags': []}, 'monitoring': {'accounts': [], 'checkReplies': False}}, 'Discord': {'run': True, 'flags': [], 'keys': {'token': None}}, 'Line': {'run': True, 'flags': [], 'keys': {'channelAccessToken': None, 'channelSecret': None}, 'imagesTimeout': 3600}, 'Caches': {'encoding': 'utf-8', 'keys': {'tracemoe': None, 'saucenao': None}}, 'Database': {}, 'Hash': {'algorithm': 'Average Hash'}, 'Parser': {}, 'Search': {'thresholds': {'erinaSimilarity': 100, 'tracemoeSimilarity': 90, 'saucenaoSimilarity': 90, 'iqdbSimilarity': 90}}, 'Server': {'host': '127.0.0.1', 'port': 5000, 'disableConsoleMessages': True}}
+tempData = configFile.read()
 for element in tempData:
     storedData[element] = tempData[element]
 
@@ -192,6 +187,7 @@ class LineConfig():
         self.as_dict = storedData["Line"]
         self.run = self.as_dict["run"]
         self.flags = self.as_dict["flags"]
+        self.images_timeout = self.as_dict["imagesTimeout"]
         self.keys = self.Keys()
 
     def update(self, path, value):
@@ -201,6 +197,9 @@ class LineConfig():
         if path[0] == "run":
             self.run = value
             self.as_dict["run"] = value
+        elif path[0] == "imagesTimeout":
+            self.images_timeout = value
+            self.as_dict["imagesTimeout"] = value
         elif path[0] == "flags":
             self.flags = value
             self.as_dict["flags"] = value
@@ -210,9 +209,24 @@ class LineConfig():
 
 
 class CachesConfig():
+    class Keys():
+        def __init__(self) -> None:
+            self.as_dict = storedData["Caches"]["keys"]
+            self.saucenao = self.as_dict["saucenao"]
+            self.tracemoe = self.as_dict["tracemoe"]
+
+        def update(self, path, value):
+            if path[0] == "saucenao":
+                self.saucenao = value
+                self.as_dict["saucenao"] = value
+            elif path[0] == "tracemoe":
+                self.tracemoe = value
+                self.as_dict["tracemoe"] = value
+
     def __init__(self) -> None:
         self.as_dict = storedData["Caches"]
         self.encoding = self.as_dict["encoding"]
+        self.keys = self.Keys()
 
 
     def update(self, path, value):
@@ -222,6 +236,9 @@ class CachesConfig():
         if path[0] == "encoding":
             self.encoding = value
             self.as_dict["encoding"] = value
+        elif path[0] == "keys":
+            self.keys.update(path[1:], value)
+            self.as_dict["keys"] = self.keys.as_dict
 
 class DatabaseConfig():
     def __init__(self) -> None:
@@ -251,20 +268,6 @@ class ParserConfig():
         pass
 
 class SearchConfig():
-    class Keys():
-        def __init__(self) -> None:
-            self.as_dict = storedData["Search"]["keys"]
-            self.saucenao = self.as_dict["saucenao"]
-            self.tracemoe = self.as_dict["tracemoe"]
-
-        def update(self, path, value):
-            if path[0] == "saucenao":
-                self.saucenao = value
-                self.as_dict["saucenao"] = value
-            elif path[0] == "tracemoe":
-                self.tracemoe = value
-                self.as_dict["tracemoe"] = value
-
     class Thresholds():
         def __init__(self) -> None:
             self.as_dict = storedData["Search"]["thresholds"]
@@ -276,19 +279,15 @@ class SearchConfig():
 
     def __init__(self) -> None:
         self.as_dict = storedData["Search"]
-        self.keys = self.Keys()
         self.thresholds = self.Thresholds()
 
     def update(self, path, value):
         """
         Updates Erina Configuration
         """
-        if path[0] == "keys":
-            self.keys.update(path[1:], value)
-            self.as_dict["keys"] = self.keys.as_dict
-        elif path[0] == "thresholds":
+        if path[0] == "thresholds":
             self.thresholds.update(path[1:], value)
-            self.as_dict["thresholds"] = self.keys.as_dict
+            self.as_dict["thresholds"] = self.thresholds.as_dict
 
 class ServerConfig():
     def __init__(self) -> None:

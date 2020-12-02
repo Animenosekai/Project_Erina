@@ -1,4 +1,4 @@
-from ErinaWebsite.Server import ErinaServer
+from ErinaServer.Server import ErinaServer
 
 @ErinaServer.route("/keepalive", methods=["GET"])
 def noSleep():

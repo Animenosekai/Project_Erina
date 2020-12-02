@@ -4,7 +4,6 @@ Anime Search API for the Erina Project
 @author: Anime no Sekai
 Erina Project — 2020
 """
-import erina_log
 from ErinaHash import erinahash
 from ErinaSearch.utils import title_search, hash_search, anilist_id_search
 

@@ -1,5 +1,5 @@
 import json
-from env_information import erina_dir
+from Erina.env_information import erina_dir
 from collections import Counter
 import math
 

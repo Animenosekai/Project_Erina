@@ -18,7 +18,7 @@ from PIL import Image
 import imagehash
 
 from . import erina_aniep
-import env_information
+import Erina.env_information as env_information
 from ErinaCaches import erinacache
 
 lifeeasy.clear()

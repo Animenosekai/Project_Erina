@@ -10,14 +10,15 @@ import datetime
 import time
 
 import requests
+from safeIO import TextFile
 
-import env_information
+from Erina.env_information import erina_dir
 from ErinaDB.ManamiDB.manami_db_data import Database
 
 #import erina_log
 
-manami_database_path = env_information.erina_dir + "/ErinaDB/ManamiDB/"
-
+manami_database_path = erina_dir + "/ErinaDB/ManamiDB/"
+currentReleaseFile = TextFile(manami_database_path + 'current_release.txt')
 
 def convert_to_int(element):
     element = str(element).split('.')[0]
@@ -35,8 +36,7 @@ def verify_manami_adb():
     start_time = time.time()
 
     ## Checking if new week
-    with open(manami_database_path + 'current_release.txt') as current_release_file:
-        current_release_week = str(current_release_file.read()).replace(" ", '').replace("\n", '')
+    current_release_week = currentReleaseFile.read().replace(" ", '').replace("\n", '')
     iso_calendar = datetime.date.today().isocalendar()
     current_week = str(iso_calendar[0]) + '-' + str(iso_calendar[1])
     
@@ -56,10 +56,8 @@ def verify_manami_adb():
             else:
                 continue
         # write out the data
-        with open(manami_database_path + 'manami_database_data.json', 'w', encoding="utf-8") as newFile:
-            json.dump(data, newFile, ensure_ascii=False)
-        with open(manami_database_path + 'current_release.txt', 'w', encoding="utf-8") as newReleaseFile:
-            newReleaseFile.write(current_week)
+        TextFile(manami_database_path + 'manami_database_data.json').write(data)
+        currentReleaseFile.write(current_week)
         Database.updateData(data)
     else: # not new week
         print("less than a week")

@@ -1,3 +1,6 @@
+from safeIO import TextFile
+
+from Erina.env_information import erina_dir
 from ErinaParser.utils import anilist_parser
 from ErinaParser.utils import erina_parser
 from ErinaParser.utils import erinadb_parser
@@ -5,12 +8,6 @@ from ErinaParser.utils import iqdb_parser
 from ErinaParser.utils import saucenao_parser
 from ErinaParser.utils import tracemoe_parser
 from ErinaParser.utils.Errors import ParserError
-
-import sys
-sys.path.append('.')
-sys.path.append('..')
-
-import env_information
 
 def _get_type(data):
     """
@@ -60,28 +57,22 @@ class ErinaFile():
         if type is not None and filename is not None:
             self.type = str(type)
             if self.type == "anilist_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/AniList_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
-                    self.data = dataFile.read()
-            
+                self.data = TextFile(erina_dir + "/ErinaCaches/AniList_Cache/").read()
+                
             elif self.type == "erina_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/Erina_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
-                    self.data = dataFile.read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/Erina_Cache/").read()
             
             elif self.type == "erina_database":
-                with open(env_information.erina_dir + "/ErinaDB/ErinaDatabase/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
-                    self.data = dataFile.read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/ErinaDatabase/").read()
             
             elif self.type == "iqdb_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/IQDB_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
-                    self.data = dataFile.read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/IQDB_Cache/").read()
             
             elif self.type == "saucenao_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/SauceNAO_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
-                    self.data = dataFile.read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/SauceNAO_Cache/").read()
             
             elif self.type == "tracemoe_cache":
-                with open(env_information.erina_dir + "/ErinaCaches/TraceMOE_Cache/" + filename, "r", encoding='utf-8', errors='ignore') as dataFile:
-                    self.data = dataFile.read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/TraceMOE_Cache/").read()
             
         elif data is not None:
             self.type = _get_type(data)

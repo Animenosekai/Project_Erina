@@ -1,7 +1,7 @@
 import random
 import string
 
-from env_information import erina_dir
+from Erina.env_information import erina_dir
 
 currentSalt = None
 currentToken = None
@@ -33,12 +33,12 @@ def createRandomID(length):
     return idResult
 
 if currentSalt is None:
-    with open(erina_dir + "/ErinaWebsite/Erina/auth/salt.erina") as saltFile:
+    with open(erina_dir + "/ErinaServer/Erina/auth/salt.erina") as saltFile:
         salts = saltFile.readlines()
     currentSalt = createRandomID(8)
     while currentSalt in salts:
         currentSalt = createRandomID(8)
-    with open(erina_dir + "/ErinaWebsite/Erina/auth/salt.erina", "a", encoding="utf-8") as saltFile:
+    with open(erina_dir + "/ErinaServer/Erina/auth/salt.erina", "a", encoding="utf-8") as saltFile:
         saltFile.write(currentSalt + "\n")
 
 def createToken(lengthWithoutSalt):

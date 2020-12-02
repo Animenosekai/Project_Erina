@@ -8,18 +8,13 @@ Erina Project - 2020
 import filecenter
 from flask import request, abort
 
-import config
-import env_information
-import erina_log
+from Erina.config import Erina, Line as LineConfig
+import Erina.env_information as env_information
+from Erina import erina_log
 from ErinaSearch import erinasearch
-from ErinaWebsite.Server import ErinaServer
+from ErinaServer.Server import ErinaServer
 from ErinaLine.utils import Parser
 from ErinaLine.utils import Images
-
-if config.flask_disable_console_messages:
-    import logging
-    log = logging.getLogger('werkzeug')
-    log.setLevel(logging.ERROR)
 
 def LineClient():
     '''
@@ -36,8 +31,8 @@ def LineClient():
     from linebot.models import (MessageEvent, TextSendMessage)
     
     # API Keys
-    line_bot_api = LineBotApi(config.line_channel_access_token)
-    handler = WebhookHandler(config.line_channel_secret)
+    line_bot_api = LineBotApi(LineConfig.keys.channel_access_token)
+    handler = WebhookHandler(LineConfig.keys.channel_secret)
 
     # Connecting to LINE API
     @ErinaServer.route("/callback", methods=['POST'])
@@ -69,7 +64,7 @@ def LineClient():
             Images.check(event.source.user_id)
 
         elif event.message.type == 'text': # If it is a text
-            if any([flag in str(event.message.text).lower() for flag in config.Line.flags]):
+            if any([flag in str(event.message.text).lower() for flag in (LineConfig.flags if str(LineConfig.flags).replace(" ", "") not in ["None", ""] else Erina.flags)]):
                 if filecenter.isfile(images_path + event.source.user_id + '.erina_image'): # Check if the user has sent an image
                     # Sending the messages
                     line_bot_api.reply_message(

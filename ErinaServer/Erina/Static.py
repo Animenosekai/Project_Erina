@@ -1,9 +1,9 @@
 
 from flask import send_from_directory
-from env_information import erina_dir
-from ErinaWebsite.Server import ErinaServer
+from Erina.env_information import erina_dir
+from ErinaServer.Server import ErinaServer
 
-staticLocation = erina_dir + "/ErinaWebsite/Erina/static"
+staticLocation = erina_dir + "/ErinaServer/Erina/static"
 htmlLocation = staticLocation + "/html"
 stylesLocation = staticLocation + "/styles"
 scriptsLocation = staticLocation + "/scripts"
@@ -69,3 +69,7 @@ def chartJs():
 @ErinaServer.route(scriptsPath + "overview.js")
 def overviewJs():
     return send_from_directory(scriptsLocation, "overview.js")
+
+@ErinaServer.route(scriptsPath + "stats.js")
+def statsJs():
+    return send_from_directory(scriptsLocation, "stats.js")
