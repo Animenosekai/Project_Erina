@@ -12,6 +12,8 @@ print("Initializing Admin")
 from ErinaServer.Erina.admin import Admin
 print("Initializing Auth")
 from ErinaServer.Erina.auth import Auth
+print("Initializing Config")
+from ErinaServer.Erina.admin import Config
 print("Initializing Custom")
 from ErinaServer import Custom
 

@@ -68,6 +68,7 @@ function goTo(title, url, resourceLocation=null) {
                 scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
                 if (scriptsLoadingQueue.length == 0) {
                     stopLoading()
+                    document.title = title
                 } else {
                     var newScript = document.createElement("script");
                     newScript.src = scriptsLoadingQueue[0]

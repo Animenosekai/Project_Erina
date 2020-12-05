@@ -5,6 +5,7 @@
     ]
 </import>
 
+
 <div class="expandableItem">
     <div class="expandableItem-tab">
         <input id="expandableItem-input-erina" type="checkbox" class="expandableItem-input" name="expandableItem">
@@ -21,7 +22,7 @@
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Erina/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-erinaflags" config-path="Erina/flags"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Erina/flags"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -30,12 +31,12 @@
         <erinaconfig-list-item-title>Console Log</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Erina/consoleLog" id="toggle-erinaconsolelog">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Erina/consoleLog" id="toggle-erinaconsolelog" checked>
                 <label for="toggle-erinaconsolelog">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-erinaconsolelog">Disabled</span>
+                    <span id="toggleText-erinaconsolelog">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -46,12 +47,12 @@
         <erinaconfig-list-item-title>File Log</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Erina/fileLog" id="toggle-erinafilelog">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Erina/fileLog" id="toggle-erinafilelog" checked>
                 <label for="toggle-erinafilelog">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-erinafilelog">Disabled</span>
+                    <span id="toggleText-erinafilelog">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -62,12 +63,12 @@
         <erinaconfig-list-item-title>Stats</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Erina/stats" id="toggle-erinastats">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Erina/stats" id="toggle-erinastats" checked>
                 <label for="toggle-erinastats">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-erinastats">Disabled</span>
+                    <span id="toggleText-erinastats">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -95,12 +96,12 @@
         <erinaconfig-list-item-title>Run</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/run" id="toggle-twitterrun">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/run" id="toggle-twitterrun" checked>
                 <label for="toggle-twitterrun">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-twitterrun">Disabled</span>
+                    <span id="toggleText-twitterrun">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -111,7 +112,7 @@
         <erinaconfig-list-item-title>Ignored Users</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/ignoredUsers"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterignoredusers" config-path="Twitter/ignoredUsers"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Twitter/ignoredUsers"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -120,7 +121,7 @@
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterflags" config-path="Twitter/flags"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Twitter/flags"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -129,12 +130,12 @@
         <erinaconfig-list-item-title>Ignore RT</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/ignoreRT" id="toggle-twitterignorert">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/ignoreRT" id="toggle-twitterignorert" checked>
                 <label for="toggle-twitterignorert">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-twitterignorert">Disabled</span>
+                    <span id="toggleText-twitterignorert">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -202,7 +203,7 @@
         <erinaconfig-list-item-title>Languages</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/stream/languages"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterstreamlanguages" config-path="Twitter/stream/languages"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Twitter/stream/languages"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -211,7 +212,7 @@
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/stream/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterstreamflags" config-path="Twitter/stream/flags"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Twitter/stream/flags"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -237,7 +238,7 @@
         <erinaconfig-list-item-title>Accounts</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/monitoring/accounts"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twittermonitoringaccounts" config-path="Twitter/monitoring/accounts"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Twitter/monitoring/accounts"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -246,12 +247,12 @@
         <erinaconfig-list-item-title>Check Replies</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/monitoring/checkReplies" id="toggle-twittermonitoringcheckreplies">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/monitoring/checkReplies" id="toggle-twittermonitoringcheckreplies" checked>
                 <label for="toggle-twittermonitoringcheckreplies">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-twittermonitoringcheckreplies">Disabled</span>
+                    <span id="toggleText-twittermonitoringcheckreplies">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -284,12 +285,12 @@
         <erinaconfig-list-item-title>Run</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Discord/run" id="toggle-discordrun">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Discord/run" id="toggle-discordrun" checked>
                 <label for="toggle-discordrun">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-discordrun">Disabled</span>
+                    <span id="toggleText-discordrun">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -300,7 +301,7 @@
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Discord/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-discordflags" config-path="Discord/flags"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Discord/flags"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -350,12 +351,12 @@
         <erinaconfig-list-item-title>Run</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Line/run" id="toggle-linerun">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Line/run" id="toggle-linerun" checked>
                 <label for="toggle-linerun">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-linerun">Disabled</span>
+                    <span id="toggleText-linerun">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -366,7 +367,7 @@
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
         <erinaconfig-list-item-tags-container>
             <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Line/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-lineflags" config-path="Line/flags"></erinaconfig-list-item-tags>
+            <erinaconfig-list-item-tags-container config-path="Line/flags"></erinaconfig-list-item-tags>
         </erinaconfig-list-item-valueContainer>
     </erinaconfig-list-item>
 
@@ -585,12 +586,12 @@
         <erinaconfig-list-item-title>Disable Console Messages</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
             <div class="neumorphism-toggle">
-                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Server/disableConsoleMessages" id="toggle-serverdisableconsolemessages">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Server/disableConsoleMessages" id="toggle-serverdisableconsolemessages" checked>
                 <label for="toggle-serverdisableconsolemessages">
                     <div class="switch">
                         <div class="dot"></div>
                     </div>
-                    <span id="toggleText-serverdisableconsolemessages">Disabled</span>
+                    <span id="toggleText-serverdisableconsolemessages">Enabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>
@@ -600,3 +601,100 @@
         </div>
     </div>
 </div>
+
+<!--
+
+<div class="expandableItem">
+    <div class="expandableItem-tab">
+        <input id="expandableItem-input" type="checkbox" class="expandableItem-input" name="expandableItem">
+        <label for="expandableItem-input" class="expandableItem-label"></label>
+        <div class="expandableItem-content"><div class="expandableItem-info"><span class="expandableItem-name">Stream Config</span></div></div>
+
+        <div class="expandableItem-tab-content">
+            
+        </div>
+    </div>
+</div>
+  
+<config-container class="erinaStatsList">
+    <config-container-title>Erina</config-container-title>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Main Flags</erinaconfig-list-item-title>
+        <erinaconfig-list-item-tags-container>
+            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="tagInput" config-path="Erina/flags"></input>
+            <erinaconfig-list-item-tags-container config-path="Erina/flags"></erinaconfig-list-item-tags>
+        </erinaconfig-list-item-valueContainer>
+    </erinaconfig-list-item>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Console Log</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle"><input type="checkbox" id="neumorphism" checked><label for="neumorphism"><div class="switch"><div class="dot"></div></div>
+                <span id="toggleText-erina-consolelog">Enabled</span>
+            </label></div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>File Log</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle"><input type="checkbox" id="neumorphism" checked><label for="neumorphism"><div class="switch"><div class="dot"></div></div>
+                <span id="toggleText-erina-filelog">Enabled</span>
+            </label></div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Stats</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle"><input type="checkbox" id="neumorphism" checked><label for="neumorphism"><div class="switch"><div class="dot"></div></div>
+                <span id="toggleText-erina-stats">Enabled</span>
+            </label></div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+
+
+    <config-container-title>Twitter</config-container-title>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Twitter Flags</erinaconfig-list-item-title>
+        <erinaconfig-list-item-tags-container>
+            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="tagInput" config-path="Erina/flags"></input>
+            <erinaconfig-list-item-tags-container config-path="Twitter/flags"></erinaconfig-list-item-tags>
+        </erinaconfig-list-item-valueContainer>
+    </erinaconfig-list-item>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Running</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle"><input type="checkbox" id="neumorphism" checked><label for="neumorphism"><div class="switch"><div class="dot"></div></div>
+                <span id="toggleText-erina-consolelog">Enabled</span>
+            </label></div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>File Log</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle"><input type="checkbox" id="neumorphism" checked><label for="neumorphism"><div class="switch"><div class="dot"></div></div>
+                <span id="toggleText-erina-filelog">Enabled</span>
+            </label></div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Stats</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle"><input type="checkbox" id="neumorphism" checked><label for="neumorphism"><div class="switch"><div class="dot"></div></div>
+                <span id="toggleText-erina-stats">Enabled</span>
+            </label></div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+
+</config-container>
+
+
+-->

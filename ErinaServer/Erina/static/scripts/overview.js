@@ -1,5 +1,5 @@
 function PageInitialize(){
-    console.log("Hello")
+    //console.log("Hello")
     const templateData = [
         { "date": new Date(2018, 0, 1, 8, 0, 0), "value": 57 },
         { "date": new Date(2018, 0, 1, 9, 0, 0), "value": 27 },

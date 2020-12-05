@@ -17,7 +17,7 @@
             "accessTokenSecret": null
         },
         "stream": {
-            "languages": [],
+            "languages": ["en"],
             "flags": []
         },
         "monitoring": {

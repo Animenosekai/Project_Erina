@@ -47,6 +47,14 @@ def loadingCss():
 def overviewCss():
     return send_from_directory(stylesLocation, "overview.css")
 
+@ErinaServer.route(stylesPath + "stats.css")
+def statsCss():
+    return send_from_directory(stylesLocation, "stats.css")
+
+@ErinaServer.route(stylesPath + "config.css")
+def configCss():
+    return send_from_directory(stylesLocation, "config.css")
+
 #######################
 #      JavaScript     #
 #######################
@@ -73,3 +81,7 @@ def overviewJs():
 @ErinaServer.route(scriptsPath + "stats.js")
 def statsJs():
     return send_from_directory(scriptsLocation, "stats.js")
+
+@ErinaServer.route(scriptsPath + "config.js")
+def configJs():
+    return send_from_directory(scriptsLocation, "config.js")

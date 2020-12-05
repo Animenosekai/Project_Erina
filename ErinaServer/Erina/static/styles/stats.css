@@ -1,0 +1,48 @@
+.erinaStatsList {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 15px;
+    position: relative;
+}
+
+.erinaStat-ListItem {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    height: 80px;
+    background: rgba(255, 244, 208, 0.4);
+    border-radius: 10px;
+}
+
+stat-container-title {
+    font-size: 2em;
+    font-weight: 500;
+}
+
+erinastat-list-item-title {
+    font-size: 1.5em;
+    top: 30%;
+    position: relative;
+    left: 5%;
+}
+
+erinastat-list-item-valuecontainer {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 25px;
+    width: 25%;
+}
+
+erinastat-list-item-value {
+    font-size: 1.5em;
+    margin-right: 5%;
+    margin-top: 6%;
+    font-weight: 500;
+}
+
+erinastat-list-item-chart {
+    height: 120px;
+    width: 100%;
+    transform: translateY(-30px);
+}

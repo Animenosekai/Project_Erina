@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/erina/admin/static/styles/stats.css">
 <import id="ErinaExternalJS-Sources" style="display: none;">
     [
         "https://cdn.amcharts.com/lib/4/core.js",
@@ -8,7 +9,9 @@
     ]
 </import>
 
+
 <erinastats class="erinaStats">
+    <!--
     <stat-container class="erinaKeyStats">
         <erinastat class="">
 
@@ -20,87 +23,270 @@
 
         </erinastat>
     </stat-container>
-    
-    <stat-container class="erinaSearchStats erinaStatsList">
+    -->
+
+    <stat-container class="erinaStatsList">
+        <stat-container-title>Erina</stat-container-title>
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>Anime Search Count</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Uptime</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-erina-uptime-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-erina-uptime-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Errors Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-erina-errorsCount-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-erina-errorsCount-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>File I/O Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-erina-fileIO-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-erina-fileIO-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>.erina Parsing Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-erina-erinaParsing-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-erina-erinaParsing-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Cache Files Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-erina-cacheFiles-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-erina-cacheFiles-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
     </stat-container>
     
-    <stat-container class="erinaParser erinaStatsList">
+    <stat-container class="erinaStatsList">
+        <stat-container-title>ErinaSearch</stat-container-title>
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Search Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-search-searchCount-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-search-searchCount-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Most Searched Animes</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-search-animeRank-Value-1">Kakegurui</erinastat-list-item-value>
+                <erinastat-list-item-value id="erinaStat-search-animeRank-Value-2">Kakegurui</erinastat-list-item-value>
+                <erinastat-list-item-value id="erinaStat-search-animeRank-Value-3">Kakegurui</erinastat-list-item-value>
+        
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>AniList ID Search Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-search-anilistIDSearchCount-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-search-anilistIDSearchCount-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Title Search Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-search-titleSearchCount-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-search-titleSearchCount-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Image Search Count</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-search-imageSearchCount-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-search-imageSearchCount-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
     </stat-container>
     
-    <stat-container class="erinaCaches erinaStatsList">
+    <stat-container class="erinaStatsList">
+        <stat-container-title>ErinaHash</stat-container-title>
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Created Hashes</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-hash-hashCount-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-hash-hashCount-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Created Base64 String</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-hash-base64-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-hash-base64-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
     </stat-container>
     
-    <stat-container class="erinaDB erinaStatsList">
+    <stat-container class="erinaStatsList">
+        <stat-container-title>ErinaAPI</stat-container-title>
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>/search Endpoint Call</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-api-search-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-api-search-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
     </stat-container>
     
-    <stat-container class="erinaDiscord erinaStatsList">
+    <stat-container class="erinaStatsList">
+        <stat-container-title>ErinaTwitter</stat-container-title>
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Stream Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-twitter-streamHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-twitter-streamHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Asking Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-twitter-askingHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-twitter-askingHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Responses</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-twitter-responses-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-twitter-responses-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Direct Messaging Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-twitter-dmHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-twitter-dmHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Average Response Polarity</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-twitter-polarity-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-twitter-polarity-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
     </stat-container>
-    
-    <stat-container class="erinaHash erinaStatsList">
+        
+    <stat-container class="erinaStatsList">
+        <stat-container-title>ErinaDiscord</stat-container-title>
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Image Search Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-discord-imageSearchHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-discord-imageSearchHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Info Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-discord-infoHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-discord-infoHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Description Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-discord-descriptionHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-discord-descriptionHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
     </stat-container>
-    
-    <stat-container class="erinaLine erinaStatsList">
+        
+    <stat-container class="erinaStatsList">
+        <stat-container-title>ErinaLine</stat-container-title>
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Image Search Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-line-imageSearchHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-line-imageSearchHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
-    </stat-container>
-    
-    <stat-container class="erinaTwitter erinaStatsList">
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Info Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-line-infoHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-line-infoHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
-    </stat-container>
-    
-    <stat-container class="erinaWebsite erinaStatsList">
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Description Hit</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-line-descriptionHit-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-line-descriptionHit-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
-    </stat-container>
-    
-    <stat-container class="erinaAPI erinaStatsList">
         <erinastat-list-item class="erinaStat-ListItem">
-            <erinastat-list-item-title>File Read</erinastat-list-item-title>
-            <erinastat-list-item-value id="erinaStat-searchCount-Value">255</erinastat-list-item-title>
-            <erinastat-list-item-chart id="erinaStat-searchCount-Chart"></erinastat-list-item-title>
+            <erinastat-list-item-title>Stored Images</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-line-storedImages-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-line-storedImages-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
         </erinastat-list-item>
     </stat-container>
 
+    <stat-container class="erinaStatsList">
+        <stat-container-title>External</stat-container-title>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>trace.moe API Calls</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-external-tracemoe-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-external-tracemoe-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>SauceNAO API Calls</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-external-saucenao-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-external-saucenao-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>IQDB Calls</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-external-iqdb-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-external-iqdb-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>AniList API Calls</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-external-anilist-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-external-anilist-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+    </stat-container>
+
+    <stat-container class="erinaStatsList">
+        <stat-container-title>ErinaDB</stat-container-title>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>ManamiDB Title Vector Lookups</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-database-manamidb-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-database-manamidb-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>ErinaDatabase Lookups</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-database-erinadatabase-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-database-erinadatabase-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+    </stat-container>
+
+    <stat-container class="erinaStatsList">
+        <stat-container-title>User Defined Endpoints</stat-container-title>
+        <erinastat-list-item class="erinaStat-ListItem">
+            <erinastat-list-item-title>Custom 1</erinastat-list-item-title>
+            <erinastat-list-item-valueContainer>
+                <erinastat-list-item-value id="erinaStat-userdefined-custom1-Value">255</erinastat-list-item-value>
+                <erinastat-list-item-chart id="erinaStat-userdefined-custom1-Chart"></erinastat-list-item-chart>
+            </erinastat-list-item-valueContainer>
+        </erinastat-list-item>
+    </stat-container>
 </erinastats>
-
-<div id="erinaChart"></div>

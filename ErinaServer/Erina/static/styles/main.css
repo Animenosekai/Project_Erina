@@ -4,10 +4,11 @@ body {
     box-sizing: border-box;
     font-family: SF Pro Display, Inter, Helvetica, Arial;
     background: rgb(255 254 248 / 15%);
+    -webkit-font-smoothing: antialiased;
 }
 
 .sidebar {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     top: 30%;

@@ -13,7 +13,6 @@ function createChart(id, data, color) {
     var chart = container.createChild(am4charts.XYChart);
     chart.width = am4core.percent(100);
     chart.height = am4core.percent(100);
-    //chart.logo.disabled = true;
 
     chart.data = data;
 
