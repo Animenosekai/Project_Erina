@@ -182,10 +182,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     transition: color .4s;
 }
 
-/*
+
 .neumorphism-toggle input:checked + label {
-*/
-.toggleChecked {
+
+/*.toggleChecked {*/
     --offset: 18px;
     --text: #404660;
     --gradient: 1;
