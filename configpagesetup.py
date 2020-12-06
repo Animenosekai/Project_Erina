@@ -97,12 +97,12 @@ newCategory = """
 
 
 newTagContainer = """
+
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>{title}</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="{config_path}"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-{containerID}" config-path="{config_path}"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-{containerID}" config-path="{config_path}">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="{config_path}" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
 
 """
@@ -129,7 +129,7 @@ newTextContainer = """
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>{title}</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='{inputID}'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="{config_path}" id='{inputID}'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 """
@@ -139,7 +139,15 @@ newTextContainer = """
 import re
 import json
 
-htmlResult = ""
+htmlResult = """<link rel="stylesheet" href="/erina/admin/static/styles/config.css">
+<import id="ErinaExternalJS-Sources" style="display: none;">
+    [
+        "/erina/admin/static/scripts/config.js"
+    ]
+</import>
+
+"""
+
 jsResult = ""
 
 ############ FUNCTIONS ############
@@ -171,32 +179,36 @@ for category in data:
 
                 if isinstance(currentChild, list):
                     currentResult += newTagContainer.format(title=formatTitle(child), config_path=configPath, containerID=configPath.replace("/", "").lower())
-                    addToJS("for (element in data." + configPath.replace("/", ".") + ") { addTag(document.getElementById('tagsContainer-" + configPath.replace("/", "").lower() + "'), data." + configPath.replace("/", ".") + ".element) }")
+                    addToJS("for (element in data." + configPath.replace("/", ".") + ") { createNewTag(document.getElementById('tagsContainer-" + configPath.replace("/", "").lower() + "'), data." + configPath.replace("/", ".") + "[element]) }")
                 elif isinstance(currentChild, bool):
                     currentResult += newBooleanContainer.format(title=formatTitle(child), toggleID=configPath.replace("/", "").lower(), config_path=configPath)
-                    addToJS("if (data." + configPath.replace("/", ".") + " == true) { document.getElementById('toggle-" + configPath.replace("/", "").lower() + "').checked = true; document.getElementById('toggleText-" + configPath.replace("/", "").lower() + "').innerText = 'Enabled' } else { console.log('Not enabled') }")
+                    addToJS("if (data." + configPath.replace("/", ".") + " == true) { document.getElementById('toggle-" + configPath.replace("/", "").lower() + "').checked = true; document.getElementById('toggleText-" + configPath.replace("/", "").lower() + "').innerText = 'Enabled' }")
                 else:
-                    currentResult += newTextContainer.format(title=formatTitle(child), inputID=configPath.replace("/", "").lower())
+                    currentResult += newTextContainer.format(title=formatTitle(child), config_path=configPath, inputID=configPath.replace("/", "").lower())
                     addToJS("document.getElementById('" + configPath.replace("/", "").lower() + "').value = data." + configPath.replace("/", "."))
             
-            categoryResult += newCategory.format(expandableID=configPath.replace("/", "").lower(), categoryName=category, content=currentResult)
+            categoryResult += newCategory.format(expandableID=configPath.replace("/", "").lower(), categoryName=formatTitle(element), content=currentResult)
 
         elif isinstance(currentElement, list):
             configPath = f"{str(category)}/{str(element)}"
             categoryResult += newTagContainer.format(title=formatTitle(element), config_path=configPath, containerID=configPath.replace("/", "").lower())
-            addToJS("for (element in data." + configPath.replace("/", ".") + ") { addTag(document.getElementById('tagsContainer-" + configPath.replace("/", "").lower() + "'), data." + configPath.replace("/", ".") + ".element) }")
+            addToJS("for (element in data." + configPath.replace("/", ".") + ") { createNewTag(document.getElementById('tagsContainer-" + configPath.replace("/", "").lower() + "'), data." + configPath.replace("/", ".") + "[element]) }")
         elif isinstance(currentElement, bool):
             configPath = f"{str(category)}/{str(element)}"
             categoryResult += newBooleanContainer.format(title=formatTitle(element), toggleID=configPath.replace("/", "").lower(), config_path=configPath)
             addToJS("if (data." + configPath.replace("/", ".") + " == true) { document.getElementById('toggle-" + configPath.replace("/", "").lower() + "').checked = true; document.getElementById('toggleText-" + configPath.replace("/", "").lower() + "').innerText = 'Enabled' } else { console.log('Not enabled') }")
         else:
             configPath = f"{str(category)}/{str(element)}"
-            categoryResult += newTextContainer.format(title=formatTitle(element), inputID=configPath.replace("/", "").lower())
+            categoryResult += newTextContainer.format(title=formatTitle(element), config_path=configPath, inputID=configPath.replace("/", "").lower())
             addToJS("document.getElementById('" + configPath.replace("/", "").lower() + "').value = data." + configPath.replace("/", "."))
 
     if categoryResult != "":
         htmlResult += newCategory.format(expandableID=category.replace("/", "").lower(), categoryName=category, content=categoryResult)
 
-print(htmlResult)
 
+
+htmlResult = htmlResult.replace("Tracemoe", "trace.moe").replace("Saucenao", "SauceNAO").replace("Iqdb", "IQDB")
+
+
+print(htmlResult)
 print(jsResult)

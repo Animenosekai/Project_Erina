@@ -1,4 +1,6 @@
 var WSConnection = null
+var lastTopPosition = "65vh"
+
 
 function loadErinaConsole(){
     WSConnection = new WebSocket("ws://127.0.0.1:5555/ErinaConsole")
@@ -108,8 +110,10 @@ function loadErinaConsole(){
             pos3 = e.clientX;
             pos4 = e.clientY;
             // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            if (WSConnection != null) {
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
         }
 
         function closeDragElement() {
@@ -123,7 +127,7 @@ function loadErinaConsole(){
 
 function openErinaConsole() {
     if (WSConnection == null) {
-        document.getElementById("erinaConsole").classList.remove("erinaConsoleHidden")
+        document.getElementById("erinaConsole").style.top = lastTopPosition
         setTimeout(
             function(){
                 document.getElementById("erinaConsole").style.transition = "none"
@@ -131,8 +135,8 @@ function openErinaConsole() {
             500
         )
         loadErinaConsole()
-        document.getElementById("testButton").setAttribute("onclick", "closeErinaConsole()")
-        document.getElementById("testButton").innerText = "CloseConsole"
+        document.getElementById("erinaConsoleStateText").setAttribute("onclick", "closeErinaConsole()")
+        document.getElementById("erinaConsoleStateText").innerText = "Close ErinaConsole"
     }
 }
 
@@ -143,9 +147,39 @@ function closeErinaConsole() {
             function(){
                 WSConnection.close()
                 WSConnection = null
-                document.getElementById("erinaConsole").classList.add("erinaConsoleHidden")
-                document.getElementById("testButton").setAttribute("onclick", "openErinaConsole()")
-                document.getElementById("testButton").innerText = "OpenConsole"
+                lastTopPosition = document.getElementById("erinaConsole").style.top
+                document.getElementById("erinaConsole").style.top = "110vh"
+                document.getElementById("erinaConsoleStateText").setAttribute("onclick", "openErinaConsole()")
+                document.getElementById("erinaConsoleStateText").innerText = "Open ErinaConsole"
+
+                date = new Date();
+                var hours = String(date.getHours());
+                var minutes = String(date.getMinutes());
+                var seconds = String(date.getSeconds());
+                if (hours.length == 1) {
+                    hours = "0" + hours
+                }
+                if (minutes.length == 1) {
+                    minutes = "0" + minutes
+                }
+                if (seconds.length == 1) {
+                    seconds = "0" + seconds
+                }
+                dateString = hours + ":" + minutes + ":" + seconds
+
+                var newDateElement = document.createElement("timestamp")
+                newDateElement.innerText = dateString
+                var newMessage = document.createElement("outputdata")
+                newMessage.innerText = "ErinaConsole: Closed Console"
+                var newWrapper = document.createElement("output")
+                newWrapper.appendChild(newDateElement)
+                var newMessageTextElement = document.createElement("outputmessage")
+                newMessageTextElement.appendChild(newMessage)
+
+                newWrapper.appendChild(newMessageTextElement)
+                document.getElementById("consoleOutput").appendChild(newWrapper)
+                document.getElementById("consoleOutput").scrollTop = document.getElementById("consoleOutput").scrollHeight
+
             },
             500
         )

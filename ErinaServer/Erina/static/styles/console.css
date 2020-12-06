@@ -51,7 +51,7 @@
 .erinaConsoleOutputWrapper {
     display: flex;
     flex-direction: column;
-    height: 70%;
+    height: 50%;
     overflow-y: scroll;
     position: absolute;
     width: 100%;

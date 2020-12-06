@@ -5,6 +5,7 @@
     ]
 </import>
 
+
 <div class="expandableItem">
     <div class="expandableItem-tab">
         <input id="expandableItem-input-erina" type="checkbox" class="expandableItem-input" name="expandableItem">
@@ -17,12 +18,12 @@
 
         <div class="expandableItem-tab-content">
             
+
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Erina/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-erinaflags" config-path="Erina/flags"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-erinaflags" config-path="Erina/flags">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Erina/flags" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
 
 
@@ -107,21 +108,21 @@
     </erinaconfig-list-item>
 
 
+
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Ignored Users</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/ignoredUsers"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterignoredusers" config-path="Twitter/ignoredUsers"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-twitterignoredusers" config-path="Twitter/ignoredUsers">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Twitter/ignoredUsers" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
+
 
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterflags" config-path="Twitter/flags"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-twitterflags" config-path="Twitter/flags">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Twitter/flags" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
 
 
@@ -147,7 +148,7 @@
         <label for="expandableItem-input-twitterkeysaccesstokensecret" class="expandableItem-label"></label>
         <div class="expandableItem-content">
             <div class="expandableItem-info">
-                <span class="expandableItem-name">Twitter</span>
+                <span class="expandableItem-name">Keys</span>
             </div>
         </div>
 
@@ -156,28 +157,28 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Consumer Key</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='twitterkeysconsumerkey'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Twitter/keys/consumerKey" id='twitterkeysconsumerkey'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Consumer Secret</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='twitterkeysconsumersecret'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Twitter/keys/consumerSecret" id='twitterkeysconsumersecret'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Access Token Key</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='twitterkeysaccesstokenkey'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Twitter/keys/accessTokenKey" id='twitterkeysaccesstokenkey'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Access Token Secret</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='twitterkeysaccesstokensecret'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Twitter/keys/accessTokenSecret" id='twitterkeysaccesstokensecret'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -192,27 +193,27 @@
         <label for="expandableItem-input-twitterstreamflags" class="expandableItem-label"></label>
         <div class="expandableItem-content">
             <div class="expandableItem-info">
-                <span class="expandableItem-name">Twitter</span>
+                <span class="expandableItem-name">Stream</span>
             </div>
         </div>
 
         <div class="expandableItem-tab-content">
             
+
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Languages</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/stream/languages"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterstreamlanguages" config-path="Twitter/stream/languages"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-twitterstreamlanguages" config-path="Twitter/stream/languages">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Twitter/stream/languages" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
+
 
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/stream/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twitterstreamflags" config-path="Twitter/stream/flags"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-twitterstreamflags" config-path="Twitter/stream/flags">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Twitter/stream/flags" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
 
 
@@ -227,18 +228,18 @@
         <label for="expandableItem-input-twittermonitoringcheckreplies" class="expandableItem-label"></label>
         <div class="expandableItem-content">
             <div class="expandableItem-info">
-                <span class="expandableItem-name">Twitter</span>
+                <span class="expandableItem-name">Monitoring</span>
             </div>
         </div>
 
         <div class="expandableItem-tab-content">
             
+
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Accounts</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Twitter/monitoring/accounts"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-twittermonitoringaccounts" config-path="Twitter/monitoring/accounts"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-twittermonitoringaccounts" config-path="Twitter/monitoring/accounts">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Twitter/monitoring/accounts" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
 
 
@@ -296,12 +297,12 @@
     </erinaconfig-list-item>
 
 
+
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Discord/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-discordflags" config-path="Discord/flags"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-discordflags" config-path="Discord/flags">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Discord/flags" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
 
 
@@ -311,7 +312,7 @@
         <label for="expandableItem-input-discordkeystoken" class="expandableItem-label"></label>
         <div class="expandableItem-content">
             <div class="expandableItem-info">
-                <span class="expandableItem-name">Discord</span>
+                <span class="expandableItem-name">Keys</span>
             </div>
         </div>
 
@@ -320,7 +321,7 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Token</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='discordkeystoken'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Discord/keys/token" id='discordkeystoken'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -362,12 +363,12 @@
     </erinaconfig-list-item>
 
 
+
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Flags</erinaconfig-list-item-title>
-        <erinaconfig-list-item-tags-container>
-            <input type="textbox" placeholder="Add a new flag..." onkeypress="return tagInputCallback(event, this)" class="form__field" config-path="Line/flags"></input>
-            <erinaconfig-list-item-tags-container id="tagsContainer-lineflags" config-path="Line/flags"></erinaconfig-list-item-tags>
-        </erinaconfig-list-item-valueContainer>
+        <div class="tag-container" id="tagsContainer-lineflags" config-path="Line/flags">
+            <input onkeypress="return tagInputCallback(event, this)" config-path="Line/flags" placeholder="Add new..."></input>
+        </div>
     </erinaconfig-list-item>
 
 
@@ -377,7 +378,7 @@
         <label for="expandableItem-input-linekeyschannelsecret" class="expandableItem-label"></label>
         <div class="expandableItem-content">
             <div class="expandableItem-info">
-                <span class="expandableItem-name">Line</span>
+                <span class="expandableItem-name">Keys</span>
             </div>
         </div>
 
@@ -386,14 +387,14 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Channel Access Token</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='linekeyschannelaccesstoken'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Line/keys/channelAccessToken" id='linekeyschannelaccesstoken'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Channel Secret</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='linekeyschannelsecret'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Line/keys/channelSecret" id='linekeyschannelsecret'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -405,7 +406,7 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Images Timeout</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='lineimagestimeout'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Line/imagesTimeout" id='lineimagestimeout'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -429,7 +430,7 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Encoding</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='cachesencoding'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Caches/encoding" id='cachesencoding'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -439,23 +440,23 @@
         <label for="expandableItem-input-cacheskeyssaucenao" class="expandableItem-label"></label>
         <div class="expandableItem-content">
             <div class="expandableItem-info">
-                <span class="expandableItem-name">Caches</span>
+                <span class="expandableItem-name">Keys</span>
             </div>
         </div>
 
         <div class="expandableItem-tab-content">
             
     <erinaconfig-list-item class="erinaConfig-ListItem">
-        <erinaconfig-list-item-title>Tracemoe</erinaconfig-list-item-title>
+        <erinaconfig-list-item-title>trace.moe</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='cacheskeystracemoe'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Caches/keys/tracemoe" id='cacheskeystracemoe'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
-        <erinaconfig-list-item-title>Saucenao</erinaconfig-list-item-title>
+        <erinaconfig-list-item-title>SauceNAO</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='cacheskeyssaucenao'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Caches/keys/saucenao" id='cacheskeyssaucenao'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -484,7 +485,7 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Algorithm</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='hashalgorithm'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Hash/algorithm" id='hashalgorithm'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -511,7 +512,7 @@
         <label for="expandableItem-input-searchthresholdsiqdbsimilarity" class="expandableItem-label"></label>
         <div class="expandableItem-content">
             <div class="expandableItem-info">
-                <span class="expandableItem-name">Search</span>
+                <span class="expandableItem-name">Thresholds</span>
             </div>
         </div>
 
@@ -520,28 +521,28 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Erina Similarity</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='searchthresholdserinasimilarity'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Search/thresholds/erinaSimilarity" id='searchthresholdserinasimilarity'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
-        <erinaconfig-list-item-title>Tracemoe Similarity</erinaconfig-list-item-title>
+        <erinaconfig-list-item-title>trace.moe Similarity</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='searchthresholdstracemoesimilarity'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Search/thresholds/tracemoeSimilarity" id='searchthresholdstracemoesimilarity'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
-        <erinaconfig-list-item-title>Saucenao Similarity</erinaconfig-list-item-title>
+        <erinaconfig-list-item-title>SauceNAO Similarity</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='searchthresholdssaucenaosimilarity'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Search/thresholds/saucenaoSimilarity" id='searchthresholdssaucenaosimilarity'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
-        <erinaconfig-list-item-title>Iqdb Similarity</erinaconfig-list-item-title>
+        <erinaconfig-list-item-title>IQDB Similarity</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='searchthresholdsiqdbsimilarity'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Search/thresholds/iqdbSimilarity" id='searchthresholdsiqdbsimilarity'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
@@ -570,14 +571,14 @@
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Host</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='serverhost'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Server/host" id='serverhost'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 
     <erinaconfig-list-item class="erinaConfig-ListItem">
         <erinaconfig-list-item-title>Port</erinaconfig-list-item-title>
         <erinaconfig-list-item-value-container>
-            <input type="input" class="textValueContainer form__field" placeholder="Change the value..." id='serverport'/>
+            <input type="input" onkeypress="return textInputHandler(event, this)" class="textValueContainer textInput" placeholder="No value (click to add)" config-path="Server/port" id='serverport'/>
         </erinaconfig-list-item-value-container>
     </erinaconfig-list-item>
 

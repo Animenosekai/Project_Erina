@@ -9,7 +9,10 @@ import websockets
 import fcntl, os
 
 async def _asyncMessageSending(websocketConnection, message, code):
-    await websocketConnection.send(json.dumps({"message": str(message), "code": code})) # Sends messages asynchronously (WebSocket Object is async)
+    try:
+        await websocketConnection.send(json.dumps({"message": str(message), "code": code})) # Sends messages asynchronously (WebSocket Object is async)
+    except:
+        print("Attempted message sending failed")
 
 def _sendMessage(websocketConnection, message, code):
     """
@@ -70,12 +73,19 @@ async def console_connection(ws, path):
                 currentProcess.terminate()
             print("< ErinaConsole disconnected")
 
-try:
-    print("ErinaConsole: Serving WS Server...")
-    ErinaConsole = websockets.serve(console_connection, "127.0.0.1", 5555) # Server the WS Server (on port 5555 for now)
-    asyncio.get_event_loop().run_until_complete(ErinaConsole) # Run the async function
-    asyncio.get_event_loop().run_forever() # Run the WS Server forever
-except KeyboardInterrupt:
-    print("ErinaConsole: Disconnection...")
-except:
-    print("ErinaConsole: An error occured.")
+
+
+
+
+def serveWebSocketServer():
+    try:
+        print("ErinaConsole: Serving WS Server...")
+        ErinaConsole = websockets.serve(console_connection, "127.0.0.1", 5555) # Server the WS Server (on port 5555 for now)
+        asyncio.get_event_loop().run_until_complete(ErinaConsole) # Run the async function
+        asyncio.get_event_loop().run_forever() # Run the WS Server forever
+    except KeyboardInterrupt:
+        print("ErinaConsole: Disconnection...")
+    except:
+        print("ErinaConsole: An error occured.")
+        print(sys.exc_info()[0])
+        print(sys.exc_info()[1])

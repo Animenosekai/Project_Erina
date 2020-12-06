@@ -1,3 +1,77 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* TAG CONTAINERS
+Credit: FrontendTips on YouTube (https://youtu.be/ha4xwcJXwow)
+*/
+
+.container {
+    width: 40%;
+    margin: 30px auto;
+}
+.tag-container {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background: #0000001c;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 6px;
+    overflow: scroll;
+    height: 80px;
+    width: 90%;
+    margin-left: 10%;
+}
+.tag-container .tag {
+    height: 30px;
+    margin: 5px;
+    padding: 5px 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    color: #333;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    transition: all 100ms ease
+}
+
+.tag:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.tag i {
+    font-size: 16px;
+    color: #666;
+    margin-left: 5px;
+}
+.tag-container input {
+    padding: 5px;
+    font-size: 16px;
+    border: 0;
+    outline: none;
+    color: rgb(255, 255, 255);
+    flex: 1;
+    background: #0000001f;
+    border-radius: 5px;
+}
+
+.material-icons {
+    background-color: #bbcff0;
+    font-size: 13px;
+    border-radius: 100%;
+    padding: 2px 2px;
+    margin-left: 5px;
+    transition: all 100ms ease;
+    cursor: pointer;
+}
+
+.material-icons:hover {
+    background-color: #abbddb;
+}
+
+
+
 .erinaStatsList {
     display: flex;
     flex-direction: column;
@@ -240,6 +314,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .expandableItem-input:checked ~ .expandableItem-content + .expandableItem-tab-content {
     max-height: 3000px;
+    font-size: 1em;
 }
 
 .expandableItem-input:checked ~ .expandableItem-content:after {
@@ -255,7 +330,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     width: 100%;
     margin: 0;
     padding: 0;
-    font-size: 0;
+    /*font-size: 0;*/
     z-index: 1;
     cursor: pointer;
 }
@@ -270,7 +345,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     height: 80px;
     margin: 0;
     padding: 0 87px 0 30px;
-    font-size: 0;
+    /*font-size: 0;*/
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
@@ -330,7 +405,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .expandableItem-info {
     width: 60%;
     white-space: nowrap;
-    font-size: 0;
+    /*font-size: 0;*/
 }
 
 .expandableItem-info:before {
@@ -342,7 +417,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .expandableItem-tab-content {
     background-color: rgb(183 183 183 / 40%);
-    font-size: 0;
+    /*font-size: 0;*/
     text-align: justify;
 }
 
@@ -445,10 +520,10 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-.form__field {
+.textInput {
     font-family: inherit;
     font-weight: 700;
-    width: 30%;
+    width: 100%;
     border: 0;
     border-bottom: 2px solid #9b9b9b;
     outline: 0;
@@ -458,11 +533,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     background: transparent;
     transition: border-color 500ms ease;
     top: 24%;
-    position: absolute;
-    left: 20%;
+    position: relative;
+    margin-left: 40%;
 }
 
-.form__field:focus {
+.textInput:focus {
     padding-bottom: 6px;
     border-width: 3px;
     border-image: linear-gradient(to right, #11998e, #38ef7d);

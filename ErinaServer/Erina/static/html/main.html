@@ -19,7 +19,7 @@
     
     <!--ERINA CONSOLE-->
     <erinaconsole id="erinaConsole" class="erinaConsoleWrapper erinaConsoleHidden">
-        <div id="consoleHeader" class="erinaConsoleHeader"></div>
+        <div id="erinaConsoleHeader" class="erinaConsoleHeader"></div>
         <h1 class="erinaConsoleTitle">ErinaConsole</h1>
         <div id="consoleOutput" class="erinaConsoleOutputWrapper"></div>
         <div class="erinaConsoleInputWrapper">
@@ -45,6 +45,14 @@
         </sidebar-element>
         <sidebar-element class="sidebarElement" onclick="goTo('ErinaAdmin — Configuration', 'config')">
             <p class="sidebarText">Config</p>
+            <selection-line id="configSelectionLine" class="sidebarLine"></selection-line>
+        </sidebar-element>
+        <sidebar-element class="sidebarElement" onclick="openErinaConsole()">
+            <p class="sidebarText" id="erinaConsoleStateText">Open ErinaConsole</p>
+            <selection-line id="configSelectionLine" class="sidebarLine"></selection-line>
+        </sidebar-element>
+        <sidebar-element class="sidebarElement" onclick="alert('Not implemented yet.')">
+            <p class="sidebarText">Log out</p>
             <selection-line id="configSelectionLine" class="sidebarLine"></selection-line>
         </sidebar-element>
     </sidebar>
