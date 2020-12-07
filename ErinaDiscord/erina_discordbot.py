@@ -18,6 +18,9 @@ from ErinaDiscord.utils import Parser
 from ErinaDiscord.utils import StaticResponse
 from ErinaDiscord.utils.cosine_similarity import searchCommand
 
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import discord as DiscordStats
+
 ### REACTION EMOJI WHILE MESSAGE RECEIVED (FROM MY DISCORD SERVER)
 roger_reaction = '<:easygif_roger:712005159676411914>'
 
@@ -51,6 +54,7 @@ async def on_message(message):
         else:
             if command == "search":
                 query = utils.removeSpaceBefore(userCommand[commandLength:])
+                StatsAppend(DiscordStats.infoHit, f"{str(query)} from {str(message.author)}")
                 anime, thumbnail, discordResponse = Parser.makeInfoResponse(erinasearch.searchAnime(query))
                 if discordResponse is not None:
                     newEmbed = discord.Embed(title='Anime Info', colour=discord.Colour.blue())
@@ -62,6 +66,7 @@ async def on_message(message):
                     await message.channel.send(embed=newEmbed)
             elif command == "description":
                 query = utils.removeSpaceBefore(userCommand[commandLength:])
+                StatsAppend(DiscordStats.descriptionHit, f"{str(query)} from {str(message.author)}")
                 anime, thumbnail, discordResponse = Parser.makeDescriptionResponse(erinasearch.searchAnime(query))
                 if discordResponse is not None:
                     newEmbed = discord.Embed(title=f'Anime Description: {str(anime)}', colour=discord.Colour.blue())
@@ -85,6 +90,7 @@ async def on_message(message):
         if any([flag in str(message.content).lower() for flag in (config.Discord.flags if str(config.Discord.flags).replace(" ", "") not in ["None", ""] else config.Erina.flags)]):
             listOfResults = []
             await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND
+            StatsAppend(DiscordStats.imageSearchHit, f"From {str(message.author)}")
             for file in message.attachments:
                 if filecenter.type_from_extension(filecenter.extension_from_base(file.filename)) == 'Image': # If the file is an image
                     current_anime = Parser.makeImageResponse(erinasearch.imageSearch(file.url)) # Get infos about the anime
@@ -143,3 +149,9 @@ async def on_message(message):
                     await message.channel.send(embed=newEmbed)
                     await asyncio.sleep(1)
     return
+
+def disconnect():
+    """
+    Disconnects the bot
+    """
+    client.close()

@@ -18,7 +18,8 @@ from ErinaCaches.utils.Errors import CachingError
 from ErinaHash.utils.Errors import HashingError
 
 from Erina import erina_log
-
+from Erina.erina_stats import db as DatabaseStats
+from Erina.erina_stats import StatsAppend
 class ImageSearchResult():
     def __init__(self, detectionResut, similarity, animeResult, low_similarity=False) -> None:
         self.detectionResult = detectionResut
@@ -74,7 +75,6 @@ def search_anime_by_hash(image_hash):
 
     def search_anime_in_erina_database():
         if SearchConfig.thresholds.erina_similarity > 98.4375:
-            erina_log.logdatabase('', stattype='erina_database_access')
             for anime in os.listdir(erina_db_path):
                 if anime in ['.DS_Store', ".gitkeep"]:
                     continue
@@ -83,11 +83,12 @@ def search_anime_by_hash(image_hash):
                         if anime == '.DS_Store':
                             continue
                         if os.path.isfile(erina_db_path + anime + '/' + folder + '/' + str(image_hash) + '.erina'):
+                            StatsAppend(DatabaseStats.erinaDatabaseLookups, 1)
                             return parser.ErinaFile("erina_database", anime + '/' + folder + '/' + str(image_hash) + '.erina').content, 100, anime + '/' + folder + '/' + str(image_hash) + '.erina'
-            erina_log.logdatabase('', stattype='erina_database_entry_lookup', value=0)
         else:
-            erina_log.logdatabase('', stattype='erina_database_access')
+            
             distance_dict = {}
+            iteration = 0
             for anime in os.listdir(erina_db_path):
                 if anime in ['.DS_Store', ".gitkeep"]:
                     continue
@@ -98,12 +99,13 @@ def search_anime_by_hash(image_hash):
                         for file in os.listdir(erina_db_path + anime + '/' + folder):
                             if file == '.DS_Store':
                                 continue
+                            iteration += 1
                             distance = hamming_distance(file.replace('.erina', ''), str(image_hash))
                             if distance == 1:
                                 return parser.ErinaFile("erina_database", anime + '/' + folder + '/' + file).content, (1 - (1 / 64)) * 100, anime + '/' + folder + '/' + str(image_hash) + '.erina'
                             else:
                                 distance_dict[anime + '/' + folder + '/' + file] = distance
-            erina_log.logdatabase('', stattype='erina_database_entry_lookup', value=iteration)
+            StatsAppend(DatabaseStats.erinaDatabaseLookups, iteration)
             threshold = int((SearchConfig.thresholds.erina_similarity * 64)/100)
             similarities = list(range(2, len(list(range(threshold, 64)))))
             for distance in similarities:

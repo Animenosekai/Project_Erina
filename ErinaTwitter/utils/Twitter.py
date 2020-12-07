@@ -33,9 +33,9 @@ def isAskingForSauce(tweet):
     accountsChain = []
     currentStatus = "ErinaSauceRecursiveTweetSearching"
     while currentStatus is not None:
-        accountsChain.append(currentStatus.user.screen_name)
+        accountsChain.append(currentStatus.user.id)
         currentStatus = parentTweet(currentStatus)
-    if ErinaTwitter.me.screen_name in accountsChain:
+    if ErinaTwitter.me.id in accountsChain:
         return False
     if tweet.user.screen_name == ErinaTwitter._screen_name:
         return False
@@ -63,7 +63,7 @@ def isReplyingToErina(tweet):
     Checks if the given tweet is replying to Erina
     """
     if isReply(tweet):
-        if ErinaTwitter.api.get_status(tweet.in_reply_to_status_id).user.screen_name == ErinaTwitter._screen_name:
+        if ErinaTwitter.api.get_status(tweet.in_reply_to_status_id).user.id == ErinaTwitter.me.id:
             return True
     return False
 

@@ -18,6 +18,9 @@ from saucenao_api import SauceNao
 from ErinaCaches.utils import anilist, tracemoe, saucenao, erina, Errors
 from ErinaParser.utils import anilist_parser, tracemoe_parser, saucenao_parser, erina_parser
 
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import external as ExternalStats
+
 
 caches_dir_path = erina_dir + '/ErinaCaches/'
 anilist_cache_path = caches_dir_path + 'AniList_Cache/'
@@ -110,6 +113,9 @@ def tracemoe_caching(image_hash):
                     requestResponse = json.loads(requests.post('https://trace.moe/api/search?token=' + str(config.Caches.keys.tracemoe), json={'image': image_hash.base64}))
         except:
             return Errors.CachingError("TRACEMOE_API_RESPONSE", "An error occured while retrieving information from the trace.moe API")
+        
+        StatsAppend(ExternalStats.tracemoeAPICalls, "New Call")
+
         try:
             cache = tracemoe.erina_from_json(requestResponse)
         except:
@@ -140,6 +146,9 @@ def saucenao_caching(image_hash):
                 api_results = saucenao_api.from_file(image_hash.ImageIO)[0]
             except:
                 return Errors.CachingError("SAUCENAO_API_RESPONSE", "An error occured while retrieving SauceNAO API Data")
+        
+        StatsAppend(ExternalStats.saucenaoAPICalls, "New Call")
+
         try:
             cache = saucenao.erina_from_api(api_results)
         except:

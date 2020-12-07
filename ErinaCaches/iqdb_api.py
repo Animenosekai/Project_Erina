@@ -6,6 +6,8 @@ Erina Project\n
 © Anime no Sekai - 2020
 """
 
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import external as ExternalStats
 import sys # to import from upper levels
 sys.path.append('.') # appending the Erina Folder to the Python PATH
 sys.path.append('..') # appending the Erina Folder to the Python PATH
@@ -559,6 +561,7 @@ def search_iqdb(image_hash, image_url='', file_io=None):
     """
 
     erina_log.logcaches(f'Searching for IQDB Data...', 'iqdb', str(image_hash))
+    StatsAppend(ExternalStats.iqdbCalls, "New Call")
     results = {}
 
     ### If a file is given, send the file to iqdb.

@@ -18,6 +18,9 @@ from ErinaHash.utils import Errors
 from Erina import erina_log
 from Erina import config
 
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erinahash as ErinaHashStats
+
 class HashObject():
     """
     An image hash object
@@ -38,6 +41,8 @@ class HashObject():
         else:
             self.has_url = False
             self.url = None
+        
+        StatsAppend(ErinaHashStats.createdHashes, self.hash)
     
     def __repr__(self) -> str:
         return str(self.hash)
@@ -106,4 +111,6 @@ def base64_from_image(image_path):
     """
     erina_log.loghash(f'Converting to base64 ({image_path})', 'base64')
     image_content = BinaryFile(image_path).read()
-    return base64.b64encode(image_content).decode("utf-8")
+    result = base64.b64encode(image_content).decode("utf-8")
+    StatsAppend(ErinaHashStats.createdBase64String, f"New Base64 String (length: {str(len(result))})")
+    return result

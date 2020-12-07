@@ -4,6 +4,8 @@ import operator
 from collections import Counter
 
 from ErinaDB.ManamiDB.manami_db_data import Database
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import db as DatabaseStats
 
 class StringVector():
     def __init__(self, string) -> None:
@@ -27,6 +29,6 @@ def search(query):
         length = vector.length * InputVector.length
         similarity = (0 if length == 0 else summation/length)
         results_dict[vector] = similarity
-
+    StatsAppend(DatabaseStats.manamiDBTitleVectorLookups, len(Database.vectors))
     bestResult = max(results_dict.items(), key=operator.itemgetter(1))[0] # Returns the max value
     return Database.vectors[bestResult], results_dict[bestResult]

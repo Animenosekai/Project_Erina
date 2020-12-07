@@ -7,6 +7,9 @@ Erina Project — 2020
 from ErinaHash import erinahash
 from ErinaSearch.utils import title_search, hash_search, anilist_id_search
 
+from Erina.erina_stats import search as SearchStats
+from Erina.erina_stats import StatsAppend
+
 def anilistIDSearch(anilistID):
     """
     Searches an anime from AniList Caches or AniList API
@@ -14,6 +17,7 @@ def anilistIDSearch(anilistID):
     Erina Project — 2020\n
     © Anime no Sekai
     """
+    StatsAppend(SearchStats.searchCount, f"New AniList ID Search: {str(anilistID)}")
     return anilist_id_search.search_anime_by_anilist_id(anilistID)
 
 def searchAnime(query):
@@ -23,6 +27,7 @@ def searchAnime(query):
     Erina Project — 2020\n
     © Anime no Sekai
     """
+    StatsAppend(SearchStats.searchCount, f"New Anime Search: {str(query)}")
     return title_search.searchAnime(query)
 
 def imageSearch(image):
@@ -34,4 +39,5 @@ def imageSearch(image):
     Erina Project — 2020\n
     © Anime no Sekai
     """
+    StatsAppend(SearchStats.searchCount, f"New Image Search")
     return hash_search.search_anime_by_hash(erinahash.hash_image(image))

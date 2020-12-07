@@ -11,8 +11,12 @@ from ErinaHash.utils.Errors import HashingError
 from ErinaParser.utils.Errors import ParserError
 from ErinaSearch.utils.Errors import SearchingError
 
-from ErinaDiscord.utils import Parser as DiscordParser
 from ErinaLine.utils import Parser as LineParser
+from ErinaTwitter.utils import Parser as TwitterParser
+
+from Erina.erina_stats import api as APIStats
+from Erina.erina_stats import StatsAppend
+
 
 apiEndpoint = "/erina/api"
 
@@ -39,14 +43,25 @@ def search():
         if str(requestArgs.get("minify")).replace(" ", "").lower() in ["true", "0", "yes"]:
             minify = True
     if "anilistID" in requestArgs:
+        StatsAppend(APIStats.searchEndpointCall, f"New /search call --> AniListID Search ({str(requestArgs.get('anilistID'))})")
         result = erinasearch.anilistIDSearch(requestArgs.get("anilistID"))
+        if "format" in requestArgs:
+            if requestArgs.get("format") == "line":
+                return makeResponse(LineParser.makeInfoResponse(result), 200, minify)
     elif "anime" in requestArgs:
+        StatsAppend(APIStats.searchEndpointCall, f"New /search call --> Anime Search ({str(requestArgs.get('anime'))})")
         result = erinasearch.searchAnime(requestArgs.get("anime"))
+        if "format" in requestArgs:
+            if requestArgs.get("format") == "line":
+                return makeResponse(LineParser.makeInfoResponse(result), 200, minify)
     elif "image" in requestArgs:
+        StatsAppend(APIStats.searchEndpointCall, "New /search call --> Image Search")
         result = erinasearch.imageSearch(requestArgs.get("image"))
         if "format" in requestArgs:
             if requestArgs.get("format") == "line":
                 return makeResponse(LineParser.makeImageResponse(result), 200, minify)
+            elif requestArgs.get("format") == "twitter":
+                return makeResponse(TwitterParser.makeTweet(result), 200, minify)
     else:
         return makeResponse({"error": "MISSING_ARGS", "message": "An argument is missing", "extra": {"authorizedArgs": ["anilistID", "anime", "image", "minify", "format"], "optionalArgs": ["minify", "format"]}}, 500, minify)
     

@@ -16,6 +16,9 @@ from ErinaServer.Server import ErinaServer
 from ErinaLine.utils import Parser
 from ErinaLine.utils import Images
 
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import line as LineStats
+
 def LineClient():
     '''
     Erina Line Client and API Client for the Erina Project\n
@@ -37,17 +40,20 @@ def LineClient():
     # Connecting to LINE API
     @ErinaServer.route("/callback", methods=['POST'])
     def callback():
-        # get X-Line-Signature header value
-        signature = request.headers['X-Line-Signature']
-        # get request body as text
-        body = request.get_data(as_text=True)
-        # handle webhook body
-        try:
-            handler.handle(body, signature)
-        except InvalidSignatureError:
-            erina_log.logerror("[ErinaLine] Invalid signature. Please check your channel access token/channel secret.")
-            abort(400)
-        return 'OK'
+        if LineConfig.run:
+            # get X-Line-Signature header value
+            signature = request.headers['X-Line-Signature']
+            # get request body as text
+            body = request.get_data(as_text=True)
+            # handle webhook body
+            try:
+                handler.handle(body, signature)
+            except InvalidSignatureError:
+                erina_log.logerror("[ErinaLine] Invalid signature. Please check your channel access token/channel secret.")
+                abort(400)
+            return 'OK'
+        else:
+            return 'OK'
 
     @handler.add(MessageEvent)
     def handle_message(event):
@@ -76,6 +82,7 @@ def LineClient():
                         event.reply_token,
                         TextSendMessage(text="You haven't sent any image yet!")
                     )
+                StatsAppend(LineStats.imageSearchHit, f"From {line_bot_api.get_profile(event.source.user_id).display_name}")
                 
             elif event.message.text[:10] == 'anime_info':
                 # Sending the messages
@@ -83,6 +90,7 @@ def LineClient():
                     event.reply_token,
                     TextSendMessage(text=Parser.makeInfoResponse(erinasearch.searchAnime(event.message.text[10:])))
                 )
+                StatsAppend(LineStats.infoHit, f"{str(event.message.text[10:])} from {line_bot_api.get_profile(event.source.user_id).display_name}")
 
             elif event.message.text[:17] == 'anime_description':
                 # Sending the messages
@@ -90,3 +98,4 @@ def LineClient():
                     event.reply_token,
                     TextSendMessage(text=Parser.makeDescriptionResponse(erinasearch.searchAnime(event.message.text[17:])))
                 )
+                StatsAppend(LineStats.descriptionHit, f"{str(event.message.text[17:])} from {line_bot_api.get_profile(event.source.user_id).display_name}")

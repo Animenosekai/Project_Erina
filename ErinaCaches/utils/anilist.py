@@ -2,6 +2,9 @@ import json
 import requests
 from datetime import datetime
 
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import external as ExternalStats
+
 anilistApiQuery = '''
 {
     id
@@ -134,6 +137,7 @@ def anilist_api(anilist_id):
         'id': anilist_id
     }
     response = requests.post(url='https://graphql.anilist.co', json={'query': query, 'variables': variables})
+    StatsAppend(ExternalStats.anilistAPICalls, f"ID: {str(anilist_id)}")
     if response.status_code == 200:
         return json.loads(response.text.replace('null', '""'))['data']['Media']
     else:
@@ -154,6 +158,7 @@ def anilist_api_search(query_string):
         'search': query_string
     }
     response = requests.post(url='https://graphql.anilist.co', json={'query': query, 'variables': variables})
+    StatsAppend(ExternalStats.anilistAPICalls, f"Query: {str(query_string)}")
     if response.status_code == 200:
         anilistResponse = json.loads(response.text.replace('null', '""'))['data']['anime']['results']
         if len(anilistResponse) > 0:
