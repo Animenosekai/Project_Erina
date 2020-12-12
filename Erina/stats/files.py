@@ -83,6 +83,9 @@ class searchStats():
     def __init__(self) -> None:
         self.path = statsFilePath + "searchStats/"
         self.searchCount = TextFile(self.path + "searchCount.erinalog", blocking=False)
+        self.anilistIDSearchCount = TextFile(self.path + "anilistIDSearchCount.erinalog", blocking=False)
+        self.imageSearchCount = TextFile(self.path + "imageSearchCount.erinalog", blocking=False)
+        self.titleSearchCount = TextFile(self.path + "titleSearchCount.erinalog", blocking=False)
         
 class twitterStats():
     """

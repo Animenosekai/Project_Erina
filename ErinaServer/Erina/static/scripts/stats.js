@@ -1,22 +1,49 @@
 function PageInitialize() {
-    const templateData = [
-        { "date": new Date(2018, 0, 1, 8, 0, 0), "value": 57 },
-        { "date": new Date(2018, 0, 1, 9, 0, 0), "value": 27 },
-        { "date": new Date(2018, 0, 1, 10, 0, 0), "value": 24 },
-        { "date": new Date(2018, 0, 1, 11, 0, 0), "value": 59 },
-        { "date": new Date(2018, 0, 1, 12, 0, 0), "value": 33 },
-        { "date": new Date(2018, 0, 1, 13, 0, 0), "value": 46 },
-        { "date": new Date(2018, 0, 1, 14, 0, 0), "value": 20 },
-        { "date": new Date(2018, 0, 1, 15, 0, 0), "value": 42 },
-        { "date": new Date(2018, 0, 1, 16, 0, 0), "value": 59, "opacity": .9}
-    ]
-    var chartElements = document.getElementsByTagName("erinastat-list-item-chart");
-    for (var i = 0; i < chartElements.length; i++) {
-        try {
-            createChart(chartElements.item(i).id, templateData, am4core.color("#7ae2ff"))
-            //chartElements.item(i).parentElement.parentElement.appendChild(chartElements.item(i))
-        } catch {
-            console.log("Error")
-        }   
+
+    function formatTime(dateObj) {
+        const currentTime = new Date()
+        if (dateObj.getDate() != currentTime.getDate()) {
+            return String(dateObj.getDate()) + "/" + String(dateObj.getMonth())
+        } else {
+            //return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes()) + ":" + String(dateObj.getSeconds())
+            return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes())
+        }
     }
+
+    fetch("/erina/api/stats")
+    .then(function(data) {
+        return data.json()
+    })
+    .then(function(data) {
+        for (category in data) {
+            try {
+                if (category != "uptime") {
+                    var currentCategory = data[category]
+                    for (subcategory in currentCategory) {
+                        try {
+                            if (currentCategory[subcategory]["success"] == true) {
+                                var closestTimestamp = 0
+                                var results = []
+                                for (timestamp in currentCategory[subcategory]["values"]) {
+                                    if (closestTimestamp < timestamp) {
+                                        closestTimestamp = timestamp
+                                    }
+                                    results.push({ "date": new Date(timestamp * 1000), "value": currentCategory[subcategory]["values"][timestamp]})
+                                }
+                                var currentID = "erinaStat-" + category + "-" + subcategory
+                                document.getElementById(currentID + "-Value").innerText = currentCategory[subcategory]["values"][closestTimestamp]
+                                createChart(currentID + "-Chart", results, am4core.color("#7ae2ff"))
+                            }
+                        } catch {
+                            console.log("Error while adding subcategory: " + String(subcategory))
+                        }
+                    }
+                } else {
+                    document.getElementById("erinaStat-erina-uptime-Value").innerText = formatTime(new Date(data["uptime"] * 1000))
+                }
+            } catch {
+                console.log("Error while adding category: " + String(category))
+            }
+        }
+    })
 }

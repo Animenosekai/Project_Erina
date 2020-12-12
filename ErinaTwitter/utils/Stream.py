@@ -3,7 +3,7 @@ Twitter Stream Manager
 """
 
 import tweepy
-from pattern.en import sentiment
+from pattern.text.en import sentiment
 
 from Erina.config import Twitter as TwitterConfig
 from Erina.config import Erina as ErinaConfig
@@ -64,6 +64,9 @@ class Listener(tweepy.StreamListener):
                         if tweetResponse is not None:
                             StatsAppend(TwitterStats.responses, "New Response")
                             ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
+            
+            
+            
             else: # Monitor Mode OFF, Public Account
                 imageURL = Twitter.findImage(tweet)
                 if imageURL is None:

@@ -3,6 +3,8 @@ from flask import request, Response
 from ErinaServer.Server import ErinaServer
 from Erina.config import update, default
 from Erina._config.files import configFile
+from ErinaServer.Erina.admin.Stats import returnStats
+
 
 def makeResponse(responseBody, code, minify=False):
     if minify:
@@ -52,3 +54,11 @@ def defaultEndpoint():
             minify = True
     default()
     return makeResponse({"message": "success"}, 200, minify)
+
+@ErinaServer.route("/erina/api/stats")
+def stats():
+    minify = False
+    if "minify" in request.args:
+        if str(request.args.get("minify")).replace(" ", "").lower() in ["true", "0", "yes"]:
+            minify = True
+    return makeResponse(returnStats(), 200, minify)

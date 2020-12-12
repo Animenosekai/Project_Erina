@@ -47,12 +47,20 @@ async def console_connection(ws, path):
     if path == '/ErinaConsole': # If connecting to ErinaConsole
         try:
             print("> New ErinaConsole connection!")
-            currentProcess = subprocess.Popen(shlex.split("bash"), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # Open a bash prompt
+            bash = False
+            if os.path.isfile("/bin/bash"):
+                bash = True
+                currentProcess = subprocess.Popen(shlex.split("/bin/bash"), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # Open a bash prompt
+            else:
+                currentProcess = subprocess.Popen(shlex.split("/bin/sh"), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # Open a shell prompt
             fcntl.fcntl(currentProcess.stdout.fileno(), fcntl.F_SETFL, os.O_NONBLOCK) # Non blocking stdout and stderr reading
             newReadingThread = threading.Thread(target=_checkOutput, args=[currentProcess, ws]) # Start checking for new text in stdout and stderr
             newReadingThread.daemon = True
             newReadingThread.start()
-            await ws.send(json.dumps({"message": "ErinaConsole: Connection successfully established", "code": 0})) # Send a message to notifiy that the process has started
+            if bash:
+                await ws.send(json.dumps({"message": f"ErinaConsole: Connection successfully established (bash) with PID: {str(currentProcess.pid)}", "code": 0})) # Send a message to notifiy that the process has started
+            else:
+                await ws.send(json.dumps({"message": f"ErinaConsole: Connection successfully established (sh) with PID: {str(currentProcess.pid)}", "code": 0})) # Send a message to notifiy that the process has started
             async for message in ws:
                 try:
                     data = json.loads(message) # retrieve a message from the client
