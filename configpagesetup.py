@@ -2,74 +2,86 @@
 
 jsonData = """{
     "Erina": {
-        "flags": ["what is this anime", "what's this anime", "anime sauce", "anime source", "what anime this is", "what anime is this", "called this anime", "name of this anime", "what's that anime", "what anime is it", "name of anime", "sauce to that anime"],
-        "consoleLog": true,
-        "fileLog": true,
-        "stats": true
-    },
+        "flags": [
+            "what is this anime", 
+            "what's this anime", 
+            "anime sauce", 
+            "anime source", 
+            "what anime this is", 
+            "what anime is this", 
+            "called this anime", 
+            "name of this anime", 
+            "what's that anime", 
+            "what anime is it", 
+            "name of anime", 
+            "sauce to that anime"
+        ], 
+        "consoleLog": true, 
+        "fileLog": true, 
+        "stats": true,
+        "logsTimeout": 604800
+    }, 
     "Twitter": {
-        "run": true,
-        "ignoredUsers": [],
-        "flags": [],
-        "ignoreRT": true,
+        "run": false, 
+        "ignoredUsers": [], 
+        "flags": [], 
+        "ignoreRT": true, 
         "keys": {
-            "consumerKey": null,
-            "consumerSecret": null,
-            "accessTokenKey": null,
+            "consumerKey": null, 
+            "consumerSecret": null, 
+            "accessTokenKey": null, 
             "accessTokenSecret": null
-        },
+        }, 
         "stream": {
-            "languages": ["en"],
+            "languages": [
+                "en"
+            ], 
             "flags": []
-        },
+        }, 
         "monitoring": {
-            "accounts": [],
+            "accounts": [], 
             "checkReplies": false
         }
-    },
+    }, 
     "Discord": {
-        "run": true,
-        "flags": [],
+        "run": false, 
+        "flags": [], 
         "keys": {
             "token": null
         }
-    },
+    }, 
     "Line": {
-        "run": true,
-        "flags": [],
+        "run": false, 
+        "flags": [], 
         "keys": {
-            "channelAccessToken": null,
+            "channelAccessToken": null, 
             "channelSecret": null
-        },
+        }, 
         "imagesTimeout": 3600
-    },
+    }, 
     "Caches": {
-        "encoding": "utf-8",
+        "encoding": "utf-8", 
         "keys": {
-            "tracemoe": null,
+            "tracemoe": null, 
             "saucenao": null
         }
-    },
-    "Database": {
-
-    },
+    }, 
+    "Database": {}, 
     "Hash": {
         "algorithm": "Average Hash"
-    },
-    "Parser": {
-
-    },
+    }, 
+    "Parser": {}, 
     "Search": {
         "thresholds": {
-            "erinaSimilarity": 100,
-            "tracemoeSimilarity": 90,
-            "saucenaoSimilarity": 90,
+            "erinaSimilarity": 100, 
+            "tracemoeSimilarity": 90, 
+            "saucenaoSimilarity": 90, 
             "iqdbSimilarity": 90
         }
-    },
+    }, 
     "Server": {
-        "host": "127.0.0.1",
-        "port": 5000,
+        "host": "127.0.0.1", 
+        "port": 5000, 
         "disableConsoleMessages": true
     }
 }

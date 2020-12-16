@@ -2,6 +2,7 @@
 Twitter Stream Manager
 """
 
+from Erina.erina_log import log
 import tweepy
 from pattern.text.en import sentiment
 
@@ -45,6 +46,7 @@ class Listener(tweepy.StreamListener):
             
             if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
                 if TwitterConfig.monitoring.check_replies and Twitter.isReplyingToErina(tweet): # Monitor Mode ON, Check Replies to Monitored ON
+                    log("ErinaTwitter", "New monitoring hit from @" + str(tweet.user.screen_name))
                     StatsAppend(TwitterStats.askingHit, f"From {str(tweet.user.screen_name)}")
                     imageURL = Twitter.findImage(tweet)
                     if imageURL is None:
@@ -55,7 +57,8 @@ class Listener(tweepy.StreamListener):
                         if tweetResponse is not None:
                             StatsAppend(TwitterStats.responses, "New Response")
                             ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
-                elif tweet.user.screen_name == ErinaTwitter.me.screen_name: # Monitor Mode ON, Check Replies to Monitored OFF
+                elif tweet.user.screen_name in TwitterConfig.monitoring.accounts: # Monitor Mode ON, Check Replies to Monitored OFF
+                    log("ErinaTwitter", "New monitoring hit")
                     StatsAppend(TwitterStats.askingHit, f"From {str(tweet.user.screen_name)}")
                     imageURL = Twitter.findImage(tweet)
                     if imageURL is not None:
@@ -72,6 +75,7 @@ class Listener(tweepy.StreamListener):
                 if imageURL is None:
                     imageURL = Twitter.findParentImage(tweet)
                 if imageURL is not None and Twitter.isAskingForSauce(tweet):
+                    log("ErinaTwitter", "New asking hit from @" + str(tweet.user.screen_name))
                     StatsAppend(TwitterStats.askingHit, f"From {str(tweet.user.screen_name)}")
                     searchResult = imageSearch(imageURL)
                     tweetResponse = makeTweet(searchResult)
@@ -87,6 +91,7 @@ class Listener(tweepy.StreamListener):
             """
             DM Receiving
             """
+            log("ErinaTwitter", "New direct message from @" + str(message.user.screen_name))
             StatsAppend(TwitterStats.directMessagingHit, f"From {str(message.user.screen_name)}")
 
 
@@ -138,9 +143,9 @@ def startStream():
         Erina.filter(follow=user_ids)
     else:
         if not isinstance(TwitterConfig.stream.flags, (list, tuple)) or len(TwitterConfig.stream.flags) <= 0:
-            Erina.filter(languages=TwitterConfig.stream.languages, track=(TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else ErinaConfig.flags))
+            Erina.filter(languages=TwitterConfig.stream.languages, track=(list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else list(ErinaConfig.flags)))
         else:
-            Erina.filter(languages=TwitterConfig.stream.languages, track=TwitterConfig.stream.flags)
+            Erina.filter(languages=TwitterConfig.stream.languages, track=list(TwitterConfig.stream.flags))
 
 def endStream():
     """

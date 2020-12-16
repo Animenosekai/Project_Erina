@@ -3,6 +3,8 @@ from Erina.env_information import erina_dir
 from collections import Counter
 import math
 
+from safeIO import JSONFile
+
 class StringVector():
     def __init__(self, string) -> None:
         self.string = str(string)
@@ -16,9 +18,8 @@ class StringVector():
 
 class ManamiDB():
     def __init__(self) -> None:
-        with open(erina_dir + "/ErinaDB/ManamiDB/manami_database_data.json", "r", encoding="utf-8") as dataFile:
-            data = json.load(dataFile)
-
+        data = JSONFile(erina_dir + "/ErinaDB/ManamiDB/manami_database_data.json").read()
+        
         self.number_of_animes = len(data)
         self.vectors = {}
         for anime in data:

@@ -1,5 +1,4 @@
 from os.path import isfile
-from Erina import erina_log
 from ErinaParser import parser
 from Erina.env_information import erina_dir
 from ErinaCaches.erinacache import anilist_caching
@@ -10,7 +9,6 @@ def search_anime_by_anilist_id(anilist_id):
     © Anime no Sekai - 2020
     Project Erina
     """
-    erina_log.logsearch(f'Searching the anime by his AniList ID... ({str(anilist_id)})', search_type='anilistid', value=str(anilist_id))
     filename = str(anilist_id) + ".erina"
     if isfile(erina_dir + "/ErinaCaches/AniList_Cache/" + filename):
         return parser.ErinaFile("anilist_cache", filename).content

@@ -16,10 +16,11 @@
         ], 
         "consoleLog": true, 
         "fileLog": true, 
-        "stats": true
+        "stats": true,
+        "logsTimeout": 604800
     }, 
     "Twitter": {
-        "run": true, 
+        "run": false, 
         "ignoredUsers": [], 
         "flags": [], 
         "ignoreRT": true, 
@@ -41,14 +42,14 @@
         }
     }, 
     "Discord": {
-        "run": true, 
+        "run": false, 
         "flags": [], 
         "keys": {
             "token": null
         }
     }, 
     "Line": {
-        "run": true, 
+        "run": false, 
         "flags": [], 
         "keys": {
             "channelAccessToken": null, 

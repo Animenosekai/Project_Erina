@@ -10,7 +10,6 @@ from flask import request, abort
 
 from Erina.config import Erina, Line as LineConfig
 import Erina.env_information as env_information
-from Erina import erina_log
 from ErinaSearch import erinasearch
 from ErinaServer.Server import ErinaServer
 from ErinaLine.utils import Parser
@@ -18,45 +17,52 @@ from ErinaLine.utils import Images
 
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import line as LineStats
+from Erina.erina_log import log
 
-def LineClient():
-    '''
-    Erina Line Client and API Client for the Erina Project\n
+from ErinaLine.utils.Errors import LineError
 
-    @author: Anime no Sekai\n
-    Erina Project - 2020
-    '''
+images_path = env_information.erina_dir + '/ErinaLine/images/'
 
-    images_path = env_information.erina_dir + '/ErinaLine/images/'
-    
-    from linebot import (LineBotApi, WebhookHandler)
-    from linebot.exceptions import (InvalidSignatureError)
-    from linebot.models import (MessageEvent, TextSendMessage)
-    
+from linebot import (LineBotApi, WebhookHandler)
+from linebot.exceptions import (InvalidSignatureError)
+from linebot.models import (MessageEvent, TextSendMessage)
+
+if LineConfig.run:
     # API Keys
     line_bot_api = LineBotApi(LineConfig.keys.channel_access_token)
     handler = WebhookHandler(LineConfig.keys.channel_secret)
+    log("Erina", "Running the ErinaLine Client...")
 
-    # Connecting to LINE API
-    @ErinaServer.route("/callback", methods=['POST'])
-    def callback():
-        if LineConfig.run:
-            # get X-Line-Signature header value
-            signature = request.headers['X-Line-Signature']
-            # get request body as text
-            body = request.get_data(as_text=True)
-            # handle webhook body
-            try:
-                handler.handle(body, signature)
-            except InvalidSignatureError:
-                erina_log.logerror("[ErinaLine] Invalid signature. Please check your channel access token/channel secret.")
-                abort(400)
-            return 'OK'
-        else:
-            return 'OK'
+# Connecting to LINE API
+@ErinaServer.route("/callback", methods=['POST'])
+def callback():
+    if LineConfig.run:
+        # get X-Line-Signature header value
+        signature = request.headers['X-Line-Signature']
+        # get request body as text
+        body = request.get_data(as_text=True)
+        # handle webhook body
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            LineError("INVALID_SIGNATURE", "Please check your channel access token/channel secret.")
+            abort(400)
+        return 'OK'
+    else:
+        return 'OK'
+
+handlerInitialized = False
+
+def initHandler():
+    """
+    Initializes the Handler
+    """
+    global handlerInitialized
+    handlerInitialized = True
 
     @handler.add(MessageEvent)
     def handle_message(event):
+        displayName = line_bot_api.get_profile(event.source.user_id).display_name
 
         if event.message.type == 'image': # If it is an image
             image_message_content = line_bot_api.get_message_content(event.message.id) # Get the image
@@ -82,7 +88,8 @@ def LineClient():
                         event.reply_token,
                         TextSendMessage(text="You haven't sent any image yet!")
                     )
-                StatsAppend(LineStats.imageSearchHit, f"From {line_bot_api.get_profile(event.source.user_id).display_name}")
+                log("ErinaLine", "New image search from " + displayName)
+                StatsAppend(LineStats.imageSearchHit, f"From {displayName}")
                 
             elif event.message.text[:10] == 'anime_info':
                 # Sending the messages
@@ -90,7 +97,8 @@ def LineClient():
                     event.reply_token,
                     TextSendMessage(text=Parser.makeInfoResponse(erinasearch.searchAnime(event.message.text[10:])))
                 )
-                StatsAppend(LineStats.infoHit, f"{str(event.message.text[10:])} from {line_bot_api.get_profile(event.source.user_id).display_name}")
+                log("ErinaLine", "New info hit from " + displayName + " (asking for " + str(event.message.text[10:]) + ")")
+                StatsAppend(LineStats.infoHit, f"{str(event.message.text[10:])} from {displayName}")
 
             elif event.message.text[:17] == 'anime_description':
                 # Sending the messages
@@ -98,4 +106,9 @@ def LineClient():
                     event.reply_token,
                     TextSendMessage(text=Parser.makeDescriptionResponse(erinasearch.searchAnime(event.message.text[17:])))
                 )
-                StatsAppend(LineStats.descriptionHit, f"{str(event.message.text[17:])} from {line_bot_api.get_profile(event.source.user_id).display_name}")
+                log("ErinaLine", "New description hit from " + displayName + " (asking for " + str(event.message.text[10:]) + ")")
+                StatsAppend(LineStats.descriptionHit, f"{str(event.message.text[17:])} from {displayName}")
+
+
+if LineConfig.run:
+    initHandler()

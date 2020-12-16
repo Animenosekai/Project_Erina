@@ -15,7 +15,7 @@ from safeIO import BinaryFile
 from PIL import Image
 from ErinaHash.utils import Errors
 
-from Erina import erina_log
+from Erina.erina_log import log
 from Erina import config
 
 from Erina.erina_stats import StatsAppend
@@ -59,6 +59,7 @@ def hash_image(image, algorithm=None):
     result = None
     has_url = False
 
+    log("ErinaHash", "Hashing an image...")
     # Needs to be a PIL instance
     if isfile(str(image)):
         image = Image.open(image)
@@ -109,7 +110,7 @@ def base64_from_image(image_path):
     Erina Project — 2020\n
     © Anime no Sekai
     """
-    erina_log.loghash(f'Converting to base64 ({image_path})', 'base64')
+    log("ErinaHash", "Converting " + str(image_path) + " to base64...")
     image_content = BinaryFile(image_path).read()
     result = base64.b64encode(image_content).decode("utf-8")
     StatsAppend(ErinaHashStats.createdBase64String, f"New Base64 String (length: {str(len(result))})")

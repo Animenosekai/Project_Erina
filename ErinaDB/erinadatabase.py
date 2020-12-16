@@ -5,7 +5,6 @@ Anime Database API for the Erina Project
 Erina Project - 2020
 """
 from Erina.env_information import erina_dir
-from Erina import erina_log
 from ErinaDB.ManamiDB import manami_db_verification
 from ErinaDB.ManamiDB.manami_db_data import Database
 
@@ -19,6 +18,5 @@ def manami_database():
     """
     Verifies and Returns the Manami Project Database
     """
-    erina_log.logdatabase(text='', stattype='manami_database_access')
     manami_db_verification.verify_manami_adb()
     return Database.data

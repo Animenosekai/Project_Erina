@@ -5,85 +5,62 @@ Erina Clients Wrapper for the Erina Project
 Erina Project - 2020
 """
 
-import threading
-import asyncio
-import sys
+from time import sleep
 
-import lifeeasy
-import config
-import erina_log
-from ErinaTwitter import erina_twitterbot
-from ErinaDiscord import erina_discordbot
-from ErinaLine import erina_linebot
-from ErinaLine import erina_lineimages_check
-
-def ErinaClients():
-    """
-    Erina Clients Wrapper Main Function for the Erina Project
-
-    @author: Anime no Sekai
-    Erina Project - 2020
-    """
-    if '--reset-stats' in sys.argv:
-        print('Do you really want to delete the stats?')
-        choice = input('> ')
-        if choice.lower() == 'yes' or choice.lower() == 'yea' or choice.lower() == 'ya' or choice.lower() == 'yeah':
-            erina_log.resetstats()
-    try:
-        erina_log.loglaunch('')
-
-        try:
-            erina_log.loglaunch('Opening a new thread with Line Image Checker')
-            thread = threading.Thread(target=erina_lineimages_check.start_check)
-            threading.daemon = True
-            thread.start()
-            erina_log.loglaunch('Opening a new thread with the API Client.')
-            thread = threading.Thread(target=erina_linebot.ApiClient)
-            thread.daemon = True
-            thread.start()
-        except Exception as exception:
-            erina_log.logerror(f'[Erina] An error occured while running client: API, [Error Details] {str(exception)}')
-    
-        if config.run_twitter_client:
-            try:
-                if config.twitter_consumer_key == '':
-                    erina_log.logerror('[ErinaTwitter] No consumer key provided.')
-                elif config.twitter_consumer_secret == '':
-                    erina_log.logerror('[ErinaTwitter] No consumer secret provided.')
-                elif config.twitter_access_token_key == '':
-                    erina_log.logerror('[ErinaTwitter] No access token key provided.')
-                elif config.twitter_access_token_secret == '':
-                    erina_log.logerror('[ErinaTwitter] No access token secret provided.')
-                else:
-                    erina_log.loglaunch('Opening a new thread with client: ErinaTwitter')
-                    thread = threading.Thread(target=erina_twitterbot.TwitterClient)
-                    thread.daemon = True
-                    thread.start()
-            except Exception as exception:
-                erina_log.logerror(f'[Erina] An error occured while running client: ErinaTwitter, [Error Details] {str(exception)}')
-        
-        if config.run_discord_client:
-            try:
-                if config.discord_bot_token == '':
-                    erina_log.logerror(f'[ErinaDiscord] No Bot Token Provided.')
-                else:
-                    erina_log.loglaunch('Running Discord Client...')
-                    loop = asyncio.get_event_loop()
-                    loop.create_task(erina_discordbot.client.start(config.discord_bot_token))
-                    loop.run_forever()
-            except Exception as exception:
-                erina_log.logerror(f'[Erina] An error occured while running client: ErinaDiscord, [Error Details] {str(exception)}')
-        else:
-            while True:
-                try:
-                    lifeeasy.sleep(10)
-                except:
-                    erina_log.loglaunch('Exception Received.')
-                    break
-
-    except Exception as exception:
-        erina_log.loglaunch('Exception Received.')
-        erina_log.loglaunch(f'Exception Details: {str(exception)}')
 
 if __name__ == '__main__':
-    ErinaClients()
+
+    #### INITIALIZING ERINASERVER --> Manages the whole server
+
+    from threading import Thread
+    from Erina.erina_log import log
+
+    log("Erina", "Initializing Erina configuration...")
+    from Erina.config import Server as ServerConfig
+    log("Erina", "Initializing ErinaServer")
+    from ErinaServer.Server import ErinaServer
+
+    ## RECORDING Endpoints
+    log("Erina", "---> Initializing Static File Endpoints")
+    from ErinaServer.Erina import Static
+    log("Erina", "---> Initializing API")
+    from ErinaServer.Erina.api import API
+    log("Erina", "---> Initializing ErinaAdmin")
+    from ErinaServer.Erina.admin import Admin
+    from ErinaServer.Erina.auth import Auth
+    from ErinaServer.Erina.admin import Config
+    log("Erina", "---> Initializing Custom Endpoints...")
+    from ErinaServer import Custom
+    log("Erina", "---> Initializing the WebSocket server")
+    from ErinaServer.Erina.admin.console.console import serveWebSocketServer
+
+    def runServer():
+        ## RUNNING ErinaServer (HTTP)
+        log("Erina", "Running the HTTP server...")
+        ErinaServer.run(ServerConfig.host, ServerConfig.port, debug=True, use_reloader=False)
+    Thread(target=runServer, daemon=True).start()
+
+    log("Erina", "Running the WebSocket server...")
+    ## Run WS Server
+    serveWebSocketServer()
+
+    #### RUNNING THE CLIENTS
+
+    import asyncio
+    from Erina import config
+    import ErinaLine.erina_linebot # Already runs the LINE Client
+    from Erina import setInterval # Already runs the checkers
+
+    if config.Twitter.run:
+        log("Erina", "Running the ErinaTwitter Client...")
+        from ErinaTwitter.utils import Stream as twitterClient
+        Thread(target=twitterClient.startStream, daemon=True).start()
+
+    if config.Discord.run:
+        log("Erina", "Running the ErinaDiscord Client...")
+        from ErinaDiscord.erina_discordbot import client as discordClient
+        asyncio.get_event_loop().create_task(discordClient.start(config.Discord.keys.token))
+        asyncio.get_event_loop().run_forever()
+
+    while True: # Block
+        sleep(3600)

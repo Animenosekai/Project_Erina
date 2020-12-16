@@ -1,15 +1,15 @@
 """
 Anime Database Reading/Parsing API for the Erina Project
 
+
+NOT USED ANYMORE --> Migrated to ErinaParser
+
+KEPT FOR FUTURE ERINAPARSER UPDATES
+
 @author: Anime no Sekai
 Erina Project - 2020
 """
-import sys
-sys.path.append('.')
-sys.path.append('..')
-
 import Erina.env_information as env_information
-import erina_log
 from ErinaSearch import result_python_translation
 
 anilist_cache_path = env_information.erina_dir + '/ErinaCaches/AniList_Cache/'
@@ -26,7 +26,6 @@ def read_iqdb_cache_data(filename):
     © Anime no Sekai - 2020\n
     Project Erina
     """
-    erina_log.logsearch(f'Reading IQDB cache data... ({filename})')
     cache_result = {}
     cache_result['error'] = False
     database_results_keys = ['gelbooru_results', 'danbooru_results', 'zerochan_results', 'konachan_results', 'yandere_results', 'anime_pictures_results', 'eshuushuu_results']
@@ -348,7 +347,6 @@ def read_iqdb_cache_data(filename):
         
         cache_file.close()
     except:
-        erina_log.logerror('[ErinaSearch] Error while reading IQDB Cache Data')
         cache_result['error'] = True
         cache_result['error_details'] = '<iqdb_cache_data_parsing>'
     return result_python_translation.verify_dict(cache_result)

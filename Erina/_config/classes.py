@@ -20,6 +20,7 @@ class ErinaConfig():
         self.console_log = self.as_dict["consoleLog"]
         self.file_log = self.as_dict["fileLog"]
         self.stats = self.as_dict["stats"]
+        self.logs_timeout = self.as_dict["logsTimeout"]
 
     def update(self, path, value):
         """
@@ -35,8 +36,11 @@ class ErinaConfig():
             self.file_log = value
             self.as_dict["fileLog"] = value
         elif path[0] == "stats":
-            self.console_log = value
+            self.stats = value
             self.as_dict["stats"] = value
+        elif path[0] == "logsTimeout":
+            self.logs_timeout = value
+            self.as_dict["logsTimeout"] = value
         
 
 class TwitterConfig():

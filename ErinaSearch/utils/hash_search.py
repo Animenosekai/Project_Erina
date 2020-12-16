@@ -17,7 +17,6 @@ from ErinaParser.utils.Errors import ParserError
 from ErinaCaches.utils.Errors import CachingError
 from ErinaHash.utils.Errors import HashingError
 
-from Erina import erina_log
 from Erina.erina_stats import db as DatabaseStats
 from Erina.erina_stats import StatsAppend
 class ImageSearchResult():
@@ -65,9 +64,6 @@ def search_anime_by_hash(image_hash):
     """
     if isinstance(image_hash, HashingError): # If there is no error
         return image_hash
-
-    erina_log.logsearch(f'Searching the image by his hash... ({str(image_hash)})', search_type='hash', value=str(image_hash))
-    
 
     ##########################
     #     DATABASE SEARCH    #

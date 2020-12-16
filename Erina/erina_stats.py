@@ -1,5 +1,6 @@
 from time import time
 from Erina.stats import files
+from Erina.config import Erina as ErinaConfig
 
 api = files.apiStats()
 db = files.dbStats()
@@ -12,4 +13,5 @@ search = files.searchStats()
 twitter = files.twitterStats()
 
 def StatsAppend(file, content):
-    file.append(f"{str(time())}    {str(content)}".replace("\n", "") + "\n")
+    if ErinaConfig.stats:
+        file.append(f"{str(int(time()))}    {str(content)}".replace("\n", "") + "\n")

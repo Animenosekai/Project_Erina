@@ -9,7 +9,7 @@ import time
 import filecenter
 
 from Erina.config import Line as LineConfig
-from Erina import erina_log
+from Erina.erina_log import log
 import Erina.env_information as env_information
 
 images_path = env_information.erina_dir + '/ErinaLine/images/'
@@ -22,23 +22,20 @@ def check(user_id):
     global current_images_dict
     current_images_dict[user_id] = time.time()
 
-def start_check():
+def checkImages():
     '''
     Timeout checking function.
     '''
     global current_images_dict
-    while True:
-        number_of_deleted_files = 0 # logging purposes
-        for entry in current_images_dict:
-            if time.time() - current_images_dict[entry] > LineConfig.images_timeout:
-                if filecenter.delete(images_path + entry + '.erina_image') == 0:
-                    current_images_dict.pop(entry, None)
-                    number_of_deleted_files += 1 # logging purposes
-        ### LOGGING
-        if number_of_deleted_files != 0:
-            if number_of_deleted_files == 1:
-                erina_log.logline(f'[Image Checker] Deleted 1 entry.', stattype='number_of_stored_images', value=-1)
-            else:
-                erina_log.logline(f'[Image Checker] Deleted {str(number_of_deleted_files)} entries.', stattype='number_of_stored_images', value=-number_of_deleted_files)
-        
-        time.sleep(5)
+    number_of_deleted_files = 0 # logging purposes
+    for entry in current_images_dict:
+        if time.time() - current_images_dict[entry] > LineConfig.images_timeout:
+            if filecenter.delete(images_path + entry + '.erina_image') == 0:
+                current_images_dict.pop(entry, None)
+                number_of_deleted_files += 1 # logging purposes
+    ### LOGGING
+    if number_of_deleted_files > 0:
+        if number_of_deleted_files == 1:
+            log("ErinaLine", "[Image Checker] Deleted 1 entry")
+        else:
+            log("ErinaLine", f'[Image Checker] Deleted {str(number_of_deleted_files)} entries')

@@ -11,7 +11,6 @@ import discord
 from discord.ext import commands as DiscordCommands
 
 from Erina import config
-from Erina import erina_log
 from ErinaSearch import erinasearch
 from ErinaDiscord.utils import utils
 from ErinaDiscord.utils import Parser
@@ -20,6 +19,7 @@ from ErinaDiscord.utils.cosine_similarity import searchCommand
 
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import discord as DiscordStats
+from Erina.erina_log import log
 
 ### REACTION EMOJI WHILE MESSAGE RECEIVED (FROM MY DISCORD SERVER)
 roger_reaction = '<:easygif_roger:712005159676411914>'
@@ -34,7 +34,7 @@ async def on_ready():
     When the bot is ready
     '''
     await client.change_presence(activity=discord.Game(name='.erina help | Ready to give you the sauce!')) # GAME ACTIVITY
-    erina_log.logdiscord('[Discord] Erina is ready.', 'ready') # LOG THAT THE BOT IS READY
+    log("ErinaDiscord", "Erina is ready")
 
 
 @client.event
@@ -54,7 +54,8 @@ async def on_message(message):
         else:
             if command == "search":
                 query = utils.removeSpaceBefore(userCommand[commandLength:])
-                StatsAppend(DiscordStats.infoHit, f"{str(query)} from {str(message.author)}")
+                log("ErinaDiscord", "New info hit from @" + str(message.author) + " (asking for " + str(query) + ")")
+                StatsAppend(DiscordStats.infoHit, f"{str(query)} >>> {str(message.author)}")
                 anime, thumbnail, discordResponse = Parser.makeInfoResponse(erinasearch.searchAnime(query))
                 if discordResponse is not None:
                     newEmbed = discord.Embed(title='Anime Info', colour=discord.Colour.blue())
@@ -66,7 +67,8 @@ async def on_message(message):
                     await message.channel.send(embed=newEmbed)
             elif command == "description":
                 query = utils.removeSpaceBefore(userCommand[commandLength:])
-                StatsAppend(DiscordStats.descriptionHit, f"{str(query)} from {str(message.author)}")
+                log("ErinaDiscord", "New description hit from @" + str(message.author) + " (asking for " + str(query) + ")")
+                StatsAppend(DiscordStats.descriptionHit, f"{str(query)} >>> {str(message.author)}")
                 anime, thumbnail, discordResponse = Parser.makeDescriptionResponse(erinasearch.searchAnime(query))
                 if discordResponse is not None:
                     newEmbed = discord.Embed(title=f'Anime Description: {str(anime)}', colour=discord.Colour.blue())
@@ -90,6 +92,7 @@ async def on_message(message):
         if any([flag in str(message.content).lower() for flag in (config.Discord.flags if str(config.Discord.flags).replace(" ", "") not in ["None", ""] else config.Erina.flags)]):
             listOfResults = []
             await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND
+            log("ErinaDiscord", "New image search from @" + str(message.author))
             StatsAppend(DiscordStats.imageSearchHit, f"From {str(message.author)}")
             for file in message.attachments:
                 if filecenter.type_from_extension(filecenter.extension_from_base(file.filename)) == 'Image': # If the file is an image

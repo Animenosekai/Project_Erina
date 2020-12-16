@@ -7,15 +7,12 @@ Erina Project - 2020
 import re
 import json
 import datetime
-import time
 
 import requests
-from safeIO import TextFile
+from safeIO import JSONFile, TextFile
 
 from Erina.env_information import erina_dir
 from ErinaDB.ManamiDB.manami_db_data import Database
-
-#import erina_log
 
 manami_database_path = erina_dir + "/ErinaDB/ManamiDB/"
 currentReleaseFile = TextFile(manami_database_path + 'current_release.txt')
@@ -33,8 +30,6 @@ def verify_manami_adb():
     """
     Checks for a new version of the database on GitHub
     """
-    start_time = time.time()
-
     ## Checking if new week
     current_release_week = currentReleaseFile.read().replace(" ", '').replace("\n", '')
     iso_calendar = datetime.date.today().isocalendar()
@@ -56,9 +51,6 @@ def verify_manami_adb():
             else:
                 continue
         # write out the data
-        TextFile(manami_database_path + 'manami_database_data.json').write(data)
+        JSONFile(manami_database_path + 'manami_database_data.json', separators=(',', ':'), indent=None).write(data)
         currentReleaseFile.write(current_week)
         Database.updateData(data)
-    else: # not new week
-        print("less than a week")
-    print(time.time() - start_time)
