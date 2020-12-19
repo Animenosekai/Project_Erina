@@ -1,6 +1,7 @@
 import datetime
 from ErinaParser.utils import utils
-
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erina
 class ErinaData():
     class AnimeTitle():
         """
@@ -153,6 +154,7 @@ class ErinaData():
             }
     
     def __init__(self, data) -> None:
+        StatsAppend(erina.erinaParsingCount, "ErinaDB")
         # Normalize to get the same type of data everytime
         if isinstance(data, list):
             "\n".join(data)

@@ -1,7 +1,7 @@
 import datetime
 from ErinaParser.utils import utils
-
-
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erina
 class ErinaCache():
     class CacheTimestamp():
         """
@@ -22,6 +22,7 @@ class ErinaCache():
             }
     
     def __init__(self, data) -> None:
+        StatsAppend(erina.erinaParsingCount, "Erina")
         # Normalize to get the same type of data everytime
         if isinstance(data, list):
             "\n".join(data)

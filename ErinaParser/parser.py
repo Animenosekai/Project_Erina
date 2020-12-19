@@ -56,23 +56,24 @@ class ErinaFile():
         self.content = None
         if type is not None and filename is not None:
             self.type = str(type)
+            filename = str(filename)
             if self.type == "anilist_cache":
-                self.data = TextFile(erina_dir + "/ErinaCaches/AniList_Cache/").read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/AniList_Cache/" + filename + ".erina").read()
                 
             elif self.type == "erina_cache":
-                self.data = TextFile(erina_dir + "/ErinaCaches/Erina_Cache/").read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/Erina_Cache/" + filename + ".erina").read()
             
             elif self.type == "erina_database":
-                self.data = TextFile(erina_dir + "/ErinaCaches/ErinaDatabase/").read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/ErinaDatabase/" + filename + ".erina").read()
             
             elif self.type == "iqdb_cache":
-                self.data = TextFile(erina_dir + "/ErinaCaches/IQDB_Cache/").read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/IQDB_Cache/" + filename + ".erina").read()
             
             elif self.type == "saucenao_cache":
-                self.data = TextFile(erina_dir + "/ErinaCaches/SauceNAO_Cache/").read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/SauceNAO_Cache/" + filename + ".erina").read()
             
             elif self.type == "tracemoe_cache":
-                self.data = TextFile(erina_dir + "/ErinaCaches/TraceMOE_Cache/").read()
+                self.data = TextFile(erina_dir + "/ErinaCaches/TraceMOE_Cache/" + filename + ".erina").read()
             
         elif data is not None:
             self.type = _get_type(data)

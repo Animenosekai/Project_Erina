@@ -6,6 +6,8 @@ A .erina trace.moe cache file parser
 
 import datetime
 import ErinaParser.utils.utils as utils
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erina
 
 class TraceMOECache():
 
@@ -160,6 +162,7 @@ class TraceMOECache():
             }
 
     def __init__(self, data) -> None:
+        StatsAppend(erina.erinaParsingCount, "trace.moe")
         # Normalize to get the same type of data everytime
         if isinstance(data, list):
             "\n".join(data)

@@ -1,8 +1,13 @@
 from datetime import datetime
 from time import time
+from typing import Text
 from Erina import erina_stats
 from ErinaServer.Erina.admin.utils import convert_to_int, convert_to_float
 from Erina import env_information
+from os.path import isfile
+from Erina.env_information import erina_dir
+from ErinaParser.utils.anilist_parser import AnilistCache
+from safeIO import TextFile
 
 def returnTimestamp(logLine):
     try:
@@ -100,6 +105,10 @@ def returnStats():
     twitter_streamHit = erina_stats.twitter.streamHit.readlines()
     erina_stats.twitter.streamHit.blocking = False
     
+    results["search"] = {}
+    results["search"]["searchCount"] = {}
+    results["search"]["searchCount"]["values"] = {}
+    results["search"]["searchCount"]["success"] = True
 
     def _retrieveStats(category, subcategory, data):
         
@@ -128,7 +137,14 @@ def returnStats():
                         results[category][subcategory]["values"][timestamp] += 1
                     else:
                         results[category][subcategory]["values"][timestamp] = 1
-                elif subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups"]:
+                    
+                    if category == "search" and subcategory in ["anilistIDSearchCount", "titleSearchCount", "imageSearchCount"]:
+                        if timestamp in results["search"]["searchCount"]["values"]:
+                            results["search"]["searchCount"]["values"][timestamp] += 1
+                        else:
+                            results["search"]["searchCount"]["values"][timestamp] = 1
+
+                elif subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "cacheFilesCount"]:
                     if timestamp in results[category][subcategory]["values"]:
                         results[category][subcategory]["values"][timestamp] += convert_to_int(element.split("    ")[1])
                     else:
@@ -148,35 +164,35 @@ def returnStats():
                             if firstElementTimestamp.minute == currentTime.minute:
                                 for element in data:
                                     currentTimestamp = returnTimestamp(element).replace(microsecond=0)
-                                    if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages"]:
+                                    if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                         addValue(currentTimestamp, element)
                                     else:    
                                         addValue(currentTimestamp)
                             else:
                                 for element in data:
                                     currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0)
-                                    if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages"]:
+                                    if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                         addValue(currentTimestamp, element)
                                     else:    
                                         addValue(currentTimestamp)
                         else:
                             for element in data:
                                 currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0)
-                                if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages"]:
+                                if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                     addValue(currentTimestamp, element)
                                 else:    
                                     addValue(currentTimestamp)
                     else:
                         for element in data:
                             currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0)
-                            if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages"]:
+                            if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                 addValue(currentTimestamp, element)
                             else:    
                                 addValue(currentTimestamp)
                 else:
                     for element in data:
                         currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=0)
-                        if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages"]:
+                        if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                             addValue(currentTimestamp, element)
                         else:    
                             addValue(currentTimestamp)
@@ -213,7 +229,6 @@ def returnStats():
     _retrieveStats('line', 'imageSearchHit', line_imageSearchHit)
     _retrieveStats('line', 'infoHit', line_infoHit)
     _retrieveStats('line', 'storedImages', line_storedImages)
-    _retrieveStats('search', 'searchCount', search_searchCount)
     _retrieveStats('search', 'anilistIDSearchCount', search_anilistIDSearchCount)
     _retrieveStats('search', 'imageSearchCount', search_imageSearchCount)
     _retrieveStats('search', 'titleSearchCount', search_titleSearchCount)
@@ -226,7 +241,31 @@ def returnStats():
         for key in results["twitter"]["responsePolarity"]["values"]:
             currentState = results["twitter"]["responsePolarity"]["values"][key]
             results["twitter"]["responsePolarity"]["values"][key] = sum(currentState) / len(currentState)
-        
+    
+    animeSearchStats = {}
+    for line in search_titleSearchCount:
+        currentAnime = str(line.split("    ")[1]).replace("\n", "").capitalize()
+        if currentAnime in animeSearchStats:
+            animeSearchStats[currentAnime] += 1
+        else:
+            animeSearchStats[currentAnime] = 1
+    
+    for line in search_anilistIDSearchCount:
+        currentAnime = str(line.split("    ")[1])
+        if isfile(erina_dir + "/ErinaCaches/AniList_Cache/" + currentAnime + ".erina"):
+            currentAnime = str(AnilistCache(TextFile(erina_dir + "/ErinaCaches/AniList_Cache/" + currentAnime + ".erina").read()).title)
+            if currentAnime in animeSearchStats:
+                animeSearchStats[currentAnime] += 1
+            else:
+                animeSearchStats[currentAnime] = 1
+
+    animeSearchRank = []
+
+    for anime in sorted(animeSearchStats, key=animeSearchStats.get, reverse=True):
+        animeSearchRank.append({anime: animeSearchStats[anime]})
+
+    results["animeSearchRank"] = animeSearchRank
 
     results["uptime"] = env_information.startTime
+
     return results

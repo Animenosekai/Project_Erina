@@ -1,5 +1,7 @@
 import datetime
 from ErinaParser.utils import utils
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erina
 
 index_id_to_name = {
     0 : "HMagazines",
@@ -212,6 +214,7 @@ class SauceNAOCache():
             }
     
     def __init__(self, data) -> None:
+        StatsAppend(erina.erinaParsingCount, "SauceNAO")
         # Normalize to get the same type of data everytime
         if isinstance(data, list):
             "\n".join(data)

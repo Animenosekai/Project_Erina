@@ -1,6 +1,7 @@
 import datetime
 from ErinaParser.utils import utils
-
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erina
 class IQDBCache():
     class Size():
         """
@@ -41,6 +42,7 @@ class IQDBCache():
             }
     
     def __init__(self, data) -> None:
+        StatsAppend(erina.erinaParsingCount, "IQDB")
         # Normalize to get the same type of data everytime
         if isinstance(data, list):
             "\n".join(data)

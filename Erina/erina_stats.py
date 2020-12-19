@@ -12,6 +12,9 @@ line = files.lineStats()
 search = files.searchStats()
 twitter = files.twitterStats()
 
-def StatsAppend(file, content):
+def StatsAppend(file, content=None):
     if ErinaConfig.stats:
-        file.append(f"{str(int(time()))}    {str(content)}".replace("\n", "") + "\n")
+        if content is not None:
+            file.append(f"{str(int(time()))}    {str(content)}".replace("\n", "") + "\n")
+        else:
+            file.append(str(int(time())) + "\n")

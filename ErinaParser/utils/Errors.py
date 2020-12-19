@@ -1,6 +1,8 @@
 from time import time
 from datetime import datetime
-
+from Erina.erina_log import log
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erina
 class ParserError():
     """
     A .erina parser error
@@ -11,6 +13,8 @@ class ParserError():
         self.timestamp = time()
         self.datetime = datetime.fromtimestamp(self.timestamp)
         self.formatted_timestamp = f"{str(self.datetime.year)}-{str(self.datetime.month)}-{str(self.datetime.day)} at {str(self.datetime.hour)}:{str(self.datetime.minute)}:{str(self.datetime.second)}"
+        log("ErinaParser", self.message, error=True)
+        StatsAppend(erina.errorsCount, "ErinaParser")
     
     def __repr__(self) -> str:
         return f"{str(self.formatted_timestamp)} ErinaParser >> [{self.type}] {self.message}"

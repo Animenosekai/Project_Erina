@@ -7,7 +7,8 @@ A .erina AniList cache file parser
 import re
 import ErinaParser.utils.utils as utils
 from datetime import datetime
-
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import erina
 class AnilistCache():
     
     class AnimeTitle():
@@ -328,6 +329,7 @@ class AnilistCache():
             }
 
     def __init__(self, data) -> None:
+        StatsAppend(erina.erinaParsingCount, "AniList")
         # Normalize to get the same type of data everytime
         if isinstance(data, list):
             "\n".join(data)

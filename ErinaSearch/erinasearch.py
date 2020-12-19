@@ -19,7 +19,7 @@ def anilistIDSearch(anilistID):
     © Anime no Sekai
     """
     log("ErinaSearch", "Searching for " + str(anilistID) + "... (anilist id search)")
-    StatsAppend(SearchStats.searchCount, f"New AniList ID Search: {str(anilistID)}")
+    StatsAppend(SearchStats.anilistIDSearchCount, anilistID)
     return anilist_id_search.search_anime_by_anilist_id(anilistID)
 
 def searchAnime(query):
@@ -30,7 +30,7 @@ def searchAnime(query):
     © Anime no Sekai
     """
     log("ErinaSearch", "Searching for " + str(query) + "... (title search)")
-    StatsAppend(SearchStats.searchCount, f"New Anime Search: {str(query)}")
+    StatsAppend(SearchStats.titleSearchCount, query)
     return title_search.searchAnime(query)
 
 def imageSearch(image):
@@ -43,5 +43,5 @@ def imageSearch(image):
     © Anime no Sekai
     """
     log("ErinaSearch", "Searching for an image...")
-    StatsAppend(SearchStats.searchCount, f"New Image Search")
+    StatsAppend(SearchStats.imageSearchCount, None)
     return hash_search.search_anime_by_hash(erinahash.hash_image(image))
