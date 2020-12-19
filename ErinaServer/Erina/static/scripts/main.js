@@ -1,4 +1,5 @@
 var scriptsLoadingQueue = []
+var chartsRegistry = []
 
 function _hideSelectionLine(){
     document.getElementById("overviewSelectionLine").style.opacity = 0;
@@ -62,6 +63,9 @@ function goTo(title, url, resourceLocation=null) {
                 }
                 _hideSelectionLine()
                 document.getElementById(url + "SelectionLine").style.opacity = 1;
+                for (chart in chartsRegistry) {
+                    chartsRegistry[chart].dispose()
+                }
                 document.getElementById("ErinaAdminBody").innerHTML = data
                 history.pushState({page: title}, title, "/erina/admin/" + url);
                 

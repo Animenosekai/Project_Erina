@@ -5,7 +5,7 @@ Caching API for the Erina Project
 Erina Project - 2020
 """
 
-from Erina import erina_log
+from Erina.erina_log import log
 from Erina import config
 from Erina.env_information import erina_dir
 
@@ -21,17 +21,15 @@ from ErinaParser.utils import anilist_parser, tracemoe_parser, saucenao_parser, 
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import external as ExternalStats
 
+from sys import exc_info
+import traceback
+
 
 caches_dir_path = erina_dir + '/ErinaCaches/'
 anilist_cache_path = caches_dir_path + 'AniList_Cache/'
 erina_cache_path = caches_dir_path + 'Erina_Cache/'
 tracemoe_cache_path = caches_dir_path + 'TraceMoe_Cache/'
 saucenao_cache_path = caches_dir_path + 'SauceNAO_Cache/'
-
-if str(config.Caches.keys.saucenao).replace(" ", "") not in ["None", ""]:
-    saucenao_api = SauceNao(api_key=config.Caches.keys.saucenao, numres=1)
-else:
-    saucenao_api = SauceNao(numres=1)
 
 def anilist_caching(anilist_id):
     '''
@@ -40,7 +38,7 @@ def anilist_caching(anilist_id):
     © Anime no Sekai - 2020
     '''
     try:
-        erina_log.logcaches(f'Caching {str(anilist_id)} from AniList API...', 'anilist', anilist_id)
+        log("ErinaCaches", f'Caching {str(anilist_id)} from AniList API...')
         try:
             apiResponse = anilist.anilist_api(anilist_id)
         except:
@@ -70,7 +68,7 @@ def anilist_search_caching(query):
     © Anime no Sekai - 2020
     '''
     try:
-        erina_log.logcaches('Caching from AniList Search API...', 'anilist_search', str(query))
+        log("ErinaCaches", f'Caching {str(query)} from AniList Search API...')
         try:
             apiResponse = anilist.anilist_api_search(query)
         except:
@@ -99,27 +97,30 @@ def tracemoe_caching(image_hash):
     © Anime no Sekai - 2020
     '''
     try:
-        erina_log.logcaches('Caching trace.moe data...', 'tracemoe', str(image_hash))
+        log("ErinaCaches", f'Caching {str(image_hash)} trace.moe data...')
         try:
             if image_hash.has_url is not None:
-                if str(config.Caches.keys.tracemoe).replace(" ", "") not in ["None", ""]:
+                if str(config.Caches.keys.tracemoe).replace(" ", "") in ["None", ""]:
                     requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_hash.url).text)
                 else:
                     requestResponse = json.loads(requests.get('https://trace.moe/api/search?url=' + image_hash.url + '&token=' + str(config.Caches.keys.tracemoe)).text)
             else:
-                if str(config.Caches.keys.tracemoe).replace(" ", "") not in ["None", ""]:
+                if str(config.Caches.keys.tracemoe).replace(" ", "") in ["None", ""]:
                     requestResponse = json.loads(requests.post('https://trace.moe/api/search', json={'image': image_hash.base64}))
                 else:
                     requestResponse = json.loads(requests.post('https://trace.moe/api/search?token=' + str(config.Caches.keys.tracemoe), json={'image': image_hash.base64}))
         except:
             return Errors.CachingError("TRACEMOE_API_RESPONSE", "An error occured while retrieving information from the trace.moe API")
         
-        StatsAppend(ExternalStats.tracemoeAPICalls, "New Call")
+        StatsAppend(ExternalStats.tracemoeAPICalls)
 
         try:
             cache = tracemoe.erina_from_json(requestResponse)
         except:
-            return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting Trace.moe API Data to a caching format ({str(image_hash)})")
+            print(exc_info()[0])
+            print(exc_info()[1])
+            print(traceback.print_exception(*exc_info()))
+            return Errors.CachingError("ERINA_CONVERSION", f"An error occured while converting trace.moe API Data to a caching format ({str(image_hash)})")
         try:
             TextFile(tracemoe_cache_path + str(image_hash) + '.erina', blocking=False).write(cache)
         except:
@@ -135,7 +136,11 @@ def saucenao_caching(image_hash):
     © Anime no Sekai - 2020
     '''
     try:
-        erina_log.logcaches(f'Caching SauceNAO API data...', 'saucenao', str(image_hash))
+        log("ErinaCaches", f"Caching {str(image_hash)} SauceNAO data...")
+        if str(config.Caches.keys.saucenao).replace(" ", "") not in ["None", ""]:
+            saucenao_api = SauceNao(api_key=config.Caches.keys.saucenao, numres=1)
+        else:
+            saucenao_api = SauceNao(numres=1)
         if image_hash.has_url:
             try:
                 api_results = saucenao_api.from_url(image_hash.url)[0]
@@ -147,7 +152,7 @@ def saucenao_caching(image_hash):
             except:
                 return Errors.CachingError("SAUCENAO_API_RESPONSE", "An error occured while retrieving SauceNAO API Data")
         
-        StatsAppend(ExternalStats.saucenaoAPICalls, "New Call")
+        StatsAppend(ExternalStats.saucenaoAPICalls)
 
         try:
             cache = saucenao.erina_from_api(api_results)
@@ -168,7 +173,7 @@ def erina_caching(image_hash, database_path, similarity, anilist_id):
     © Anime no Sekai - 2020
     '''
     try:
-        erina_log.logcaches('Caching Erina Database data...', 'erina', {'image_hash': str(image_hash), 'database_path': str(database_path), 'similarity': similarity})
+        log("ErinaCaches", f'Caching {str(image_hash)} Erina Database data...')
         try:
             cache = erina.erina_from_data(str(image_hash), database_path, similarity, anilist_id)
         except:

@@ -58,6 +58,7 @@ def hash_image(image, algorithm=None):
     """
     result = None
     has_url = False
+    url = None
 
     log("ErinaHash", "Hashing an image...")
     # Needs to be a PIL instance
@@ -73,6 +74,7 @@ def hash_image(image, algorithm=None):
                 raise ValueError("b64decode returned an empty string")
         except:
             try:
+                url = image
                 image = Image.open(BytesIO(requests.get(str(image)).content)) # Open the downloaded image as a PIL Image instance
                 has_url  = True
             except:
@@ -101,7 +103,10 @@ def hash_image(image, algorithm=None):
         else:
             return Errors.HashingError("INVALID_ALGORITHM", "We couldn't determine the hashing algorithm you wanted to use.")
     
-    return HashObject(result, image, has_url)
+    if has_url:
+        return HashObject(result, image, url)
+    else:
+        return HashObject(result, image)
 
 def base64_from_image(image_path):
     """

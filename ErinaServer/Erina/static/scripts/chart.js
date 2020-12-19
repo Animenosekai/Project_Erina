@@ -54,6 +54,7 @@ function createChart(id, data, color) {
 
 
     document.querySelector("#" + id + " > div > svg > g > g:nth-child(2) > g:nth-child(2) > g > g:nth-child(3)").style.display = "none"
+    chartsRegistry.push(chart)
     return chart;
 }
 

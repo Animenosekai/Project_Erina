@@ -1,6 +1,5 @@
 from datetime import datetime
 from time import time
-from typing import Text
 from Erina import erina_stats
 from ErinaServer.Erina.admin.utils import convert_to_int, convert_to_float
 from Erina import env_information
@@ -17,7 +16,7 @@ def returnTimestamp(logLine):
 
 def returnStats():
     results = {}
-    
+
     ### BLOCKING EACH FILE AND GETTING ITS CONTENT
     erina_stats.api.searchEndpointCall.blocking = True
     api_searchEndpointCall = erina_stats.api.searchEndpointCall.readlines()
@@ -79,9 +78,6 @@ def returnStats():
     erina_stats.line.storedImages.blocking = True
     line_storedImages = erina_stats.line.storedImages.readlines()
     erina_stats.line.storedImages.blocking = False
-    erina_stats.search.searchCount.blocking = True
-    search_searchCount = erina_stats.search.searchCount.readlines()
-    erina_stats.search.searchCount.blocking = False
     erina_stats.search.anilistIDSearchCount.blocking = True
     search_anilistIDSearchCount = erina_stats.search.anilistIDSearchCount.readlines()
     erina_stats.search.anilistIDSearchCount.blocking = False
@@ -126,7 +122,7 @@ def returnStats():
         results[category][subcategory]["success"] = False
         results[category][subcategory]["values"] = {}
 
-        if len(data) > 0: # IF THERE IS DATA
+        if data is not None and len(data) > 0: # IF THERE IS DATA
 
             #### ADDING A VALUE
             def addValue(timestamp, data=None):
@@ -270,9 +266,21 @@ def returnStats():
 
     results["animeSearchRank"] = animeSearchRank
 
+
+    searchCountKeys = sorted(results["search"]["searchCount"]["values"].keys())
+    finalSearchCountResult = {}
+    for timestamp in searchCountKeys:
+        finalSearchCountResult[timestamp] = results["search"]["searchCount"]["values"][timestamp]
+
+    results["search"]["searchCount"]["values"] = finalSearchCountResult
+
     results["uptime"] = env_information.startTime
 
     return results
+
+
+
+
 
 
 def pastMonthErrors():
@@ -289,6 +297,11 @@ def pastMonthErrors():
         if errorTimestamp - currentTime <= 2600000:
             results.append({errorTimestamp: error.split("    ")[1]})
     return results
+
+
+
+
+
 
 def biggestUsers():
     erina_stats.discord.descriptionHit.blocking = True

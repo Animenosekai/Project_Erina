@@ -251,8 +251,8 @@ class TraceMOECache():
                     self.timing = self.Timing(at=element[4:])
                 else:
                     self.timing.addTiming(at=element[4:])
-            elif element[:22] == 'Similarity/Confidence:':
-                self.similarity = utils.convert_to_float(element[23:])
+            elif element[:11] == 'Similarity:':
+                self.similarity = utils.convert_to_float(element[12:])
             elif element[:11] == 'TokenThumb:':
                 self.tokenthumb = str(element[12:])
             elif element[:16] == 'Cache Timestamp:':

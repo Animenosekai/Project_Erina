@@ -13,7 +13,7 @@ class SearchingError():
         self.timestamp = time()
         self.datetime = datetime.fromtimestamp(self.timestamp)
         self.formatted_timestamp = f"{str(self.datetime.year)}-{str(self.datetime.month)}-{str(self.datetime.day)} at {str(self.datetime.hour)}:{str(self.datetime.minute)}:{str(self.datetime.second)}"
-        log("ErinaSearch", self.message, error=True)
+        log("ErinaSearch", self.type + ": " + self.message, error=True)
         StatsAppend(erina.errorsCount, "ErinaSearch")
     
     def __repr__(self) -> str:

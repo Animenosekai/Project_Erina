@@ -16,7 +16,7 @@
         ], 
         "consoleLog": true, 
         "fileLog": true, 
-        "stats": true,
+        "stats": true, 
         "logsTimeout": 604800
     }, 
     "Twitter": {

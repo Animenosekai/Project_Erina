@@ -12,6 +12,7 @@ function PageInitialize(){
                 results.push({ "date": new Date(timestamp * 1000), "value": data.search.searchCount.values[timestamp]})
             }
             document.getElementById("erinaStats-current-number-animesearch").innerText = data.search.searchCount.values[closestTimestamp]
+            console.log(results)
             createChart("erinaChart-animesearch", results, am4core.color("#7ae2ff"))
         }
         
