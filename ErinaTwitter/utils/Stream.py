@@ -36,7 +36,7 @@ class Listener(tweepy.StreamListener):
             """
             Tweet Receiving
             """
-            StatsAppend(TwitterStats.streamHit, "New Hit")
+            StatsAppend(TwitterStats.streamHit)
             if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
                 return
 
@@ -47,7 +47,7 @@ class Listener(tweepy.StreamListener):
             if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
                 if TwitterConfig.monitoring.check_replies and Twitter.isReplyingToErina(tweet): # Monitor Mode ON, Check Replies to Monitored ON
                     log("ErinaTwitter", "New monitoring hit from @" + str(tweet.user.screen_name))
-                    StatsAppend(TwitterStats.askingHit, f"From {str(tweet.user.screen_name)}")
+                    StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
                     imageURL = Twitter.findImage(tweet)
                     if imageURL is None:
                         imageURL = Twitter.findParentImage(tweet)
@@ -55,17 +55,17 @@ class Listener(tweepy.StreamListener):
                         searchResult = imageSearch(imageURL)
                         tweetResponse = makeTweet(searchResult)
                         if tweetResponse is not None:
-                            StatsAppend(TwitterStats.responses, "New Response")
+                            StatsAppend(TwitterStats.responses)
                             ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
                 elif tweet.user.screen_name in TwitterConfig.monitoring.accounts: # Monitor Mode ON, Check Replies to Monitored OFF
                     log("ErinaTwitter", "New monitoring hit")
-                    StatsAppend(TwitterStats.askingHit, f"From {str(tweet.user.screen_name)}")
+                    StatsAppend(TwitterStats.askingHitstr(tweet.user.screen_name))
                     imageURL = Twitter.findImage(tweet)
                     if imageURL is not None:
                         searchResult = imageSearch(imageURL)
                         tweetResponse = makeTweet(searchResult)
                         if tweetResponse is not None:
-                            StatsAppend(TwitterStats.responses, "New Response")
+                            StatsAppend(TwitterStats.responses)
                             ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
             
             
@@ -76,11 +76,11 @@ class Listener(tweepy.StreamListener):
                     imageURL = Twitter.findParentImage(tweet)
                 if imageURL is not None and Twitter.isAskingForSauce(tweet):
                     log("ErinaTwitter", "New asking hit from @" + str(tweet.user.screen_name))
-                    StatsAppend(TwitterStats.askingHit, f"From {str(tweet.user.screen_name)}")
+                    StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
                     searchResult = imageSearch(imageURL)
                     tweetResponse = makeTweet(searchResult)
                     if tweetResponse is not None:
-                        StatsAppend(TwitterStats.responses, "New Response")
+                        StatsAppend(TwitterStats.responses)
                         ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
                     elif Twitter.isMention(tweet):
                         ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
@@ -92,7 +92,7 @@ class Listener(tweepy.StreamListener):
             DM Receiving
             """
             log("ErinaTwitter", "New direct message from @" + str(message.user.screen_name))
-            StatsAppend(TwitterStats.directMessagingHit, f"From {str(message.user.screen_name)}")
+            StatsAppend(TwitterStats.directMessagingHit, str(message.user.screen_name))
 
 
 

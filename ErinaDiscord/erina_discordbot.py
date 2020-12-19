@@ -93,7 +93,7 @@ async def on_message(message):
             listOfResults = []
             await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND
             log("ErinaDiscord", "New image search from @" + str(message.author))
-            StatsAppend(DiscordStats.imageSearchHit, f"From {str(message.author)}")
+            StatsAppend(DiscordStats.imageSearchHit, f"{str(message.author)}")
             for file in message.attachments:
                 if filecenter.type_from_extension(filecenter.extension_from_base(file.filename)) == 'Image': # If the file is an image
                     current_anime = Parser.makeImageResponse(erinasearch.imageSearch(file.url)) # Get infos about the anime

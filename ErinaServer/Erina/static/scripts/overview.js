@@ -1,19 +1,33 @@
 function PageInitialize(){
-    //console.log("Hello")
-    const templateData = [
-        { "date": new Date(2018, 0, 1, 8, 0, 0), "value": 57 },
-        { "date": new Date(2018, 0, 1, 9, 0, 0), "value": 27 },
-        { "date": new Date(2018, 0, 1, 10, 0, 0), "value": 24 },
-        { "date": new Date(2018, 0, 1, 11, 0, 0), "value": 59 },
-        { "date": new Date(2018, 0, 1, 12, 0, 0), "value": 33 },
-        { "date": new Date(2018, 0, 1, 13, 0, 0), "value": 46 },
-        { "date": new Date(2018, 0, 1, 14, 0, 0), "value": 20 },
-        { "date": new Date(2018, 0, 1, 15, 0, 0), "value": 42 },
-        { "date": new Date(2018, 0, 1, 16, 0, 0), "value": 59, "opacity": .9}
-    ]
-
-    createChart("erinaChart-animesearch", templateData, am4core.color("#7ae2ff"))
-    createChart("erinaChart-tweets", templateData, am4core.color("#7ae2ff"))
+    fetch("/erina/api/admin/stats")
+    .then((resp) => resp.json())
+    .then(function(data){
+        if (data.search.searchCount.success == true) {
+            var closestTimestamp = 0
+            var results = []
+            for (timestamp in data.search.searchCount.values) {
+                if (closestTimestamp < timestamp) {
+                    closestTimestamp = timestamp
+                }
+                results.push({ "date": new Date(timestamp * 1000), "value": data.search.searchCount.values[timestamp]})
+            }
+            document.getElementById("erinaStats-current-number-animesearch").innerText = data.search.searchCount.values[closestTimestamp]
+            createChart("erinaChart-animesearch", results, am4core.color("#7ae2ff"))
+        }
+        
+        if (data.twitter.responses.success == true) {
+            var closestTimestamp = 0
+            var results = []
+            for (timestamp in data.twitter.responses.values) {
+                if (closestTimestamp < timestamp) {
+                    closestTimestamp = timestamp
+                }
+                results.push({ "date": new Date(timestamp * 1000), "value": data.twitter.responses.values[timestamp]})
+            }
+            document.getElementById("erinaStats-current-number-tweets").innerText = data.twitter.responses.values[closestTimestamp]
+            createChart("erinaChart-tweets", results, am4core.color("#7ae2ff"))
+        }
+    })
 
     function formatTime(dateObj) {
         const currentTime = new Date()
@@ -21,7 +35,11 @@ function PageInitialize(){
             return String(dateObj.getDate()) + "/" + String(dateObj.getMonth())
         } else {
             //return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes()) + ":" + String(dateObj.getSeconds())
-            return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes())
+            var minutes = String(dateObj.getMinutes())
+            if (minutes.length < 2) {
+                minutes = "0" + minutes
+            }
+            return String(dateObj.getHours()) + ":" + minutes
         }
     }
 
@@ -44,16 +62,34 @@ function PageInitialize(){
         }
     }
 
-    addErinaLogs(1606308945, "error", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606308945, "info", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606308945, "info", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606308945, "error", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606308945, "info", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606308945, "error", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606311650, "info", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606312050, "info", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606312150, "error", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
-    addErinaLogs(1606312161, "info", "[ErinaAdmin] Testing ErinaLogs for ErinaAdmin")
+    fetch("/erina/api/admin/logs")
+    .then((resp) => resp.json())
+    .then(function(data){
+        for (element in data) {
+            for (timestamp in data[element]) {
+                addErinaLogs(timestamp, "info", data[element][timestamp])
+            }
+        }
+    })
 
+    fetch("/erina/api/admin/stats/biggestUsers")
+    .then((resp) => resp.json())
+    .then(function(data) {
+        var finalRankString = ""
+        var keys = Object.keys(data)
+        if (keys.length >= 1) {
+            finalRankString = keys[0]
+        } else {
+            finalRankString = "No data"
+        }
+        document.getElementById("erinaWidget-bestuser-value").innerText = finalRankString
+        
+    })
+
+    fetch("/erina/api/admin/stats/pastMonthErrors")
+    .then((resp) => resp.json())
+    .then(function(data) {
+        document.getElementById("erinaWidget-errors-value").innerText = String(data.length)
+    })
 }
 

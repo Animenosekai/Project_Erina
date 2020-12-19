@@ -89,7 +89,7 @@ def initHandler():
                         TextSendMessage(text="You haven't sent any image yet!")
                     )
                 log("ErinaLine", "New image search from " + displayName)
-                StatsAppend(LineStats.imageSearchHit, f"From {displayName}")
+                StatsAppend(LineStats.imageSearchHit, displayName)
                 
             elif event.message.text[:10] == 'anime_info':
                 # Sending the messages
@@ -98,7 +98,7 @@ def initHandler():
                     TextSendMessage(text=Parser.makeInfoResponse(erinasearch.searchAnime(event.message.text[10:])))
                 )
                 log("ErinaLine", "New info hit from " + displayName + " (asking for " + str(event.message.text[10:]) + ")")
-                StatsAppend(LineStats.infoHit, f"{str(event.message.text[10:])} from {displayName}")
+                StatsAppend(LineStats.infoHit, f"{displayName} >>> {str(event.message.text[10:])}")
 
             elif event.message.text[:17] == 'anime_description':
                 # Sending the messages
@@ -107,7 +107,7 @@ def initHandler():
                     TextSendMessage(text=Parser.makeDescriptionResponse(erinasearch.searchAnime(event.message.text[17:])))
                 )
                 log("ErinaLine", "New description hit from " + displayName + " (asking for " + str(event.message.text[10:]) + ")")
-                StatsAppend(LineStats.descriptionHit, f"{str(event.message.text[17:])} from {displayName}")
+                StatsAppend(LineStats.descriptionHit, f"{displayName} >>> {str(event.message.text[17:])}")
 
 
 if LineConfig.run:

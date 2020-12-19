@@ -1,7 +1,6 @@
 ///// ERINA PROJECT
 >>> for @Animenosekai
 
---> [Code Fix] Fixing Search Stats
 --> [Code Fix] Fixing Multiprocessing Error with WebSocket Server
 --> [Code Fix] Multiple Fixing
 --> [Code Fix] Code Cleaning
@@ -10,15 +9,10 @@
 --> [Code Fix] Reevaluate needed data for Caches
 --> [Code Fix] Speed Improvement
 --> [Code Fix] Error/Exception Catching
---> [Code Fix] Error Logging
 --> [Website Styling] Fix CSS (text align) for Stats
 --> [Website Styling] New CSS for Config
 --> [Website JS] Async Data retrieving for Stats
 --> [Website Functionnality] Management buttons for ErinaConfig
---> [Website Functionnality] Anime Title Stats
---> [Website Functionnality] Biggest User Stats
---> [Website Functionnality] Overview Stats
---> [Website Functionnality] Overview ErinaLogs and Feedbacks
 --> [Website Functionnality] Feedbacks Page
 --> [Website Functionnality] Finish Auth Method
 --> [GitHub Repo/Website Functionnality] API Docs Page

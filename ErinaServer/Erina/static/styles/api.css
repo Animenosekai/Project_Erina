@@ -1,0 +1,53 @@
+api-endpoint-container {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 244, 208, 0.4);
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+}
+
+
+api-endpoint-title-container {
+    display: flex;
+    flex-direction: row;
+}
+
+api-endpoint-title {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+api-endpoint-description {
+    font-size: 1.1em;
+    color: grey;
+}
+
+api-endpoint-args-container {
+    margin: 16px 0px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #f4f4f4;
+}
+
+api-endpoint-args-container::before {
+    content: "Arguments";
+    display: block;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #969ba8;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+api-endpoint-arg {
+    font-size: 0.95em;
+}
+
+.optionalArg {
+    color: grey;
+}
+
+.apiResponse {
+    height: 400px;
+}

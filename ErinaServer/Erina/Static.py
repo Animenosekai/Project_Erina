@@ -27,61 +27,14 @@ def mainEndpoint(page):
         return "404, Not Found"
 
 
-#######################
-#        Styles       #
-#######################
+@ErinaServer.route("/erina/admin/static/styles/<page>.css")
+def stylesEndpoint(page):
+    if page in ["main", "console", "loading", "overview", "stats", "config", "api"]:
+        return send_from_directory(stylesLocation, page + ".css")
+    return "404, Not Found"
 
-@ErinaServer.route(stylesPath + "main.css")
-def mainCss():
-    return send_from_directory(stylesLocation, "main.css")
-
-@ErinaServer.route(stylesPath + "console.css")
-def consoleCss():
-    return send_from_directory(stylesLocation, "console.css")
-
-@ErinaServer.route(stylesPath + "loading.css")
-def loadingCss():
-    return send_from_directory(stylesLocation, "loading.css")
-
-@ErinaServer.route(stylesPath + "overview.css")
-def overviewCss():
-    return send_from_directory(stylesLocation, "overview.css")
-
-@ErinaServer.route(stylesPath + "stats.css")
-def statsCss():
-    return send_from_directory(stylesLocation, "stats.css")
-
-@ErinaServer.route(stylesPath + "config.css")
-def configCss():
-    return send_from_directory(stylesLocation, "config.css")
-
-#######################
-#      JavaScript     #
-#######################
-@ErinaServer.route(scriptsPath + "main.js")
-def mainJs():
-    return send_from_directory(scriptsLocation, "main.js")
-
-@ErinaServer.route(scriptsPath + "console.js")
-def consoleJs():
-    return send_from_directory(scriptsLocation, "console.js")
-
-@ErinaServer.route(scriptsPath + "loading.js")
-def loadingJs():
-    return send_from_directory(scriptsLocation, "loading.js")
-
-@ErinaServer.route(scriptsPath + "chart.js")
-def chartJs():
-    return send_from_directory(scriptsLocation, "chart.js")
-
-@ErinaServer.route(scriptsPath + "overview.js")
-def overviewJs():
-    return send_from_directory(scriptsLocation, "overview.js")
-
-@ErinaServer.route(scriptsPath + "stats.js")
-def statsJs():
-    return send_from_directory(scriptsLocation, "stats.js")
-
-@ErinaServer.route(scriptsPath + "config.js")
-def configJs():
-    return send_from_directory(scriptsLocation, "config.js")
+@ErinaServer.route("/erina/admin/static/scripts/<page>.js")
+def scriptsEndpoint(page):
+    if page in ["main", "console", "loading", "chart", "overview", "stats", "config", "api"]:
+        return send_from_directory(scriptsLocation, page + ".js")
+    return "404, Not Found"

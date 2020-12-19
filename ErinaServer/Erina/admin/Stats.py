@@ -17,6 +17,8 @@ def returnTimestamp(logLine):
 
 def returnStats():
     results = {}
+    
+    ### BLOCKING EACH FILE AND GETTING ITS CONTENT
     erina_stats.api.searchEndpointCall.blocking = True
     api_searchEndpointCall = erina_stats.api.searchEndpointCall.readlines()
     erina_stats.api.searchEndpointCall.blocking = False
@@ -144,11 +146,13 @@ def returnStats():
                         else:
                             results["search"]["searchCount"]["values"][timestamp] = 1
 
-                elif subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "cacheFilesCount"]:
+                elif subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups"]:
                     if timestamp in results[category][subcategory]["values"]:
                         results[category][subcategory]["values"][timestamp] += convert_to_int(element.split("    ")[1])
                     else:
                         results[category][subcategory]["values"][timestamp] = convert_to_int(element.split("    ")[1])
+                elif subcategory == "cacheFilesCount":
+                    results[category][subcategory]["values"][timestamp] = convert_to_int(element.split("    ")[1])
                 elif subcategory == "responsePolarity":
                     if timestamp in results[category][subcategory]["values"]:
                         results[category][subcategory]["values"][timestamp].append(convert_to_float(element.split("    ")[1]))
@@ -269,3 +273,114 @@ def returnStats():
     results["uptime"] = env_information.startTime
 
     return results
+
+
+def pastMonthErrors():
+    erina_stats.erina.errorsCount.blocking = True
+    errorsCount = erina_stats.erina.errorsCount.readlines()
+    erina_stats.erina.errorsCount.blocking = False
+    
+    currentTime = time()
+    
+    results = []
+    for error in errorsCount:
+        error = error.replace("\n", "")
+        errorTimestamp = returnTimestamp(error).timestamp()
+        if errorTimestamp - currentTime <= 2600000:
+            results.append({errorTimestamp: error.split("    ")[1]})
+    return results
+
+def biggestUsers():
+    erina_stats.discord.descriptionHit.blocking = True
+    discord_descriptionHit = erina_stats.discord.descriptionHit.readlines()
+    erina_stats.discord.descriptionHit.blocking = False
+    erina_stats.discord.imageSearchHit.blocking = True
+    discord_imageSearchHit = erina_stats.discord.imageSearchHit.readlines()
+    erina_stats.discord.imageSearchHit.blocking = False
+    erina_stats.discord.infoHit.blocking = True
+    discord_infoHit = erina_stats.discord.infoHit.readlines()
+    erina_stats.discord.infoHit.blocking = False
+
+    erina_stats.line.descriptionHit.blocking = True
+    line_descriptionHit = erina_stats.line.descriptionHit.readlines()
+    erina_stats.line.descriptionHit.blocking = False
+    erina_stats.line.imageSearchHit.blocking = True
+    line_imageSearchHit = erina_stats.line.imageSearchHit.readlines()
+    erina_stats.line.imageSearchHit.blocking = False
+    erina_stats.line.infoHit.blocking = True
+    line_infoHit = erina_stats.line.infoHit.readlines()
+    erina_stats.line.infoHit.blocking = False
+
+    erina_stats.twitter.askingHit.blocking = True
+    twitter_askingHit = erina_stats.twitter.askingHit.readlines()
+    erina_stats.twitter.askingHit.blocking = False
+    erina_stats.twitter.directMessagingHit.blocking = True
+    twitter_directMessagingHit = erina_stats.twitter.directMessagingHit.readlines()
+    erina_stats.twitter.directMessagingHit.blocking = False
+
+    results = {}
+    ### DISCORD
+    for line in discord_descriptionHit:
+        user = line.replace("\n", "").split("    ")[1].split(" >>> ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+    
+    for line in discord_infoHit:
+        user = line.replace("\n", "").split("    ")[1].split(" >>> ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+    
+    for line in discord_imageSearchHit:
+        user = line.replace("\n", "").split("    ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+    
+    ### LINE
+    for line in line_descriptionHit:
+        user = line.replace("\n", "").split("    ")[1].split(" >>> ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+    
+    for line in line_infoHit:
+        user = line.replace("\n", "").split("    ")[1].split(" >>> ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+    
+    for line in line_imageSearchHit:
+        user = line.replace("\n", "").split("    ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+
+    ### TWITTER    
+    for line in twitter_askingHit:
+        user = line.replace("\n", "").split("    ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+
+    for line in twitter_directMessagingHit:
+        user = line.replace("\n", "").split("    ")[1]
+        if user in results:
+            results[user] += 1
+        else:
+            results[user] = 1
+
+    rankingResults = []
+
+    for user in sorted(results, key=results.get, reverse=True):
+        rankingResults.append({user: results[user]})
+
+    return rankingResults

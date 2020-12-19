@@ -43,19 +43,19 @@ def search():
         if str(requestArgs.get("minify")).replace(" ", "").lower() in ["true", "0", "yes"]:
             minify = True
     if "anilistID" in requestArgs:
-        StatsAppend(APIStats.searchEndpointCall, f"New /search call --> AniListID Search ({str(requestArgs.get('anilistID'))})")
+        StatsAppend(APIStats.searchEndpointCall, f"AniListID >>> {str(requestArgs.get('anilistID'))}")
         result = erinasearch.anilistIDSearch(requestArgs.get("anilistID"))
         if "format" in requestArgs:
             if requestArgs.get("format") == "line":
                 return makeResponse(LineParser.makeInfoResponse(result), 200, minify)
     elif "anime" in requestArgs:
-        StatsAppend(APIStats.searchEndpointCall, f"New /search call --> Anime Search ({str(requestArgs.get('anime'))})")
+        StatsAppend(APIStats.searchEndpointCall, f"Anime Search >>> {str(requestArgs.get('anime'))}")
         result = erinasearch.searchAnime(requestArgs.get("anime"))
         if "format" in requestArgs:
             if requestArgs.get("format") == "line":
                 return makeResponse(LineParser.makeInfoResponse(result), 200, minify)
     elif "image" in requestArgs:
-        StatsAppend(APIStats.searchEndpointCall, "New /search call --> Image Search")
+        StatsAppend(APIStats.searchEndpointCall, "Image Search")
         result = erinasearch.imageSearch(requestArgs.get("image"))
         if "format" in requestArgs:
             if requestArgs.get("format") == "line":
