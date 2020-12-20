@@ -33,9 +33,6 @@ function loadNextScript() {
     } else {
         var newScript = document.createElement("script");
         newScript.src = scriptsLoadingQueue[0]
-        if (newScript.src.startsWith("/erina/admin/static/scripts/")) {
-            newScript.src = newScript.src + "?token=" + window.localStorage.getItem("erinaAdminToken")
-        }
         newScript.classList.add("ErinaExternalJS")
         newScript.addEventListener("load", loadNextScript)
         document.getElementsByTagName("head")[0].appendChild(newScript)
@@ -55,6 +52,7 @@ function goTo(title, url, resourceLocation=null) {
     if ("undefined" !== typeof history.pushState) {
         try {
             fetch("/erina/admin/resource/" + resourceLocation + "?token=" + token)
+            //fetch("/erina/admin/resource/" + resourceLocation)
             .then(function(data){
                 return data.text()
             })

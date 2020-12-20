@@ -34,11 +34,14 @@ def redirectToMainEndpoint():
 @ErinaServer.route("/erina/admin/static/styles/<page>.css")
 def stylesEndpoint(page):
     if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox"]:
+        """
         tokenVerification = authManagement.verifyToken(request.values)
         if tokenVerification.success:
             return send_from_directory(stylesLocation, page + ".css")
         else:
             return "ErinaAdminLoginRedirect"
+        """
+        return send_from_directory(stylesLocation, page + ".css")
     elif page == "login":
         return send_from_directory(stylesLocation, "login.css")
     return send_from_directory(htmlLocation, "404.html")
@@ -46,11 +49,14 @@ def stylesEndpoint(page):
 @ErinaServer.route("/erina/admin/static/scripts/<page>.js")
 def scriptsEndpoint(page):
     if page in ["main", "console", "loading", "chart", "overview", "stats", "config", "api"]:
+        """
         tokenVerification = authManagement.verifyToken(request.values)
         if tokenVerification.success:
-            return send_from_directory(scriptsLocation, page + ".js")            
+            return send_from_directory(scriptsLocation, page + ".js")
         else:
             return "ErinaAdminLoginRedirect"
+        """
+        return send_from_directory(scriptsLocation, page + ".js")
     elif page == "login":
         return send_from_directory(scriptsLocation, "login.js")
     return send_from_directory(htmlLocation, "404.html")

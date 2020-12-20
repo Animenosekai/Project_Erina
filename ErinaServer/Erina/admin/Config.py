@@ -40,10 +40,9 @@ def logs():
                 logsResult.append({float(log.split("    ")[0]): " ".join(log.split("    ")[1:])})
             except:
                 pass
-        logsResult["success"] = True
-        return makeResponse(logsResult, 200, request.args)
+        return makeResponse({"success": True, "data": logsResult}, 200, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)
 
 @ErinaServer.route("/erina/api/admin/stats")
 def stats():
@@ -53,7 +52,7 @@ def stats():
         results["success"] = True
         return makeResponse(results, 200, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)
 
 @ErinaServer.route("/erina/api/admin/stats/reset", methods=["POST"])
 def resetStats():
@@ -62,28 +61,24 @@ def resetStats():
         StatsReset()
         return makeResponse({"success": True}, 200, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)
 
 @ErinaServer.route("/erina/api/admin/stats/pastMonthErrors")
 def errorsCountForPastMonth():
     tokenVerification = authManagement.verifyToken(request.values)
     if tokenVerification.success:
-        results = pastMonthErrors()
-        results["success"] = True
-        return makeResponse(results, 200, request.args)
+        return makeResponse({"success": True, "data": pastMonthErrors()}, 200, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)
 
 
 @ErinaServer.route("/erina/api/admin/stats/biggestUsers")
 def usersCount():
     tokenVerification = authManagement.verifyToken(request.values)
     if tokenVerification.success:
-        results = biggestUsers()
-        results["success"] = True
-        return makeResponse(results, 200, request.args)
+        return makeResponse({"success": True, "data": biggestUsers()}, 200, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)
 
 
 @ErinaServer.route("/erina/api/admin/config/get")
@@ -98,7 +93,7 @@ def getEndpoint():
         data["success"] = True
         return makeResponse(data, 200, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)
 
 @ErinaServer.route("/erina/api/admin/config/update", methods=["POST"])
 def updateEndpoint():
@@ -128,7 +123,7 @@ def updateEndpoint():
         else:
             return makeResponse({"error": "MISSING_ARGS", "message": "An argument is missing", "extra": {"authorizedArgs": ["path", "value", "minify"], "optionalArgs": ["minify"]}}, 500, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)
 
 @ErinaServer.route("/erina/api/admin/config/default", methods=["POST"])
 def defaultEndpoint():
@@ -137,4 +132,4 @@ def defaultEndpoint():
         default()
         return makeResponse({"success": True}, 200, request.args)
     else:
-        return makeResponse({"success": False, "error": "login"})
+        return makeResponse({"success": False, "error": "login"}, 400, request.args)

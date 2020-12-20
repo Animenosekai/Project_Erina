@@ -58,6 +58,7 @@ function PageInitialize(){
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {
+            data = data.data
             for (element in data) {
                 for (timestamp in data[element]) {
                     addErinaLogs(timestamp, "info", data[element][timestamp])
@@ -74,6 +75,7 @@ function PageInitialize(){
     .then((resp) => resp.json())
     .then(function(data) {
         if (data.success == true) {
+            data = data.data
             var finalRankString = ""
             if (data.length >= 1) {
                 var keys = Object.keys(data[0])
@@ -97,6 +99,7 @@ function PageInitialize(){
     .then((resp) => resp.json())
     .then(function(data) {
         if (data.success == true) {
+            data = data.data
             document.getElementById("erinaWidget-errors-value").innerText = String(data.length)
         } else if (data.error == "login") {
             window.location.assign("/erina/admin/login")

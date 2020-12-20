@@ -78,12 +78,12 @@ def createTempCode():
 
 def setPassword(password):
     hashing = hashlib.sha512()
-    hashing.update(str(password))
+    hashing.update(str(password).encode("utf-8"))
     TextFile(erina_dir + "/ErinaServer/Erina/auth/password.erina").write(hashing.hexdigest())
 
 def verifyPassword(password):
     hashing = hashlib.sha512()
-    hashing.update(str(password))
+    hashing.update(str(password).encode("utf-8"))
     return TextFile(erina_dir + "/ErinaServer/Erina/auth/password.erina").read().replace(" ", "").replace("\n", "") == hashing.hexdigest().replace(" ", "").replace("\n", "")
 
 def logout():
