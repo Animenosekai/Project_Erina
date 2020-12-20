@@ -12,9 +12,11 @@ if Server.disable_console_messages:
 ErinaServer = Flask(__name__)
 
 rate_limit_map = {}
+rate_limit_index = 0
 
 def ErinaRateLimit(rate=1):
     def decorator(function):
+        global rate_limit_index
         def decorated(*args, **kwargs):
             if function in rate_limit_map:
                 if time() - rate_limit_map[function] > rate:
@@ -29,5 +31,8 @@ def ErinaRateLimit(rate=1):
             else:
                 rate_limit_map[function] = time()
             return function(*args, **kwargs)
-        return decorated
+        decoratedFunction = decorated
+        decoratedFunction.__name__ = "ErinaRateLimitedEndpoint_" + str(rate_limit_index)
+        rate_limit_index += 1
+        return decoratedFunction
     return decorator
