@@ -9,6 +9,7 @@ from Erina.erina_stats import StatsReset
 from Erina.erina_log import logFile
 from ErinaServer.Erina.admin.utils import convert_to_float, convert_to_int
 from Erina.config import Hash
+from Erina.env_information import erina_version
 
 def makeResponse(responseBody, code, request_args):
     if "minify" in request_args:
@@ -18,7 +19,8 @@ def makeResponse(responseBody, code, request_args):
             response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))    
     else:
         response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))
-    response.headers["Server"] = "ErinaServer v1.0"
+    response.headers["Server"] = "ErinaServer " + erina_version
+    response.headers["Content-Type"] = "application/json"
     response.status_code = int(code)
     return response
 

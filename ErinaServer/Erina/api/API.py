@@ -17,6 +17,8 @@ from ErinaTwitter.utils import Parser as TwitterParser
 from Erina.erina_stats import api as APIStats
 from Erina.erina_stats import StatsAppend
 
+from Erina.env_information import erina_version
+
 
 apiEndpoint = "/erina/api"
 
@@ -31,7 +33,7 @@ def makeResponse(responseBody, code, minify=False):
         response = Response(json.dumps(responseBody, ensure_ascii=False, separators=(',', ':')))
     else:
         response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))
-    response.headers["Server"] = "ErinaServer v1.0"
+    response.headers["Server"] = "ErinaServer " + erina_version
     response.headers["Content-Type"] = "application/json"
     response.status_code = int(code)
     return response

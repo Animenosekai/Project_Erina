@@ -20,7 +20,6 @@ def verifyToken(args):
 
 @ErinaServer.route("/erina/admin/resource/<page>/")
 def resourceEndpoint(page):
-    print(page)
     if page in ["overview", "api", "stats", "config"]:
         tokenVerification = verifyToken(request.values)
         if tokenVerification is not None:
@@ -28,5 +27,7 @@ def resourceEndpoint(page):
                 return send_from_directory(htmlLocation, page + ".html")
             else:
                 return "ErinaAdminLoginRedirect"
+        else:
+            return "ErinaAdminLoginRedirect"
     else:
         return "404, Not Found"

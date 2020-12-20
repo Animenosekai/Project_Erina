@@ -5,30 +5,30 @@ from flask import Response
 #import config
 from ErinaServer.Server import ErinaServer
 from ErinaServer.Erina.auth import authManagement
+from Erina.env_information import erina_version
 
 authEndpoint = "/erina/auth"
 
-def makeResponse(responseBody, code, minify=False):
-    if minify:
-        response = Response(json.dumps(responseBody, ensure_ascii=False, separators=(',', ':')))
+def makeResponse(responseBody, code, request_args):
+    if "minify" in request_args:
+        if str(request_args.get("minify")).replace(" ", "").lower() in ["true", "0", "yes"]:
+            response = Response(json.dumps(responseBody, ensure_ascii=False, separators=(',', ':')))
+        else:
+            response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))    
     else:
         response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))
-    response.headers["Server"] = "ErinaServer v1.0"
+    response.headers["Server"] = "ErinaServer " + erina_version
     response.status_code = int(code)
     return response
 
 @ErinaServer.route(authEndpoint + "/login")
 def login():
-    minify = False
     requestArgs = request.values
-    if "minify" in requestArgs:
-        if str(requestArgs.get("minify")).replace(" ", "").lower() in ["true", "0", "yes"]:
-            minify = True
     if "password" in requestArgs:
         #if requestArgs.get("password") == config.ErinaAdmin_Password:
         if requestArgs.get("password") == "hey":
-            return makeResponse(authManagement.createToken(64), 200, minify)
+            return makeResponse(authManagement.createToken(64), 200, request.args)
         else:
-            return makeResponse({"error": "WRONG_PASSWORD", "message": "You've entered the wrong password"}, 400, minify)
+            return makeResponse({"error": "WRONG_PASSWORD", "message": "You've entered the wrong password"}, 400, request.args)
     else:
-        return makeResponse({"error": "MISSING_ARGS", "message": "An argument is missing", "extra": {"authorizedArgs": ["password", "minify"], "optionalArgs": ["minify"]}}, 500, minify)
+        return makeResponse({"error": "MISSING_ARGS", "message": "An argument is missing", "extra": {"authorizedArgs": ["password", "minify"], "optionalArgs": ["minify"]}}, 500, request.args)
