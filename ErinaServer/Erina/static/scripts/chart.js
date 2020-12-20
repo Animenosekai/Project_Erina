@@ -1,6 +1,10 @@
 // Add Loading Animation
 am4core.useTheme(am4themes_animated);
 
+// Improving Performance
+am4core.options.queue = true;
+am4core.options.onlyShowOnViewport = true;
+
 // Functions that create various sparklines
 function createChart(id, data, color) {
     // Create chart instance
@@ -24,6 +28,7 @@ function createChart(id, data, color) {
     dateAxis.startLocation = 0.5;
     dateAxis.endLocation = 0.7;
     dateAxis.cursorTooltipEnabled = true;
+    dateAxis.groupData = true;
 
     var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.min = 0;

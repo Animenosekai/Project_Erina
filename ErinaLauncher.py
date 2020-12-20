@@ -13,7 +13,7 @@ if __name__ == '__main__':
     #### INITIALIZING ERINASERVER --> Manages the whole server
 
     from threading import Thread
-    from Erina.erina_log import log
+    from Erina.erina_log import log, logFile
 
     log("Erina", "Initializing Erina configuration...")
     from Erina.config import Server as ServerConfig
@@ -62,5 +62,9 @@ if __name__ == '__main__':
         asyncio.get_event_loop().create_task(discordClient.start(config.Discord.keys.token))
         asyncio.get_event_loop().run_forever()
 
-    while True: # Block
-        sleep(3600)
+    try:
+        while True: # Block
+            sleep(3600)
+    except KeyboardInterrupt:
+        logFile.blocking = True
+        log("Erina", "Goodbye!")

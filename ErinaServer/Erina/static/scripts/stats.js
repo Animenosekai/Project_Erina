@@ -22,7 +22,7 @@ function PageInitialize() {
                     results.push({ "date": new Date(timestamp * 1000), "value": currentCategory[subcategory]["values"][timestamp]})
                 }
                 var currentID = "erinaStat-" + category + "-" + subcategory
-                document.getElementById(currentID + "-Value").innerText = currentCategory[subcategory]["values"][closestTimestamp]
+                document.getElementById(currentID + "-Value").innerText = convert(currentCategory[subcategory]["values"][closestTimestamp])
                 createChart(currentID + "-Chart", results, am4core.color("#7ae2ff"))
             }
         } catch {
@@ -40,7 +40,7 @@ function PageInitialize() {
                 if (category != "uptime" && category != "animeSearchRank") {
                     var currentCategory = data[category]
                     for (subcategory in currentCategory) {
-                        addStatsData(currentCategory, category, subcategory)                   
+                        addStatsData(currentCategory, category, subcategory)
                     }
                 } else if (category == "uptime") {
                     document.getElementById("erinaStat-erina-uptime-Value").innerText = formatTime(new Date(data["uptime"] * 1000))

@@ -29,7 +29,7 @@ def mainEndpoint(page):
 
 @ErinaServer.route("/erina/admin/static/styles/<page>.css")
 def stylesEndpoint(page):
-    if page in ["main", "console", "loading", "overview", "stats", "config", "api"]:
+    if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox"]:
         return send_from_directory(stylesLocation, page + ".css")
     return "404, Not Found"
 

@@ -2,10 +2,10 @@ var scriptsLoadingQueue = []
 var chartsRegistry = []
 
 function _hideSelectionLine(){
-    document.getElementById("overviewSelectionLine").style.opacity = 0;
-    document.getElementById("statsSelectionLine").style.opacity = 0;
-    document.getElementById("apiSelectionLine").style.opacity = 0;
-    document.getElementById("configSelectionLine").style.opacity = 0;
+    document.getElementById("overviewSelectionLine").classList.remove("sidebarShow");
+    document.getElementById("statsSelectionLine").classList.remove("sidebarShow");
+    document.getElementById("apiSelectionLine").classList.remove("sidebarShow");
+    document.getElementById("configSelectionLine").classList.remove("sidebarShow");
 }
 
 window.onload = function(){
@@ -62,7 +62,7 @@ function goTo(title, url, resourceLocation=null) {
                     window.location.assign("/erina/admin/login")
                 }
                 _hideSelectionLine()
-                document.getElementById(url + "SelectionLine").style.opacity = 1;
+                document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
                 for (chart in chartsRegistry) {
                     chartsRegistry[chart].dispose()
                 }
@@ -88,3 +88,116 @@ function goTo(title, url, resourceLocation=null) {
       window.location.assign("/erina/admin/" + url);
     }
 }
+
+
+function convert(value) {
+    if ( value >= 1000000000 ) {
+        value = (Math.round((value / 1000000000  + Number.EPSILON) * 100) / 100) + "B"
+    } else if ( value >= 1000000 ) {
+        value = (Math.round((value / 1000000 + Number.EPSILON) * 100) / 100) + "M"
+    } else if ( value >= 1000 ) {
+        value = (Math.round((value / 1000 + Number.EPSILON) * 100) / 100)+ "K";
+    }
+    return value;
+}
+
+
+function formatTime(dateObj) {
+    const currentTime = new Date()
+    if (dateObj.getDate() != currentTime.getDate()) {
+        return String(dateObj.getDate()) + "/" + String(dateObj.getMonth())
+    } else {
+        //return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes()) + ":" + String(dateObj.getSeconds())
+        var minutes = String(dateObj.getMinutes())
+        if (minutes.length < 2) {
+            minutes = "0" + minutes
+        }
+        return String(dateObj.getHours()) + ":" + minutes
+    }
+}
+
+
+
+/*********** INFO BOX */
+
+
+var messagesQueue = []
+var currentIndex = 1
+
+/** **/
+
+function newInfo(message) {
+    messagesQueue.push(message)
+    let currentLength = messagesQueue.length
+    let intervalID = setInterval(function(){
+        if (currentIndex == currentLength) {
+            var newElement = document.createElement("p")
+            newElement.setAttribute("class", "info")
+            newElement.innerText = String(message)
+            document.getElementsByTagName("body")[0].appendChild(newElement)
+            setTimeout(function() {
+                newElement.classList.add("show")
+            }, 100)
+            setTimeout(function (){
+                newElement.classList.remove("show")
+                currentIndex += 1
+            }, 5100)
+            clearInterval(intervalID)
+        }
+    }, 100)
+}
+
+function newSuccess(message) {
+    messagesQueue.push(message)
+    let currentLength = messagesQueue.length
+    let intervalID = setInterval(function(){
+        if (currentIndex == currentLength) {
+            var newElement = document.createElement("p")
+            newElement.setAttribute("class", "success")
+            newElement.innerText = String(message)
+            document.getElementsByTagName("body")[0].appendChild(newElement)
+            setTimeout(function() {
+                newElement.classList.add("show")
+            }, 100)
+            setTimeout(function (){
+                newElement.classList.remove("show")
+                currentIndex += 1
+            }, 5100)
+            clearInterval(intervalID)
+        }
+    }, 100)
+}
+
+function newError(message) {
+    messagesQueue.push(message)
+    let currentLength = messagesQueue.length
+    let intervalID = setInterval(function(){
+        if (currentIndex == currentLength) {
+            var newElement = document.createElement("p")
+            newElement.setAttribute("class", "error")
+            newElement.innerText = String(message)
+            document.getElementsByTagName("body")[0].appendChild(newElement)
+            setTimeout(function() {
+                newElement.classList.add("show")
+            }, 100)
+            setTimeout(function (){
+                newElement.classList.remove("show")
+                currentIndex += 1
+            }, 5100)
+            clearInterval(intervalID)
+        }
+    }, 100)
+}
+
+
+window.addEventListener('load', function(){
+    newInfo("The page has been loaded")
+})
+
+window.addEventListener("online", function(){
+    newInfo("You are back online")
+})
+
+window.addEventListener("offline", function(){
+    newInfo("You seem to be disconnected")
+})

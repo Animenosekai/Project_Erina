@@ -12,7 +12,6 @@ function PageInitialize(){
                 results.push({ "date": new Date(timestamp * 1000), "value": data.search.searchCount.values[timestamp]})
             }
             document.getElementById("erinaStats-current-number-animesearch").innerText = data.search.searchCount.values[closestTimestamp]
-            console.log(results)
             createChart("erinaChart-animesearch", results, am4core.color("#7ae2ff"))
         }
         
@@ -29,20 +28,6 @@ function PageInitialize(){
             createChart("erinaChart-tweets", results, am4core.color("#7ae2ff"))
         }
     })
-
-    function formatTime(dateObj) {
-        const currentTime = new Date()
-        if (dateObj.getDate() != currentTime.getDate()) {
-            return String(dateObj.getDate()) + "/" + String(dateObj.getMonth())
-        } else {
-            //return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes()) + ":" + String(dateObj.getSeconds())
-            var minutes = String(dateObj.getMinutes())
-            if (minutes.length < 2) {
-                minutes = "0" + minutes
-            }
-            return String(dateObj.getHours()) + ":" + minutes
-        }
-    }
 
     function addErinaLogs(timestamp, type, message) {
         var newLog = document.createElement("erinalog")
@@ -77,9 +62,13 @@ function PageInitialize(){
     .then((resp) => resp.json())
     .then(function(data) {
         var finalRankString = ""
-        var keys = Object.keys(data)
-        if (keys.length >= 1) {
-            finalRankString = keys[0]
+        if (data.length >= 1) {
+            var keys = Object.keys(data[0])
+            if (keys.length >= 1) {
+                finalRankString = keys[0]
+            } else {
+                finalRankString = "No data"
+            }
         } else {
             finalRankString = "No data"
         }

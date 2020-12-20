@@ -304,31 +304,101 @@ def pastMonthErrors():
 
 
 def biggestUsers():
+    
     erina_stats.discord.descriptionHit.blocking = True
     discord_descriptionHit = erina_stats.discord.descriptionHit.readlines()
+    if discord_descriptionHit is None:
+        erina_stats.discord.descriptionHit.blocking = True
+        discord_descriptionHit = erina_stats.discord.descriptionHit.readlines()
+        if discord_descriptionHit is None:
+            erina_stats.discord.descriptionHit.blocking = True
+            discord_descriptionHit = erina_stats.discord.descriptionHit.readlines()    
     erina_stats.discord.descriptionHit.blocking = False
+    erina_stats.discord.descriptionHit.blocking = False
+    erina_stats.discord.descriptionHit.blocking = False
+
     erina_stats.discord.imageSearchHit.blocking = True
     discord_imageSearchHit = erina_stats.discord.imageSearchHit.readlines()
+    if discord_imageSearchHit is None:
+        erina_stats.discord.imageSearchHit.blocking = True
+        discord_imageSearchHit = erina_stats.discord.imageSearchHit.readlines()
+        if discord_imageSearchHit is None:
+            erina_stats.discord.imageSearchHit.blocking = True
+            discord_imageSearchHit = erina_stats.discord.imageSearchHit.readlines()
     erina_stats.discord.imageSearchHit.blocking = False
+    erina_stats.discord.imageSearchHit.blocking = False
+    erina_stats.discord.imageSearchHit.blocking = False
+    
     erina_stats.discord.infoHit.blocking = True
     discord_infoHit = erina_stats.discord.infoHit.readlines()
+    if discord_infoHit is None:
+        erina_stats.discord.infoHit.blocking = True
+        discord_infoHit = erina_stats.discord.infoHit.readlines()
+        if discord_infoHit is None:
+            erina_stats.discord.infoHit.blocking = True
+            discord_infoHit = erina_stats.discord.infoHit.readlines()
+    erina_stats.discord.infoHit.blocking = False
+    erina_stats.discord.infoHit.blocking = False
     erina_stats.discord.infoHit.blocking = False
 
     erina_stats.line.descriptionHit.blocking = True
     line_descriptionHit = erina_stats.line.descriptionHit.readlines()
+    if line_descriptionHit is None:
+        erina_stats.line.descriptionHit.blocking = True
+        line_descriptionHit = erina_stats.line.descriptionHit.readlines()
+        if line_descriptionHit is None:
+            erina_stats.line.descriptionHit.blocking = True
+            line_descriptionHit = erina_stats.line.descriptionHit.readlines()
     erina_stats.line.descriptionHit.blocking = False
+    erina_stats.line.descriptionHit.blocking = False
+    erina_stats.line.descriptionHit.blocking = False
+
     erina_stats.line.imageSearchHit.blocking = True
     line_imageSearchHit = erina_stats.line.imageSearchHit.readlines()
+    if line_imageSearchHit is None:
+        erina_stats.line.imageSearchHit.blocking = True
+        line_imageSearchHit = erina_stats.line.imageSearchHit.readlines()
+        if line_imageSearchHit is None:
+            erina_stats.line.imageSearchHit.blocking = True
+            line_imageSearchHit = erina_stats.line.imageSearchHit.readlines()
     erina_stats.line.imageSearchHit.blocking = False
+    erina_stats.line.imageSearchHit.blocking = False
+    erina_stats.line.imageSearchHit.blocking = False
+
     erina_stats.line.infoHit.blocking = True
     line_infoHit = erina_stats.line.infoHit.readlines()
+    if line_infoHit is None:
+        erina_stats.line.infoHit.blocking = True
+        line_infoHit = erina_stats.line.infoHit.readlines()
+        if line_infoHit is None:
+            erina_stats.line.infoHit.blocking = True
+            line_infoHit = erina_stats.line.infoHit.readlines()
+    erina_stats.line.infoHit.blocking = False
+    erina_stats.line.infoHit.blocking = False
     erina_stats.line.infoHit.blocking = False
 
     erina_stats.twitter.askingHit.blocking = True
     twitter_askingHit = erina_stats.twitter.askingHit.readlines()
+    if twitter_askingHit is None:
+        erina_stats.twitter.askingHit.blocking = True
+        twitter_askingHit = erina_stats.twitter.askingHit.readlines()
+        if twitter_askingHit is None:
+            erina_stats.twitter.askingHit.blocking = True
+            twitter_askingHit = erina_stats.twitter.askingHit.readlines()
     erina_stats.twitter.askingHit.blocking = False
+    erina_stats.twitter.askingHit.blocking = False
+    erina_stats.twitter.askingHit.blocking = False
+    
     erina_stats.twitter.directMessagingHit.blocking = True
     twitter_directMessagingHit = erina_stats.twitter.directMessagingHit.readlines()
+    if twitter_directMessagingHit is None:
+        erina_stats.twitter.directMessagingHit.blocking = True
+        twitter_directMessagingHit = erina_stats.twitter.directMessagingHit.readlines()
+        if twitter_directMessagingHit is None:
+            erina_stats.twitter.directMessagingHit.blocking = True
+            twitter_directMessagingHit = erina_stats.twitter.directMessagingHit.readlines()
+    erina_stats.twitter.directMessagingHit.blocking = False
+    erina_stats.twitter.directMessagingHit.blocking = False
     erina_stats.twitter.directMessagingHit.blocking = False
 
     results = {}
