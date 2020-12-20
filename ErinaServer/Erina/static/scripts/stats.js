@@ -20,36 +20,42 @@ function PageInitialize() {
         }
     }
 
-    fetch("/erina/api/admin/stats")
+    fetch("/erina/api/admin/stats?token=" + window.localStorage.getItem("erinaAdminToken"))
     .then(function(data) {
         return data.json()
     })
     .then(function(data) {
-        for (category in data) {
-            try {
-                if (category != "uptime" && category != "animeSearchRank") {
-                    var currentCategory = data[category]
-                    for (subcategory in currentCategory) {
-                        addStatsData(currentCategory, category, subcategory)
-                    }
-                } else if (category == "uptime") {
-                    document.getElementById("erinaStat-erina-uptime-Value").innerText = formatTime(new Date(data["uptime"] * 1000))
-                } else {
-                    var finalRankString = ""
-                    if (data["animeSearchRank"].length >= 3) {
-                        finalRankString = Object.keys(data["animeSearchRank"][0])[0] + ", " + Object.keys(data["animeSearchRank"][1])[0] + ", " + Object.keys(data["animeSearchRank"][2])[0]
-                    } else if (data["animeSearchRank"].length == 2) {
-                        finalRankString = Object.keys(data["animeSearchRank"][0])[0] + ", " + Object.keys(data["animeSearchRank"][1])[0]
-                    } else if (data["animeSearchRank"].length == 1) {
-                        finalRankString = Object.keys(data["animeSearchRank"][0])[0]
+        if (data.success == true) {
+            for (category in data) {
+                try {
+                    if (category != "uptime" && category != "animeSearchRank") {
+                        var currentCategory = data[category]
+                        for (subcategory in currentCategory) {
+                            addStatsData(currentCategory, category, subcategory)
+                        }
+                    } else if (category == "uptime") {
+                        document.getElementById("erinaStat-erina-uptime-Value").innerText = formatTime(new Date(data["uptime"] * 1000))
                     } else {
-                        finalRankString = "No data"
+                        var finalRankString = ""
+                        if (data["animeSearchRank"].length >= 3) {
+                            finalRankString = Object.keys(data["animeSearchRank"][0])[0] + ", " + Object.keys(data["animeSearchRank"][1])[0] + ", " + Object.keys(data["animeSearchRank"][2])[0]
+                        } else if (data["animeSearchRank"].length == 2) {
+                            finalRankString = Object.keys(data["animeSearchRank"][0])[0] + ", " + Object.keys(data["animeSearchRank"][1])[0]
+                        } else if (data["animeSearchRank"].length == 1) {
+                            finalRankString = Object.keys(data["animeSearchRank"][0])[0]
+                        } else {
+                            finalRankString = "No data"
+                        }
+                        document.getElementById("erinaStat-search-animeRank-Value").innerText = finalRankString
                     }
-                    document.getElementById("erinaStat-search-animeRank-Value").innerText = finalRankString
+                } catch {
+                    newError("Error while adding category: " + String(category))
                 }
-            } catch {
-                newError("Error while adding category: " + String(category))
             }
+        } else if (data.error == "login") {
+            window.location.assign("/erina/admin/login")
+        } else {
+            newError("An error occured while retrieving the stats")
         }
     })
 }

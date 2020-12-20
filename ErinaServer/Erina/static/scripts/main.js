@@ -26,7 +26,6 @@ window.onload = function(){
 }
 
 function loadNextScript() {
-    console.log("Hey")
     scriptsLoadingQueue.shift()
     if (scriptsLoadingQueue.length == 0) {
         PageInitialize()
@@ -34,6 +33,9 @@ function loadNextScript() {
     } else {
         var newScript = document.createElement("script");
         newScript.src = scriptsLoadingQueue[0]
+        if (newScript.src.startsWith("/erina/admin/static/scripts/")) {
+            newScript.src = newScript.src + "?token=" + window.localStorage.getItem("erinaAdminToken")
+        }
         newScript.classList.add("ErinaExternalJS")
         newScript.addEventListener("load", loadNextScript)
         document.getElementsByTagName("head")[0].appendChild(newScript)
@@ -74,11 +76,19 @@ function goTo(title, url, resourceLocation=null) {
                 if (scriptsLoadingQueue.length == 0) {
                     stopLoading()
                 } else {
-                    var newScript = document.createElement("script");
-                    newScript.src = scriptsLoadingQueue[0]
-                    newScript.classList.add("ErinaExternalJS")
-                    newScript.addEventListener("load", loadNextScript)
-                    document.getElementsByTagName("head")[0].appendChild(newScript)
+                    fetch("/erina/auth/verify?token=" + window.localStorage.getItem("erinaAdminToken"))
+                    .then((resp) => resp.text())
+                    .then(function(data){
+                        if (data == "Valid") {
+                            var newScript = document.createElement("script");
+                            newScript.src = scriptsLoadingQueue[0]
+                            newScript.classList.add("ErinaExternalJS")
+                            newScript.addEventListener("load", loadNextScript)
+                            document.getElementsByTagName("head")[0].appendChild(newScript)
+                        } else {
+                            window.location.assign("/erina/admin/login")
+                        }
+                    })
                 }
             })
         } catch {
@@ -87,6 +97,13 @@ function goTo(title, url, resourceLocation=null) {
     } else {
       window.location.assign("/erina/admin/" + url);
     }
+}
+
+
+
+function logout() {
+    fetch("/erina/auth/logout", {method: "POST"})
+    window.location.assign("/erina/admin/login")
 }
 
 

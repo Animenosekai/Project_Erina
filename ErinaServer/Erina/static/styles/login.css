@@ -1,0 +1,71 @@
+body {
+    font-family: SF Pro Display, Inter, Helvetica, Arial;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 244, 208, 0.4);
+    padding: 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 35vh;
+    width: 40vw;
+    left: 30vw;
+    height: 180px;
+}
+
+login-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+input {
+    margin: 5px;
+    height: 25px;
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+
+button-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    left: 35%;
+}
+
+.fixedButtonContainer {
+    left: 38%;
+    transform: translateY(-10px);
+}
+
+button {
+    background: transparent;
+    border: none;
+    width: 70px;
+    font-size: 1.2em;
+    cursor: pointer;
+    opacity: 1;
+    margin: 0px 5px;
+    transition: opacity 300ms ease;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+#goToLogin {
+    width: 115px;
+}
+
+#goToSet {
+    width: 180px;
+}
+
+.hidden {
+    display: none;
+}

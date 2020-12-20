@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErinaAdmin — Login</title>
+    <script src="/erina/admin/static/scripts/login.js"></script>
+    <link rel="stylesheet" href="/erina/admin/static/styles/login.css">
+
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/erina/admin/static/styles/infoBox.css">
+</head>
+<body>
+    <login-form class="loginForm hidden" id="loginPage">
+        <login-title>Login to ErinaAdmin</login-title>
+        <input type="password" id="passwordInput" placeholder="Password" onkeypress="loginInputCallback(event)" >
+        <button-container>
+            <button onclick="login()">Login</button>
+            <button onclick="setPage()" id="goToSet">Go to password set</button>
+        </button-container>
+    </login-form>
+    <password-set-form class="loginForm hidden" id="setPage">
+        <login-title>Set your password for ErinaAdmin</login-title>
+        <input type="password" id="tempCodeInput" placeholder="Temp Code" onkeypress="setTempInputCallback(event)">
+        <input type="password" id="newPasswordInput" placeholder="New Password" onkeypress="setPasswordInputCallback(event)">
+        <button-container class="fixedButtonContainer">
+            <button onclick="setPassword()">Submit</button>
+            <button onclick="loginPage()" id="goToLogin">Go to Login</button>
+        </button-container>
+    </password-set-form>
+
+    <copyright-container>
+        <copyright>© Anime no Sekai</copyright>
+        <copyright>© Project Erina — 2020</copyright>
+        <externalLink><a href="https://github.com/Animenosekai/Project_Erina">GitHub</a></externalLink>
+    </copyright-container>
+</body>
+</html>

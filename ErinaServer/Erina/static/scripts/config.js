@@ -11,7 +11,7 @@ function updateTags(container) {
     var formData = new FormData();
     formData.append("path", container.getAttribute("config-path"))
     formData.append("value", tags)
-    fetch("/erina/api/admin/config/update", {
+    fetch("/erina/api/admin/config/update?token=" + window.localStorage.getItem("erinaAdminToken"), {
         body: formData,
         method: "POST"
     })
@@ -19,6 +19,8 @@ function updateTags(container) {
     .then(function(data){
         if (data.success == true) {
             newSuccess("Successfully edited " + container.getAttribute("config-path"))
+        } else if (data.error == "login") {
+            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while editing " + container.getAttribute("config-path"))
         }
@@ -93,7 +95,7 @@ function textInputHandler(event, textInputElement) {
         var formData = new FormData();
         formData.append("path", textInputElement.getAttribute("config-path"))
         formData.append("value", textInputElement.value)
-        fetch("/erina/api/admin/config/update", {
+        fetch("/erina/api/admin/config/update?token=" + window.localStorage.getItem("erinaAdminToken"), {
             body: formData,
             method: "POST"
         })
@@ -101,6 +103,8 @@ function textInputHandler(event, textInputElement) {
         .then(function(data){
             if (data.success == true) {
                 newSuccess("Successfully edited " + data.path + " to " + String(data.value))
+            } else if (data.error == "login") {
+                window.location.assign("/erina/admin/login")
             } else {
                 newError("An error occured while editing " + textInputElement.getAttribute("config-path"))
             }
@@ -113,7 +117,7 @@ function checkboxHandler(checkboxElement) {
     var formData = new FormData();
     formData.append("path", checkboxElement.getAttribute("config-path"))
     formData.append("value", checkboxElement.checked)
-    fetch("/erina/api/admin/config/update", {
+    fetch("/erina/api/admin/config/update?token=" + window.localStorage.getItem("erinaAdminToken"), {
         body: formData,
         method: "POST"
     })
@@ -121,6 +125,8 @@ function checkboxHandler(checkboxElement) {
     .then(function(data){
         if (data.success == true) {
             newSuccess("Successfully edited " + data.path + " to " + String(data.value))
+        } else if (data.error == "login") {
+            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while editing " + checkboxElement.getAttribute("config-path"))
         }
@@ -134,9 +140,10 @@ function checkboxHandler(checkboxElement) {
 
 
 function PageInitialize() {
-    fetch("/erina/api/admin/config/get")
+    fetch("/erina/api/admin/config/get?token=" + window.localStorage.getItem("erinaAdminToken"))
     .then((resp) => resp.json())
     .then(function(data){
+        if (data.success == true) {
 ///////////////////// PASTING JS MADE WITH CONFIGPAGESETUP.PY
 
 
@@ -177,10 +184,14 @@ function PageInitialize() {
         document.getElementById('serverport').value = data.Server.port;
         if (data.Server.disableConsoleMessages == true) { document.getElementById('toggle-serverdisableconsolemessages').checked = true; document.getElementById('toggleText-serverdisableconsolemessages').innerText = 'Enabled' } else { console.log('Not enabled') };
 
-
-
-
-//////////////////
+        
+        
+        //////////////////
+        } else if (data.error == "login") {
+            window.location.assign("/erina/admin/login")
+        } else {
+            newError("An error occured while retrieving the configuration")
+        }
     }) // end of then()
 } // end of PageInitialize()
 
