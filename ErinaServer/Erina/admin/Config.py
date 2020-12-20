@@ -86,7 +86,7 @@ def updateEndpoint():
             if algorithm not in ['ahash', 'a', 'averagehash', 'average', 'chash', 'c', 'dhash', 'd', 'phash', 'p', 'perceptual', 'perceptualhash', 'wHash', 'w', 'dhashvertical', 'dvertical', 'dvert', 'verticald', 'verticaldhash', 'phashsimple', 'psimple', 'perceptualsimple', 'simpleperceptual', 'simplep', 'simplephash', 'simpleperceptualhas']:
                 value = Hash.algorithm
         update(path, value)
-        return makeResponse({"message": "success", "path": path, "value": value}, 200, request.args)
+        return makeResponse({"message": "success", "path": path, "value": value, "success": True}, 200, request.args)
     else:
         return makeResponse({"error": "MISSING_ARGS", "message": "An argument is missing", "extra": {"authorizedArgs": ["path", "value", "minify"], "optionalArgs": ["minify"]}}, 500, request.args)
 

@@ -32,6 +32,7 @@ def makeResponse(responseBody, code, minify=False):
     else:
         response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))
     response.headers["Server"] = "ErinaServer v1.0"
+    response.headers["Content-Type"] = "application/json"
     response.status_code = int(code)
     return response
 

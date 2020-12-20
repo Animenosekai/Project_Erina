@@ -1,15 +1,5 @@
 function PageInitialize() {
 
-    function formatTime(dateObj) {
-        const currentTime = new Date()
-        if (dateObj.getDate() != currentTime.getDate()) {
-            return String(dateObj.getDate()) + "/" + String(dateObj.getMonth())
-        } else {
-            //return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes()) + ":" + String(dateObj.getSeconds())
-            return String(dateObj.getHours()) + ":" + String(dateObj.getMinutes())
-        }
-    }
-
     async function addStatsData(currentCategory, category, subcategory) {
         try {
             if (currentCategory[subcategory]["success"] == true) {
@@ -26,7 +16,7 @@ function PageInitialize() {
                 createChart(currentID + "-Chart", results, am4core.color("#7ae2ff"))
             }
         } catch {
-            console.log("Error while adding subcategory: " + String(subcategory))
+            newError("Error while adding subcategory: " + String(subcategory))
         }
     }
 
@@ -58,7 +48,7 @@ function PageInitialize() {
                     document.getElementById("erinaStat-search-animeRank-Value").innerText = finalRankString
                 }
             } catch {
-                console.log("Error while adding category: " + String(category))
+                newError("Error while adding category: " + String(category))
             }
         }
     })

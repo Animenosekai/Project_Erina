@@ -10,18 +10,17 @@ function _hideSelectionLine(){
 
 window.onload = function(){
     startLoading()
-    var token = String(window.localStorage.getItem("erinaAdminToken"))
     const currentPage = window.location.pathname
     if (currentPage == "/erina/admin/overview") {
-        goTo("Erina Admin — Overview", "overview")
+        goTo("ErinaAdmin", "overview")
     } else if (currentPage == "/erina/admin/stats") {
-        goTo("Erina Admin — Stats", "stats")
+        goTo("ErinaAdmin — Stats", "stats")
     } else if (currentPage == "/erina/admin/api") {
-        goTo("Erina Admin — API", "api")
+        goTo("ErinaAdmin — API", "api")
     } else if (currentPage == "/erina/admin/config") {
-        goTo("Erina Admin — Configuration", "config")
+        goTo("ErinaAdmin — Configuration", "config")
     } else {
-        goTo("ErinaAdmin — Overview", "overview")
+        goTo("ErinaAdmin", "overview")
     }
     stopLoading()
 }
@@ -68,11 +67,12 @@ function goTo(title, url, resourceLocation=null) {
                 }
                 document.getElementById("ErinaAdminBody").innerHTML = data
                 history.pushState({page: title}, title, "/erina/admin/" + url);
+                //document.getElementsByTagName("title")[0].innerText = title
+                document.title = title
                 
                 scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
                 if (scriptsLoadingQueue.length == 0) {
                     stopLoading()
-                    document.title = title
                 } else {
                     var newScript = document.createElement("script");
                     newScript.src = scriptsLoadingQueue[0]
@@ -127,6 +127,7 @@ var currentIndex = 1
 /** **/
 
 function newInfo(message) {
+    console.log(message)
     messagesQueue.push(message)
     let currentLength = messagesQueue.length
     let intervalID = setInterval(function(){
@@ -148,6 +149,7 @@ function newInfo(message) {
 }
 
 function newSuccess(message) {
+    console.log(message)
     messagesQueue.push(message)
     let currentLength = messagesQueue.length
     let intervalID = setInterval(function(){
@@ -169,6 +171,7 @@ function newSuccess(message) {
 }
 
 function newError(message) {
+    console.error(message)
     messagesQueue.push(message)
     let currentLength = messagesQueue.length
     let intervalID = setInterval(function(){

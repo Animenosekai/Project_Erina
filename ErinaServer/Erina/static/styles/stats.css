@@ -42,7 +42,7 @@ erinastat-list-item-value {
 }
 
 erinastat-list-item-chart {
-    height: 120px;
+    height: 100px;
     width: 100%;
-    transform: translateY(-30px);
+    transform: translateY(-10px);
 }

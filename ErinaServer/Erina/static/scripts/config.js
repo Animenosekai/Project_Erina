@@ -15,6 +15,14 @@ function updateTags(container) {
         body: formData,
         method: "POST"
     })
+    .then((resp) => resp.json())
+    .then(function(data){
+        if (data.success == true) {
+            newSuccess("Successfully edited " + container.getAttribute("config-path"))
+        } else {
+            newError("An error occured while editing " + container.getAttribute("config-path"))
+        }
+    })
 }
 
 function createNewTag(container, value) {
@@ -89,6 +97,14 @@ function textInputHandler(event, textInputElement) {
             body: formData,
             method: "POST"
         })
+        .then((resp) => resp.json())
+        .then(function(data){
+            if (data.success == true) {
+                newSuccess("Successfully edited " + data.path + " to " + String(data.value))
+            } else {
+                newError("An error occured while editing " + textInputElement.getAttribute("config-path"))
+            }
+        })
         textInputElement.blur()
     }
 }
@@ -100,6 +116,14 @@ function checkboxHandler(checkboxElement) {
     fetch("/erina/api/admin/config/update", {
         body: formData,
         method: "POST"
+    })
+    .then((resp) => resp.json())
+    .then(function(data){
+        if (data.success == true) {
+            newSuccess("Successfully edited " + data.path + " to " + String(data.value))
+        } else {
+            newError("An error occured while editing " + checkboxElement.getAttribute("config-path"))
+        }
     })
     if (checkboxElement.checked == true) {
         document.getElementById(checkboxElement.id.replace("toggle", "toggleText")).innerText = "Enabled";
