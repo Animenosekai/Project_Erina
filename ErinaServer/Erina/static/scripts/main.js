@@ -100,8 +100,8 @@ function goTo(title, url, resourceLocation=null) {
 
 
 function logout() {
-    fetch("/erina/auth/logout", {method: "POST"})
-    window.location.assign("/erina/admin/login?token=" + window.localStorage.getItem("erinaAdminToken"))
+    fetch("/erina/auth/logout?token=" + window.localStorage.getItem("erinaAdminToken"), {method: "POST"})
+    window.location.assign("/erina/admin/login")
 }
 
 
