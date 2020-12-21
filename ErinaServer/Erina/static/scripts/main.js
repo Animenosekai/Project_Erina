@@ -48,45 +48,43 @@ function goTo(title, url, resourceLocation=null) {
     } else {
         resourceLocation = String(resourceLocation)
     }
-    const token = String(window.localStorage.getItem("erinaAdminToken"))
     if ("undefined" !== typeof history.pushState) {
         try {
-            fetch("/erina/admin/resource/" + resourceLocation + "?token=" + token)
-            //fetch("/erina/admin/resource/" + resourceLocation)
+            fetch("/erina/admin/resource/" + resourceLocation + "?token=" + window.localStorage.getItem("erinaAdminToken"))
             .then(function(data){
                 return data.text()
             })
             .then(function(data){
                 if (data == "ErinaAdminLoginRedirect") {
                     window.location.assign("/erina/admin/login")
-                }
-                _hideSelectionLine()
-                document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
-                for (chart in chartsRegistry) {
-                    chartsRegistry[chart].dispose()
-                }
-                document.getElementById("ErinaAdminBody").innerHTML = data
-                history.pushState({page: title}, title, "/erina/admin/" + url);
-                //document.getElementsByTagName("title")[0].innerText = title
-                document.title = title
-                
-                scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
-                if (scriptsLoadingQueue.length == 0) {
-                    stopLoading()
                 } else {
-                    fetch("/erina/auth/verify?token=" + window.localStorage.getItem("erinaAdminToken"))
-                    .then((resp) => resp.text())
-                    .then(function(data){
-                        if (data == "Valid") {
-                            var newScript = document.createElement("script");
-                            newScript.src = scriptsLoadingQueue[0]
-                            newScript.classList.add("ErinaExternalJS")
-                            newScript.addEventListener("load", loadNextScript)
-                            document.getElementsByTagName("head")[0].appendChild(newScript)
-                        } else {
-                            window.location.assign("/erina/admin/login")
-                        }
-                    })
+                    _hideSelectionLine()
+                    document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
+                    for (chart in chartsRegistry) {
+                        chartsRegistry[chart].dispose()
+                    }
+                    document.getElementById("ErinaAdminBody").innerHTML = data
+                    history.pushState({page: title}, title, "/erina/admin/" + url);
+                    document.title = title
+                    
+                    scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
+                    if (scriptsLoadingQueue.length == 0) {
+                        stopLoading()
+                    } else {
+                        fetch("/erina/auth/verify?token=" + window.localStorage.getItem("erinaAdminToken"))
+                        .then((resp) => resp.text())
+                        .then(function(data){
+                            if (data == "Valid") {
+                                var newScript = document.createElement("script");
+                                newScript.src = scriptsLoadingQueue[0]
+                                newScript.classList.add("ErinaExternalJS")
+                                newScript.addEventListener("load", loadNextScript)
+                                document.getElementsByTagName("head")[0].appendChild(newScript)
+                            } else {
+                                window.location.assign("/erina/admin/login")
+                            }
+                        })
+                    }
                 }
             })
         } catch {

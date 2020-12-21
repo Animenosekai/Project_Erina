@@ -811,3 +811,319 @@
 1608548718    [Erina] Initializing ErinaServer
 1608548728    [Erina] ---> Initializing Static File Endpoints
 1608548728    [Erina] ---> Initializing API
+1608548774    [Erina] ---> Initializing ErinaAdmin
+1608548774    [Erina] ---> Initializing Custom Endpoints
+1608548774    [Erina] ---> Initializing the WebSocket Endpoints
+1608548775    [Erina] Running ErinaServer...
+1608548780    [Erina] Starting to check for timeouts and updates...
+1608549017    [Erina] Initializing Erina configuration...
+1608549017    [Erina] Initializing ErinaServer
+1608549027    [Erina] ---> Initializing Static File Endpoints
+1608549028    [Erina] ---> Initializing API
+1608549045    [Erina] ---> Initializing ErinaAdmin
+1608549045    [Erina] ---> Initializing Custom Endpoints
+1608549045    [Erina] ---> Initializing the WebSocket Endpoints
+1608549046    [Erina] Running ErinaServer...
+1608549048    [Erina] Starting to check for timeouts and updates...
+1608558873    [Erina] Initializing Erina configuration...
+1608558873    [Erina] Initializing ErinaServer
+1608558879    [Erina] ---> Initializing Static File Endpoints
+1608558880    [Erina] ---> Initializing API
+1608558891    [Erina] ---> Initializing ErinaAdmin
+1608558891    [Erina] ---> Initializing Custom Endpoints
+1608558891    [Erina] ---> Initializing the WebSocket Endpoints
+1608558892    [Erina] Running ErinaServer...
+1608558894    [Erina] Starting to check for timeouts and updates...
+1608559648    [Erina] Initializing Erina configuration...
+1608559648    [Erina] Initializing ErinaServer
+1608559662    [Erina] ---> Initializing Static File Endpoints
+1608559663    [Erina] ---> Initializing API
+1608559673    [Erina] ---> Initializing ErinaAdmin
+1608559673    [Erina] ---> Initializing Custom Endpoints
+1608559673    [Erina] ---> Initializing the WebSocket Endpoints
+1608559674    [Erina] Running ErinaServer...
+1608559676    [Erina] Starting to check for timeouts and updates...
+1608559784    [Erina] Initializing Erina configuration...
+1608559784    [Erina] Initializing ErinaServer
+1608559788    [Erina] ---> Initializing Static File Endpoints
+1608559788    [Erina] ---> Initializing API
+1608559798    [Erina] ---> Initializing ErinaAdmin
+1608559799    [Erina] ---> Initializing Custom Endpoints
+1608559799    [Erina] ---> Initializing the WebSocket Endpoints
+1608559801    [Erina] Running ErinaServer...
+1608559803    [Erina] Starting to check for timeouts and updates...
+1608559895    [Erina] Initializing Erina configuration...
+1608559895    [Erina] Initializing ErinaServer
+1608559914    [Erina] ---> Initializing Static File Endpoints
+1608559914    [Erina] ---> Initializing API
+1608559939    [Erina] ---> Initializing ErinaAdmin
+1608559940    [Erina] ---> Initializing Custom Endpoints
+1608559940    [Erina] ---> Initializing the WebSocket Endpoints
+1608559944    [Erina] Starting to check for timeouts and updates...
+1608560199    [Erina] Initializing Erina configuration...
+1608560199    [Erina] Initializing ErinaServer
+1608560200    [Erina] ---> Initializing Static File Endpoints
+1608560200    [Erina] ---> Initializing API
+1608560203    [Erina] ---> Initializing ErinaAdmin
+1608560203    [Erina] ---> Initializing Custom Endpoints
+1608560203    [Erina] ---> Initializing the WebSocket Endpoints
+1608560203    [Erina] Starting to check for timeouts and updates...
+1608560298    [Erina] Initializing Erina configuration...
+1608560298    [Erina] Initializing ErinaServer
+1608560298    [Erina] ---> Initializing Static File Endpoints
+1608560298    [Erina] ---> Initializing API
+1608560300    [Erina] ---> Initializing ErinaAdmin
+1608560300    [Erina] ---> Initializing Custom Endpoints
+1608560300    [Erina] ---> Initializing the WebSocket Endpoints
+1608560301    [Erina] Running ErinaServer...
+1608560301    [Erina] Starting to check for timeouts and updates...
+1608560761    [Erina] Initializing Erina configuration...
+1608560761    [Erina] Initializing ErinaServer
+1608560774    [Erina] ---> Initializing Static File Endpoints
+1608560774    [Erina] ---> Initializing API
+1608560791    [Erina] ---> Initializing ErinaAdmin
+1608560791    [Erina] ---> Initializing Custom Endpoints
+1608560792    [Erina] ---> Initializing the WebSocket Endpoints
+1608560793    [Erina] Running ErinaServer...
+1608560795    [Erina] Starting to check for timeouts and updates...
+1608560796    [Erina] An error occured while exiting
+1608560796    [Erina] Goodbye!
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] An error occured while exiting
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] Goodbye!
+1608560893    [Erina] Goodbye!
+1608560895    [Erina] An error occured while exiting
+1608560895    [Erina] Goodbye!
+1608560912    [Erina] Initializing Erina configuration...
+1608560912    [Erina] Initializing ErinaServer
+1608560924    [Erina] ---> Initializing Static File Endpoints
+1608560924    [Erina] ---> Initializing API
+1608560936    [Erina] ---> Initializing ErinaAdmin
+1608560936    [Erina] ---> Initializing Custom Endpoints
+1608560936    [Erina] ---> Initializing the WebSocket Endpoints
+1608560937    [Erina] Running ErinaServer...
+1608560939    [Erina] Starting to check for timeouts and updates...
+1608560941    [Erina] An error occured with ErinaServer
+1608560942    [Erina] Goodbye!
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] An error occured with ErinaServer
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] Goodbye!
+1608560960    [Erina] Goodbye!
+1608560962    [Erina] An error occured with ErinaServer
+1608560962    [Erina] Goodbye!
+1608560985    [Erina] Initializing Erina configuration...
+1608560985    [Erina] Initializing ErinaServer
+1608561011    [Erina] ---> Initializing Static File Endpoints
+1608561011    [Erina] ---> Initializing API
+1608561028    [Erina] ---> Initializing ErinaAdmin
+1608561029    [Erina] ---> Initializing Custom Endpoints
+1608561029    [Erina] ---> Initializing the WebSocket Endpoints
+1608561032    [Erina] Running ErinaServer...
+1608561035    [Erina] Starting to check for timeouts and updates...
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] An error occured with ErinaServer
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] Goodbye!
+1608561260    [Erina] Goodbye!
+1608561262    [Erina] An error occured with ErinaServer
+1608561262    [Erina] Goodbye!
+1608561310    [Erina] Initializing Erina configuration...
+1608561310    [Erina] Initializing ErinaServer
+1608561326    [Erina] ---> Initializing Static File Endpoints
+1608561327    [Erina] ---> Initializing API
+1608561341    [Erina] ---> Initializing ErinaAdmin
+1608561341    [Erina] ---> Initializing Custom Endpoints
+1608561341    [Erina] ---> Initializing the WebSocket Endpoints
+1608561348    [Erina] Running ErinaServer...
+1608561352    [Erina] Starting to check for timeouts and updates...
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] Goodbye!
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] An error occured with ErinaServer
+1608562154    [Erina] Goodbye!
+1608562155    [Erina] Goodbye!
+1608562155    [Erina] Goodbye!
+1608562155    [Erina] Goodbye!
+1608562155    [Erina] Goodbye!
+1608562155    [Erina] Goodbye!
+1608562155    [Erina] Goodbye!
+1608562184    [Erina] An error occured with ErinaServer
+1608562184    [Erina] Goodbye!
+1608562224    [Erina] Initializing Erina configuration...
+1608562224    [Erina] Initializing ErinaServer
+1608562239    [Erina] ---> Initializing Static File Endpoints
+1608562239    [Erina] ---> Initializing API
+1608562263    [Erina] ---> Initializing ErinaAdmin
+1608562263    [Erina] ---> Initializing Custom Endpoints
+1608562263    [Erina] ---> Initializing the WebSocket Endpoints
+1608562266    [Erina] Running ErinaServer...
+1608562271    [Erina] Starting to check for timeouts and updates...
+1608562365    [ErinaAdmin] > New ErinaConsole connection!
+1608562370    [ErinaAdmin] ErinaConsole >> Admin ran command > echo hey
+1608562400    [ErinaAdmin] ErinaConsole >> Admin ran command > echo Hey
+1608562405    [ErinaAdmin] ErinaConsole >> Admin ran command > date
+1608562435    [ErinaAdmin] ErinaConsole >> Admin ran command > exit
+1608562465    [ErinaAdmin] ErinaConsole >>> Failed to send a message
+1608562465    [ErinaAdmin] < ErinaConsole disconnected
+1608562466    [ErinaAdmin] > New ErinaConsole connection!
+1608562470    [ErinaAdmin] ErinaConsole >> Admin ran command > echo hey
+1608562470    [ErinaAdmin] ErinaConsole >> Admin ran command > 
+1608562472    [ErinaAdmin] ErinaConsole >> Admin ran command > exit
+1608562487    [ErinaAdmin] ErinaConsole >>> Failed to send a message
+1608562487    [ErinaAdmin] < ErinaConsole disconnected
+1608566340    [Erina] An error occured with ErinaServer
+1608566340    [Erina] Goodbye!
+1608566341    [Erina] An error occured with ErinaServer
+1608566341    [Erina] Goodbye!
+1608566362    [Erina] Initializing Erina configuration...
+1608566362    [Erina] Initializing ErinaServer
+1608566430    [Erina] Initializing Erina configuration...
+1608566430    [Erina] Initializing ErinaServer
+1608566431    [Erina] ---> Initializing Static File Endpoints
+1608566431    [Erina] ---> Initializing API
+1608566445    [Erina] ---> Initializing ErinaAdmin
+1608566446    [Erina] ---> Initializing Custom Endpoints
+1608566446    [Erina] ---> Initializing the WebSocket Endpoints
+1608566447    [Erina] Running ErinaServer...
+1608570477    [Erina] An error occured with ErinaServer
+1608570477    [Erina] Goodbye!
+1608570478    [Erina] An error occured with ErinaServer
+1608570478    [Erina] Goodbye!
+1608570497    [Erina] Initializing Erina configuration...
+1608570497    [Erina] Initializing ErinaServer
+1608570514    [Erina] ---> Initializing Static File Endpoints
+1608570514    [Erina] ---> Initializing API
+1608570524    [Erina] ---> Initializing ErinaAdmin
+1608570525    [Erina] ---> Initializing Custom Endpoints
+1608570525    [Erina] ---> Initializing the WebSocket Endpoints
+1608570526    [Erina] Running ErinaServer...
+1608570553    [Erina] An error occured with ErinaServer (<class 'SystemExit'>)
+1608570554    [Erina] Goodbye!
+1608570555    [Erina] An error occured with ErinaServer (<class 'SystemExit'>)
+1608570555    [Erina] Goodbye!
+1608570557    [Erina] Initializing Erina configuration...
+1608570557    [Erina] Initializing ErinaServer
+1608570558    [Erina] ---> Initializing Static File Endpoints
+1608570558    [Erina] ---> Initializing API
+1608570559    [Erina] ---> Initializing ErinaAdmin
+1608570559    [Erina] ---> Initializing Custom Endpoints
+1608570559    [Erina] ---> Initializing the WebSocket Endpoints
+1608570559    [Erina] Running ErinaServer...
+1608570782    [Erina] An error occured with ErinaServer (<class 'SystemExit'>)
+1608570783    [Erina] Goodbye!
+1608570783    [Erina] An error occured with ErinaServer (<class 'SystemExit'>)
+1608570784    [Erina] Goodbye!
+1608570795    [Erina] Initializing Erina configuration...
+1608570795    [Erina] Initializing ErinaServer
+1608570801    [Erina] ---> Initializing Static File Endpoints
+1608570801    [Erina] ---> Initializing API
+1608570813    [Erina] ---> Initializing ErinaAdmin
+1608570813    [Erina] ---> Initializing Custom Endpoints
+1608570813    [Erina] ---> Initializing the WebSocket Endpoints
+1608570815    [Erina] Running ErinaServer...
+1608571142    [Erina] Initializing Erina configuration...
+1608571142    [Erina] Initializing ErinaServer
+1608571162    [Erina] ---> Initializing Static File Endpoints
+1608571162    [Erina] ---> Initializing API
+1608571175    [Erina] ---> Initializing ErinaAdmin
+1608571175    [Erina] ---> Initializing Custom Endpoints
+1608571175    [Erina] ---> Initializing the WebSocket Endpoints
+1608571177    [Erina] Running ErinaServer...
+1608571183    [Erina] An error occured with ErinaServer (<class 'SystemExit'>)
+1608571183    [Erina] Goodbye!
+1608571249    [Erina] Initializing Erina configuration...
+1608571249    [Erina] Initializing ErinaServer
+1608571256    [Erina] ---> Initializing Static File Endpoints
+1608571256    [Erina] ---> Initializing API
+1608571267    [Erina] ---> Initializing ErinaAdmin
+1608571267    [Erina] ---> Initializing Custom Endpoints
+1608571267    [Erina] ---> Initializing the WebSocket Endpoints
+1608571268    [Erina] Running ErinaServer...
+1608571633    [Erina] Initializing Erina configuration...
+1608571633    [Erina] Initializing ErinaServer
+1608571642    [Erina] ---> Initializing Static File Endpoints
+1608571642    [Erina] ---> Initializing API
+1608571653    [Erina] ---> Initializing ErinaAdmin
+1608571653    [Erina] ---> Initializing Custom Endpoints
+1608571653    [Erina] ---> Initializing the WebSocket Endpoints
+1608571656    [Erina] Running ErinaServer...
+1608571937    [Erina] Initializing Erina configuration...
+1608571937    [Erina] Initializing ErinaServer
+1608571957    [Erina] ---> Initializing Static File Endpoints
+1608571957    [Erina] ---> Initializing API
+1608571964    [Erina] ---> Initializing ErinaAdmin
+1608571964    [Erina] ---> Initializing Custom Endpoints
+1608571964    [Erina] ---> Initializing the WebSocket Endpoints
+1608571965    [Erina] Running ErinaServer...
+1608571965    [Erina] An error occured with ErinaServer (<class 'SystemExit'>)
+1608572023    [Erina] Initializing Erina configuration...
+1608572023    [Erina] Initializing ErinaServer
+1608572024    [Erina] ---> Initializing Static File Endpoints
+1608572024    [Erina] ---> Initializing API
+1608572026    [Erina] ---> Initializing ErinaAdmin
+1608572026    [Erina] ---> Initializing Custom Endpoints
+1608572027    [Erina] ---> Initializing the WebSocket Endpoints
+1608572027    [Erina] Running ErinaServer...
+1608572837    [Erina] Goodbye!
+1608572837    [Erina] An error occured with ErinaServer (<class 'SystemExit'>)
+1608573452    [Erina] Initializing Erina configuration...
+1608573452    [Erina] Initializing ErinaServer
+1608573461    [Erina] ---> Initializing Static File Endpoints
+1608573461    [Erina] ---> Initializing API
+1608573481    [Erina] ---> Initializing ErinaAdmin
+1608573481    [Erina] ---> Initializing Custom Endpoints
+1608573481    [Erina] ---> Initializing the WebSocket Endpoints
+1608573483    [Erina] Running ErinaServer...
+1608573486    [Erina] Starting to check for timeouts and updates...
+1608573535    [ErinaAdmin] > New ErinaConsole connection!
+1608573539    [ErinaAdmin] ErinaConsole >> Admin ran command > echo hey$
+1608573541    [ErinaAdmin] ErinaConsole >> Admin ran command > echo hey
+1608573543    [ErinaAdmin] ErinaConsole >> Admin ran command > exit
+1608573547    [ErinaAdmin] ErinaConsole >>> Failed to send a message
+1608573547    [ErinaAdmin] < ErinaConsole disconnected

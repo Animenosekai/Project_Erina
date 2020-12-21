@@ -18,6 +18,7 @@ from Erina.erina_stats import api as APIStats
 from Erina.erina_stats import StatsAppend
 
 from Erina.env_information import erina_version
+from ErinaServer.Server import ErinaRateLimit
 
 
 apiEndpoint = "/erina/api"
@@ -39,6 +40,7 @@ def makeResponse(responseBody, code, minify=False):
     return response
 
 @ErinaServer.route(apiEndpoint + "/search", methods=["GET"])
+@ErinaRateLimit(fromIP=True)
 def search():
     minify = False
     requestArgs = request.values

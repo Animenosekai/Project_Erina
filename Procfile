@@ -1,1 +1,1 @@
-web: python -d -v Erina.py
+web: python ErinaLauncher.py
