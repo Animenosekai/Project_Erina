@@ -1,8 +1,55 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+
+category-title {
+    display: flex;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eaecef;
+    flex-flow: row wrap;
+    margin-top: 40px;
+    padding-bottom: 0;
+    flex-wrap: wrap-reverse;
+    font-size: 24px;
+    font-weight: 400;
+    flex: 1 1 auto;
+    left: 0px;
+    position: relative;
+    margin-left: 50px;
+    padding: 15px;
+    width: 90%;
+}
+
+action-button{
+    position: relative;
+    display: inline-block;
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #24292e;
+    background-color: #fafbfc;
+    border-color: #1b1f2326;
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04), inset 0 1px 0 hsla(0, 0%, 100%, 0.25);
+    transition: .2s cubic-bezier(.3,0,.5,1);
+    transition-property: color,background-color,border-color;
+}
+
 /* TAG CONTAINERS
 Credit: FrontendTips on YouTube (https://youtu.be/ha4xwcJXwow)
 */
+
 
 .container {
     width: 40%;
