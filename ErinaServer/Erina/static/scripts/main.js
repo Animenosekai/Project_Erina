@@ -54,18 +54,11 @@ function loadNextScript() {
     }
 }
 
-function goTo(title, url, resourceLocation=null) {
-    startLoading()
-    title = String(title)
-    url = String(url)
-    if (resourceLocation == null) {
-        resourceLocation = url
-    } else {
-        resourceLocation = String(resourceLocation)
-    }
+function _goTo() {
     if ("undefined" !== typeof history.pushState) {
         try {
-            fetch("/erina/admin/resource/" + resourceLocation + "?token=" + window.localStorage.getItem("erinaAdminToken"))
+            var url = window.location.href.substring(window.location.href.lastIndexOf("/") + 1)
+            fetch("/erina/admin/resource/" + url + "?token=" + window.localStorage.getItem("erinaAdminToken"))
             .then(function(data){
                 return data.text()
             })
@@ -79,8 +72,7 @@ function goTo(title, url, resourceLocation=null) {
                         chartsRegistry[chart].dispose()
                     }
                     document.getElementById("ErinaAdminBody").innerHTML = data
-                    history.pushState({page: title}, title, "/erina/admin/" + url);
-                    document.title = title
+                    
                     
                     scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
                     if (scriptsLoadingQueue.length == 0) {
@@ -103,10 +95,26 @@ function goTo(title, url, resourceLocation=null) {
                 }
             })
         } catch {
-            window.location.assign("/erina/admin/" + url)
+            window.getElementById("ErinaAdminBody").innerHTML = "An error occured while loading the page"
         }
     } else {
-      window.location.assign("/erina/admin/" + url);
+        window.getElementById("ErinaAdminBody").innerHTML = "Please upgrade your browser"
+    }
+}
+
+window.onpopstate = _goTo()
+
+function goTo(title, url) {
+    startLoading()
+    if ("undefined" !== typeof history.pushState) {
+        title = String(title)
+        url = String(url)
+        history.pushState({page: title}, title, "/erina/admin/" + url);
+        document.title = title
+        _goTo()
+    } else {
+        window.getElementById("ErinaAdminBody").innerHTML = "Please upgrade your browser"
+        stopLoading()
     }
 }
 

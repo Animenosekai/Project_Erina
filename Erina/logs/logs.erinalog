@@ -1216,3 +1216,12 @@
 1608577272    [ErinaAdmin] > New ErinaConsole connection!
 1608577276    [ErinaAdmin] ErinaConsole >>> Failed to send a message
 1608577276    [ErinaAdmin] < ErinaConsole disconnected
+1608578611    [Erina] Goodbye!
+1608578667    [Erina] Initializing Erina configuration...
+1608578667    [Erina] ---> Initializing Static File Endpoints
+1608578667    [Erina] ---> Initializing API
+1608578681    [Erina] ---> Initializing ErinaAdmin
+1608578681    [Erina] ---> Initializing Custom Endpoints
+1608578681    [Erina] ---> Initializing the WebSocket Endpoints
+1608578681    [Erina] Running ErinaServer...
+1608578683    [Erina] Starting to check for timeouts and updates...
