@@ -17,3 +17,5 @@ discord
 Pillow
 safeIO
 pattern
+gunicorn
+Flask-Sockets

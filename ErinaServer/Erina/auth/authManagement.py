@@ -21,9 +21,9 @@ class TokenVerification():
         if self.success:
             return "Success"
         elif self.expired:
-            return "Expired"
+            return "Expired Token"
         elif self.wrong:
-            return "Wrong"
+            return "Wrong Token"
         elif self.no_token:
             return "No Token Provided"
         else:

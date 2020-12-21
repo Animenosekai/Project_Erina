@@ -3,9 +3,16 @@ var lastTopPosition = "65vh"
 
 
 function loadErinaConsole(){
-    WSConnection = new WebSocket("ws://127.0.0.1:5555/ErinaConsole")
+    if (window.location.protocol == "https:") {
+        WSConnection = new WebSocket("wss://" + window.location.host + "/ErinaConsole")
+    } else {
+        WSConnection = new WebSocket("ws://" + window.location.host + "/ErinaConsole")
+    }
     var History = []
     var HistoryIndex = 0
+    WSConnection.onopen = function() {
+        WSConnection.send(JSON.stringify({"token": window.localStorage.getItem("erinaAdminToken")}))
+    }
     WSConnection.onmessage = function(response){
         date = new Date();
         var hours = String(date.getHours());
@@ -42,7 +49,7 @@ function loadErinaConsole(){
     }
     function submitInput() {
         var userInput = document.getElementById("consoleInput").value;
-        WSConnection.send(JSON.stringify({"input": userInput}))
+        WSConnection.send(JSON.stringify({"input": userInput, "token": window.localStorage.getItem("erinaAdminToken")}))
         History.push(document.getElementById("consoleInput").value)
         HistoryIndex = History.length
         document.getElementById("consoleInput").value = ""
