@@ -158,6 +158,26 @@ erinalog-message {
     font-size: 1.05em;
 }
 
+.erinaLogType-error::before {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 1em;
+    margin-left: .2em;
+    margin-right: .2em;
+    -moz-osx-font-smoothing: grayscale;
+    speak: none;
+    text-align: center;
+    text-decoration: inherit;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    width: 1em;
+    content: '\f071';
+    color: #ff5400;
+}
+
 .erinaFeedbacks {
     display: flex;
     flex-direction: column;

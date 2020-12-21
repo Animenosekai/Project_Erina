@@ -1213,3 +1213,6 @@
 1608577082    [ErinaAdmin] ErinaConsole >> Admin ran command > echo Hey
 1608577090    [ErinaAdmin] ErinaConsole >>> Failed to send a message
 1608577090    [ErinaAdmin] < ErinaConsole disconnected
+1608577272    [ErinaAdmin] > New ErinaConsole connection!
+1608577276    [ErinaAdmin] ErinaConsole >>> Failed to send a message
+1608577276    [ErinaAdmin] < ErinaConsole disconnected
