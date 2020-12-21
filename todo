@@ -1,7 +1,6 @@
 ///// ERINA PROJECT
 >>> for @Animenosekai
 
---> [Code Fix] Fixing Multiprocessing Error with WebSocket Server
 --> [Code Fix] Multiple Fixing
 --> [Code Fix] Code Cleaning
 --> [Code Fix] IQDB ErinaParser
@@ -9,12 +8,8 @@
 --> [Code Fix] Reevaluate needed data for Caches
 --> [Code Fix] Speed Improvement
 --> [Code Fix] Error/Exception Catching
---> [Website Styling] Fix CSS (text align) for Stats
---> [Website Styling] New CSS for Config
---> [Website JS] Async Data retrieving for Stats
 --> [Website Functionnality] Management buttons for ErinaConfig
 --> [Website Functionnality] Feedbacks Page
---> [Website Functionnality] Finish Auth Method
 --> [GitHub Repo/Website Functionnality] API Docs Page
 --> [GitHub Repo] Wiki/README for Erina
 --> [GitHub Repo] Repo Cleaning

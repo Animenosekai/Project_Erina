@@ -50,10 +50,11 @@ Credit: FrontendTips on YouTube (https://youtu.be/ha4xwcJXwow)
     font-size: 16px;
     border: 0;
     outline: none;
-    color: rgb(255, 255, 255);
+    color: #232323;
     flex: 1;
     background: #0000001f;
-    border-radius: 5px;
+    border-radius: 2px;
+    margin-top: 3px;
 }
 
 .material-icons {
@@ -84,7 +85,7 @@ Credit: FrontendTips on YouTube (https://youtu.be/ha4xwcJXwow)
     flex-direction: row;
     margin: 5px;
     height: 80px;
-    background: rgb(177 177 175 / 40%);
+    background: rgb(255 255 255 / 80%);
     border-radius: 5px;
 }
 
@@ -297,11 +298,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     max-width: 1000px;
     margin: 0 auto 10px;
     border-radius: 4px;
-    background-color: rgb(183 183 183 / 20%);
+    background-color: rgba(255, 244, 208, 0.4);
     box-shadow: 0 0 0 1px #ececec;
     opacity: 1;
     transition: box-shadow 0.2s, opacity 0.4s;
     overflow: hidden;
+    padding: 0px 5px;
 }
 
 .expandableItem-tab:hover {
@@ -416,8 +418,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 .expandableItem-tab-content {
-    background-color: rgb(183 183 183 / 40%);
-    /*font-size: 0;*/
+    background-color: rgba(255, 244, 208, 0.4);
     text-align: justify;
 }
 
@@ -440,7 +441,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     padding: 16px 24px 20px;
     box-sizing: border-box;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: #232323;
     border: 1px solid #ececec;
     text-align: left;
 }
@@ -528,7 +529,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     border-bottom: 2px solid #9b9b9b;
     outline: 0;
     font-size: 1.3rem;
-    color: #fff;
+    color: #232323;
     padding: 7px 0;
     background: transparent;
     transition: border-color 500ms ease;
