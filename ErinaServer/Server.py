@@ -1,19 +1,8 @@
 from flask import Flask, Response, request
-from Erina.config import Server
+
 from time import time
 import json
 from Erina.env_information import erina_version
-
-from Erina.erina_log import log
-
-from threading import Thread
-from multiprocessing import current_process
-
-if Server.disable_console_messages:
-    import logging
-    log = logging.getLogger('werkzeug')
-    log.setLevel(logging.ERROR)
-
 
 ErinaServer = Flask(__name__)
 

@@ -4,9 +4,9 @@ var lastTopPosition = "65vh"
 
 function loadErinaConsole(){
     if (window.location.protocol == "https:") {
-        WSConnection = new WebSocket("wss://" + window.location.host + "/ErinaConsole")
+        WSConnection = new WebSocket("wss://" + window.location.host + "/erina/websockets/ErinaConsole")
     } else {
-        WSConnection = new WebSocket("ws://" + window.location.host + "/ErinaConsole")
+        WSConnection = new WebSocket("ws://" + window.location.host + "/erina/websockets/ErinaConsole")
     }
     var History = []
     var HistoryIndex = 0

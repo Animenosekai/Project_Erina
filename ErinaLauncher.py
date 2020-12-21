@@ -8,15 +8,17 @@ if __name__ == '__main__':
 
     #### INITIALIZING ERINASERVER --> Manages the whole server
     from threading import Thread
-    from Erina.erina_log import log, logFile
-
-    log("Erina", "Initializing Erina configuration...")
-    from Erina.config import Server as ServerConfig
-    log("Erina", "Initializing ErinaServer")
+    print("[Erina]", "Initializing ErinaServer")
     from ErinaServer.Server import ErinaServer
+    from ErinaServer import WebSockets
     from gevent import pywsgi
     from geventwebsocket.handler import WebSocketHandler
+    
 
+    from Erina.erina_log import log, logFile
+    log("Erina", "Initializing Erina configuration...")
+    from Erina.config import Server as ServerConfig
+    from Erina.env_information import erina_version
 
     ## RECORDING Endpoints
     log("Erina", "---> Initializing Static File Endpoints")
@@ -30,15 +32,18 @@ if __name__ == '__main__':
     log("Erina", "---> Initializing Custom Endpoints")
     from ErinaServer import Custom
     log("Erina", "---> Initializing the WebSocket Endpoints")
-    from ErinaServer.Erina.admin.console import console
+    from ErinaServer.Erina.admin import Console
 
     def runServer():
         ## RUNNING ErinaServer
         log("Erina", "Running ErinaServer...")
-        ErinaWSGIServer = pywsgi.WSGIServer((ServerConfig.host, ServerConfig.port), ErinaServer, handler_class=WebSocketHandler)
+        wsgiEnv = {
+            'SERVER_SOFTWARE': 'ErinaServer ' + erina_version,
+            'wsgi.multithread': True,
+            'wsgi.run_once': False
+        }
+        ErinaWSGIServer = pywsgi.WSGIServer((ServerConfig.host, ServerConfig.port), ErinaServer, handler_class=WebSocketHandler, environ=wsgiEnv)
         ErinaWSGIServer.serve_forever()
-        
-
 
     def runClients():
         import asyncio

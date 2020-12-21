@@ -9,7 +9,6 @@ Flask
 lifeeasy
 requests
 filecenter
-Flask_RESTful
 Flask_Cors
 numpy
 beautifulsoup4
@@ -17,5 +16,4 @@ discord
 Pillow
 safeIO
 pattern
-gunicorn
 Flask-Sockets

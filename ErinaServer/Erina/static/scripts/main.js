@@ -23,6 +23,21 @@ window.onload = function(){
         goTo("ErinaAdmin", "overview")
     }
     stopLoading()
+
+    if (window.location.protocol == "https:") {
+        ErinaLogsConnection = new WebSocket("wss://" + window.location.host + "/erina/websockets/Logs")
+    } else {
+        ErinaLogsConnection = new WebSocket("ws://" + window.location.host + "/erina/websockets/Logs")
+    }
+    ErinaLogsConnection.onopen = function() {
+        ErinaLogsConnection.send(JSON.stringify({"token": window.localStorage.getItem("erinaAdminToken")}))
+    }
+    ErinaLogsConnection.onmessage = function(response){
+        data = JSON.parse(response.data)
+        if (data.error == true) {
+            newError("[" + data.api + "] " + data.message)
+        }
+    }
 }
 
 function loadNextScript() {
@@ -94,7 +109,6 @@ function goTo(title, url, resourceLocation=null) {
       window.location.assign("/erina/admin/" + url);
     }
 }
-
 
 
 function logout() {

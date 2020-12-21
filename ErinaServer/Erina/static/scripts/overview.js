@@ -61,7 +61,28 @@ function PageInitialize(){
             data = data.data
             for (element in data) {
                 for (timestamp in data[element]) {
-                    addErinaLogs(timestamp, "info", data[element][timestamp])
+                    var message = data[element][timestamp]
+                    if (String(message).startsWith("[Error]")) {
+                        addErinaLogs(timestamp, "error", message)
+                    } else {
+                        addErinaLogs(timestamp, "info", message)
+                    }
+                }
+            }
+            if (window.location.protocol == "https:") {
+                LogsConnection = new WebSocket("wss://" + window.location.host + "/erina/websockets/Logs")
+            } else {
+                LogsConnection = new WebSocket("ws://" + window.location.host + "/erina/websockets/Logs")
+            }
+            LogsConnection.onopen = function() {
+                LogsConnection.send(JSON.stringify({"token": window.localStorage.getItem("erinaAdminToken")}))
+            }
+            LogsConnection.onmessage = function(response){
+                data = JSON.parse(response.data)
+                if (data.error == true) {
+                    addErinaLogs(data.timestamp, "error", "[" + data.api + "] " + data.message)
+                } else {
+                    addErinaLogs(data.timestamp, "info", "[" + data.api + "] " + data.message)
                 }
             }
         } else if (data.error == "login") {
