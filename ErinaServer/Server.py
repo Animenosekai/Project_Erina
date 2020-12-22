@@ -1,10 +1,22 @@
-from flask import Flask, Response, request
+from flask import Flask, Response, request, send_from_directory
 
 from time import time
 import json
-from Erina.env_information import erina_version
+from Erina.env_information import erina_version, erina_dir
 
 ErinaServer = Flask(__name__)
+
+
+
+
+@ErinaServer.errorhandler(404)
+def page_not_found(e):
+    return send_from_directory(erina_dir + "/ErinaServer/Erina/static/html", "404.html"), 404
+
+@ErinaServer.errorhandler(500)
+def server_error(e):
+    return send_from_directory(erina_dir + "/ErinaServer/Erina/static/html", "500.html"), 500
+
 
 rate_limit_map = {}
 ip_rate_limit_map = {}

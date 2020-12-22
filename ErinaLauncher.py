@@ -4,10 +4,33 @@ Erina Clients Wrapper for the Erina Project
 @author: Anime no Sekai
 Erina Project - 2020
 """
+
+try:
+    _ = ErinaWSGIServer
+except:    
+    ErinaWSGIServer = None
+try:
+    _ = logFile
+except:
+    logFile = None
+try:
+    _ = log
+except:
+    log = None
+
+
+def shutdownErinaServer(num, info):
+    if ErinaWSGIServer is not None:
+        ErinaWSGIServer.stop()
+        ErinaWSGIServer.close()
+    if logFile is not None:
+        logFile.blocking = True
+    if log is not None:
+        log("Erina", "Goodbye!")
+
 if __name__ == '__main__':
 
     #### INITIALIZING ERINASERVER --> Manages the whole server
-    from threading import Thread
     print("[Erina]", "Initializing ErinaServer")
     from ErinaServer.Server import ErinaServer
     from ErinaServer import WebSockets
@@ -31,10 +54,11 @@ if __name__ == '__main__':
     from ErinaServer.Erina.admin import Config
     log("Erina", "---> Initializing Custom Endpoints")
     from ErinaServer import Custom
-    log("Erina", "---> Initializing the WebSocket Endpoints")
+    log("Erina", "---> Initializing ErinaConsole")
     from ErinaServer.Erina.admin import Console
 
     def runServer():
+        global ErinaWSGIServer
         ## RUNNING ErinaServer
         log("Erina", "Running ErinaServer...")
         wsgiEnv = {
@@ -63,10 +87,16 @@ if __name__ == '__main__':
             asyncio.get_event_loop().create_task(discordClient.start(config.Discord.keys.token))
             asyncio.get_event_loop().run_forever()
 
+    from threading import Thread
     Thread(target=runClients, daemon=True).start()
+
+    import signal
+    from sys import exc_info
+    signal.signal(signal.SIGINT, shutdownErinaServer)
+    signal.signal(signal.SIGTERM, shutdownErinaServer)
 
     try:
         runServer()
-    except KeyboardInterrupt:
+    except:
         logFile.blocking = True
-        log("Erina", "Goodbye!")        
+        log("Erina", f"An error occured while running ErinaServer ({exc_info()[0]})", True)

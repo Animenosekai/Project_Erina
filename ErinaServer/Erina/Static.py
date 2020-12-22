@@ -25,7 +25,7 @@ def mainEndpoint(page):
     elif str(page) in ["", "overview", "api", "stats", "config"]:
         return send_from_directory(htmlLocation, "main.html")
     else:
-        return send_from_directory(htmlLocation, "404.html")
+        return send_from_directory(htmlLocation, "404.html"), 404
 
 @ErinaServer.route("/erina/admin/")
 def redirectToMainEndpoint():
@@ -44,7 +44,7 @@ def stylesEndpoint(page):
         return send_from_directory(stylesLocation, page + ".css")
     elif page == "login":
         return send_from_directory(stylesLocation, "login.css")
-    return send_from_directory(htmlLocation, "404.html")
+    return send_from_directory(htmlLocation, "404.html"), 404
 
 @ErinaServer.route("/erina/admin/static/scripts/<page>.js")
 def scriptsEndpoint(page):
@@ -59,7 +59,7 @@ def scriptsEndpoint(page):
         return send_from_directory(scriptsLocation, page + ".js")
     elif page == "login":
         return send_from_directory(scriptsLocation, "login.js")
-    return send_from_directory(htmlLocation, "404.html")
+    return send_from_directory(htmlLocation, "404.html"), 404
 
 @ErinaServer.route("/erina/admin/static/images/404")
 def NotFound():

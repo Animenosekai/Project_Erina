@@ -1,4 +1,86 @@
 
+/////// ACTIONS
+
+document.getElementById("resetErinaStats").onclick = function() {
+    if (confirm("Do you really want to reset ErinaStats?") == true) {
+        fetch("/erina/api/admin/stats/reset?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                newSuccess("Successfully resetted ErinaStats")
+            } else {
+                newError("An error occured while resetting ErinaStats")
+            }
+        })
+    }
+}
+
+document.getElementById("resetLogs").onclick = function() {
+    if (confirm("Do you really want to reset ErinaLogs?") == true) {
+        fetch("/erina/api/admin/logs/reset?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                newSuccess("Successfully resetted ErinaLogs")
+            } else {
+                newError("An error occured while resetting ErinaLogs")
+            }
+        })
+    }
+}
+
+document.getElementById("revertConfig").onclick = function() {
+    if (confirm("Do you really want to revert ErinaConfig to its default values?") == true) {
+        fetch("/erina/api/admin/config/default?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                newSuccess("Successfully reverted ErinaConfig")
+            } else {
+                newError("An error occured while reverting ErinaConfig to its default values")
+            }
+        })
+    }
+}
+
+document.getElementById("restartErinaServer").onclick = function() {
+    if (confirm("Do you really want to restart Erina?\nIt might take time to reinitialize everything and all of the clients will be down for a moment.") == true) {
+        newSuccess("Restarting Erina...")
+        fetch("/erina/api/admin/restart?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                newError("An error occured while restarting Erina")
+            }
+        })
+    }
+}
+
+document.getElementById("shutdownErinaServer").onclick = function() {
+    if (confirm("Do you really want to shutdown Erina?\nAll of the clients will be down and you won't be able to access this page until you manually turn it back on.\nPlease also note that it will only exit Erina's process.") == true) {
+        newSuccess("Shutting down Erina...")
+        fetch("/erina/api/admin/shutdown?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == false) {
+                newError("An error occured while shutting down Erina")
+            }
+        })
+    }
+}
+
+/////// TAGS
+
 function updateTags(container) {
     var tags = "";
     for (var i = 0; i < container.querySelectorAll("span").length; i++) {
@@ -90,6 +172,10 @@ function tagInputCallback(event, inputElement) {
     return
 }
 
+
+
+///// TEXT INPUT
+
 function textInputHandler(event, textInputElement) {
     if (event.key == "Enter") {
         var formData = new FormData();
@@ -112,6 +198,9 @@ function textInputHandler(event, textInputElement) {
         textInputElement.blur()
     }
 }
+
+
+////// CHECKBOX
 
 function checkboxHandler(checkboxElement) {
     var formData = new FormData();

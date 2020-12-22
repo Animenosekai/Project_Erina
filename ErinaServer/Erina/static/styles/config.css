@@ -19,6 +19,17 @@ category-title {
     width: 90%;
 }
 
+actions { 
+    display: flex;
+    flex-direction: row;
+    margin-left: 30%;
+    margin-bottom: 25px;
+}
+
+action-button-container {
+    margin: 10px;
+}
+
 action-button{
     position: relative;
     display: inline-block;
