@@ -5,28 +5,15 @@ Erina Clients Wrapper for the Erina Project
 Erina Project - 2020
 """
 
-try:
-    _ = ErinaWSGIServer
-except:    
-    ErinaWSGIServer = None
-try:
-    _ = logFile
-except:
-    logFile = None
-try:
-    _ = log
-except:
-    log = None
-
+import sys
 
 def shutdownErinaServer(num, info):
-    if ErinaWSGIServer is not None:
-        ErinaWSGIServer.stop()
-        ErinaWSGIServer.close()
-    if logFile is not None:
-        logFile.blocking = True
-    if log is not None:
-        log("Erina", "Goodbye!")
+    ErinaWSGIServer.stop()
+    ErinaWSGIServer.close()
+    logFile.blocking = True
+    log("Erina", "Goodbye!")
+    sys.exit(0)
+    
 
 if __name__ == '__main__':
 

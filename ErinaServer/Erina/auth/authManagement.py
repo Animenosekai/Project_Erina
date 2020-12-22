@@ -45,10 +45,15 @@ if currentSalt is None:
     while currentSalt in salts:
         currentSalt = createRandomID(8)
     TextFile(erina_dir + "/ErinaServer/Erina/auth/salt.erina").append(currentSalt + "\n")
+    lastTokenFile = TextFile(erina_dir + "/ErinaServer/Erina/auth/lastToken.erina")
+    if lastTokenFile.read().replace(" ", "").replace("\n", "") != "":
+        currentToken = lastTokenFile.read().replace(" ", "").replace("\n", "")
+    lastTokenFile.write("")
 
 def createToken(lengthWithoutSalt):
     global currentToken
     global expiredTokens
+    lastTokenFile.write("")
     tokenResult = str(currentSalt) + createRandomID(lengthWithoutSalt)
     if tokenResult in expiredTokens:
         tokenResult = createToken(lengthWithoutSalt)

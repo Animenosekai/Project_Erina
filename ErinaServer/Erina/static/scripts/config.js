@@ -51,16 +51,40 @@ document.getElementById("revertConfig").onclick = function() {
 
 document.getElementById("restartErinaServer").onclick = function() {
     if (confirm("Do you really want to restart Erina?\nIt might take time to reinitialize everything and all of the clients will be down for a moment.") == true) {
-        newSuccess("Restarting Erina...")
         fetch("/erina/api/admin/restart?token=" + window.localStorage.getItem("erinaAdminToken"), {
             method: "POST"
         })
         .then((resp) => resp.json())
         .then(function(data) {
             if (data.success == true) {
+                newSuccess("Restarting Erina...")
+            } else {
                 newError("An error occured while restarting Erina")
             }
         })
+
+        function verifyAfterDown() {
+            var _erinaAliveInterval = setInterval(function() {
+                fetch("/erina/api/admin/alive")
+                .then(function() {
+                    newSuccess("Erina is back!")
+                    clearInterval(_erinaAliveInterval)
+                })
+                .catch(function() {
+                    console.log("Waiting for ErinaServer")
+                })
+            }, 1000)
+        }
+
+        erinaIsOffline = false
+        var _erinaAliveInterval = setInterval(function() {
+            fetch("/erina/api/admin/alive")
+            .catch(function() {
+                verifyAfterDown()
+                clearInterval(_erinaAliveInterval)
+                console.log("Waiting for ErinaServer")
+            })
+        }, 1000)
     }
 }
 
@@ -72,7 +96,9 @@ document.getElementById("shutdownErinaServer").onclick = function() {
         })
         .then((resp) => resp.json())
         .then(function(data) {
-            if (data.success == false) {
+            if (data.success == true) {
+                newSuccess("Shutting down Erina...")
+            } else {
                 newError("An error occured while shutting down Erina")
             }
         })

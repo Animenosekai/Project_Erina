@@ -1,11 +1,13 @@
 import json
 import re
+import os
 from time import sleep
 from threading import Thread
 import shlex
+import signal
 import subprocess
 from flask import request, Response
-from ErinaServer.Server import ErinaServer
+from ErinaServer.Server import ErinaServer, ErinaRateLimit
 from Erina.config import update, default
 from Erina._config.files import configFile
 from ErinaServer.Erina.admin.Stats import returnStats, pastMonthErrors, biggestUsers
@@ -14,9 +16,10 @@ from Erina.erina_log import logFile
 from ErinaServer.Erina.admin.utils import convert_to_float, convert_to_int
 from Erina.config import Hash
 from Erina.env_information import erina_version, python_executable_path, erina_dir
-from ErinaLauncher import shutdownErinaServer
 
 from ErinaServer.Erina.auth import authManagement
+from safeIO import TextFile
+
 
 def makeResponse(responseBody, code, request_args):
     if "minify" in request_args:
@@ -152,7 +155,7 @@ def resetLogs():
 
 def _shutdown():
     sleep(2)
-    shutdownErinaServer(None, None)
+    os.kill(os.getpid(), signal.SIGTERM)
 
 @ErinaServer.route("/erina/api/admin/shutdown", methods=["POST"])
 def shutdownServer():
@@ -167,13 +170,18 @@ def shutdownServer():
 def restartServer():
     tokenVerification = authManagement.verifyToken(request.values)
     if tokenVerification.success:
+        TextFile(erina_dir + "/ErinaServer/Erina/auth/lastToken.erina").write(authManagement.currentToken)
         newErinaProcess = subprocess.Popen(shlex.split("/bin/sh"), stdin=subprocess.PIPE, start_new_session=True) # Open a shell prompt
-        newErinaProcess.stdin.write("cd " + erina_dir)
+        newErinaProcess.stdin.write(str("cd " + erina_dir + "\n").encode("utf-8"))
         newErinaProcess.stdin.flush()
-        newErinaProcess.stdin.write(python_executable_path + " ErinaLauncher.py")
+        newErinaProcess.stdin.write(str(python_executable_path + " ErinaLauncher.py\n").encode("utf-8"))
         newErinaProcess.stdin.flush()
         Thread(target=_shutdown, daemon=True).start()
         return makeResponse({"success": True}, 200, request.args)
     else:
         return makeResponse({"success": False, "error": "login"}, 400, request.args)
-        
+
+@ErinaServer.route("/erina/api/admin/alive")
+@ErinaRateLimit(0.1)
+def alive():
+    return makeResponse({"message": "Yes", "success": True}, 200, request.args)
