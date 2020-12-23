@@ -9,6 +9,25 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="/erina/admin/static/styles/api.css">
 
+
+<category-title>API Authorizations</category-title>
+<action-button id="openAuthPopUp">Add an authorization</action-button>
+<authorization-popup-background id="authPopup">
+    <authorization-popup id="authorizationPopUp">
+        <popup-title>Add a new authorization</popup-title>
+        <input type="text" name="Name" placeholder="Auth Name" id="authorizationPopUp_name" required>
+        <input type="number" name="RateLimit" placeholder="Rate-Limit (in seconds)" id="authorizationPopUp_ratelimit" required>
+        <popup-buttons>
+            <action-button id="closeAuthPopUp" class="popupButton">Cancel</action-button>
+            <action-button id="submitPopUp" class="popupButton">Submit</action-button>
+        </popup-buttons>
+    </authorization-popup>
+</authorization-popup-background>
+
+<authorizations id="authorizationsList"></authorizations>
+
+<category-title>Documentation</category-title>
+
 <api-endpoint-container>
     <api-endpoint-title-container>
         <api-endpoint-title>Search</api-endpoint-title>

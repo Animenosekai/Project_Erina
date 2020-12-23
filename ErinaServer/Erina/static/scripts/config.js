@@ -65,7 +65,7 @@ document.getElementById("restartErinaServer").onclick = function() {
 
         function verifyAfterDown() {
             var _erinaAliveInterval = setInterval(function() {
-                fetch("/erina/api/admin/alive")
+                fetch("/erina/alive")
                 .then(function() {
                     newSuccess("Erina is back!")
                     clearInterval(_erinaAliveInterval)
@@ -78,7 +78,7 @@ document.getElementById("restartErinaServer").onclick = function() {
 
         erinaIsOffline = false
         var _erinaAliveInterval = setInterval(function() {
-            fetch("/erina/api/admin/alive")
+            fetch("/erina/alive")
             .catch(function() {
                 verifyAfterDown()
                 clearInterval(_erinaAliveInterval)
@@ -127,8 +127,6 @@ function updateTags(container) {
     .then(function(data){
         if (data.success == true) {
             newSuccess("Successfully edited " + container.getAttribute("config-path"))
-        } else if (data.error == "login") {
-            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while editing " + container.getAttribute("config-path"))
         }
@@ -215,8 +213,6 @@ function textInputHandler(event, textInputElement) {
         .then(function(data){
             if (data.success == true) {
                 newSuccess("Successfully edited " + data.path + " to " + String(data.value))
-            } else if (data.error == "login") {
-                window.location.assign("/erina/admin/login")
             } else {
                 newError("An error occured while editing " + textInputElement.getAttribute("config-path"))
             }
@@ -240,8 +236,6 @@ function checkboxHandler(checkboxElement) {
     .then(function(data){
         if (data.success == true) {
             newSuccess("Successfully edited " + data.path + " to " + String(data.value))
-        } else if (data.error == "login") {
-            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while editing " + checkboxElement.getAttribute("config-path"))
         }
@@ -255,7 +249,7 @@ function checkboxHandler(checkboxElement) {
 
 
 function PageInitialize() {
-    fetch("/erina/api/admin/config/get?token=" + window.localStorage.getItem("erinaAdminToken"))
+    fetch("/erina/api/admin/config?token=" + window.localStorage.getItem("erinaAdminToken"))
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {

@@ -1,12 +1,14 @@
+import os
 import sys
 import time
 import json
 import shlex
+import fcntl
 import threading
 import subprocess
-import fcntl, os
-from ErinaServer.WebSockets import ErinaSockets
+
 from Erina.erina_log import log
+from ErinaServer.WebSockets import ErinaSockets
 from ErinaServer.Erina.auth import authManagement
 
 

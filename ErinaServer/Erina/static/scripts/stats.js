@@ -52,8 +52,6 @@ function PageInitialize() {
                     newError("Error while adding category: " + String(category))
                 }
             }
-        } else if (data.error == "login") {
-            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while retrieving the stats")
         }

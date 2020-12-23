@@ -1,5 +1,5 @@
 function PageInitialize(){
-    fetch("/erina/api/admin/stats?token=" + window.localStorage.getItem("erinaAdminToken"))
+    fetch("/erina/api/admin/stats/overview?token=" + window.localStorage.getItem("erinaAdminToken"))
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {
@@ -28,8 +28,6 @@ function PageInitialize(){
                 document.getElementById("erinaStats-current-number-tweets").innerText = data.twitter.responses.values[closestTimestamp]
                 createChart("erinaChart-tweets", results, am4core.color("#7ae2ff"))
             }
-        } else if (data.error == "login") {
-            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while retrieving the stats")
         }
@@ -85,8 +83,6 @@ function PageInitialize(){
                     addErinaLogs(data.timestamp, "info", "[" + data.api + "] " + data.message)
                 }
             }
-        } else if (data.error == "login") {
-            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while retrieving the logs")
         }
@@ -109,8 +105,6 @@ function PageInitialize(){
                 finalRankString = "No data"
             }
             document.getElementById("erinaWidget-bestuser-value").innerText = finalRankString
-        } else if (data.error == "login") {
-            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while getting the users ranking")
         }
@@ -122,8 +116,6 @@ function PageInitialize(){
         if (data.success == true) {
             data = data.data
             document.getElementById("erinaWidget-errors-value").innerText = String(data.length)
-        } else if (data.error == "login") {
-            window.location.assign("/erina/admin/login")
         } else {
             newError("An error occured while getting the latest errors")
         }

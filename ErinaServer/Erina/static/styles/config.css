@@ -27,6 +27,7 @@ actions {
 }
 
 action-button-container {
+    position: relative;
     margin: 10px;
 }
 

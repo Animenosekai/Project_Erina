@@ -1,12 +1,15 @@
-from datetime import datetime
 from time import time
-from Erina import erina_stats
-from ErinaServer.Erina.admin.utils import convert_to_int, convert_to_float
-from Erina import env_information
 from os.path import isfile
+from datetime import datetime
+
+from safeIO import TextFile
+
+from Erina import erina_stats
+from Erina import env_information
 from Erina.env_information import erina_dir
 from ErinaParser.utils.anilist_parser import AnilistCache
-from safeIO import TextFile
+from ErinaServer.Erina.admin.utils import convert_to_int, convert_to_float
+
 
 def returnTimestamp(logLine):
     try:
@@ -279,7 +282,170 @@ def returnStats():
     return results
 
 
+def returnOverviewStats():
+    results = {}
 
+    ### BLOCKING EACH FILE AND GETTING ITS CONTENT
+    
+    erina_stats.search.anilistIDSearchCount.blocking = True
+    search_anilistIDSearchCount = erina_stats.search.anilistIDSearchCount.readlines()
+    erina_stats.search.anilistIDSearchCount.blocking = False
+    erina_stats.search.imageSearchCount.blocking = True
+    search_imageSearchCount = erina_stats.search.imageSearchCount.readlines()
+    erina_stats.search.imageSearchCount.blocking = False
+    erina_stats.search.titleSearchCount.blocking = True
+    search_titleSearchCount = erina_stats.search.titleSearchCount.readlines()
+    erina_stats.search.titleSearchCount.blocking = False
+    
+    erina_stats.twitter.responses.blocking = True
+    twitter_responses = erina_stats.twitter.responses.readlines()
+    erina_stats.twitter.responses.blocking = False
+    
+    results["search"] = {}
+    results["search"]["searchCount"] = {}
+    results["search"]["searchCount"]["values"] = {}
+    results["search"]["searchCount"]["success"] = True
+
+    def _retrieveStats(category, subcategory, data):
+        
+        currentTime = datetime.fromtimestamp(time())
+
+        # INIT RESULTS FOR THE CATEGORY
+        if category not in results:
+            results[category] = {}
+
+        if subcategory not in results[category]:
+            results[category][subcategory] = {}
+
+        results[category][subcategory]["success"] = False
+        results[category][subcategory]["values"] = {}
+
+        if data is not None and len(data) > 0: # IF THERE IS DATA
+
+            #### ADDING A VALUE
+            def addValue(timestamp, data=None):
+                """
+                Adds a value to the results
+                """
+                timestamp = timestamp.timestamp()
+                if data is None:
+                    if timestamp in results[category][subcategory]["values"]:
+                        results[category][subcategory]["values"][timestamp] += 1
+                    else:
+                        results[category][subcategory]["values"][timestamp] = 1
+                    
+                    if category == "search" and subcategory in ["anilistIDSearchCount", "titleSearchCount", "imageSearchCount"]:
+                        if timestamp in results["search"]["searchCount"]["values"]:
+                            results["search"]["searchCount"]["values"][timestamp] += 1
+                        else:
+                            results["search"]["searchCount"]["values"][timestamp] = 1
+
+                elif subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups"]:
+                    if timestamp in results[category][subcategory]["values"]:
+                        results[category][subcategory]["values"][timestamp] += convert_to_int(element.split("    ")[1])
+                    else:
+                        results[category][subcategory]["values"][timestamp] = convert_to_int(element.split("    ")[1])
+                elif subcategory == "cacheFilesCount":
+                    results[category][subcategory]["values"][timestamp] = convert_to_int(element.split("    ")[1])
+                elif subcategory == "responsePolarity":
+                    if timestamp in results[category][subcategory]["values"]:
+                        results[category][subcategory]["values"][timestamp].append(convert_to_float(element.split("    ")[1]))
+                    else:
+                        results[category][subcategory]["values"][timestamp] = [convert_to_float(element.split("    ")[1])]
+
+            firstElementTimestamp = returnTimestamp(data[0])
+            if firstElementTimestamp is not None:
+                results[category][subcategory]["success"] = True
+                if firstElementTimestamp.month == currentTime.month:
+                    if firstElementTimestamp.day == currentTime.day:
+                        if firstElementTimestamp.hour == currentTime.hour:
+                            if firstElementTimestamp.minute == currentTime.minute:
+                                for element in data:
+                                    currentTimestamp = returnTimestamp(element).replace(microsecond=0)
+                                    if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
+                                        addValue(currentTimestamp, element)
+                                    else:    
+                                        addValue(currentTimestamp)
+                            else:
+                                for element in data:
+                                    currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0)
+                                    if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
+                                        addValue(currentTimestamp, element)
+                                    else:    
+                                        addValue(currentTimestamp)
+                        else:
+                            for element in data:
+                                currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0)
+                                if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
+                                    addValue(currentTimestamp, element)
+                                else:    
+                                    addValue(currentTimestamp)
+                    else:
+                        for element in data:
+                            currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0)
+                            if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
+                                addValue(currentTimestamp, element)
+                            else:    
+                                addValue(currentTimestamp)
+                else:
+                    for element in data:
+                        currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=0)
+                        if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
+                            addValue(currentTimestamp, element)
+                        else:    
+                            addValue(currentTimestamp)
+            else:
+                results[category][subcategory]["success"] = False
+                return False
+
+        else:
+            results[category][subcategory]["values"] = {}
+            for i in range(10):
+                results[category][subcategory]["values"][currentTime.replace(microsecond=0, second=0, minute=0).timestamp() - (86400 * i)] = 0
+            results[category][subcategory]["success"] = True
+            return False
+
+        return True
+
+
+    _retrieveStats('search', 'anilistIDSearchCount', search_anilistIDSearchCount)
+    _retrieveStats('search', 'imageSearchCount', search_imageSearchCount)
+    _retrieveStats('search', 'titleSearchCount', search_titleSearchCount)
+    _retrieveStats('twitter', 'responses', twitter_responses)
+    
+    animeSearchStats = {}
+    for line in search_titleSearchCount:
+        currentAnime = str(line.split("    ")[1]).replace("\n", "").capitalize()
+        if currentAnime in animeSearchStats:
+            animeSearchStats[currentAnime] += 1
+        else:
+            animeSearchStats[currentAnime] = 1
+    
+    for line in search_anilistIDSearchCount:
+        currentAnime = str(line.split("    ")[1])
+        if isfile(erina_dir + "/ErinaCaches/AniList_Cache/" + currentAnime + ".erina"):
+            currentAnime = str(AnilistCache(TextFile(erina_dir + "/ErinaCaches/AniList_Cache/" + currentAnime + ".erina").read()).title)
+            if currentAnime in animeSearchStats:
+                animeSearchStats[currentAnime] += 1
+            else:
+                animeSearchStats[currentAnime] = 1
+
+    animeSearchRank = []
+
+    for anime in sorted(animeSearchStats, key=animeSearchStats.get, reverse=True):
+        animeSearchRank.append({anime: animeSearchStats[anime]})
+
+    results["animeSearchRank"] = animeSearchRank
+
+
+    searchCountKeys = sorted(results["search"]["searchCount"]["values"].keys())
+    finalSearchCountResult = {}
+    for timestamp in searchCountKeys:
+        finalSearchCountResult[timestamp] = results["search"]["searchCount"]["values"][timestamp]
+
+    results["search"]["searchCount"]["values"] = finalSearchCountResult
+
+    return results
 
 
 
@@ -297,10 +463,6 @@ def pastMonthErrors():
         if errorTimestamp - currentTime <= 2600000:
             results.append({errorTimestamp: error.split("    ")[1]})
     return results
-
-
-
-
 
 
 def biggestUsers():

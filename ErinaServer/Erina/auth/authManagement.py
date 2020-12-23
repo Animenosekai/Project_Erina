@@ -4,6 +4,7 @@ import string
 from safeIO import TextFile
 import hashlib
 from Erina.env_information import erina_dir
+from filecenter import files_in_dir
 
 currentSalt = None
 currentToken = None
@@ -11,7 +12,7 @@ salts = []
 expiredTokens = []
 tempCode = None
 class TokenVerification():
-    def __init__(self, success=False, expired=False, wrong=False, no_token=False) -> None:
+    def __init__(self, success=False, expired=False, wrong=False, no_token=False, not_set=False) -> None:
         self.success = success
         self.expired = expired
         self.wrong = wrong
@@ -26,6 +27,8 @@ class TokenVerification():
             return "Wrong Token"
         elif self.no_token:
             return "No Token Provided"
+        elif self.not_set:
+            return "No Password Is Set"
         else:
             return "Error"
 
@@ -60,6 +63,12 @@ def createToken(lengthWithoutSalt):
     expiredTokens.append(currentToken)
     currentToken = tokenResult
     return tokenResult
+
+def createAPIKey():
+    tokenResult = createRandomID(32)
+    if tokenResult + ".erina" in files_in_dir(erina_dir + "/ErinaServer/Erina/auth/apiAuth"):
+        tokenResult = createAPIKey()
+    return tokenResult    
 
 def verifyToken(args):
     """

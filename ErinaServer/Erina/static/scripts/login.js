@@ -1,8 +1,8 @@
 window.onload = function() {
-    fetch("/erina/auth/status") 
+    fetch("/erina/auth/verify") 
     .then((resp) => resp.json())
     .then(function(data){
-        if (data.notset == true) {
+        if (data.error == "NOT_SET_PASSWORD") {
             setPage()
             document.getElementById("goToLogin").remove()
             document.getElementById("loginPage").remove()
@@ -41,6 +41,14 @@ function setPasswordInputCallback(event) {
 
 function setPage() {
     fetch("/erina/auth/displayCode")
+    .then((resp) => resp.json())
+    .then(function(data){
+        if (data.success == true) {
+            newInfo("A temp code is displayed on your console")
+        } else {
+            newError("An error occured while displaying your temp code")
+        }
+    })
     document.getElementById("loginPage").classList.add("hidden")
     document.getElementById("setPage").classList.remove("hidden")
 }
@@ -62,15 +70,15 @@ function login() {
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {
-            window.localStorage.setItem("erinaAdminToken", data.token)
+            window.localStorage.setItem("erinaAdminToken", data.data.token)
             newSuccess("Successfully logged in!")
             window.location.assign("/erina/admin/overview")
-        } else if (data.error == "wrong") {
+        } else if (data.error == "WRONG_PASSWORD") {
             document.getElementById("passwordInput").value = ""
             newError("Wrong Password")
         } else {
             document.getElementById("passwordInput").focus()
-            newError("An error occured while logging in")
+            newError("An error occured while logging you in")
         }
     })
 }
@@ -90,10 +98,10 @@ function setPassword() {
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {
-            window.localStorage.setItem("erinaAdminToken", data.token)
+            window.localStorage.setItem("erinaAdminToken", data.data.token)
             newSuccess("Successfully logged in!")
             window.location.assign("/erina/admin/overview")
-        } else if (data.error == "wrong") {
+        } else if (data.error == "WRONG_TEMPCODE") {
             document.getElementById("tempCodeInput").value = ""
             document.getElementById("tempCodeInput").focus()
             newError("This is the wrong temp code\nCheck the temp code on your server's console")

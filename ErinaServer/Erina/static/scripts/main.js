@@ -78,19 +78,11 @@ function _goTo() {
                     if (scriptsLoadingQueue.length == 0) {
                         stopLoading()
                     } else {
-                        fetch("/erina/auth/verify?token=" + window.localStorage.getItem("erinaAdminToken"))
-                        .then((resp) => resp.text())
-                        .then(function(data){
-                            if (data == "Valid") {
-                                var newScript = document.createElement("script");
-                                newScript.src = scriptsLoadingQueue[0]
-                                newScript.classList.add("ErinaExternalJS")
-                                newScript.addEventListener("load", loadNextScript)
-                                document.getElementsByTagName("head")[0].appendChild(newScript)
-                            } else {
-                                window.location.assign("/erina/admin/login")
-                            }
-                        })
+                        var newScript = document.createElement("script");
+                        newScript.src = scriptsLoadingQueue[0]
+                        newScript.classList.add("ErinaExternalJS")
+                        newScript.addEventListener("load", loadNextScript)
+                        document.getElementsByTagName("head")[0].appendChild(newScript)
                     }
                 }
             })
@@ -239,3 +231,12 @@ window.addEventListener("online", function(){
 window.addEventListener("offline", function(){
     newInfo("You seem to be disconnected")
 })
+
+
+function startLoading() {
+    document.getElementById("loadingIndicator").style.display = "block"
+}
+
+function stopLoading() {
+    document.getElementById("loadingIndicator").style.display = "none"
+}

@@ -1,16 +1,20 @@
 import json
+from sys import exc_info
+
 from flask import request
 from flask import Response
-
-#import config
-from ErinaServer.Server import ErinaServer, ErinaRateLimit
-from ErinaServer.Erina.auth import authManagement
-from Erina.env_information import erina_version, erina_dir
 from safeIO import TextFile
+
+from ErinaServer.Erina.auth import authManagement
+from ErinaServer.Server import ErinaServer, ErinaRateLimit
+from Erina.env_information import erina_version, erina_dir
 
 authEndpoint = "/erina/auth"
 
 def makeResponse(responseBody, code, request_args):
+    """
+    Shapes the response
+    """
     if "minify" in request_args:
         if str(request_args.get("minify")).replace(" ", "").lower() in ["true", "0", "yes"]:
             response = Response(json.dumps(responseBody, ensure_ascii=False, separators=(',', ':')))
@@ -26,57 +30,80 @@ def makeResponse(responseBody, code, request_args):
 @ErinaServer.route(authEndpoint + "/login", methods=["POST"])
 @ErinaRateLimit(rate=1)
 def login():
-    requestArgs = request.values
-    if "password" in requestArgs:
-        if authManagement.verifyPassword(requestArgs.get("password")):
-            return makeResponse({"success": True, "token": authManagement.createToken(64)}, 200, request.args)
+    try:
+        if "password" in request.values:
+            if authManagement.verifyPassword(request.values.get("password")):
+                return makeResponse({"success": True, "data": {"token": authManagement.createToken(64)} }, 200, request.values)
+            else:
+                return makeResponse({"success": False, "error": "WRONG_PASSWORD", "data": None}, 401, request.values)
         else:
-            return makeResponse({"success": False, "error": "WRONG_PASSWORD", "message": "You've entered the wrong password"}, 400, request.args)
-    else:
-        return makeResponse({"success": False, "error": "MISSING_ARGS", "message": "An argument is missing", "extra": {"authorizedArgs": ["password", "minify"], "optionalArgs": ["minify"]}}, 500, request.args)
+            return makeResponse({"success": False, "error": "MISSING_ARGS", "data": {"authorizedArgs": ["password", "minify"], "optionalArgs": ["minify"]} }, 400, request.values)
+    except:
+        return makeResponse({"success": False, "error": str(exc_info()[0])}, 500, request.values)
 
 @ErinaServer.route(authEndpoint + "/logout", methods=["POST"])
 @ErinaRateLimit(rate=1)
 def logout():
-    tokenVerification = authManagement.verifyToken(request.values)
-    if tokenVerification.success:
-        authManagement.logout()
-        return makeResponse({"success": True}, 200, request.args)
-    else:
-        return makeResponse({"success": False}, 400, request.args)
+    try:
+        tokenVerification = authManagement.verifyToken(request.values)
+        if not tokenVerification.success:
+            responseBody = None
+            if tokenVerification.expired:
+                responseBody = {"success": False, "error": "EXPIRED_TOKEN", "message": str(tokenVerification), "data": None}
+            elif tokenVerification.no_token:
+                responseBody = {"success": False, "error": "NOT_PROVIDED_TOKEN", "message": str(tokenVerification), "data": None}
+            else:
+                responseBody = {"success": False, "error": "WRONG_TOKEN", "message": str(tokenVerification), "data": None}
+            return makeResponse(responseBody, 401, request.values)
+        else:
+            authManagement.logout()
+            return makeResponse({"success": True, "data": None}, 200, request.values)
+    except:
+        return makeResponse({"success": False, "error": str(exc_info()[0])}, 500, request.values)
 
 @ErinaServer.route(authEndpoint + "/set", methods=["POST"])
 @ErinaRateLimit(rate=1)
 def set():
-    requestArgs = request.values
-    if "password" in requestArgs and "tempCode" in requestArgs:
-        if requestArgs.get("tempCode") == authManagement.tempCode:
-            authManagement.setPassword(requestArgs.get("password"))
-            authManagement.tempCode = None
-            return makeResponse({"success": True, "token": authManagement.createToken(64)}, 200, request.args)
+    try:
+        if "password" in request.values and "tempCode" in request.values:
+            if request.values.get("tempCode") == authManagement.tempCode:
+                authManagement.setPassword(request.values.get("password"))
+                authManagement.tempCode = None
+                return makeResponse({"success": True, "data": {"token": authManagement.createToken(64)} }, 200, request.values)
+            else:
+                return makeResponse({"success": False, "error": "WRONG_TEMPCODE", "data": None}, 401, request.values)
         else:
-            return makeResponse({"success": False, "error": "wrong", "message": "You've entered the wrong tempCode"}, 400, request.args)
-    else:
-        return makeResponse({"success": False, "error": "MISSING_ARGS", "message": "An argument is missing", "extra": {"authorizedArgs": ["password", "minify"], "optionalArgs": ["minify"]}}, 500, request.args)
+            return makeResponse({"success": False, "error": "MISSING_ARGS", "data": {"authorizedArgs": ["tempCode", "password", "minify"], "optionalArgs": ["minify"]} }, 400, request.values)
+    except:
+        return makeResponse({"success": False, "error": str(exc_info()[0])}, 500, request.values)
 
-@ErinaServer.route(authEndpoint + "/status")
-@ErinaRateLimit(rate=1)
-def status():
-    if TextFile(erina_dir + "/ErinaServer/Erina/auth/password.erina").read().replace(" ", "") == "":
-        return makeResponse({"notset": True}, 200, request.args)
-    else:
-        return makeResponse({"notset": False}, 200, request.args)
 
 @ErinaServer.route(authEndpoint + "/verify")
-def verification():
-    tokenVerification = authManagement.verifyToken(request.values)
-    if tokenVerification.success:
-        return "Valid"
-    else:
-        return "ErinaAdminLoginRedirect"
+@ErinaRateLimit(rate=1)
+def verify():
+    try:
+        if TextFile(erina_dir + "/ErinaServer/Erina/auth/password.erina").read().replace(" ", "") == "":
+            return makeResponse({"success": False, "error": "NOT_SET_PASSWORD", "message": "Password Is Not Set"}, 400, request.args)
+        tokenVerification = authManagement.verifyToken(request.values)
+        if not tokenVerification.success:
+            responseBody = None
+            if tokenVerification.expired:
+                responseBody = {"success": False, "error": "EXPIRED_TOKEN", "message": str(tokenVerification)}
+            elif tokenVerification.no_token:
+                responseBody = {"success": False, "error": "NOT_PROVIDED_TOKEN", "message": str(tokenVerification)}
+            else:
+                responseBody = {"success": False, "error": "WRONG_TOKEN", "message": str(tokenVerification)}
+            return makeResponse(responseBody, 401, request.values)
+        else:
+            return makeResponse({"success": True}, 200, request.values)
+    except:
+        return makeResponse({"success": False, "error": str(exc_info()[0])}, 500, request.values)
 
 @ErinaServer.route(authEndpoint + "/displayCode")
 @ErinaRateLimit(rate=1)
 def displayCode():
-    print("[ErinaAdmin] Your temp code is: " + authManagement.createTempCode())
-    return makeResponse({"message": "Check your console"}, 200, request.args)
+    try:
+        print("[ErinaAdmin] Your temp code is: " + authManagement.createTempCode())
+        return makeResponse({"success": True, "message": "Check your console"}, 200, request.values)
+    except:
+        return makeResponse({"success": False, "error": str(exc_info()[0])}, 500, request.values)

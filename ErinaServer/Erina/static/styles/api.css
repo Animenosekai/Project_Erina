@@ -1,3 +1,223 @@
+
+category-title {
+    display: flex;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eaecef;
+    flex-flow: row wrap;
+    margin-top: 40px;
+    padding-bottom: 0;
+    flex-wrap: wrap-reverse;
+    font-size: 24px;
+    font-weight: 400;
+    flex: 1 1 auto;
+    left: 0px;
+    position: relative;
+    margin-left: 50px;
+    padding: 15px;
+    width: 90%;
+}
+
+authorizations {
+    margin: 0 auto;
+    justify-content: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+}
+
+api-authorization {
+    flex-direction: column;
+    border-radius: 10px;
+    display: flex;
+    width: 400px;
+    margin: 10px;
+}
+
+api-authorization-container {
+    margin: 16px 0px;
+    padding: 16px;
+    border-radius: 8px;
+    background: rgba(255, 244, 208, 0.6);
+    display: flex;
+    flex-direction: column;
+}
+
+
+api-authorization-container::before {
+    content: attr(authorization-name);
+    display: block;
+    font-size: 1rem;
+    color: #252525ee;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+api-authorization-key {
+    margin: 2px 0px;
+}
+
+api-authorization-key::before {
+    content: "Key: ";
+    color: #252525ee;
+    font-weight: 600;
+}
+
+api-authorization-ratelimit {
+    margin: 2px 0px;
+}
+
+api-authorization-ratelimit::before {
+    content: "Rate Limit: ";
+    color: #252525ee;
+    font-weight: 600;
+}
+
+api-authorization-ratelimit::after {
+    content: " sec.";
+    color: #252525ee;
+}
+
+api-authorization-stats {
+    margin: 2px 0px;
+}
+
+api-authorization-stats::before {
+    content: "Usage: ";
+    color: #252525ee;
+    font-weight: 600;
+}
+
+api-authorization-stats::after {
+    content: " req.";
+    color: #252525ee;
+}
+
+#authorizationPopUp {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap column;
+    justify-content: flex-start;
+    max-width: 1000px;
+    max-height: 500px;
+    transition: all 500ms ease;
+    background: white;
+    top: 18vh;
+    left: 25vw;
+    opacity: 1;
+    border-radius: 8px;
+    padding: 16px;
+    width: 80vw;
+    height: 50vh;
+}
+
+popup-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.popupButton {
+    margin: 15px;
+    width: 100px;
+    position: relative;
+    font-size: 1em;
+    text-align: center;
+}
+
+authorization-popup-background {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 0;
+    width: 100vw;
+    display: none;
+    height: 100vh;
+    position: fixed;
+    background: #000000cc;
+    transition: all 500ms ease;
+}
+
+.showPopup {
+    opacity: 1;
+    z-index: 100;
+}
+
+input {
+    margin: 5px 85px;
+    height: 25px;
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+popup-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-left: 25px;
+}
+
+remove-auth {
+    position: relative;
+    display: inline-block;
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 90px;
+    height: 15px;
+    margin-top: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #24292e;
+    background-color: #fafbfc;
+    border-color: #1b1f2326;
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04), inset 0 1px 0 hsla(0, 0%, 100%, 0.25);
+    transition: .2s cubic-bezier(.3,0,.5,1);
+    transition-property: color,background-color,border-color;
+}
+
+
+action-button {
+    position: relative;
+    display: inline-block;
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #24292e;
+    background-color: #fafbfc;
+    border-color: #1b1f2326;
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04), inset 0 1px 0 hsla(0, 0%, 100%, 0.25);
+    transition: .2s cubic-bezier(.3,0,.5,1);
+    transition-property: color,background-color,border-color;
+}
+
+
 api-endpoint-container {
     display: flex;
     flex-direction: column;

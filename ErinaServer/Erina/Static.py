@@ -20,51 +20,50 @@ stylesPath = "/erina/admin/static/styles/"
 
 @ErinaServer.route("/erina/admin/<page>")
 def mainEndpoint(page):
-    if str(page) == "login":
-        return send_from_directory(htmlLocation, "login.html")
-    elif str(page) in ["", "overview", "api", "stats", "config"]:
-        return send_from_directory(htmlLocation, "main.html")
-    else:
-        return send_from_directory(htmlLocation, "404.html"), 404
+    try:
+        if str(page) == "login":
+            return send_from_directory(htmlLocation, "login.html")
+        elif str(page) in ["", "overview", "api", "stats", "config"]:
+            return send_from_directory(htmlLocation, "main.html")
+        else:
+            return send_from_directory(htmlLocation, "404.html"), 404
+    except:
+        return send_from_directory(htmlLocation, "500.html"), 500
 
 @ErinaServer.route("/erina/admin/")
 def redirectToMainEndpoint():
-    return send_from_directory(htmlLocation, "main.html")
-
+    try:
+        return send_from_directory(htmlLocation, "main.html")
+    except:
+        return send_from_directory(htmlLocation, "500.html"), 500
+        
 @ErinaServer.route("/erina/admin/static/styles/<page>.css")
 def stylesEndpoint(page):
-    if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox"]:
-        """
-        tokenVerification = authManagement.verifyToken(request.values)
-        if tokenVerification.success:
+    try:
+        if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox"]:
             return send_from_directory(stylesLocation, page + ".css")
-        else:
-            return "ErinaAdminLoginRedirect"
-        """
-        return send_from_directory(stylesLocation, page + ".css")
-    elif page == "login":
-        return send_from_directory(stylesLocation, "login.css")
-    return send_from_directory(htmlLocation, "404.html"), 404
-
+        elif page == "login":
+            return send_from_directory(stylesLocation, "login.css")
+        return send_from_directory(htmlLocation, "404.html"), 404
+    except:
+        return send_from_directory(htmlLocation, "500.html"), 500
+        
 @ErinaServer.route("/erina/admin/static/scripts/<page>.js")
 def scriptsEndpoint(page):
-    if page in ["main", "console", "loading", "chart", "overview", "stats", "config", "api"]:
-        """
-        tokenVerification = authManagement.verifyToken(request.values)
-        if tokenVerification.success:
+    try:
+        if page in ["main", "console", "loading", "chart", "overview", "stats", "config", "api"]:
             return send_from_directory(scriptsLocation, page + ".js")
-        else:
-            return "ErinaAdminLoginRedirect"
-        """
-        return send_from_directory(scriptsLocation, page + ".js")
-    elif page == "login":
-        return send_from_directory(scriptsLocation, "login.js")
-    return send_from_directory(htmlLocation, "404.html"), 404
+        elif page == "login":
+            return send_from_directory(scriptsLocation, "login.js")
+        return send_from_directory(htmlLocation, "404.html"), 404
+    except:
+        return send_from_directory(htmlLocation, "500.html"), 500
 
-@ErinaServer.route("/erina/admin/static/images/404")
+
+@ErinaServer.route("/erina/admin/static/images/404-Chan")
 def NotFound():
     return send_from_directory(imagesLocation, "404-Chan.png")
 
-@ErinaServer.route("/erina/admin/static/images/500")
+@ErinaServer.route("/erina/admin/static/images/500-Chan")
 def ServerError():
     return send_from_directory(imagesLocation, "500-Chan.png")
