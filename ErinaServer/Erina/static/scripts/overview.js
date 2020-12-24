@@ -3,6 +3,7 @@ function PageInitialize(){
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {
+            data = data.data
             if (data.search.searchCount.success == true) {
                 var closestTimestamp = 0
                 var results = []

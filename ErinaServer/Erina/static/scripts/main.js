@@ -72,8 +72,8 @@ function _goTo() {
                         chartsRegistry[chart].dispose()
                     }
                     document.getElementById("ErinaAdminBody").innerHTML = data
-                    
-                    
+                    document.getElementById("ErinaAdminBody").scrollTop = 0
+
                     scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
                     if (scriptsLoadingQueue.length == 0) {
                         stopLoading()

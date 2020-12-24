@@ -3,17 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        fetch("/erina/auth/verify?token=" + window.localStorage.getItem("erinaAdminToken"))
-        .then((resp) => resp.text())
-        .then(function(data){
-            if (data == "Valid") {
-                console.log("Welcome Back!")
-            } else {
-                window.location.assign("/erina/admin/login")
-            }
-        })
-    </script>
+
     <link rel="stylesheet" href="/erina/admin/static/styles/main.css">
     <script src="/erina/admin/static/scripts/main.js"></script>
 
@@ -52,7 +42,7 @@
             <p class="sidebarText">Stats</p>
             <selection-line id="statsSelectionLine" class="sidebarLine"></selection-line>
         </sidebar-element>
-        <sidebar-element class="sidebarElement" onclick="goTo('ErinaAdmin — API Docs', 'api')">
+        <sidebar-element class="sidebarElement" onclick="goTo('ErinaAdmin — API', 'api')">
             <p class="sidebarText">API</p>
             <selection-line id="apiSelectionLine" class="sidebarLine"></selection-line>
         </sidebar-element>

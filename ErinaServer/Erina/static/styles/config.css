@@ -21,9 +21,10 @@ category-title {
 
 actions { 
     display: flex;
-    flex-direction: row;
-    margin-left: 30%;
+    margin-left: 21%;
     margin-bottom: 25px;
+    flex-flow: row wrap;
+    justify-content: flex-start;
 }
 
 action-button-container {

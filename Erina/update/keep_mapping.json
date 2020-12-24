@@ -1,0 +1,21 @@
+{
+    "CACHES_ANILIST": "ErinaCaches/AniList_Cache",
+    "CACHES_ERINA": "ErinaCaches/Erina_Cache",
+    "CACHES_IQDB": "ErinaCaches/IQDB_Cache",
+    "CACHES_SAUCENAO": "ErinaCaches/SauceNAO_Cache",
+    "CACHES_TRACEMOE": "ErinaCaches/TraceMoe_Cache",
+    "CONFIG_JSON": "Erina/_config/config.json",
+    "CUSTOM_ENDPOINTS": "ErinaServer/Custom.py",
+    "DB": "ErinaDB/ErinaDatabase",
+    "STATS_API": "Erina/stats/apiStats",
+    "STATS_DB": "Erina/stats/dbStats",
+    "STATS_DISCORD": "Erina/stats/discordStats",
+    "STATS_HASH": "Erina/stats/erinahashStats",
+    "STATS_ERINA": "Erina/stats/erinaStats",
+    "STATS_EXTERNAL": "Erina/stats/externalStats",
+    "STATS_LINE": "Erina/stats/lineStats",
+    "STATS_SEARCH": "Erina/stats/searchStats",
+    "STATS_TWITTER": "Erina/stats/twitterStats",
+    "STATS_CUSTOM": "Erina/stats/userdefinedStats",
+    "LOGS": "Erina/logs/logs.erinalog"
+}

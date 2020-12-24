@@ -99,7 +99,7 @@ def verify():
     except:
         return makeResponse({"success": False, "error": str(exc_info()[0])}, 500, request.values)
 
-@ErinaServer.route(authEndpoint + "/displayCode")
+@ErinaServer.route(authEndpoint + "/displayCode", methods=["POST"])
 @ErinaRateLimit(rate=1)
 def displayCode():
     try:

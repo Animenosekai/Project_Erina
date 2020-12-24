@@ -40,7 +40,9 @@ function setPasswordInputCallback(event) {
 }
 
 function setPage() {
-    fetch("/erina/auth/displayCode")
+    fetch("/erina/auth/displayCode", {
+        method: "POST"
+    })
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {

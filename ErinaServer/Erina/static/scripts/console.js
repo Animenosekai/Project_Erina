@@ -1,7 +1,6 @@
 var WSConnection = null
 var lastTopPosition = "65vh"
 
-
 function loadErinaConsole(){
     if (window.location.protocol == "https:") {
         WSConnection = new WebSocket("wss://" + window.location.host + "/erina/websockets/ErinaConsole")

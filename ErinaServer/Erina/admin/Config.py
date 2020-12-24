@@ -4,13 +4,19 @@ import json
 import shlex
 import signal
 import subprocess
+from io import BytesIO
 from time import sleep
+from pathlib import Path
 from sys import exc_info
+from shutil import copyfile
+from zipfile import ZipFile
 from threading import Thread
+from distutils.dir_util import copy_tree
 
-from safeIO import TextFile
+import requests
+from safeIO import JSONFile, TextFile
 from flask import request, Response
-from filecenter import files_in_dir, extension_from_base
+from filecenter import delete, exists, files_in_dir, extension_from_base, isdir, isfile, make_dir, move
 
 from Erina.erina_log import logFile
 from Erina.erina_stats import StatsReset
@@ -215,7 +221,7 @@ def getAPIAuths():
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
-@ErinaServer.route("/erina/api/admin/apiAuth/new")
+@ErinaServer.route("/erina/api/admin/apiAuth/new", methods=["POST"])
 def newAPIAuth():
     """
     Adds a new API auth
@@ -238,7 +244,7 @@ def newAPIAuth():
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
-@ErinaServer.route("/erina/api/admin/apiAuth/remove")
+@ErinaServer.route("/erina/api/admin/apiAuth/remove", methods=["POST"])
 def removeAPIAuth():
     """
     Removes an API auth
@@ -353,6 +359,70 @@ def restartServer():
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
+update_status = "NOT_UPDATING"
+update_message = "Erina is currently not updating"
+
+def _update():
+    """
+    Updates Erina
+    """
+    global update_status
+    global update_message
+    try:
+        update_status = "DOWNLOADING_UPDATE"
+        update_message = "Update: Downloading the new update..."
+        newErinaContent = BytesIO(requests.get("https://github.com/Animenosekai/Project_Erina/archive/master.zip").content)
+        
+        update_status = "BACKING_UP"
+        update_message = "Update: Backing up Erina..."
+        mapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
+        for fileID in mapping:
+            file = mapping[fileID]
+            make_dir(erina_dir + "/Erina/update/keep/" + fileID)
+            if isdir(erina_dir + "/" + file):
+                copy_tree(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
+            elif isfile(erina_dir + "/" + file):
+                copyfile(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
+
+        update_status = "EXTRACTING_UPDATE"
+        update_message = "Update: Extracting the new update..."
+        ZipFile(newErinaContent).extractall(erina_dir + "/Erina/update/archive_container")
+
+        update_status = "SECURING_UPDATE_DATA"
+        update_message = "Update: Securing the update..."
+        parentDir = Path(erina_dir).parent
+        if exists(parentDir + "/ErinaUpdate"):
+            delete(parentDir + "/ErinaUpdate")
+        make_dir(parentDir + "/ErinaUpdate")
+        move(erina_dir + "/Erina/update", parentDir + "/ErinaUpdate/update")
+
+        update_status = "REPLACING_FILES"
+        update_message = "Update: Replacing the files..."
+        move(parentDir + "/ErinaUpdate/update/archive_container", erina_dir)
+
+        update_status = "RESTORING_FILES"
+        update_message = "Update: Restoring the files..."
+        try:
+            newMapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
+        except:
+            newMapping = json.loads(requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/update/keep_mapping.json").text)
+
+        for fileID in newMapping:
+            if exists(parentDir + "/ErinaUpdate/update/keep/" + fileID):
+                move(parentDir + "/ErinaUpdate/update/keep/" + fileID, erina_dir + "/" + newMapping[fileID])
+
+        update_status = "RESTARTING"
+        update_message = "Update: Erina is restarting to finish the update..."
+        TextFile(erina_dir + "/ErinaServer/Erina/auth/lastToken.erina").write(authManagement.currentToken)
+        newErinaProcess = subprocess.Popen(shlex.split("/bin/sh"), stdin=subprocess.PIPE, start_new_session=True) # Open a shell prompt
+        newErinaProcess.stdin.write(str("cd " + erina_dir + "\n").encode("utf-8"))
+        newErinaProcess.stdin.flush()
+        newErinaProcess.stdin.write(str(python_executable_path + " ErinaLauncher.py\n").encode("utf-8"))
+        newErinaProcess.stdin.flush()
+        Thread(target=_shutdown, daemon=True).start()
+    except:
+        update_status = "LAST_UPDATE_FAILED"
+        update_message = f"Update: The update failed ({str(exc_info()[0])})"
 
 @ErinaServer.route("/erina/api/admin/update", methods=["POST"])
 def updateServer():
@@ -362,8 +432,30 @@ def updateServer():
     tokenVerification = authManagement.verifyToken(request.values)
     try:
         if tokenVerification.success:
-            #### DO SOMETHING
+            newEnv = requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/env_information.py").text.split()
+            newVersion = None
+            for line in newEnv:
+                if line.startswith("erina_version"):
+                    newVersion = line.replace(" ", "").replace('"', '').replace("erina_version=", "")
+                    break
+            if newVersion == erina_version.replace(" ", ""):
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "NO_UPDATE", "message": "Erina is already up to date!"})
+            Thread(target=_update, daemon=True).start()
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "UPDATE_STARTED", "message": "Updating Erina..."})
+        else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+@ErinaServer.route("/erina/api/admin/update/status")
+def updateStatus():
+    """
+    Returns the status of the update
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": update_status, "message": update_message})
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:

@@ -158,6 +158,8 @@ htmlResult = """<link rel="stylesheet" href="/erina/admin/static/styles/config.c
     ]
 </import>
 
+<category-title>Categories</category-title>
+
 """
 
 jsResult = ""
@@ -208,7 +210,7 @@ for category in data:
         elif isinstance(currentElement, bool):
             configPath = f"{str(category)}/{str(element)}"
             categoryResult += newBooleanContainer.format(title=formatTitle(element), toggleID=configPath.replace("/", "").lower(), config_path=configPath)
-            addToJS("if (data." + configPath.replace("/", ".") + " == true) { document.getElementById('toggle-" + configPath.replace("/", "").lower() + "').checked = true; document.getElementById('toggleText-" + configPath.replace("/", "").lower() + "').innerText = 'Enabled' } else { console.log('Not enabled') }")
+            addToJS("if (data." + configPath.replace("/", ".") + " == true) { document.getElementById('toggle-" + configPath.replace("/", "").lower() + "').checked = true; document.getElementById('toggleText-" + configPath.replace("/", "").lower() + "').innerText = 'Enabled' }")
         else:
             configPath = f"{str(category)}/{str(element)}"
             categoryResult += newTextContainer.format(title=formatTitle(element), config_path=configPath, inputID=configPath.replace("/", "").lower())
@@ -221,6 +223,32 @@ for category in data:
 
 htmlResult = htmlResult.replace("Tracemoe", "trace.moe").replace("Saucenao", "SauceNAO").replace("Iqdb", "IQDB")
 
+htmlResult += """
+
+<category-title>
+    Actions
+</category-title>
+
+<actions>
+    <action-button-container>
+        <action-button id="resetErinaStats">Reset ErinaStats</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="resetLogs">Reset Logs</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="revertConfig">Revert Config to default</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="updateErina">Update Erina</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="restartErinaServer">Restart ErinaServer</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="shutdownErinaServer">Shutdown ErinaServer</action-button>
+    </action-button-container>
+</actions>"""
 
 print(htmlResult)
 print(jsResult)
