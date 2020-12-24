@@ -126,28 +126,32 @@ document.getElementById("updateErina").onclick = function() {
         .then((resp) => resp.json())
         .then(function(data) {
             if (data.success == true) {
+                data = data.data
                 newSuccess(data.message)
-                var lastStatus = ""
-                var _updateInterval = setInterval(function() {
-                    fetch("/erina/api/admin/update/status?token=" + window.localStorage.getItem("erinaAdminToken"))
-                    .then((resp) => resp.json())
-                    .then(function(data) {
-                        if (data.success == true) {
-                            if (data.status != lastStatus){
-                                newInfo(data.message)
-                            } else {
-                                newError("An error occured while retrieving the status of the update")
+                if (data.message == "UPDATE_STARTED") {
+                    var lastStatus = ""
+                    var _updateInterval = setInterval(function() {
+                        fetch("/erina/api/admin/update/status?token=" + window.localStorage.getItem("erinaAdminToken"))
+                        .then((resp) => resp.json())
+                        .then(function(data) {
+                            if (data.success == true) {
+                                data = data.data
+                                if (data.status != lastStatus){
+                                    newInfo(data.message)
+                                } else {
+                                    newError("An error occured while retrieving the status of the update")
+                                }
                             }
-                        }
-                    })
-                    .catch(function() {
-                        verifyAfterDown()
-                        clearInterval(_updateInterval)
-                        newInfo("Update: Waiting for ErinaServer to be back...")
-                    })
-                }, 1000)
+                        })
+                        .catch(function() {
+                            verifyAfterDown()
+                            clearInterval(_updateInterval)
+                            newInfo("Update: Waiting for ErinaServer to be back...")
+                        })
+                    }, 1000)
+                }
             } else {
-                newError("An error occured while shutting down Erina")
+                newError("An error occured while updating Erina")
             }
         })
     }

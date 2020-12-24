@@ -432,16 +432,17 @@ def updateServer():
     tokenVerification = authManagement.verifyToken(request.values)
     try:
         if tokenVerification.success:
-            newEnv = requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/env_information.py").text.split()
+            newEnv = requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/env_information.py").text.split("\n")
             newVersion = None
             for line in newEnv:
                 if line.startswith("erina_version"):
-                    newVersion = line.replace(" ", "").replace('"', '').replace("erina_version=", "")
+                    newVersion = line.replace(" ", "").split("=")[1].replace('"', '')
                     break
             if newVersion == erina_version.replace(" ", ""):
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "NO_UPDATE", "message": "Erina is already up to date!"})
-            Thread(target=_update, daemon=True).start()
-            return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "UPDATE_STARTED", "message": "Updating Erina..."})
+            else:
+                Thread(target=_update, daemon=True).start()
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "UPDATE_STARTED", "message": "Updating Erina..."})
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
