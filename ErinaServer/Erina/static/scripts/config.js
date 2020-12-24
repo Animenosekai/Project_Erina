@@ -139,9 +139,9 @@ document.getElementById("updateErina").onclick = function() {
                                 if (data.status != lastStatus){
                                     lastStatus = data.status
                                     newInfo(data.message)
-                                } else {
-                                    newError("An error occured while retrieving the status of the update")
                                 }
+                            } else {
+                                newError("An error occured while retrieving the status of the update")
                             }
                         })
                         .catch(function() {
