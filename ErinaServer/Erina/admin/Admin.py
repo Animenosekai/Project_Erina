@@ -20,7 +20,6 @@ def resourceEndpoint(page):
             if tokenVerification.success:
                 return send_from_directory(htmlLocation, page + ".html")
             else:
-                print(str(tokenVerification))
                 return "ErinaAdminLoginRedirect"
         else:
             return send_from_directory(htmlLocation, "404.html"), 404

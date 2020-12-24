@@ -439,7 +439,7 @@ def updateServer():
                     newVersion = line.replace(" ", "").split("=")[1].replace('"', '')
                     break
             if newVersion == erina_version.replace(" ", ""):
-                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "NO_UPDATE", "message": "Erina is already up to date!"})
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "NO_UPDATE", "message": "Erina is already up to date!", "newVersion": newVersion, "currentVersion": erina_version})
             else:
                 Thread(target=_update, daemon=True).start()
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "UPDATE_STARTED", "message": "Updating Erina..."})
