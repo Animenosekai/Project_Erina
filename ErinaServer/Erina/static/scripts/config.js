@@ -128,7 +128,7 @@ document.getElementById("updateErina").onclick = function() {
             if (data.success == true) {
                 data = data.data
                 newSuccess(data.message)
-                if (data.message == "UPDATE_STARTED") {
+                if (data.status == "UPDATE_STARTED") {
                     var lastStatus = ""
                     var _updateInterval = setInterval(function() {
                         fetch("/erina/api/admin/update/status?token=" + window.localStorage.getItem("erinaAdminToken"))
@@ -137,6 +137,7 @@ document.getElementById("updateErina").onclick = function() {
                             if (data.success == true) {
                                 data = data.data
                                 if (data.status != lastStatus){
+                                    lastStatus = data.status
                                     newInfo(data.message)
                                 } else {
                                     newError("An error occured while retrieving the status of the update")

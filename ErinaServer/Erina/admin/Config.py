@@ -378,8 +378,8 @@ def _update():
         mapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
         for fileID in mapping:
             file = mapping[fileID]
-            make_dir(erina_dir + "/Erina/update/keep/" + fileID)
             if isdir(erina_dir + "/" + file):
+                make_dir(erina_dir + "/Erina/update/keep/" + fileID)
                 copy_tree(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
             elif isfile(erina_dir + "/" + file):
                 copyfile(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
