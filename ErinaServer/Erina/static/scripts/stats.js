@@ -26,6 +26,7 @@ function PageInitialize() {
     })
     .then(function(data) {
         if (data.success == true) {
+            data = data.data
             for (category in data) {
                 try {
                     if (category != "uptime" && category != "animeSearchRank") {
