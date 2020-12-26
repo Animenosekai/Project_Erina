@@ -378,10 +378,12 @@ def _update():
     try:
         update_status = "DOWNLOADING_UPDATE"
         update_message = "Update: Downloading the new update..."
+        print(update_message)
         newErinaContent = BytesIO(requests.get("https://github.com/Animenosekai/Project_Erina/archive/master.zip").content)
         
         update_status = "BACKING_UP"
         update_message = "Update: Backing up Erina..."
+        print(update_message)
         mapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
         for fileID in mapping:
             file = mapping[fileID]
@@ -393,10 +395,12 @@ def _update():
 
         update_status = "EXTRACTING_UPDATE"
         update_message = "Update: Extracting the new update..."
+        print(update_message)
         ZipFile(newErinaContent).extractall(erina_dir + "/Erina/update/archive_container")
 
         update_status = "SECURING_UPDATE_DATA"
         update_message = "Update: Securing the update..."
+        print(update_message)
         parentDir = Path(erina_dir).parent.absolute().as_posix()
         if exists(parentDir + "/ErinaUpdate"):
             delete(parentDir + "/ErinaUpdate")
@@ -405,14 +409,16 @@ def _update():
 
         update_status = "REPLACING_FILES"
         update_message = "Update: Replacing the files..."
+        print(update_message)
         move(parentDir + "/ErinaUpdate/update/archive_container", erina_dir)
 
         update_status = "RESTORING_FILES"
         update_message = "Update: Restoring the files..."
+        print(update_message)
         try:
-            newMapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
-        except:
             newMapping = json.loads(requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/update/keep_mapping.json").text)
+        except:
+            newMapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
 
         for fileID in newMapping:
             if exists(parentDir + "/ErinaUpdate/update/keep/" + fileID):
@@ -420,6 +426,7 @@ def _update():
 
         update_status = "RESTARTING"
         update_message = "Update: Erina is restarting to finish the update..."
+        print(update_message)
         TextFile(erina_dir + "/ErinaServer/Erina/auth/lastToken.erina").write(authManagement.currentToken)
         Thread(target=_restart, daemon=True).start()
     except:
