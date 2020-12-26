@@ -5,6 +5,7 @@ function PageInitialize() {
         var newAuthorizationElem = document.createElement("api-authorization");
         var newAuthContainerElem = document.createElement("api-authorization-container");
         newAuthContainerElem.setAttribute("authorization-name", String(name));
+        newAuthContainerElem.setAttribute("authorization-key", String(key));
         var newAuthKeyElem = document.createElement("api-authorization-key");
         newAuthKeyElem.innerText = String(key);
         var newAuthRateLimitElem = document.createElement("api-authorization-ratelimit");
@@ -41,7 +42,8 @@ function PageInitialize() {
                 if (data.success == true) {
                     newSuccess("Successfully added a new API authorization")
                     var newAuth = data.data
-                    addAuthorization(newAuth.name, newAuth.name, newAuth.rateLimit, newAuth.usage)
+                    addAuthorization(newAuth.name, newAuth.key, newAuth.rateLimit, newAuth.usage)
+                    closeAuthPopUp()
                 } else {
                     newError("An error occured while adding the new authorization")
                 }
@@ -61,6 +63,7 @@ function PageInitialize() {
         .then(function(data) {
             if (data.success == true) {
                 newSuccess("Successfully removed an authorization")
+                document.querySelector('api-authorization-container[authorization-key="' + String(key) + '"]').parentElement.remove()
             } else {
                 newError("An error occured while removing an authorization")
             }
@@ -88,7 +91,7 @@ function PageInitialize() {
     document.getElementById("submitPopUp").addEventListener("click", newAuthorization)
 
 
-    addAuthorization("Anime no Sekai", "aaa0a0a0a0aaa0a0a0a0a0a0a", "1", "215")
+    //TEST: addAuthorization("Anime no Sekai", "aaa0a0a0a0aaa0a0a0a0a0a0a", "1", "215")
 
     /// RETRIEVE EXISTING AUTHS
 

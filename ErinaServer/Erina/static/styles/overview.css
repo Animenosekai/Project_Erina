@@ -104,6 +104,7 @@
 .erinaTraceback {
     display: flex;
     flex-direction: row;
+    margin-bottom: 60px;
 }
 
 .erinaLogs {

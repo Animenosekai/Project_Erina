@@ -1,3 +1,7 @@
+import sys
+import traceback
+
+
 import re
 import os
 import json
@@ -218,6 +222,7 @@ def getAPIAuths():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -272,6 +277,13 @@ def _shutdown():
     """
     sleep(2)
     os.kill(os.getpid(), signal.SIGTERM)
+
+def _restart():
+    """
+    Sends a SIGUSR1 signal to the current process
+    """
+    sleep(2)
+    os.kill(os.getpid(), signal.SIGUSR1)
 
 @ErinaServer.route("/erina/api/admin/config/default", methods=["POST"])
 def defaultEndpoint():
@@ -347,12 +359,7 @@ def restartServer():
     try:
         if tokenVerification.success:
             TextFile(erina_dir + "/ErinaServer/Erina/auth/lastToken.erina").write(authManagement.currentToken)
-            newErinaProcess = subprocess.Popen(shlex.split("/bin/sh"), stdin=subprocess.PIPE, start_new_session=True) # Open a shell prompt
-            newErinaProcess.stdin.write(str("cd " + erina_dir + "\n").encode("utf-8"))
-            newErinaProcess.stdin.flush()
-            newErinaProcess.stdin.write(str(python_executable_path + " ErinaLauncher.py\n").encode("utf-8"))
-            newErinaProcess.stdin.flush()
-            Thread(target=_shutdown, daemon=True).start()
+            Thread(target=_restart, daemon=True).start()
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
@@ -414,13 +421,9 @@ def _update():
         update_status = "RESTARTING"
         update_message = "Update: Erina is restarting to finish the update..."
         TextFile(erina_dir + "/ErinaServer/Erina/auth/lastToken.erina").write(authManagement.currentToken)
-        newErinaProcess = subprocess.Popen(shlex.split("/bin/sh"), stdin=subprocess.PIPE, start_new_session=True) # Open a shell prompt
-        newErinaProcess.stdin.write(str("cd " + erina_dir + "\n").encode("utf-8"))
-        newErinaProcess.stdin.flush()
-        newErinaProcess.stdin.write(str(python_executable_path + " ErinaLauncher.py\n").encode("utf-8"))
-        newErinaProcess.stdin.flush()
-        Thread(target=_shutdown, daemon=True).start()
+        Thread(target=_restart, daemon=True).start()
     except:
+        traceback.print_exc()
         update_status = "LAST_UPDATE_FAILED"
         update_message = f"Update: The update failed ({str(exc_info()[0])})"
 
@@ -469,4 +472,4 @@ def alive():
     """
     Returns an answer if ErinaServer is alive
     """
-    return makeResponse({"message": "Yes, I'm alive!", "success": True}, 200, request.args)
+    return json.dumps({"message": "Yes, I'm alive!", "success": True}, ensure_ascii=False), 200

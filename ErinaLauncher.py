@@ -5,13 +5,40 @@ Erina Clients Wrapper for the Erina Project
 Erina Project - 2020
 """
 
+import os
 import sys
+import psutil
 
 def shutdownErinaServer(num, info):
+    """
+    SIGTERM, SIGQUIT, SIGINT signals handler --> Shutdowns Erina
+    """
+    try:
+        for handler in psutil.Process(os.getpid()).open_files():
+            os.close(handler.fd)
+    except:
+        pass
+
     ErinaWSGIServer.stop()
     ErinaWSGIServer.close()
     logFile.blocking = True
     log("Erina", "Goodbye!")
+
+def restartErinaServer(num, info):
+    """
+    SIGUSR1 signal handler --> Restarts Erina
+    """
+    try:
+        for handler in psutil.Process(os.getpid()).open_files():
+            os.close(handler.fd)
+    except:
+        pass
+
+    ErinaWSGIServer.stop()
+    ErinaWSGIServer.close()
+    logFile.blocking = True
+    log("Erina", "Restarting...")
+    os.execl(sys.executable, sys.executable, __file__, *sys.argv[1:])
     
 
 if __name__ == '__main__':
@@ -80,6 +107,8 @@ if __name__ == '__main__':
     from sys import exc_info
     signal.signal(signal.SIGINT, shutdownErinaServer)
     signal.signal(signal.SIGTERM, shutdownErinaServer)
+    signal.signal(signal.SIGQUIT, shutdownErinaServer)
+    signal.signal(signal.SIGUSR1, restartErinaServer)
 
     try:
         runServer()

@@ -12,10 +12,10 @@ class APIAuth():
         inStats = False
         for line in self.authFile:
             currentLine = line.replace("\n", "")
-            if currentLine[5:] == "Name:":
-                self.name = currentLine[:6]
-            elif currentLine[11:] == "Rate Limit:":
-                self.rate_limit = convert_to_float(currentLine[:12])
+            if currentLine[:5] == "Name:":
+                self.name = currentLine[6:]
+            elif currentLine[:11] == "Rate Limit:":
+                self.rate_limit = convert_to_float(currentLine[12:])
             elif currentLine == "----STATS----":
                 inStats = True
             elif inStats:

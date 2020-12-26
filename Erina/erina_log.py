@@ -5,6 +5,8 @@ Erina Project
 © Anime no Sekai - 2020
 """
 
+from sys import platform
+from os import system
 from time import time, sleep
 
 from safeIO import TextFile
@@ -34,6 +36,8 @@ def log(api, message, error=False):
             logFile.append(f"{str(timestamp)}    [{api}] {str(message)}".replace("\n", "") + "\n")
         else:
             logFile.append(f"{str(timestamp)}    [Error]    [{api}] {str(message)}".replace("\n", "") + "\n")
+    if platform == "darwin" and error:
+        system("osascript -e 'display notification \"{}\" with title \"{}\"'".format(f"[{api}] {message}", "ErinaServer Error"))
     sendLogToConnections(api=api, message=message, timestamp=timestamp, error=error)
 
 def _checkForLogsTimeout(logsContent):
