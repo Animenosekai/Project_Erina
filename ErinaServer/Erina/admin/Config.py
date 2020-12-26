@@ -397,7 +397,7 @@ def _update():
 
         update_status = "SECURING_UPDATE_DATA"
         update_message = "Update: Securing the update..."
-        parentDir = Path(erina_dir).parent
+        parentDir = Path(erina_dir).parent.absolute().as_posix()
         if exists(parentDir + "/ErinaUpdate"):
             delete(parentDir + "/ErinaUpdate")
         make_dir(parentDir + "/ErinaUpdate")
