@@ -33,6 +33,13 @@ from ErinaServer.Erina.admin.utils import convert_to_float, convert_to_int
 from Erina.env_information import erina_version, python_executable_path, erina_dir
 from ErinaServer.Erina.admin.Stats import returnStats, pastMonthErrors, biggestUsers, returnOverviewStats
 
+class ErinaUpdateError(Exception):
+    """
+    When an error occurs while updating
+    """
+    def __init__(self, message):
+        super().__init__(message)
+
 
 def makeResponse(token_verification, request_args, data=None, code=None, error=None):
     """
@@ -388,7 +395,8 @@ def _update():
         for fileID in mapping:
             file = mapping[fileID]
             if isdir(erina_dir + "/" + file):
-                make_dir(erina_dir + "/Erina/update/keep/" + fileID)
+                if make_dir(erina_dir + "/Erina/update/keep/" + fileID) == "Error while making the new folder":
+                    raise ErinaUpdateError("Error while making a backup folder")
                 copy_tree(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
             elif isfile(erina_dir + "/" + file):
                 copyfile(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
@@ -403,26 +411,39 @@ def _update():
         print(update_message)
         parentDir = Path(erina_dir).parent.absolute().as_posix()
         if exists(parentDir + "/ErinaUpdate"):
-            delete(parentDir + "/ErinaUpdate")
-        make_dir(parentDir + "/ErinaUpdate")
-        move(erina_dir + "/Erina/update", parentDir + "/ErinaUpdate/update")
+            if delete(parentDir + "/ErinaUpdate") != 0:
+                raise ErinaUpdateError("Error while deleting the existing ErinaUpdate folder")
+        if make_dir(parentDir + "/ErinaUpdate") == "Error while making the new folder":
+            raise ErinaUpdateError("Error while making the ErinaUpdate folder")
+        if move(erina_dir + "/Erina/update", parentDir + "/ErinaUpdate/update") != 0:
+            raise ErinaUpdateError("Error while moving the update")
+
 
         update_status = "REPLACING_FILES"
         update_message = "Update: Replacing the files..."
         print(update_message)
-        move(parentDir + "/ErinaUpdate/update/archive_container", erina_dir)
+        move(parentDir + "/ErinaUpdate/update/archive_container", parentDir + "/ErinaUpdate/update/Project_Erina")
+        if TextFile(parentDir + "/ErinaUpdate/update/integrity_verification.erina").read() != "ERINA_UPDATE_SUCCESSFULLY_DOWNLOADED":
+            raise ErinaUpdateError("Erina update is corrupted")
+
+        if delete(erina_dir) != 0:
+            raise ErinaUpdateError("Cannot delete current Erina")
+        move(parentDir + "/ErinaUpdate/update/Project_Erina", parentDir)
 
         update_status = "RESTORING_FILES"
         update_message = "Update: Restoring the files..."
         print(update_message)
-        try:
-            newMapping = json.loads(requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/update/keep_mapping.json").text)
-        except:
-            newMapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
+        newMapping = json.loads(requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/update/keep_mapping.json").text)
 
         for fileID in newMapping:
             if exists(parentDir + "/ErinaUpdate/update/keep/" + fileID):
                 move(parentDir + "/ErinaUpdate/update/keep/" + fileID, erina_dir + "/" + newMapping[fileID])
+
+        update_status = "CLEANING"
+        update_message = "Update: Cleaning the update..."
+        print(update_message)
+        delete(parentDir + "/ErinaUpdate")
+
 
         update_status = "RESTARTING"
         update_message = "Update: Erina is restarting to finish the update..."
@@ -433,6 +454,8 @@ def _update():
         traceback.print_exc()
         update_status = "LAST_UPDATE_FAILED"
         update_message = f"Update: The update failed ({str(exc_info()[0])})"
+        print("ERINA UPDATE ERROR")
+        print(update_message)
 
 @ErinaServer.route("/erina/api/admin/update", methods=["POST"])
 def updateServer():
