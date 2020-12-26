@@ -36,8 +36,11 @@ def log(api, message, error=False):
             logFile.append(f"{str(timestamp)}    [{api}] {str(message)}".replace("\n", "") + "\n")
         else:
             logFile.append(f"{str(timestamp)}    [Error]    [{api}] {str(message)}".replace("\n", "") + "\n")
-    if platform == "darwin" and error:
-        system("osascript -e 'display notification \"{}\" with title \"{}\"'".format(f"[{api}] {message}", "ErinaServer Error"))
+    try:
+        if platform == "darwin" and error:
+            system("osascript -e 'display notification \"{}\" with title \"{}\"'".format(f"[{api}] {message}", "ErinaServer Error"))
+    except:
+        pass
     sendLogToConnections(api=api, message=message, timestamp=timestamp, error=error)
 
 def _checkForLogsTimeout(logsContent):

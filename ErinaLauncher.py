@@ -45,6 +45,9 @@ if __name__ == '__main__':
 
     #### INITIALIZING ERINASERVER --> Manages the whole server
     print("[Erina]", "Initializing ErinaServer")
+    import requests
+    import requests.packages.urllib3.contrib.pyopenssl as requestsPyOpenSSL
+    requestsPyOpenSSL.extract_from_urllib3()
     from ErinaServer.Server import ErinaServer
     from ErinaServer import WebSockets
     from gevent import pywsgi

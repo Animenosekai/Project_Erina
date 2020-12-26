@@ -36,4 +36,4 @@ for pkg in pkg_resources.working_set:
 
 ##### ENV INFO
 erina_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-erina_version = "v1.9.5 (Nightly)"
+erina_version = "v1.9.6 (Nightly)"
