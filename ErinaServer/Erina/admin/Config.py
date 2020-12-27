@@ -16,6 +16,7 @@ from sys import exc_info
 from shutil import copyfile
 from zipfile import ZipFile
 from threading import Thread
+from threading import active_count as current_threads
 from distutils.dir_util import copy_tree
 
 import psutil
@@ -602,6 +603,10 @@ def state():
                 results["net_total_received"] = str(get_scaled_size(psutil.net_io_counters().bytes_recv))
             except:
                 results["net_total_received"] = "N/A"
+            try:
+                results["threads"] = current_threads()
+            except:
+                results["threads"] = "N/A"
             return makeResponse(token_verification=tokenVerification, request_args=request.values, data=results)
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)

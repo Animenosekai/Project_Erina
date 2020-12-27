@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/erina/admin/static/styles/api.css">
 
 
-<category-title>API Authorizations</category-title>
+<category-title id="apiAuthTitle">API Authorizations</category-title>
 <action-button id="openAuthPopUp">Add an authorization</action-button>
 <authorization-popup-background id="authPopup">
     <authorization-popup id="authorizationPopUp">
@@ -42,6 +42,8 @@
         <api-endpoint-arg>, image</api-endpoint-arg>
         <api-endpoint-arg class="optionalArg">, minify</api-endpoint-arg>
         <api-endpoint-arg class="optionalArg">, format</api-endpoint-arg>
+        <api-endpoint-arg class="optionalArg">, responseType</api-endpoint-arg>
+        <api-endpoint-arg class="optionalArg">, key</api-endpoint-arg>
     </api-endpoint-args-container>
     <api-endpoint-example>
         <pre class="apiRequest">Request: <code class="language-js">fetch("/erina/api/search?anime=Kakegurui")</code></pre>

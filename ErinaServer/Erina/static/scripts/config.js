@@ -398,6 +398,7 @@ function PageInitialize() {
             document.querySelector('state[state-type="Disk Total Write"]').innerText = data.disk_total_write
             document.querySelector('state[state-type="Net Total Sent"]').innerText = data.net_total_sent
             document.querySelector('state[state-type="Net Total Received"]').innerText = data.net_total_received
+            document.querySelector('state[state-type="Threads Count"]').innerText = data.threads
             
             }
         })

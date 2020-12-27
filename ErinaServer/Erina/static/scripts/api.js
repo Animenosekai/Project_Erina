@@ -101,10 +101,19 @@ function PageInitialize() {
         if (data.success == true) {
             for (authorization in data.data) {
                 var currentAuth = data.data[authorization]
-                addAuthorization(currentAuth.name, currentAuth.key, currentAuth.rateLimit, currentAuth.usage)
+                addAuthorization(currentAuth.name, currentAuth.key, currentAuth.rateLimit, currentAuth.usage.length)
             }
         } else {
             newError("An error occured while retrieving the API authorizations")
+        }
+    })
+
+    fetch("/erina/api/auth")
+    .then((resp) => resp.json())
+    .then(function(data) {
+        if (data.success == true) {
+            document.getElementById("authorizationsList").classList.add("apiIsPublic")
+            document.getElementById("apiAuthTitle").innerText = "API Authorizations (non-effective: Public API)"
         }
     })
     

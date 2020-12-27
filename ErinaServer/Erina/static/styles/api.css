@@ -25,6 +25,10 @@ authorizations {
     flex-direction: row;
 }
 
+.apiIsPublic {
+    opacity: 0.65;
+}
+
 api-authorization {
     flex-direction: column;
     border-radius: 10px;
