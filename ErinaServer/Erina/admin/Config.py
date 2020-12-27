@@ -413,7 +413,7 @@ def _update():
             raise ErinaUpdateError("Could not find downloaded ErinaUpdate")
         
         archivePath = erina_dir + "/Erina/update/archive_container/" + archiveName
-        if TextFile(archivePath + "/update/integrity_verification.erina").read() != "ERINA_UPDATE_SUCCESSFULLY_DOWNLOADED":
+        if TextFile(archivePath + "/Erina/update/integrity_verification.erina").read() != "ERINA_UPDATE_SUCCESSFULLY_DOWNLOADED":
             raise ErinaUpdateError("Erina update is corrupted")
 
         """

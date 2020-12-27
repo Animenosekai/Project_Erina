@@ -73,7 +73,7 @@ document.getElementById("restartErinaServer").onclick = function() {
                 .catch(function() {
                     console.log("Waiting for ErinaServer")
                 })
-            }, 1000)
+            }, 500)
         }
 
         erinaIsOffline = false
@@ -116,7 +116,7 @@ document.getElementById("updateErina").onclick = function() {
             .catch(function() {
                 console.log("Waiting for ErinaServer")
             })
-        }, 1000)
+        }, 500)
     }
 
     if (confirm("Do you really want to update Erina?\nMake sure to add to the backup list all of the files you want to keep (other than the ones automatically backed up)\nErina will restart at the end of the backup which will lead to a down time.") == true) {
@@ -136,7 +136,10 @@ document.getElementById("updateErina").onclick = function() {
                         .then(function(data) {
                             if (data.success == true) {
                                 data = data.data
-                                if (data.status != lastStatus){
+                                if (data.status == "LAST_UPDATE_FAILED") {
+                                    clearInterval(_updateInterval)
+                                }
+                                else if (data.status != lastStatus){
                                     lastStatus = data.status
                                     newInfo(data.message)
                                 }
