@@ -8,6 +8,8 @@ class APIAuth():
     def __init__(self, key) -> None:
         self.key = str(key)
         self.authFile = TextFile(erina_dir + "/ErinaServer/Erina/auth/apiAuth/" + self.key + ".erina")
+        self.name = None
+        self.rate_limit = None
         self.stats = []
         inStats = False
         for line in self.authFile:

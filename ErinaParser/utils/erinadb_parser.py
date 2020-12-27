@@ -239,6 +239,9 @@ class ErinaData():
             "episodeFramecount": self.episode_framecount,
             "analyzeTimestamp": (self.analyze_timestamp.as_dict() if self.analyze_timestamp is not None else None)
         }
+
+    def as_text(self):
+        return ("\n".join(self.data) if self.data is not None else "No data")
          
     def __repr__(self) -> str:
         return str(self.title)

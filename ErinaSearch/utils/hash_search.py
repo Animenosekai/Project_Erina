@@ -39,6 +39,11 @@ class ImageSearchResult():
             "lowSimilarity": self.low_similarity
         }
 
+    def as_text(self):
+        result = "Similarity: " + str(self.similarity) + "\nLow Similarity: " + str(self.low_similarity) + "\n"
+        result += " -- Detection Result -- \n" + self.detectionResult.as_text() + "\n\n"
+        result += " -- Anime Result -- \n" + self.detectionResult.as_text()
+
 def hamming_distance(hash1, hash2):
     """
     From the imagehash library

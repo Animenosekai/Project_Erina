@@ -295,6 +295,7 @@ function checkboxHandler(checkboxElement) {
     .then((resp) => resp.json())
     .then(function(data){
         if (data.success == true) {
+            data = data.data
             newSuccess("Successfully edited " + data.path + " to " + String(data.value))
         } else {
             newError("An error occured while editing " + checkboxElement.getAttribute("config-path"))
@@ -352,7 +353,7 @@ function PageInitialize() {
         document.getElementById('searchthresholdsiqdbsimilarity').value = data.Search.thresholds.iqdbSimilarity;
         document.getElementById('serverhost').value = data.Server.host;
         document.getElementById('serverport').value = data.Server.port;
-        if (data.Server.disableConsoleMessages == true) { document.getElementById('toggle-serverdisableconsolemessages').checked = true; document.getElementById('toggleText-serverdisableconsolemessages').innerText = 'Enabled' };
+        if (data.Server.publicAPI == true) { document.getElementById('toggle-serverpublicapi').checked = true; document.getElementById('toggleText-serverpublicapi').innerText = 'Enabled' };
                 
                 
         //////////////////

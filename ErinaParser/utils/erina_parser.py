@@ -57,6 +57,10 @@ class ErinaCache():
             "similarity": self.similarity,
             "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None)
         }
-         
+
+    def as_text(self):
+        return ("\n".join(self.data) if self.data is not None else "No data")
+
     def __repr__(self) -> str:
         return str(self.path)
+    

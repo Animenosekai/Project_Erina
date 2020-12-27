@@ -43,7 +43,7 @@ class ErinaUpdateError(Exception):
         super().__init__(message)
 
 
-def makeResponse(token_verification, request_args, data=None, code=None, error=None):
+def makeResponse(token_verification, request_args, data=None, code=None, error=None, error_message=None):
     """
     Shaping the response
     """
@@ -57,7 +57,10 @@ def makeResponse(token_verification, request_args, data=None, code=None, error=N
         code = 401
     else:
         if error is not None:
-            responseBody = {"success": False, "error": error, "data": data}
+            if code == 500:
+                responseBody = {"success": False, "error": error, "data": data, "message": "An error occured on the server"}
+            else:
+                responseBody = {"success": False, "error": error, "data": data, "message": error_message}
         else:
             responseBody = {"success": True, "data": data}
             code = 200
@@ -193,7 +196,7 @@ def updateEndpoint():
                     value = convert_to_int(value)
                 elif path in ["Server/host"]:
                     value = re.sub("[^0-9.]", "", value)
-                elif path in ["Erina/consoleLog", "Erina/fileLog", "Erina/stats", "Twitter/run", "Twitter/ignoreRT", "Twitter/monitoring/checkReplies", "Discord/run", "Line/run", "Server/disableConsoleMessages"]:
+                elif path in ["Erina/consoleLog", "Erina/fileLog", "Erina/stats", "Twitter/run", "Twitter/ignoreRT", "Twitter/monitoring/checkReplies", "Discord/run", "Line/run", "Server/publicAPI"]:
                     value = (True if value.lower().replace(" ", "") == "true" else False)
                 elif path in ["Erina/flags", "Twitter/ignoredUsers", "Twitter/flags", "Twitter/stream/languages", "Twitter/stream/flags", "Twitter/monitoring/accounts", "Discord/flags", "Line/flags"]:
                     value = value.split(":::")

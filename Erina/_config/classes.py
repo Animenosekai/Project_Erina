@@ -5,7 +5,7 @@ ErinaConfig Python Parser
 Erina Project — 2020
 """
 from Erina._config.files import configFile
-storedData = {'Erina': {'flags': ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime'], 'consoleLog': True, 'fileLog': True, 'stats': True}, 'Twitter': {'run': True, 'ignoredUsers': [], 'flags': [], 'ignoreRT': True, 'keys': {'consumerKey': None, 'consumerSecret': None, 'accessTokenKey': None, 'accessTokenSecret': None}, 'stream': {'languages': ["en"], 'flags': []}, 'monitoring': {'accounts': [], 'checkReplies': False}}, 'Discord': {'run': True, 'flags': [], 'keys': {'token': None}}, 'Line': {'run': True, 'flags': [], 'keys': {'channelAccessToken': None, 'channelSecret': None}, 'imagesTimeout': 3600}, 'Caches': {'encoding': 'utf-8', 'keys': {'tracemoe': None, 'saucenao': None}}, 'Database': {}, 'Hash': {'algorithm': 'Average Hash'}, 'Parser': {}, 'Search': {'thresholds': {'erinaSimilarity': 100, 'tracemoeSimilarity': 90, 'saucenaoSimilarity': 90, 'iqdbSimilarity': 90}}, 'Server': {'host': '127.0.0.1', 'port': 5000, 'disableConsoleMessages': True}}
+storedData = {'Erina': {'flags': ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime'], 'consoleLog': True, 'fileLog': True, 'stats': True}, 'Twitter': {'run': True, 'ignoredUsers': [], 'flags': [], 'ignoreRT': True, 'keys': {'consumerKey': None, 'consumerSecret': None, 'accessTokenKey': None, 'accessTokenSecret': None}, 'stream': {'languages': ["en"], 'flags': []}, 'monitoring': {'accounts': [], 'checkReplies': False}}, 'Discord': {'run': True, 'flags': [], 'keys': {'token': None}}, 'Line': {'run': True, 'flags': [], 'keys': {'channelAccessToken': None, 'channelSecret': None}, 'imagesTimeout': 3600}, 'Caches': {'encoding': 'utf-8', 'keys': {'tracemoe': None, 'saucenao': None}}, 'Database': {}, 'Hash': {'algorithm': 'Average Hash'}, 'Parser': {}, 'Search': {'thresholds': {'erinaSimilarity': 100, 'tracemoeSimilarity': 90, 'saucenaoSimilarity': 90, 'iqdbSimilarity': 90}}, 'Server': {'host': '127.0.0.1', 'port': 5000, 'publicAPI': True}}
 tempData = configFile.read()
 for element in tempData:
     storedData[element] = tempData[element]
@@ -298,7 +298,7 @@ class ServerConfig():
         self.as_dict = storedData["Server"]
         self.host = self.as_dict["host"]
         self.port = self.as_dict["port"]
-        self.disable_console_messages = self.as_dict["disableConsoleMessages"]
+        self.public_api = self.as_dict["publicAPI"]
 
     def update(self, path, value):
         """
@@ -310,6 +310,6 @@ class ServerConfig():
         elif path[0] == "port":
             self.port = value
             self.as_dict["port"] = value
-        elif path[0] == "disableConsoleMessages":
-            self.disable_console_messages = value
-            self.as_dict["disableConsoleMessages"] = value
+        elif path[0] == "publicAPI":
+            self.public_api = value
+            self.as_dict["publicAPI"] = value

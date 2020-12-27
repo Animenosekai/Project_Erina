@@ -13,6 +13,9 @@ from ErinaParser.utils.Errors import ParserError
 from ErinaSearch.utils.Errors import SearchingError
 
 def makeTweet(erinaSearchResponse):
+    """
+    Formats ErinaSearch's response for Twitter
+    """
     errorTuple = (CachingError, DatabaseError, HashingError, ParserError, SearchingError)
     if isinstance(erinaSearchResponse, errorTuple) or isinstance(erinaSearchResponse.detectionResult, errorTuple) or isinstance(erinaSearchResponse.animeResult, errorTuple):
         return None
