@@ -3,10 +3,14 @@ var chartsRegistry = []
 var intervalsRegistry = []
 
 function _hideSelectionLine(){
-    document.getElementById("overviewSelectionLine").classList.remove("sidebarShow");
-    document.getElementById("statsSelectionLine").classList.remove("sidebarShow");
-    document.getElementById("apiSelectionLine").classList.remove("sidebarShow");
-    document.getElementById("configSelectionLine").classList.remove("sidebarShow");
+    try {
+        document.getElementById("overviewSelectionLine").classList.remove("sidebarShow");
+        document.getElementById("statsSelectionLine").classList.remove("sidebarShow");
+        document.getElementById("apiSelectionLine").classList.remove("sidebarShow");
+        document.getElementById("configSelectionLine").classList.remove("sidebarShow");
+    } catch {
+        console.log("Error while hiding selection line")
+    }
 }
 
 window.onload = function(){
@@ -67,8 +71,9 @@ function _goTo() {
                 if (data == "ErinaAdminLoginRedirect") {
                     window.location.assign("/erina/admin/login")
                 } else {
-                    for (index in intervalsRegistry.length) {
+                    for (var i = 0; i < intervalsRegistry.length; i += 1) {
                         var currentInterval = intervalsRegistry.pop()
+                        console.log(currentInterval)
                         try {
                             clearInterval(currentInterval)
                         } catch {
@@ -76,7 +81,11 @@ function _goTo() {
                         }
                     }
                     _hideSelectionLine()
-                    document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
+                    try {
+                        document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
+                    } catch {
+                        console.log("Error while adding selection line")
+                    }
                     for (chart in chartsRegistry) {
                         chartsRegistry[chart].dispose()
                     }
