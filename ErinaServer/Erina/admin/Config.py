@@ -405,30 +405,41 @@ def _update():
         update_message = "Update: Extracting the new update..."
         print(update_message)
         ZipFile(newErinaContent).extractall(erina_dir + "/Erina/update/archive_container")
+        archiveName = None
+        for file in files_in_dir(erina_dir + "/Erina/update/archive_container"):
+            if "erina" in file.lower():
+                archiveName = file
+        if archiveName is None:
+            raise ErinaUpdateError("Could not find downloaded ErinaUpdate")
+        
+        archivePath = erina_dir + "/Erina/update/archive_container/" + archiveName
+        if TextFile(archivePath + "/update/integrity_verification.erina").read() != "ERINA_UPDATE_SUCCESSFULLY_DOWNLOADED":
+            raise ErinaUpdateError("Erina update is corrupted")
 
-        update_status = "SECURING_UPDATE_DATA"
-        update_message = "Update: Securing the update..."
-        print(update_message)
-        parentDir = Path(erina_dir).parent.absolute().as_posix()
-        if exists(parentDir + "/ErinaUpdate"):
-            if delete(parentDir + "/ErinaUpdate") != 0:
-                raise ErinaUpdateError("Error while deleting the existing ErinaUpdate folder")
-        if make_dir(parentDir + "/ErinaUpdate") == "Error while making the new folder":
-            raise ErinaUpdateError("Error while making the ErinaUpdate folder")
-        if move(erina_dir + "/Erina/update", parentDir + "/ErinaUpdate/update") != 0:
-            raise ErinaUpdateError("Error while moving the update")
+        """
+        for fileID in mapping:
+            file = mapping[fileID]
+            if delete(archivePath + "/" + file) != 0:
+                raise ErinaUpdateError("An error occured while removing custom data from update")
+        """
 
+        if delete(archivePath + "/Erina/update") != 0:
+            raise ErinaUpdateError("An error occured while removing keep from update")
 
         update_status = "REPLACING_FILES"
         update_message = "Update: Replacing the files..."
         print(update_message)
-        move(parentDir + "/ErinaUpdate/update/archive_container", parentDir + "/ErinaUpdate/update/Project_Erina")
-        if TextFile(parentDir + "/ErinaUpdate/update/integrity_verification.erina").read() != "ERINA_UPDATE_SUCCESSFULLY_DOWNLOADED":
-            raise ErinaUpdateError("Erina update is corrupted")
+        
+        def mergeUpdate(dir):
+            for file in files_in_dir(archivePath + dir):
+                if isdir(archivePath + dir + file):
+                    mergeUpdate(dir + file + "/")
+                else:
+                    if exists(erina_dir + dir + file):
+                        delete(erina_dir + dir + file)
+                    move(archivePath + dir + file, erina_dir + dir + file)
 
-        if delete(erina_dir) != 0:
-            raise ErinaUpdateError("Cannot delete current Erina")
-        move(parentDir + "/ErinaUpdate/update/Project_Erina", parentDir)
+        mergeUpdate("/")
 
         update_status = "RESTORING_FILES"
         update_message = "Update: Restoring the files..."
@@ -436,14 +447,15 @@ def _update():
         newMapping = json.loads(requests.get("https://raw.githubusercontent.com/Animenosekai/Project_Erina/master/Erina/update/keep_mapping.json").text)
 
         for fileID in newMapping:
-            if exists(parentDir + "/ErinaUpdate/update/keep/" + fileID):
-                move(parentDir + "/ErinaUpdate/update/keep/" + fileID, erina_dir + "/" + newMapping[fileID])
+            if exists(erina_dir + "/update/keep/" + fileID):
+                move(erina_dir + "/update/keep/" + fileID, erina_dir + "/" + newMapping[fileID])
 
+        """
         update_status = "CLEANING"
         update_message = "Update: Cleaning the update..."
         print(update_message)
         delete(parentDir + "/ErinaUpdate")
-
+        """
 
         update_status = "RESTARTING"
         update_message = "Update: Erina is restarting to finish the update..."
