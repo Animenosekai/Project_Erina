@@ -119,7 +119,7 @@ document.getElementById("updateErina").onclick = function() {
         }, 500)
     }
 
-    if (confirm("Do you really want to update Erina?\nMake sure to add to the backup list all of the files you want to keep (other than the ones automatically backed up)\nErina will restart at the end of the backup which will lead to a down time.") == true) {
+    if (confirm("Do you really want to update Erina?\nErina will restart at the end of the backup which will lead to a down time.") == true) {
         fetch("/erina/api/admin/update?token=" + window.localStorage.getItem("erinaAdminToken"), {
             method: "POST"
         })

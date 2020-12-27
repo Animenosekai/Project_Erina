@@ -391,6 +391,9 @@ def _update():
         update_status = "BACKING_UP"
         update_message = "Update: Backing up Erina..."
         print(update_message)
+        if isdir(erina_dir + "/Erina/update/keep"):
+            if delete(erina_dir + "/Erina/update/keep") != 0:
+                raise ErinaUpdateError("Unable to delete the previous keep folder")
         if make_dir(erina_dir + "/Erina/update/keep") == "Error while making the new folder":
             raise ErinaUpdateError("Unable to create the keep folder")
 
