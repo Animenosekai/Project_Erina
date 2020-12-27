@@ -391,6 +391,9 @@ def _update():
         update_status = "BACKING_UP"
         update_message = "Update: Backing up Erina..."
         print(update_message)
+        if make_dir(erina_dir + "/Erina/update/keep") == "Error while making the new folder":
+            raise ErinaUpdateError("Unable to create the keep folder")
+
         mapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
         for fileID in mapping:
             file = mapping[fileID]
@@ -415,13 +418,6 @@ def _update():
         archivePath = erina_dir + "/Erina/update/archive_container/" + archiveName
         if TextFile(archivePath + "/Erina/update/integrity_verification.erina").read() != "ERINA_UPDATE_SUCCESSFULLY_DOWNLOADED":
             raise ErinaUpdateError("Erina update is corrupted")
-
-        """
-        for fileID in mapping:
-            file = mapping[fileID]
-            if delete(archivePath + "/" + file) != 0:
-                raise ErinaUpdateError("An error occured while removing custom data from update")
-        """
 
         if delete(archivePath + "/Erina/update") != 0:
             raise ErinaUpdateError("An error occured while removing keep from update")
@@ -450,12 +446,13 @@ def _update():
             if exists(erina_dir + "/update/keep/" + fileID):
                 move(erina_dir + "/update/keep/" + fileID, erina_dir + "/" + newMapping[fileID])
 
-        """
+        
         update_status = "CLEANING"
         update_message = "Update: Cleaning the update..."
         print(update_message)
-        delete(parentDir + "/ErinaUpdate")
-        """
+        delete(erina_dir + "/Erina/update/keep")
+        delete(erina_dir + "/Erina/update/archive_container")
+        
 
         update_status = "RESTARTING"
         update_message = "Update: Erina is restarting to finish the update..."
