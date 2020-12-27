@@ -69,6 +69,10 @@ def NotFound():
 def ServerError():
     return send_from_directory(imagesLocation, "500-Chan.png")
 
+@ErinaServer.route("/erina/admin/static/images/Tenshi")
+def Tenshi():
+    return send_from_directory(imagesLocation, "Tenshi.png")
+
 
 
 ##### FAVICONS

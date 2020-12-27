@@ -613,3 +613,64 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     margin-left: -90px;
     margin-top: 10px;
 }
+
+
+
+
+informations {
+    display: flex;
+    flex-direction: row;
+}
+
+tenshi {
+    height: 20%;
+    width: 20%;
+    margin-right: 25px;
+}
+
+.tenshi {
+    width: 100%;
+    position: relative;
+}
+
+informations-container {
+    display: flex;
+    flex-flow: wrap column;
+}
+
+
+information::before {
+    content: attr(info-type);
+    display: block;
+    font-size: 1rem;
+    color: #252525ee;
+    font-weight: 700;
+}
+
+information {
+    margin-bottom: 10px;
+}
+
+states {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+}
+
+state {
+    margin: 25px;
+}
+
+state-minor {
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+state::before {
+    content: attr(state-type);
+    display: block;
+    font-size: 1rem;
+    color: #252525ee;
+    font-weight: 700;
+    margin-bottom: 8px;
+}

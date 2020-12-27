@@ -358,6 +358,45 @@ function PageInitialize() {
             newError("An error occured while retrieving the configuration")
         }
     }) // end of then()
+
+    fetch("/erina/api/admin/information?token=" + window.localStorage.getItem("erinaAdminToken"))
+    .then((resp) => resp.json())
+    .then(function(data) {
+        if (data.success == true) {
+            data = data.data
+            document.querySelector('information[info-type="Version"]').innerText = data.version
+            document.querySelector('information[info-type="Installed Dir"]').innerText = data.installed_directory
+            document.querySelector('information[info-type="Python Ver."]').innerText = data.python_version
+            document.querySelector('information[info-type="PID"]').innerText = data.pid
+            document.querySelector('information[info-type="System"]').innerText = data.system
+        } else {
+            newError("An error occured while retrieving information about Erina")
+        }
+    })
+
+    var stateInterval = setInterval(function() {
+        fetch("/erina/api/admin/state?token=" + window.localStorage.getItem("erinaAdminToken"))
+        .then((resp) => resp.json())
+    .then(function(data) {
+        if (data.success == true) {
+            data = data.data
+            document.querySelector('state[state-type="CPU Count"]').innerText = data.cpu_count
+            document.querySelector('state[state-type="CPU Freq."]').innerText = data.cpu_frequency
+            document.querySelector('state[state-type="CPU Usage"]').innerText = data.cpu_usage
+            document.getElementById("ramUsed").innerText = data.ram_usage_used
+            document.getElementById("ramTotal").innerText = data.ram_usage_total
+            document.getElementById("ramPercent").innerText = data.ram_usage_percentage
+            document.getElementById("diskUsed").innerText = data.disk_usage_used
+            document.getElementById("diskTotal").innerText = data.disk_usage_total
+            document.getElementById("diskPercent").innerText = data.disk_usage_percentage
+            document.querySelector('state[state-type="Disk Total Read"]').innerText = data.disk_total_read
+            document.querySelector('state[state-type="Disk Total Write"]').innerText = data.disk_total_write
+            document.querySelector('state[state-type="Net Total Sent"]').innerText = data.net_total_sent
+            document.querySelector('state[state-type="Net Total Received"]').innerText = data.net_total_received
+            
+        }
+    })
+    }, 1000)
 } // end of PageInitialize()
 
 

@@ -1,5 +1,6 @@
 var scriptsLoadingQueue = []
 var chartsRegistry = []
+var intervalsRegistry = []
 
 function _hideSelectionLine(){
     document.getElementById("overviewSelectionLine").classList.remove("sidebarShow");

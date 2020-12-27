@@ -7,6 +7,7 @@ import os
 import json
 import shlex
 import signal
+import platform
 import subprocess
 from io import BytesIO
 from time import sleep
@@ -17,6 +18,7 @@ from zipfile import ZipFile
 from threading import Thread
 from distutils.dir_util import copy_tree
 
+import psutil
 import requests
 from safeIO import JSONFile, TextFile
 from flask import request, Response
@@ -29,8 +31,8 @@ from Erina.config import update, default, Hash
 from ErinaServer.Erina.auth import authManagement
 from ErinaServer.Server import ErinaServer, ErinaRateLimit
 from ErinaServer.Erina.auth.apiAuth.authReader import APIAuth
-from ErinaServer.Erina.admin.utils import convert_to_float, convert_to_int
-from Erina.env_information import erina_version, python_executable_path, erina_dir
+from ErinaServer.Erina.admin.utils import convert_to_float, convert_to_int, get_scaled_size
+from Erina.env_information import erina_version, python_executable_path, erina_dir, python_version_info, pid, cpu_count
 from ErinaServer.Erina.admin.Stats import returnStats, pastMonthErrors, biggestUsers, returnOverviewStats
 
 class ErinaUpdateError(Exception):
@@ -516,3 +518,89 @@ def alive():
     Returns an answer if ErinaServer is alive
     """
     return json.dumps({"message": "Yes, I'm alive!", "success": True}, ensure_ascii=False), 200
+
+
+@ErinaServer.route("/erina/api/admin/information")
+def information():
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            platformInfo = platform.uname()
+            results = {
+                "version": "ErinaServer " + str(erina_version),
+                "installed_directory": str(erina_dir),
+                "python_version": "Python " + str(python_version_info.major) + "." + str(python_version_info.minor) + "." + str(python_version_info.micro),
+                "pid": str(pid),
+                "system": str(platformInfo.system) + " (" + platformInfo.release + ")"
+            }
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data=results)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+@ErinaServer.route("/erina/api/admin/state")
+def state():
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            memUsage = psutil.virtual_memory()
+            diskUsage = psutil.disk_usage('/')
+            results = {}
+            try:
+                results["cpu_count"] = str(cpu_count)
+            except:
+                results["cpu_count"] = "N/A"
+            try:
+                results["cpu_frequency"] = str(psutil.cpu_freq().current) + "Mhz"
+            except:
+                results["cpu_frequency"] = "N/A"
+            try:
+                results["cpu_usage"] = str(psutil.cpu_percent()) + "%"
+            except:
+                results["cpu_usage"] = "N/A"
+            try:
+                results["ram_usage_used"] = str(get_scaled_size(memUsage.used))
+            except:
+                results["ram_usage_used"] = "N/A"
+            try:
+                results["ram_usage_total"] = str(get_scaled_size(memUsage.total))
+            except:
+                results["ram_usage_total"] = "N/A"
+            try:
+                results["ram_usage_percentage"] = str(memUsage.percent) + "%"
+            except:
+                results["ram_usage_percentage"] = "N/A"
+            try:
+                results["disk_usage_used"] = str(get_scaled_size(diskUsage.used))
+            except:
+                results["disk_usage_used"] = "N/A"
+            try:
+                results["disk_usage_total"] = str(get_scaled_size(diskUsage.total))
+            except:
+                results["disk_usage_total"] = "N/A"
+            try:
+                results["disk_usage_percentage"] = str(diskUsage.percent) + "%"
+            except:
+                results["disk_usage_percentage"] = "N/A"
+            try:
+                results["disk_total_read"] = str(get_scaled_size(psutil.disk_io_counters().read_bytes))
+            except:
+                results["disk_total_read"] = "N/A"
+            try:
+                results["disk_total_write"] = str(get_scaled_size(psutil.disk_io_counters().write_bytes))
+            except:
+                results["disk_total_write"] = "N/A"
+            try:
+                results["net_total_sent"] = str(get_scaled_size(psutil.net_io_counters().bytes_sent))
+            except:
+                results["net_total_sent"] = "N/A"
+            try:
+                results["net_total_received"] = str(get_scaled_size(psutil.net_io_counters().bytes_recv))
+            except:
+                results["net_total_received"] = "N/A"
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data=results)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
