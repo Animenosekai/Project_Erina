@@ -9,6 +9,7 @@ htmlLocation = staticLocation + "/html"
 stylesLocation = staticLocation + "/styles"
 scriptsLocation = staticLocation + "/scripts"
 imagesLocation = staticLocation + "/images"
+faviconsLocation = staticLocation + "/images/favicons"
 
 scriptsPath = "/erina/admin/static/scripts/"
 stylesPath = "/erina/admin/static/styles/"
@@ -67,3 +68,38 @@ def NotFound():
 @ErinaServer.route("/erina/admin/static/images/500-Chan")
 def ServerError():
     return send_from_directory(imagesLocation, "500-Chan.png")
+
+
+
+##### FAVICONS
+@ErinaServer.route("/favicon.ico")
+def favicon():
+    return send_from_directory(faviconsLocation, "favicon.ico")
+
+@ErinaServer.route("/apple-touch-icon.png")
+def favicon_appleTouchIcon():
+    return send_from_directory(faviconsLocation, "apple-touch-icon.png")
+
+@ErinaServer.route("/favicon-32x32.png")
+def favicon_favicon32by32():
+    return send_from_directory(faviconsLocation, "favicon-32x32.png")
+
+@ErinaServer.route("/favicon-16x16.png")
+def favicon_favicon16by16():
+    return send_from_directory(faviconsLocation, "favicon-16x16.png")
+
+@ErinaServer.route("/site.webmanifest")
+def favicon_siteWebmanifest():
+    return send_from_directory(faviconsLocation, "site.webmanifest")
+
+@ErinaServer.route("/safari-pinned-tab.svg")
+def favicon_safariPinnedTab():
+    return send_from_directory(faviconsLocation, "safari-pinned-tab.svg")
+
+@ErinaServer.route("/android-chrome-192x192.png")
+def favicon_androidChrome192by192():
+    return send_from_directory(faviconsLocation, "android-chrome-192x192.png")
+
+@ErinaServer.route("/android-chrome-512x512.png")
+def favicon_androidChrome512by512():
+    return send_from_directory(faviconsLocation, "android-chrome-512x512.png")
