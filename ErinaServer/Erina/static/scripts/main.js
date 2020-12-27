@@ -67,6 +67,14 @@ function _goTo() {
                 if (data == "ErinaAdminLoginRedirect") {
                     window.location.assign("/erina/admin/login")
                 } else {
+                    for (index in intervalsRegistry.length) {
+                        var currentInterval = intervalsRegistry.pop()
+                        try {
+                            clearInterval(currentInterval)
+                        } catch {
+                            console.log("Interval Already Cleared: " + String(currentInterval))
+                        }
+                    }
                     _hideSelectionLine()
                     document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
                     for (chart in chartsRegistry) {

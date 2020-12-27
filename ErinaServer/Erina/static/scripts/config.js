@@ -74,6 +74,7 @@ document.getElementById("restartErinaServer").onclick = function() {
                     console.log("Waiting for ErinaServer")
                 })
             }, 500)
+            intervalsRegistry.push(_erinaAliveInterval)
         }
 
         erinaIsOffline = false
@@ -85,6 +86,7 @@ document.getElementById("restartErinaServer").onclick = function() {
                 console.log("Waiting for ErinaServer")
             })
         }, 1000)
+        intervalsRegistry.push(_erinaAliveInterval)
     }
 }
 
@@ -117,6 +119,7 @@ document.getElementById("updateErina").onclick = function() {
                 console.log("Waiting for ErinaServer")
             })
         }, 500)
+        intervalsRegistry.push(_erinaAliveInterval)
     }
 
     if (confirm("Do you really want to update Erina?\nErina will restart at the end of the backup which will lead to a down time.") == true) {
@@ -153,6 +156,7 @@ document.getElementById("updateErina").onclick = function() {
                             newInfo("Update: Waiting for ErinaServer to be back...")
                         })
                     }, 1000)
+                    intervalsRegistry.push(_updateInterval)
                 }
             } else {
                 newError("An error occured while updating Erina")
@@ -394,9 +398,10 @@ function PageInitialize() {
             document.querySelector('state[state-type="Net Total Sent"]').innerText = data.net_total_sent
             document.querySelector('state[state-type="Net Total Received"]').innerText = data.net_total_received
             
-        }
-    })
+            }
+        })
     }, 1000)
+    intervalsRegistry.push(stateInterval)
 } // end of PageInitialize()
 
 
