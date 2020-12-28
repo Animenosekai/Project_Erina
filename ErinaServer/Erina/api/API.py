@@ -28,6 +28,8 @@ from Erina.env_information import erina_version, erina_dir
 from ErinaServer.Server import ErinaRateLimit
 from ErinaServer.Erina.auth.apiAuth import authReader
 
+import traceback
+
 apiEndpoint = "/erina/api"
 
 def error(result):
@@ -148,7 +150,7 @@ def search():
                     return makeResponse(request_args=request.values, cooldown=None, code=401, error="WRONG_KEY", error_message="The given key isn't registered")
                 else:
                     currentAuth = authReader.APIAuth(currentKey)
-                    currentAuth.authFile.append(str(time()))
+                    currentAuth.authFile.append(str(time()) + "\n")
                     if currentKey in rate_limiting_api_map:
                         rate = time() - rate_limiting_api_map[currentKey]
                         if rate > currentAuth.rate_limit:
@@ -205,4 +207,5 @@ def search():
                 return makeResponse(request_args=request.values, cooldown=cooldown, code=404, data={"error": result.type, "message": result.message, "timestamp": result.timestamp, "formattedTimestamp": result.formatted_timestamp}, error="ANILIST_NOT_FOUND", error_message="AniList could not find your anime")
             return makeResponse(request_args=request.values, cooldown=cooldown, data={"error": result.type, "message": result.message, "timestamp": result.timestamp, "formattedTimestamp": result.formatted_timestamp}, code=500, error=result.type, error_message="An error occured while retrieving the information")
     except:
+        traceback.print_exc()
         return makeResponse(request_args=request.values, cooldown=cooldown, code=500, error=str(exc_info()[0]))

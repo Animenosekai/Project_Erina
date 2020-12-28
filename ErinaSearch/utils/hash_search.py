@@ -36,7 +36,8 @@ class ImageSearchResult():
             "detectionResult": self.detectionResult.as_dict(),
             "similarity": self.similarity,
             "animeResult": self.animeResult.as_dict(),
-            "lowSimilarity": self.low_similarity
+            "lowSimilarity": self.low_similarity,
+            "docType": "IMAGE_SEARCH"
         }
 
     def as_text(self):

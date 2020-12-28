@@ -283,7 +283,8 @@ class SauceNAOCache():
             "episode": self.episode,
             "year": self.year,
             "timing": (self.timing.as_dict() if self.timing is not None else None),
-            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None)
+            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None),
+            "docType": "SAUCENAO"
         }
 
     def as_text(self):

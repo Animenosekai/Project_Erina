@@ -1,0 +1,198 @@
+{
+    "success": true,
+    "data": {
+        "anilistID": 98314,
+        "myAnimeListID": 34933,
+        "title": {
+            "title": "Kakegurui",
+            "romajiTitle": "Kakegurui",
+            "englishTitle": "Kakegurui",
+            "nativeTitle": "賭ケグルイ",
+            "chineseTitle": null,
+            "alternativeTitles": [
+                "Kakegurui - Compulsive Gambler",
+                "Kakegurui: Das Leben ist ein Spiel",
+                "Gambling School"
+            ]
+        },
+        "type": "ANIME",
+        "format": "TV",
+        "status": "FINISHED",
+        "description": {
+            "description": "Unlike many schools, attending Hyakkaou Private Academy prepares students for their time in the real world. Since many of the students are the children of the richest people in the world, the academy has its quirks that separate it from all the others. By day, it is a normal school, educating its pupils in history, languages, and the like. But at night, it turns into a gambling den, educating them in the art of dealing with money and manipulating people. Money is power; those who come out on top in the games stand at the top of the school.  Yumeko Jabami, a seemingly naive and beautiful transfer student, is ready to try her hand at Hyakkaou's special curriculum. Unlike the rest, she doesn't play to win, but for the thrill of the gamble, and her borderline insane way of gambling might just bring too many new cards to the table.  (Source: MyAnimeList)",
+            "html": "&lt;p&gt;Unlike many schools, attending Hyakkaou Private Academy prepares students for their time in the real world. Since many of the students are the children of the richest people in the world, the academy has its quirks that separate it from all the others. By day, it is a normal school, educating its pupils in history, languages, and the like. But at night, it turns into a gambling den, educating them in the art of dealing with money and manipulating people. Money is power; those who come out on top in the games stand at the top of the school.&lt;br&gt;&lt;br /&gt; &lt;br&gt;&lt;br /&gt; Yumeko Jabami, a seemingly naive and beautiful transfer student, is ready to try her hand at Hyakkaou's special curriculum. Unlike the rest, she doesn't play to win, but for the thrill of the gamble, and her borderline insane way of gambling might just bring too many new cards to the table.&lt;br&gt;&lt;br /&gt; &lt;br&gt;&lt;br /&gt; (Source: MyAnimeList)&lt;/p&gt;"
+        },
+        "season": "SUMMER",
+        "year": 2017,
+        "numberOfEpisodes": 12,
+        "episodeDuration": 25,
+        "firstEpisodeReleaseDate": {
+            "date": "2017-7-1",
+            "year": 2017,
+            "month": 7,
+            "day": 1
+        },
+        "lastEpisodeReleaseDate": {
+            "date": "2017-9-23",
+            "year": 2017,
+            "month": 9,
+            "day": 23
+        },
+        "country": "JP",
+        "sourceType": "MANGA",
+        "licensed": true,
+        "hentai": false,
+        "twitterHashtag": "#賭ケグルイ",
+        "averageScore": 73,
+        "coverImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx98314-BWpNNKOmiUoe.jpg",
+        "averageCoverColor": null,
+        "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98314-S6OYB9u68dJD.jpg",
+        "trailer": "https://youtube.com/watch?v=v2xJDuM9ZDM",
+        "genres": [
+            "Drama",
+            "Ecchi",
+            "Mystery",
+            "Psychological"
+        ],
+        "studios": [
+            {
+                "name": "MAPPA",
+                "isMain": true,
+                "isAnimationStudio": true,
+                "anilistID": 569
+            },
+            {
+                "name": "Square Enix",
+                "isMain": false,
+                "isAnimationStudio": false,
+                "anilistID": 58
+            },
+            [...]
+            {
+                "name": "DIVE II Entertainment",
+                "isMain": false,
+                "isAnimationStudio": false,
+                "anilistID": 6056
+            }
+        ],
+        "tags": [
+            {
+                "name": "Gambling",
+                "rank": 98,
+                "isSpoiler": false,
+                "isAdult": false,
+                "category": "Theme-Other"
+            },
+            {
+                "name": "Female Protagonist",
+                "rank": 85,
+                "isSpoiler": false,
+                "isAdult": false,
+                "category": "Cast-Main Cast"
+            },
+            [...]
+            {
+                "name": "Idol",
+                "rank": 36,
+                "isSpoiler": false,
+                "isAdult": false,
+                "category": "Cast-Traits"
+            }
+        ],
+        "relations": [
+            {
+                "title": "Kakegurui",
+                "relation": "ADAPTATION",
+                "anilistID": 85793
+            },
+            {
+                "title": "Kakegurui ××",
+                "relation": "SEQUEL",
+                "anilistID": 100876
+            },
+            {
+                "title": "Kakegurui Picture Drama",
+                "relation": "OTHER",
+                "anilistID": 107622
+            }
+        ],
+        "characters": [
+            {
+                "name": "Yumeko Jabami",
+                "nativeName": "蛇喰夢子",
+                "role": "MAIN",
+                "anilistID": 121889
+            },
+            {
+                "name": "Mary Saotome",
+                "nativeName": "早乙女芽亜里",
+                "role": "MAIN",
+                "anilistID": 122687
+            },
+            [...]
+            {
+                "name": "Shinnouji",
+                "nativeName": "新王寺",
+                "role": "SUPPORTING",
+                "anilistID": 136607
+            }
+        ],
+        "staff": [
+            {
+                "name": "Toshiki Amada",
+                "nativeName": "天田俊貴",
+                "role": "Art Setting",
+                "anilistID": 125367
+            },
+            {
+                "name": "Manabu Akita",
+                "nativeName": "秋田学",
+                "role": "Character Design",
+                "anilistID": 121962
+            },
+            [...]
+            {
+                "name": "Tia",
+                "nativeName": "Tia",
+                "role": "Theme Song Performance (OP)",
+                "anilistID": 114797
+            }
+        ],
+        "recommendations": [
+            {
+                "title": "No Game No Life",
+                "anilistID": 19815
+            },
+            {
+                "title": "Gyakkyou Burai Kaiji: Hakairoku-hen",
+                "anilistID": 10271
+            },
+            [...]
+            {
+                "title": "Kangoku Gakuen",
+                "anilistID": 20807
+            }
+        ],
+        "link": "https://anilist.co/anime/98314",
+        "streamingLinks": null,
+        "externalLinks": [
+            {
+                "link": "http://kakegurui-anime.com/",
+                "site": "Official Site"
+            },
+            {
+                "link": "https://twitter.com/kakegurui_anime",
+                "site": "Twitter"
+            },
+            {
+                "link": "https://www.netflix.com/title/80175351",
+                "site": "Netflix"
+            }
+        ],
+        "cacheTimestamp": {
+            "timestamp": 1606656791.938302,
+            "formatted": "2020-11-29 at 14:33:11"
+        }
+    },
+    "cooldown": null
+}

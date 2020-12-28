@@ -554,7 +554,8 @@ class AnilistCache():
             "link": self.link,
             "streamingLinks": ([link.as_dict() for link in self.streaming_links] if self.streaming_links is not None else None),
             "externalLinks": ([link.as_dict() for link in self.external_links] if self.external_links is not None else None),
-            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None)
+            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None),
+            "docType": "ANILIST"
         }
 
     def as_text(self):

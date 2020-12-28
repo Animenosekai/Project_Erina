@@ -84,7 +84,8 @@ class IQDBCache():
             "hentai": self.hentai,
             "similarity": self.similarity,
             "database": self.database,
-            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None)
+            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None),
+            "docType": "IQDB"
         }
 
     def as_text(self):

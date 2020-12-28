@@ -237,7 +237,8 @@ class ErinaData():
             "framerate": self.framerate,
             "episodeDuration": self.episode_duration,
             "episodeFramecount": self.episode_framecount,
-            "analyzeTimestamp": (self.analyze_timestamp.as_dict() if self.analyze_timestamp is not None else None)
+            "analyzeTimestamp": (self.analyze_timestamp.as_dict() if self.analyze_timestamp is not None else None),
+            "docType": "ERINADB"
         }
 
     def as_text(self):

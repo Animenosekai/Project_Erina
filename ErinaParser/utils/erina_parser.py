@@ -55,7 +55,8 @@ class ErinaCache():
             "path": self.path,
             "hash": self.hash,
             "similarity": self.similarity,
-            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None)
+            "cacheTimestamp": (self.cache_timestamp.as_dict() if self.cache_timestamp is not None else None),
+            "docType": "ERINA"
         }
 
     def as_text(self):
