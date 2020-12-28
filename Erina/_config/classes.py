@@ -11,12 +11,20 @@ tempData = configFile.read()
 for element in tempData:
     storedData[element] = tempData[element]
 
+import re
+from Erina.utils import convert_to_float, convert_to_int
+
 def environ(erina_environ):
     """
     Returns an env variable if it has the correct erina environ format
     """
     if str(erina_environ)[:2] == "{{" and str(erina_environ)[-2:] == "}}":
-        return os.environ.get(str(erina_environ)[2:-2])
+        if re.sub("[^0-9.-]", "", str(element)) != "":
+            return convert_to_float(os.environ.get(str(erina_environ)[2:-2]))
+        elif re.sub("[^0-9-]", "", str(element)) != "":
+            return convert_to_int(os.environ.get(str(erina_environ)[2:-2]))
+        else:
+            return os.environ.get(str(erina_environ)[2:-2])
     else:
         return erina_environ
 
