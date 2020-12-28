@@ -3,7 +3,7 @@ Manages your Twitter Profile
 """
 
 from ErinaTwitter.erina_twitterbot import ErinaTwitter
-from ErinaTwitter.utils.Errors import TwitterError
+from Erina.Errors import TwitterError
 
 updateErinaTwitter = ErinaTwitter.api.update_profile
 

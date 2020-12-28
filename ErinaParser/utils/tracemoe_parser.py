@@ -5,7 +5,7 @@ A .erina trace.moe cache file parser
 """
 
 import datetime
-import ErinaParser.utils.utils as utils
+from Erina import utils
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import erina
 

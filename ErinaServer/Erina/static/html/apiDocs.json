@@ -27,12 +27,12 @@
                         "optional": true
                     },
                     {
-                        "name": "format",
+                        "name": "client",
                         "description": "Optional: If you want a specific Erina Client format (Line, Discord or Twitter for an image search)",
                         "optional": true
                     },
                     {
-                        "name": "responseType",
+                        "name": "format",
                         "description": "Optional: If you want a specific type of response (text, html or json)",
                         "optional": true
                     },

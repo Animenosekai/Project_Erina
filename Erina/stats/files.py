@@ -50,7 +50,7 @@ class erinaStats():
         self.cacheFilesCount = TextFile(self.path + "cacheFilesCount.erinalog", blocking=False)
         self.erinaParsingCount = TextFile(self.path + "erinaParsingCount.erinalog", blocking=False)
         self.errorsCount = TextFile(self.path + "errorsCount.erinalog", blocking=False)
-        self.fileIOCounter = TextFile(self.path + "fileIOCounter.erinalog", blocking=False)
+        #self.fileIOCounter = TextFile(self.path + "fileIOCounter.erinalog", blocking=False)
 
 class externalStats():
     """

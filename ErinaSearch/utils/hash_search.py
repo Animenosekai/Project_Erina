@@ -1,4 +1,3 @@
-from ErinaSearch.utils.Errors import SearchingError
 import os
 import operator
 
@@ -15,9 +14,8 @@ from ErinaCaches import erinacache
 from ErinaParser.utils.tracemoe_parser import TraceMOECache
 from ErinaParser.utils.saucenao_parser import SauceNAOCache
 from ErinaParser.utils.iqdb_parser import IQDBCache
-from ErinaParser.utils.Errors import ParserError
-from ErinaCaches.utils.Errors import CachingError
-from ErinaHash.utils.Errors import HashingError
+from Erina.Errors import isAnError
+from Erina.Errors import SearchingError
 
 from Erina.erina_stats import db as DatabaseStats
 from Erina.erina_stats import StatsAppend
@@ -73,7 +71,7 @@ def search_anime_by_hash(image_hash):
     © Anime no Sekai - 2020
     Project Erina
     """
-    if isinstance(image_hash, HashingError): # If there is no error
+    if isAnError(image_hash): # If there is an error
         return image_hash
 
     ##########################
@@ -152,33 +150,33 @@ def search_anime_by_hash(image_hash):
         
     similaritiesDict = {}
     erina_cache_result = search_anime_in_erina_cache()
-    if erina_cache_result is None or isinstance(erina_cache_result, ParserError) or erina_cache_result.similarity < SearchConfig.thresholds.erina_similarity:
+    if erina_cache_result is None or isAnError(erina_cache_result) or erina_cache_result.similarity < SearchConfig.thresholds.erina_similarity:
 
         erina_database_result, erina_database_similarity, erina_database_path = search_anime_in_erina_database()
-        if erina_database_result is None or isinstance(erina_database_result, ParserError) or erina_database_similarity < SearchConfig.thresholds.erina_similarity:
+        if erina_database_result is None or isAnError(erina_database_result) or erina_database_similarity < SearchConfig.thresholds.erina_similarity:
             
             tracemoe_cache_result = search_anime_in_tracemoe_cache()
-            if tracemoe_cache_result is None or isinstance(tracemoe_cache_result, ParserError) or (tracemoe_cache_result.similarity if tracemoe_cache_result.similarity is not None else 0) < SearchConfig.thresholds.tracemoe_similarity:
+            if tracemoe_cache_result is None or isAnError(tracemoe_cache_result) or (tracemoe_cache_result.similarity if tracemoe_cache_result.similarity is not None else 0) < SearchConfig.thresholds.tracemoe_similarity:
 
                 saucenao_cache_result = search_anime_in_saucenao_cache()
-                if saucenao_cache_result is None or isinstance(saucenao_cache_result, ParserError) or (saucenao_cache_result.similarity if saucenao_cache_result.similarity is not None else 0) < SearchConfig.thresholds.saucenao_similarity:
+                if saucenao_cache_result is None or isAnError(saucenao_cache_result) or (saucenao_cache_result.similarity if saucenao_cache_result.similarity is not None else 0) < SearchConfig.thresholds.saucenao_similarity:
                     
                     iqdb_cache_result = search_anime_in_iqdb_cache()
-                    if iqdb_cache_result is None or isinstance(iqdb_cache_result, ParserError) or (iqdb_cache_result.similarity if iqdb_cache_result.similarity is not None else 0) < SearchConfig.thresholds.iqdb_similarity:
+                    if iqdb_cache_result is None or isAnError(iqdb_cache_result) or (iqdb_cache_result.similarity if iqdb_cache_result.similarity is not None else 0) < SearchConfig.thresholds.iqdb_similarity:
                         
                         tracemoe_api_result = erinacache.tracemoe_caching(image_hash)
-                        if isinstance(tracemoe_api_result, CachingError) or tracemoe_api_result.similarity < SearchConfig.thresholds.tracemoe_similarity:
-                            if not isinstance(tracemoe_api_result, CachingError) and tracemoe_api_result.similarity is not None:
+                        if isAnError(tracemoe_api_result) or tracemoe_api_result.similarity < SearchConfig.thresholds.tracemoe_similarity:
+                            if not isAnError(tracemoe_api_result) and tracemoe_api_result.similarity is not None:
                                 similaritiesDict[tracemoe_api_result] = tracemoe_api_result.similarity
             
                             saucenao_api_result = erinacache.saucenao_caching(image_hash)
-                            if isinstance(saucenao_api_result, CachingError) or saucenao_api_result.similarity < SearchConfig.thresholds.saucenao_similarity:
-                                if not isinstance(saucenao_api_result, CachingError) and saucenao_api_result.similarity is not None:
+                            if isAnError(saucenao_api_result) or saucenao_api_result.similarity < SearchConfig.thresholds.saucenao_similarity:
+                                if not isAnError(saucenao_api_result) and saucenao_api_result.similarity is not None:
                                     similaritiesDict[saucenao_api_result] = saucenao_api_result.similarity
 
                                 iqdb_api_result = erinacache.iqdb_caching(image_hash)
-                                if isinstance(iqdb_api_result, CachingError) or iqdb_api_result.similarity < SearchConfig.thresholds.iqdb_similarity:
-                                    if not isinstance(iqdb_api_result, CachingError) and iqdb_api_result.similarity is not None:
+                                if isAnError(iqdb_api_result) or iqdb_api_result.similarity < SearchConfig.thresholds.iqdb_similarity:
+                                    if not isAnError(iqdb_api_result) and iqdb_api_result.similarity is not None:
                                         similaritiesDict[iqdb_api_result] = iqdb_api_result.similarity
 
                                     #### UNDER THE DEFINED SIMILARITY THRESHOLD

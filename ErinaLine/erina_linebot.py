@@ -19,7 +19,7 @@ from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import line as LineStats
 from Erina.erina_log import log
 
-from ErinaLine.utils.Errors import LineError
+from Erina.Errors import LineError
 
 images_path = env_information.erina_dir + '/ErinaLine/images/'
 

@@ -1,13 +1,8 @@
 from safeIO import TextFile
 
 from Erina.env_information import erina_dir
-from ErinaParser.utils import anilist_parser
-from ErinaParser.utils import erina_parser
-from ErinaParser.utils import erinadb_parser
-from ErinaParser.utils import iqdb_parser
-from ErinaParser.utils import saucenao_parser
-from ErinaParser.utils import tracemoe_parser
-from ErinaParser.utils.Errors import ParserError
+from ErinaParser.utils import anilist_parser, erina_parser, erinadb_parser, iqdb_parser, saucenao_parser, tracemoe_parser
+from Erina.Errors import ParserError
 
 def _get_type(data):
     """

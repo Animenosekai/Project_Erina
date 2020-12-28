@@ -2,7 +2,7 @@
 from safeIO import TextFile
 
 from Erina.env_information import erina_dir
-from ErinaServer.Erina.admin.utils import convert_to_float, convert_to_int
+from Erina.utils import convert_to_float, convert_to_int
 
 class APIAuth():
     def __init__(self, key) -> None:

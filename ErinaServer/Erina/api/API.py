@@ -1,3 +1,4 @@
+from Erina.Errors import isAnError
 from os.path import isfile
 from ErinaParser.utils.anilist_parser import AnilistCache
 import json
@@ -8,12 +9,6 @@ from sys import exc_info
 
 from ErinaSearch import erinasearch
 from ErinaServer.Server import ErinaServer
-
-from ErinaCaches.utils.Errors import CachingError
-from ErinaDB.utils.Errors import DatabaseError
-from ErinaHash.utils.Errors import HashingError
-from ErinaParser.utils.Errors import ParserError
-from ErinaSearch.utils.Errors import SearchingError
 
 from ErinaLine.utils import Parser as LineParser
 from ErinaTwitter.utils import Parser as TwitterParser
@@ -30,27 +25,18 @@ from ErinaServer.Erina.auth.apiAuth import authReader
 
 import traceback
 
-
 apiEndpoint = "/erina/api"
-
-def error(result):
-    for errorType in [CachingError, DatabaseError, HashingError, ParserError, SearchingError]:
-        if isinstance(result, errorType):
-            return True
-    return False
-
-
 
 def makeResponse(request_args, cooldown=None, data=None, code=None, error=None, error_message=None):
     """
     Shaping the response
     """
-    if "responseType" in request.values:
-        responseType = request.values.get("responseType").lower()
+    if "format" in request.values:
+        format = request.values.get("format").lower()
     else:
-        responseType = "json"
+        format = "json"
 
-    if responseType == "text":
+    if format == "text":
         if error is not None:
             if code == 500:
                 responseBody = "Success: False\nError: {error}\nData: {data}\nMessage: An error occured on the server".format(error=str(error), data=str(data))
@@ -60,7 +46,7 @@ def makeResponse(request_args, cooldown=None, data=None, code=None, error=None, 
             responseBody = "Success: True\n\n" + data
             code = 200
         responseBody += "\nCooldown: " + str(cooldown)
-    elif responseType == "html":
+    elif format == "html":
         if error is not None:
             if code == 500:
                 responseBody = "<p>Success: False</p><br/><p>Error: {error}</p><br/><p>Data: {data}</p><br/><p>Message: An error occured on the server</p>".format(error=str(error), data=str(data))
@@ -91,9 +77,9 @@ def makeResponse(request_args, cooldown=None, data=None, code=None, error=None, 
         response = Response(json.dumps(responseBody, ensure_ascii=False, indent=4))
     
     response.headers["Server"] = "ErinaServer " + erina_version
-    if responseType == "text":
+    if format == "text":
         response.headers["Content-Type"] = "text/plain"
-    elif responseType == "html":
+    elif format == "html":
         response.headers["Content-Type"] = "text/html"
     else:
         response.headers["Content-Type"] = "application/json"
@@ -162,44 +148,44 @@ def ErinaServer_Endpoint_API_search():
                         rate_limiting_api_map[currentKey] = time()
                     cooldown = currentAuth.rate_limit
 
-        if "responseType" in request.values:
-            responseType = request.values.get("responseType").lower()
+        if "format" in request.values:
+            format = request.values.get("format").lower()
         else:
-            responseType = "json"
+            format = "json"
 
         if "anilistID" in request.values:
             StatsAppend(APIStats.searchEndpointCall, f"AniListID >>> {str(request.values.get('anilistID'))}")
             result = erinasearch.anilistIDSearch(request.values.get("anilistID"))
-            if "format" in request.values:
-                if request.values.get("format") == "line":
+            if "client" in request.values:
+                if request.values.get("client") == "line":
                     return makeResponse(request_args=request.values, cooldown=cooldown, data=LineParser.makeInfoResponse(result))
-                elif request.values.get("format") == "discord":
+                elif request.values.get("client") == "discord":
                     return makeResponse(request_args=request.values, cooldown=cooldown, data=DiscordParser.makeInfoResponse(result)[2])
 
         elif "anime" in request.values:
             StatsAppend(APIStats.searchEndpointCall, f"Anime Search >>> {str(request.values.get('anime'))}")
             result = erinasearch.searchAnime(request.values.get("anime"))
-            if "format" in request.values:
-                if request.values.get("format") == "line":
+            if "client" in request.values:
+                if request.values.get("client") == "line":
                     return makeResponse(request_args=request.values, cooldown=cooldown, data=LineParser.makeInfoResponse(result))
-                elif request.values.get("format") == "discord":
+                elif request.values.get("client") == "discord":
                     return makeResponse(request_args=request.values, cooldown=cooldown, data=DiscordParser.makeInfoResponse(result)[2])
                     
         elif "image" in request.values:
             StatsAppend(APIStats.searchEndpointCall, "Image Search")
             result = erinasearch.imageSearch(request.values.get("image"))
-            if "format" in request.values:
-                if request.values.get("format") == "twitter":
+            if "client" in request.values:
+                if request.values.get("client") == "twitter":
                     return makeResponse(request_args=request.values, cooldown=cooldown, data=TwitterParser.makeTweet(result))
-                elif request.values.get("format") == "line":
+                elif request.values.get("client") == "line":
                     return makeResponse(request_args=request.values, cooldown=cooldown, data=LineParser.makeImageResponse(result))
-                elif request.values.get("format") == "discord":
+                elif request.values.get("client") == "discord":
                     return makeResponse(request_args=request.values, cooldown=cooldown, data=DiscordParser.makeImageResponse(result)[2])
         else:
-            return makeResponse(request_args=request.values, cooldown=cooldown, data={"authorizedArgs": ["anilistID", "anime", "image", "minify", "format"], "optionalArgs": ["minify", "format"]}, code=400, error="MISSING_ARG", error_message="An argument is missing from your request")
+            return makeResponse(request_args=request.values, cooldown=cooldown, data={"authorizedArgs": ["anilistID", "anime", "image", "minify", "client", "format"], "optionalArgs": ["minify", "client", "format"]}, code=400, error="MISSING_ARG", error_message="An argument is missing from your request")
         
-        if not error(result):
-            if responseType == "text" or responseType == "html":
+        if isAnError(result):
+            if format == "text" or format == "html":
                 return makeResponse(request_args=request.values, cooldown=cooldown, data=result.as_text())
             else:
                 return makeResponse(request_args=request.values, cooldown=cooldown, data=result.as_dict())

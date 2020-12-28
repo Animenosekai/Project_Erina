@@ -8,7 +8,7 @@ from pattern.text.en import sentiment
 
 from Erina.config import Twitter as TwitterConfig
 from Erina.config import Erina as ErinaConfig
-from ErinaTwitter.utils.Errors import TwitterError
+from Erina.Errors import TwitterError
 from ErinaTwitter.utils import Twitter
 from ErinaTwitter.erina_twitterbot import ErinaTwitter
 from ErinaTwitter.utils.Parser import makeTweet

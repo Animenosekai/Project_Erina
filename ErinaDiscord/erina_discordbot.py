@@ -12,7 +12,7 @@ from discord.ext import commands as DiscordCommands
 
 from Erina import config
 from ErinaSearch import erinasearch
-from ErinaDiscord.utils import utils
+from Erina import utils
 from ErinaDiscord.utils import Parser
 from ErinaDiscord.utils import StaticResponse
 from ErinaDiscord.utils.cosine_similarity import searchCommand
@@ -65,6 +65,8 @@ async def on_message(message):
                         newEmbed.set_thumbnail(url=thumbnail)
 
                     await message.channel.send(embed=newEmbed)
+                else:
+                    await message.channel.send("An error occured while searching for your anime: " + query)
             elif command == "description":
                 query = utils.removeSpaceBefore(userCommand[commandLength:])
                 log("ErinaDiscord", "New description hit from @" + str(message.author) + " (asking for " + str(query) + ")")
@@ -78,6 +80,8 @@ async def on_message(message):
                         newEmbed.set_thumbnail(url=thumbnail)
 
                     await message.channel.send(embed=newEmbed)
+                else:
+                    await message.channel.send("An error occured while searching for your anime: " + query)
             elif command == "dev":
                 StaticResponse.erinadev(message.channel)
             elif command == "donate":
@@ -139,7 +143,7 @@ async def on_message(message):
 
                     title, thumbnail, reply = result
                     if reply is None:
-                        continue
+                        await message.channel.send(f"An error occured while searching for the {number} anime")
 
                     await message.channel.send(f"The {number} anime seems to be {title}!")
 

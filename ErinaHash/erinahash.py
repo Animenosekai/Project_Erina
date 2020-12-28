@@ -16,7 +16,7 @@ from safeIO import BinaryFile
 imagehash = None
 Image = None
 ######### For Development Purposes, will be reverted when my Pillow installation will work again (issue: python-pillow/Pillow #5143)
-from ErinaHash.utils import Errors
+from Erina.Errors import HashingError
 
 from Erina.erina_log import log
 from Erina import config
@@ -81,7 +81,7 @@ def hash_image(image, algorithm=None):
                 image = Image.open(BytesIO(requests.get(str(image)).content)) # Open the downloaded image as a PIL Image instance
                 has_url  = True
             except:
-                return Errors.HashingError("INVALID_IMAGE_TYPE", "We couldn't convert the given image to a PIL.Image.Image instance")
+                return HashingError("INVALID_IMAGE_TYPE", "We couldn't convert the given image to a PIL.Image.Image instance")
     
     if algorithm is None:
         algorithm = str(config.Hash.algorithm)
@@ -104,7 +104,7 @@ def hash_image(image, algorithm=None):
         elif algorithm in ['phashsimple', 'psimple', 'perceptualsimple', 'simpleperceptual', 'simplep', 'simplephash', 'simpleperceptualhas']:
             result = imagehash.phash_simple(image)
         else:
-            return Errors.HashingError("INVALID_ALGORITHM", "We couldn't determine the hashing algorithm you wanted to use.")
+            return HashingError("INVALID_ALGORITHM", "We couldn't determine the hashing algorithm you wanted to use.")
     
     if has_url:
         return HashObject(result, image, url)

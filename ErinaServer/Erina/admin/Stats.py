@@ -8,7 +8,7 @@ from Erina import erina_stats
 from Erina import env_information
 from Erina.env_information import erina_dir
 from ErinaParser.utils.anilist_parser import AnilistCache
-from ErinaServer.Erina.admin.utils import convert_to_int, convert_to_float
+from Erina.utils import convert_to_int, convert_to_float
 
 
 def returnTimestamp(logLine):
@@ -54,9 +54,6 @@ def returnStats():
     erina_stats.erina.errorsCount.blocking = True
     erina_errorsCount = erina_stats.erina.errorsCount.readlines()
     erina_stats.erina.errorsCount.blocking = False
-    erina_stats.erina.fileIOCounter.blocking = True
-    erina_fileIOCounter = erina_stats.erina.fileIOCounter.readlines()
-    erina_stats.erina.fileIOCounter.blocking = False
     erina_stats.external.anilistAPICalls.blocking = True
     external_anilistAPICalls = erina_stats.external.anilistAPICalls.readlines()
     erina_stats.external.anilistAPICalls.blocking = False
@@ -223,7 +220,6 @@ def returnStats():
     _retrieveStats('erina', 'cacheFilesCount', erina_cacheFilesCount)
     _retrieveStats('erina', 'erinaParsingCount', erina_erinaParsingCount)
     _retrieveStats('erina', 'errorsCount', erina_errorsCount)
-    _retrieveStats('erina', 'fileIOCounter', erina_fileIOCounter)
     _retrieveStats('external', 'anilistAPICalls', external_anilistAPICalls)
     _retrieveStats('external', 'iqdbCalls', external_iqdbCalls)
     _retrieveStats('external', 'saucenaoAPICalls', external_saucenaoAPICalls)

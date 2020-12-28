@@ -1,13 +1,9 @@
 """
 Parses ErinaSearch for Discord
 """
-from ErinaParser.utils.utils import create_nice_list
+from Erina.utils import create_nice_list
 from ErinaParser.utils.saucenao_parser import SauceNAOCache
-from ErinaCaches.utils.Errors import CachingError
-from ErinaDB.utils.Errors import DatabaseError
-from ErinaHash.utils.Errors import HashingError
-from ErinaParser.utils.Errors import ParserError
-from ErinaSearch.utils.Errors import SearchingError
+from Erina.Errors import isAnError
 
 def makeInfoResponse(erinaSearchResponse):
     """
@@ -54,8 +50,7 @@ def makeImageResponse(erinaSearchResponse):
     """
     Makes the response for image queries on Discord
     """
-    errorTuple = (CachingError, DatabaseError, HashingError, ParserError, SearchingError)
-    if isinstance(erinaSearchResponse, errorTuple) or isinstance(erinaSearchResponse.detectionResult, errorTuple) or isinstance(erinaSearchResponse.animeResult, errorTuple):
+    if isAnError(erinaSearchResponse) or isAnError(erinaSearchResponse.detectionResult) or isAnError(erinaSearchResponse.animeResult):
         return None, None, None
     else:
         discordResult = ""

@@ -5,7 +5,7 @@ A .erina AniList cache file parser
 """
 
 import re
-import ErinaParser.utils.utils as utils
+from Erina import utils
 from datetime import datetime
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import erina

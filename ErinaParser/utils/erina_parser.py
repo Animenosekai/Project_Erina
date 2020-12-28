@@ -1,5 +1,5 @@
 import datetime
-from ErinaParser.utils import utils
+from Erina import utils
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import erina
 class ErinaCache():

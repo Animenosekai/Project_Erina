@@ -4,20 +4,15 @@ Anime Database Information Parser (for Twitter) for the Erina Project
 @author: Anime no Sekai\n
 Erina Project - 2020
 """
-from ErinaParser.utils.utils import create_nice_list
+from Erina.Errors import isAnError
+from Erina.utils import create_nice_list
 from ErinaParser.utils.saucenao_parser import SauceNAOCache
-from ErinaCaches.utils.Errors import CachingError
-from ErinaDB.utils.Errors import DatabaseError
-from ErinaHash.utils.Errors import HashingError
-from ErinaParser.utils.Errors import ParserError
-from ErinaSearch.utils.Errors import SearchingError
 
 def makeTweet(erinaSearchResponse):
     """
     Formats ErinaSearch's response for Twitter
     """
-    errorTuple = (CachingError, DatabaseError, HashingError, ParserError, SearchingError)
-    if isinstance(erinaSearchResponse, errorTuple) or isinstance(erinaSearchResponse.detectionResult, errorTuple) or isinstance(erinaSearchResponse.animeResult, errorTuple):
+    if isAnError(erinaSearchResponse) or isAnError(erinaSearchResponse.detectionResult) or isAnError(erinaSearchResponse.animeResult):
         return None
     else:
         tweetResult = ""

@@ -11,6 +11,8 @@ import filecenter
 from Erina.config import Line as LineConfig
 from Erina.erina_log import log
 import Erina.env_information as env_information
+from Erina.erina_stats import StatsAppend
+from Erina.erina_stats import line as LineStats
 
 images_path = env_information.erina_dir + '/ErinaLine/images/'
 current_images_dict = {}
@@ -21,6 +23,7 @@ def check(user_id):
     '''
     global current_images_dict
     current_images_dict[user_id] = time.time()
+    StatsAppend(LineStats.storedImages, len(filecenter.files_in_dir(images_path)))
 
 def checkImages():
     '''
@@ -39,3 +42,4 @@ def checkImages():
             log("ErinaLine", "[Image Checker] Deleted 1 entry")
         else:
             log("ErinaLine", f'[Image Checker] Deleted {str(number_of_deleted_files)} entries')
+        StatsAppend(LineStats.storedImages, len(filecenter.files_in_dir(images_path)))
