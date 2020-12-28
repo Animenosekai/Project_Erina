@@ -40,7 +40,7 @@ def ErinaServer_Endpoint_Static_redirectToMainEndpoint():
 @ErinaServer.route("/erina/admin/static/styles/<page>.css")
 def ErinaServer_Endpoint_Static_stylesEndpoint(page):
     try:
-        if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox", "apiDocs"]:
+        if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox", "apiDocs", "hamburger"]:
             return send_from_directory(stylesLocation, page + ".css")
         elif page == "login":
             return send_from_directory(stylesLocation, "login.css")

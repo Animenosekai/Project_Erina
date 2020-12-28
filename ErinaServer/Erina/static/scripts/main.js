@@ -81,6 +81,9 @@ function _goTo() {
                         }
                     }
                     _hideSelectionLine()
+                    document.getElementById("hamburgerBtn").classList.remove("is-active")
+                    document.getElementById("sidebarContainer").classList.remove("showMobileSidebar")
+                    document.getElementById("ErinaAdminBody").classList.remove("avoidPointerEvent")
                     try {
                         document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
                     } catch {
@@ -257,4 +260,10 @@ function startLoading() {
 
 function stopLoading() {
     document.getElementById("loadingIndicator").style.display = "none"
+}
+
+function hamburgerClicked() {
+    document.getElementById("hamburgerBtn").classList.toggle("is-active")
+    document.getElementById("sidebarContainer").classList.toggle("showMobileSidebar")
+    document.getElementById("ErinaAdminBody").classList.toggle("avoidPointerEvent")
 }

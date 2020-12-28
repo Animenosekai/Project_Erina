@@ -18,3 +18,4 @@ safeIO
 pattern
 Flask-Sockets
 psutil
+flask-compress

@@ -1,3 +1,4 @@
+from flask_compress import Compress
 from flask import Flask, Response, request, send_from_directory
 
 from time import time
@@ -5,6 +6,7 @@ import json
 from Erina.env_information import erina_version, erina_dir
 
 ErinaServer = Flask(__name__)
+Compress(ErinaServer)
 
 
 

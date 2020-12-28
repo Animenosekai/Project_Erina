@@ -14,8 +14,9 @@
 .erinastats {
     position: relative;
     display: flex;
-    flex-direction: row;
-    left: 25%;
+    left: 17%;
+    flex-flow: row wrap;
+    justify-content: flex-start;
 }
 
 .statCard {
@@ -55,10 +56,11 @@
 
 .erinaWidgets {
     display: flex;
-    flex-direction: row;
-    left: 10%;
     position: relative;
     margin-bottom: 50px;
+    flex-flow: wrap row;
+    justify-content: flex-end;
+    transform: translate(-4%);
 }
 
 .erinaWidget {
@@ -86,12 +88,12 @@
 }
 
 .erinaWidget-value-number {
-    font-size: 2vw;
+    font-size: 2em;
     margin-top: 15px;
 }
 
 .erinaWidget-value-text {
-    font-size: 1.5vw;
+    font-size: 1.5em;
     margin-top: 15px;
 }
 
@@ -103,8 +105,11 @@
 
 .erinaTraceback {
     display: flex;
-    flex-direction: row;
     margin-bottom: 60px;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 2%;
 }
 
 .erinaLogs {
@@ -112,8 +117,8 @@
     flex-direction: column;
     position: relative;
     margin-top: 60px;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin-left: 50px;
+    margin-right: 50px;
     padding: 20px 15px;
     align-items: center;
     align-content: center;
@@ -201,4 +206,32 @@ erinalog-message {
     position: absolute;
     top: 20px;
     color: #808080d9;
+}
+
+@media screen and (max-width: 800px) {
+    .erinastats {
+        flex-flow: wrap column;
+        left: 0;
+    }
+    .erinaChart {
+        width: 100%;
+        margin-top: -10px;
+        height: 100px;
+        margin-bottom: -20px;
+    }
+    .erinaWidget {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 35%;
+    }
+    .erinaTraceback {
+        flex-flow: column wrap;
+    }
+    .erinaLogs, .erinaFeedbacks {
+        height: 190px;
+        width: 70%;
+    }
+    .pageTitle {
+        left: 30%;
+    }
 }
