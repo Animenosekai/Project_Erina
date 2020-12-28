@@ -272,6 +272,8 @@ function textInputHandler(event, textInputElement) {
         .then((resp) => resp.json())
         .then(function(data){
             if (data.success == true) {
+                data = data.data
+                textInputElement.value = String(data.value)
                 newSuccess("Successfully edited " + data.path + " to " + String(data.value))
             } else {
                 newError("An error occured while editing " + textInputElement.getAttribute("config-path"))
@@ -296,6 +298,11 @@ function checkboxHandler(checkboxElement) {
     .then(function(data){
         if (data.success == true) {
             data = data.data
+            if (data.value == true) {
+                checkboxElement.checked = true
+            } else {
+                checkboxElement.checked = false
+            }
             newSuccess("Successfully edited " + data.path + " to " + String(data.value))
         } else {
             newError("An error occured while editing " + checkboxElement.getAttribute("config-path"))

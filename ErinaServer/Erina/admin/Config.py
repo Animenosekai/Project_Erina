@@ -28,7 +28,7 @@ from filecenter import delete, exists, files_in_dir, extension_from_base, isdir,
 from Erina.erina_log import logFile
 from Erina.erina_stats import StatsReset
 from Erina._config.files import configFile
-from Erina.config import update, default, Hash
+from Erina.config import update, default, Hash, Twitter, Discord
 from ErinaServer.Erina.auth import authManagement
 from ErinaServer.Server import ErinaServer, ErinaRateLimit
 from ErinaServer.Erina.auth.apiAuth.authReader import APIAuth
@@ -205,6 +205,20 @@ def updateEndpoint():
                     algorithm = value.lower().replace(" ", "").replace("_", "")
                     if algorithm not in ['ahash', 'a', 'averagehash', 'average', 'chash', 'c', 'dhash', 'd', 'phash', 'p', 'perceptual', 'perceptualhash', 'wHash', 'w', 'dhashvertical', 'dvertical', 'dvert', 'verticald', 'verticaldhash', 'phashsimple', 'psimple', 'perceptualsimple', 'simpleperceptual', 'simplep', 'simplephash', 'simpleperceptualhas']:
                         value = Hash.algorithm
+                if path == "Twitter/run" and value == True and not Twitter.run:
+                    from ErinaTwitter.utils import Stream
+                    Stream.startStream()
+                elif path == "Twitter/run" and value == False and Twitter.run:
+                    from ErinaTwitter.utils import Stream
+                    Stream.endStream()
+                if path == "Discord/run" and value == True and not Discord.run:
+                    import asyncio
+                    from ErinaDiscord.erina_discordbot import client as discordClient
+                    asyncio.get_event_loop().create_task(discordClient.start(Discord.keys.token))
+                    asyncio.get_event_loop().run_forever()
+                elif path == "Discord/run" and value == False and Discord.run:
+                    from ErinaDiscord.erina_discordbot import client as discordClient
+                    discordClient.close()
                 update(path, value)
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"path": path, "value": value})
             else:
