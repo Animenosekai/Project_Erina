@@ -1,0 +1,105 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: SF Pro Display, Inter, Helvetica, Arial;
+    background: rgb(255 254 248 / 15%);
+    -webkit-font-smoothing: antialiased;
+}
+
+
+category-title {
+    display: flex;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eaecef;
+    flex-flow: row wrap;
+    margin-top: 40px;
+    padding-bottom: 0;
+    flex-wrap: wrap-reverse;
+    font-size: 24px;
+    font-weight: 400;
+    flex: 1 1 auto;
+    left: 0px;
+    position: relative;
+    margin-left: 50px;
+    padding: 15px;
+    width: 90%;
+}
+
+api-endpoint-container {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 244, 208, 0.4);
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    margin: 25px 40px;
+}
+
+
+api-endpoint-title-container {
+    display: flex;
+    flex-direction: row;
+}
+
+api-endpoint-title {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+api-endpoint-description {
+    font-size: 1.1em;
+    color: grey;
+}
+
+api-endpoint-args-container {
+    margin: 16px 0px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #f4f4f4;
+}
+
+api-endpoint-args-container::before {
+    content: "Arguments";
+    display: block;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #969ba8;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+api-endpoint-arg {
+    font-size: 0.95em;
+    position: relative;
+}
+
+api-endpoint-arg-tooltip {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: all 800ms ease;
+    width: 125px;
+}
+
+api-endpoint-arg:hover api-endpoint-arg-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.optionalArg {
+    color: grey;
+}
+
+.apiResponse {
+    height: 400px;
+}

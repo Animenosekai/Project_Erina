@@ -40,7 +40,7 @@ def ErinaServer_Endpoint_Static_redirectToMainEndpoint():
 @ErinaServer.route("/erina/admin/static/styles/<page>.css")
 def ErinaServer_Endpoint_Static_stylesEndpoint(page):
     try:
-        if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox"]:
+        if page in ["main", "console", "loading", "overview", "stats", "config", "api", "infoBox", "apiDocs"]:
             return send_from_directory(stylesLocation, page + ".css")
         elif page == "login":
             return send_from_directory(stylesLocation, "login.css")
@@ -58,6 +58,18 @@ def ErinaServer_Endpoint_Static_scriptsEndpoint(page):
         return send_from_directory(htmlLocation, "404.html"), 404
     except:
         return send_from_directory(htmlLocation, "500.html"), 500
+
+        
+@ErinaServer.route("/erina/api")
+def ErinaServer_Endpoint_Static_apiDocs():
+    try:
+        if "format" in request.values and request.values.get("format").lower() == "json":
+            return send_from_directory(htmlLocation, "apiDocs.json")
+        else:
+            return send_from_directory(htmlLocation, "apiDocs.html")
+    except:
+        return send_from_directory(htmlLocation, "500.html"), 500
+
 
 
 @ErinaServer.route("/erina/admin/static/images/404-Chan")

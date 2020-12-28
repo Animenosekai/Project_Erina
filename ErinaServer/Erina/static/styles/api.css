@@ -267,6 +267,29 @@ api-endpoint-args-container::before {
 
 api-endpoint-arg {
     font-size: 0.95em;
+    position: relative;
+}
+
+api-endpoint-arg-tooltip {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: all 800ms ease;
+    width: 125px;
+}
+
+api-endpoint-arg:hover api-endpoint-arg-tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 .optionalArg {

@@ -1,31 +1,25 @@
-<import id="ErinaExternalJS-Sources" style="display: none;">
-    [
-        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/prism.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/components/prism-json.min.js",
-        "/erina/admin/static/scripts/api.js"
-    ]
-</import>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erina API — Docs</title>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="/erina/admin/static/styles/api.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
-
-<category-title id="apiAuthTitle">API Authorizations</category-title>
-<action-button id="openAuthPopUp">Add an authorization</action-button>
-<authorization-popup-background id="authPopup">
-    <authorization-popup id="authorizationPopUp">
-        <popup-title>Add a new authorization</popup-title>
-        <input type="text" name="Name" placeholder="Auth Name" id="authorizationPopUp_name" required>
-        <input type="number" name="RateLimit" placeholder="Rate-Limit (in seconds)" id="authorizationPopUp_ratelimit" required>
-        <popup-buttons>
-            <action-button id="closeAuthPopUp" class="popupButton">Cancel</action-button>
-            <action-button id="submitPopUp" class="popupButton">Submit</action-button>
-        </popup-buttons>
-    </authorization-popup>
-</authorization-popup-background>
-
-<authorizations id="authorizationsList"></authorizations>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/erina/admin/static/styles/apiDocs.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/components/prism-json.min.js"></script>
+</head>
+<body>
+    
 <category-title>Documentation</category-title>
 
 <api-endpoint-container>
@@ -485,9 +479,10 @@
                 },
                 "lowSimilarity": false,
                 "docType": "IMAGE_SEARCH"
-            }
-    },
+            },
     "cooldown": null
 }</code></pre>
     </api-endpoint-example>
 </api-endpoint-container>
+</body>
+</html>

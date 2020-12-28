@@ -1,0 +1,713 @@
+{
+    "Erina API": {
+        "Documentation": {
+            "Search": {
+                "method": "GET",
+                "path": "/erina/api/search",
+                "description": "Search an anime by image, title, or AniList ID",
+                "args": [
+                    {
+                        "name": "anilistID",
+                        "description": "The AniList ID of the anime that you want to search for",
+                        "optional": false
+                    },
+                    {
+                        "name": "anime",
+                        "description": "The title of the anime that you want to search for",
+                        "optional": false
+                    },
+                    {
+                        "name": "image",
+                        "description": "An URL, a path or a base64 string of the image you want to search for",
+                        "optional": false
+                    },
+                    {
+                        "name": "minify",
+                        "description": "Optional: If you want to minify the response (if json)",
+                        "optional": true
+                    },
+                    {
+                        "name": "format",
+                        "description": "Optional: If you want a specific Erina Client format (Line, Discord or Twitter for an image search)",
+                        "optional": true
+                    },
+                    {
+                        "name": "responseType",
+                        "description": "Optional: If you want a specific type of response (text, html or json)",
+                        "optional": true
+                    },
+                    {
+                        "name": "key",
+                        "description": "Optional: Needed if the API is not set to be public",
+                        "optional": true
+                    }
+                ],
+                "examples": [
+                    {
+                        "request": "fetch('/erina/api/search?anime=Kakegurui')",
+                        "response": {
+                            "success": true,
+                            "data": {
+                                "anilistID": 98314,
+                                "myAnimeListID": 34933,
+                                "title": {
+                                    "title": "Kakegurui",
+                                    "romajiTitle": "Kakegurui",
+                                    "englishTitle": "Kakegurui",
+                                    "nativeTitle": "賭ケグルイ",
+                                    "chineseTitle": null,
+                                    "alternativeTitles": [
+                                        "Kakegurui - Compulsive Gambler",
+                                        "Kakegurui: Das Leben ist ein Spiel",
+                                        "Gambling School"
+                                    ]
+                                },
+                                "type": "ANIME",
+                                "format": "TV",
+                                "status": "FINISHED",
+                                "description": {
+                                    "description": "Unlike many schools, attending Hyakkaou Private Academy prepares students for their time in the real world. Since many of the students are the children of the richest people in the world, the academy has its quirks that separate it from all the others. By day, it is a normal school, educating its pupils in history, languages, and the like. But at night, it turns into a gambling den, educating them in the art of dealing with money and manipulating people. Money is power; those who come out on top in the games stand at the top of the school.  Yumeko Jabami, a seemingly naive and beautiful transfer student, is ready to try her hand at Hyakkaou's special curriculum. Unlike the rest, she doesn't play to win, but for the thrill of the gamble, and her borderline insane way of gambling might just bring too many new cards to the table.  (Source: MyAnimeList)",
+                                    "html": "<p>Unlike many schools, attending Hyakkaou Private Academy prepares students for their time in the real world. Since many of the students are the children of the richest people in the world, the academy has its quirks that separate it from all the others. By day, it is a normal school, educating its pupils in history, languages, and the like. But at night, it turns into a gambling den, educating them in the art of dealing with money and manipulating people. Money is power; those who come out on top in the games stand at the top of the school.<br><br /> <br><br /> Yumeko Jabami, a seemingly naive and beautiful transfer student, is ready to try her hand at Hyakkaou's special curriculum. Unlike the rest, she doesn't play to win, but for the thrill of the gamble, and her borderline insane way of gambling might just bring too many new cards to the table.<br><br /> <br><br /> (Source: MyAnimeList)</p>"
+                                },
+                                "season": "SUMMER",
+                                "year": 2017,
+                                "numberOfEpisodes": 12,
+                                "episodeDuration": 25,
+                                "firstEpisodeReleaseDate": {
+                                    "date": "2017-7-1",
+                                    "year": 2017,
+                                    "month": 7,
+                                    "day": 1
+                                },
+                                "lastEpisodeReleaseDate": {
+                                    "date": "2017-9-23",
+                                    "year": 2017,
+                                    "month": 9,
+                                    "day": 23
+                                },
+                                "country": "JP",
+                                "sourceType": "MANGA",
+                                "licensed": true,
+                                "hentai": false,
+                                "twitterHashtag": "#賭ケグルイ",
+                                "averageScore": 73,
+                                "coverImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx98314-BWpNNKOmiUoe.jpg",
+                                "averageCoverColor": null,
+                                "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98314-S6OYB9u68dJD.jpg",
+                                "trailer": "https://youtube.com/watch?v=v2xJDuM9ZDM",
+                                "genres": [
+                                    "Drama",
+                                    "Ecchi",
+                                    "Mystery",
+                                    "Psychological"
+                                ],
+                                "studios": [
+                                    {
+                                        "name": "MAPPA",
+                                        "isMain": true,
+                                        "isAnimationStudio": true,
+                                        "anilistID": 569
+                                    },
+                                    {
+                                        "name": "Square Enix",
+                                        "isMain": false,
+                                        "isAnimationStudio": false,
+                                        "anilistID": 58
+                                    },
+                                    {
+                                        "name": "Dentsu",
+                                        "isMain": false,
+                                        "isAnimationStudio": false,
+                                        "anilistID": 53
+                                    },
+                                    {
+                                        "name": "Movic",
+                                        "isMain": false,
+                                        "isAnimationStudio": false,
+                                        "anilistID": 166
+                                    },
+                                    {
+                                        "name": "DIVE II Entertainment",
+                                        "isMain": false,
+                                        "isAnimationStudio": false,
+                                        "anilistID": 6056
+                                    }
+                                ],
+                                "tags": [
+                                    {
+                                        "name": "Gambling",
+                                        "rank": 98,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Theme-Other"
+                                    },
+                                    {
+                                        "name": "Female Protagonist",
+                                        "rank": 85,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Cast-Main Cast"
+                                    },
+                                    {
+                                        "name": "School",
+                                        "rank": 84,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Setting-Scene"
+                                    },
+                                    {
+                                        "name": "Primarily Female Cast",
+                                        "rank": 80,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Cast-Main Cast"
+                                    },
+                                    {
+                                        "name": "Anti-Hero",
+                                        "rank": 71,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Cast-Main Cast"
+                                    },
+                                    {
+                                        "name": "Card Battle",
+                                        "rank": 65,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Theme-Game-Card & Board Game"
+                                    },
+                                    {
+                                        "name": "Bullying",
+                                        "rank": 57,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Theme-Drama"
+                                    },
+                                    {
+                                        "name": "Yuri",
+                                        "rank": 57,
+                                        "isSpoiler": true,
+                                        "isAdult": false,
+                                        "category": "Theme-Romance"
+                                    },
+                                    {
+                                        "name": "Poker",
+                                        "rank": 56,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Theme-Game-Card & Board Game"
+                                    },
+                                    {
+                                        "name": "Delinquents",
+                                        "rank": 49,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Cast-Traits"
+                                    },
+                                    {
+                                        "name": "Slavery",
+                                        "rank": 44,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Theme-Other"
+                                    },
+                                    {
+                                        "name": "Idol",
+                                        "rank": 36,
+                                        "isSpoiler": false,
+                                        "isAdult": false,
+                                        "category": "Cast-Traits"
+                                    }
+                                ],
+                                "relations": [
+                                    {
+                                        "title": "Kakegurui",
+                                        "relation": "ADAPTATION",
+                                        "anilistID": 85793
+                                    },
+                                    {
+                                        "title": "Kakegurui ××",
+                                        "relation": "SEQUEL",
+                                        "anilistID": 100876
+                                    },
+                                    {
+                                        "title": "Kakegurui Picture Drama",
+                                        "relation": "OTHER",
+                                        "anilistID": 107622
+                                    }
+                                ],
+                                "characters": [
+                                    {
+                                        "name": "Yumeko Jabami",
+                                        "nativeName": "蛇喰夢子",
+                                        "role": "MAIN",
+                                        "anilistID": 121889
+                                    },
+                                    {
+                                        "name": "Mary Saotome",
+                                        "nativeName": "早乙女芽亜里",
+                                        "role": "MAIN",
+                                        "anilistID": 122687
+                                    },
+                                    {
+                                        "name": "Ryouta Suzui",
+                                        "nativeName": "鈴井涼太",
+                                        "role": "MAIN",
+                                        "anilistID": 122688
+                                    },
+                                    {
+                                        "name": "Yuriko Nishinotouin",
+                                        "nativeName": "西洞院百合子",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122694
+                                    },
+                                    {
+                                        "name": "Saori",
+                                        "nativeName": "沙織",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 136613
+                                    },
+                                    {
+                                        "name": "Itsuki Sumeragi",
+                                        "nativeName": "皇伊月",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122696
+                                    },
+                                    {
+                                        "name": "Kumagusu",
+                                        "nativeName": "熊楠",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 137302
+                                    },
+                                    {
+                                        "name": "Runa Yomozuki",
+                                        "nativeName": "黄泉月るな",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122698
+                                    },
+                                    {
+                                        "name": "Ririka Momobami",
+                                        "nativeName": "桃喰リリカ",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122777
+                                    },
+                                    {
+                                        "name": "Sayaka Igarashi",
+                                        "nativeName": "五十嵐清華",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122690
+                                    },
+                                    {
+                                        "name": "Yumemi Yumemite",
+                                        "nativeName": "夢見弖ユメミ",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122778
+                                    },
+                                    {
+                                        "name": "Midari Ikishima",
+                                        "nativeName": "生志摩妄",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122691
+                                    },
+                                    {
+                                        "name": "Nanami Tsubomi",
+                                        "nativeName": "蕾菜々美",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 123178
+                                    },
+                                    {
+                                        "name": "Kaede Manyuda",
+                                        "nativeName": "豆生田楓",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122692
+                                    },
+                                    {
+                                        "name": "Jun Kiwatari",
+                                        "nativeName": "木渡潤",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 123179
+                                    },
+                                    {
+                                        "name": "Kirari Momobami",
+                                        "nativeName": "桃喰綺羅莉",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 122693
+                                    },
+                                    {
+                                        "name": "Shinnouji",
+                                        "nativeName": "新王寺",
+                                        "role": "SUPPORTING",
+                                        "anilistID": 136607
+                                    }
+                                ],
+                                "staff": [
+                                    {
+                                        "name": "Toshiki Amada",
+                                        "nativeName": "天田俊貴",
+                                        "role": "Art Setting",
+                                        "anilistID": 125367
+                                    },
+                                    {
+                                        "name": "Manabu Akita",
+                                        "nativeName": "秋田学",
+                                        "role": "Character Design",
+                                        "anilistID": 121962
+                                    },
+                                    {
+                                        "name": "Manabu Akita",
+                                        "nativeName": "秋田学",
+                                        "role": "Chief Animation Director (ep 1)",
+                                        "anilistID": 121962
+                                    },
+                                    {
+                                        "name": "Yuuichirou Hayashi",
+                                        "nativeName": "林祐一郎 ",
+                                        "role": "Director",
+                                        "anilistID": 115016
+                                    },
+                                    {
+                                        "name": "Teo Bellia",
+                                        "nativeName": "",
+                                        "role": "Dubbing Director (Italian)",
+                                        "anilistID": 169134
+                                    },
+                                    {
+                                        "name": " TECHNOBOYS PULCRAFT GREEN-FUND",
+                                        "nativeName": "TECHNOBOYS PULCRAFT GREEN-FUND",
+                                        "role": "Music",
+                                        "anilistID": 144387
+                                    },
+                                    {
+                                        "name": "Tooru Naomura",
+                                        "nativeName": "尚村透",
+                                        "role": "Original Character Design",
+                                        "anilistID": 103362
+                                    },
+                                    {
+                                        "name": "Homura Kawamoto",
+                                        "nativeName": "河本ほむら",
+                                        "role": "Original Story",
+                                        "anilistID": 119000
+                                    },
+                                    {
+                                        "name": "Yasuko Kobayashi",
+                                        "nativeName": "小林靖子",
+                                        "role": "Series Composition",
+                                        "anilistID": 102071
+                                    },
+                                    {
+                                        "name": "Tia",
+                                        "nativeName": "Tia",
+                                        "role": "Theme Song Performance (OP)",
+                                        "anilistID": 114797
+                                    }
+                                ],
+                                "recommendations": [
+                                    {
+                                        "title": "No Game No Life",
+                                        "anilistID": 19815
+                                    },
+                                    {
+                                        "title": "Gyakkyou Burai Kaiji: Hakairoku-hen",
+                                        "anilistID": 10271
+                                    },
+                                    {
+                                        "title": "Gyakkyou Burai Kaiji: Ultimate Survivor",
+                                        "anilistID": 3002
+                                    },
+                                    {
+                                        "title": "Death Parade",
+                                        "anilistID": 20931
+                                    },
+                                    {
+                                        "title": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e",
+                                        "anilistID": 98659
+                                    },
+                                    {
+                                        "title": "Touhai Densetsu Akagi: Yami ni Maiorita Tensai",
+                                        "anilistID": 658
+                                    },
+                                    {
+                                        "title": "Shokugeki no Souma",
+                                        "anilistID": 20923
+                                    },
+                                    {
+                                        "title": "Zero no Tsukaima",
+                                        "anilistID": 1195
+                                    },
+                                    {
+                                        "title": "Death Note",
+                                        "anilistID": 1535
+                                    },
+                                    {
+                                        "title": "Kangoku Gakuen",
+                                        "anilistID": 20807
+                                    }
+                                ],
+                                "link": "https://anilist.co/anime/98314",
+                                "streamingLinks": null,
+                                "externalLinks": [
+                                    {
+                                        "link": "http://kakegurui-anime.com/",
+                                        "site": "Official Site"
+                                    },
+                                    {
+                                        "link": "https://twitter.com/kakegurui_anime",
+                                        "site": "Twitter"
+                                    },
+                                    {
+                                        "link": "https://www.netflix.com/title/80175351",
+                                        "site": "Netflix"
+                                    }
+                                ],
+                                "cacheTimestamp": {
+                                    "timestamp": 1606656791.938302,
+                                    "formatted": "2020-11-29 at 14:33:11"
+                                },
+                                "docType": "ANILIST"
+                            },
+                            "cooldown": null
+                        }
+                    },
+                    {
+                        "request": "fetch('/erina/api/search?image=https://i.imgur.com/lhQe6Bq.jpg')",
+                        "response": {
+                            "success": true,
+                            "data": {
+                                "detectionResult": {
+                                    "anilistID": 101386,
+                                    "myAnimeListID": 37614,
+                                    "title": {
+                                        "title": "ひとりぼっちの○○生活",
+                                        "romajiTitle": "ひとりぼっちの○○生活",
+                                        "englishTitle": "Hitoribocchi no Marumaruseikatsu",
+                                        "nativeTitle": "ひとりぼっちの○○生活",
+                                        "chineseTitle": "一個人的○○小日子",
+                                        "alternativeTitles": [
+                                            "Hitoribocchi",
+                                            "Bocchi Seikatsu",
+                                            "Hitoribocchi",
+                                            "Bocchi Seikatsu"
+                                        ]
+                                    },
+                                    "season": "2019-04",
+                                    "episode": 1,
+                                    "hentai": false,
+                                    "filename": "[Ohys-Raws] Hitoribocchi no Marumaru Seikatsu - 01 (TBS 1280x720 x264 AAC).mp4",
+                                    "timing": {
+                                        "from": null,
+                                        "to": null,
+                                        "at": 1274.17,
+                                        "from_formatted": null,
+                                        "to_formatted": null,
+                                        "at_formatted": "0:21:14.170000"
+                                    },
+                                    "similarity": 94.03188121493133,
+                                    "tokenthumb": "isB827gI6RZ4NFXxCLmhsg",
+                                    "cacheTimestamp": {
+                                        "timestamp": "1608413027.899898",
+                                        "formatted": "2020-12-19 at 22:23:47"
+                                    },
+                                    "docType": "TRACEMOE"
+                                },
+                                "similarity": 94.03188121493133,
+                                "animeResult": {
+                                    "anilistID": 101386,
+                                    "myAnimeListID": 37614,
+                                    "title": {
+                                        "title": "Hitoribocchi no Marumaru Seikatsu",
+                                        "romajiTitle": "Hitoribocchi no Marumaru Seikatsu",
+                                        "englishTitle": "Hitoribocchi no Marumaruseikatsu",
+                                        "nativeTitle": "ひとりぼっちの○○生活",
+                                        "chineseTitle": null,
+                                        "alternativeTitles": [
+                                            "Hitoribocchi",
+                                            "Bocchi Seikatsu"
+                                        ]
+                                    },
+                                    "type": "ANIME",
+                                    "format": "TV",
+                                    "status": "FINISHED",
+                                    "description": {
+                                        "description": "Hitori Bocchi suffers from extreme social anxiety, she’s not good at talking to people, takes pretty extreme actions, is surprisingly adept at avoiding people, her legs cramp when she overexerts herself, gets full of herself when alone, will vomit when exposed to extreme tension and often comes up with plans. Now she is entering middle school and her only friend, Yawara Kai, is attending a different school. This leaves Bocchi alone, surrounded by new classmates with whom she must make friends before Kai will talk to her again. (Source: Doki)",
+                                        "html": "&lt;p&gt;Hitori Bocchi suffers from extreme social anxiety, she’s not good at talking to people, takes pretty extreme actions, is surprisingly adept at avoiding people, her legs cramp when she overexerts herself, gets full of herself when alone, will vomit when exposed to extreme tension and often comes up with plans. Now she is entering middle school and her only friend, Yawara Kai, is attending a different school. This leaves Bocchi alone, surrounded by new classmates with whom she must make friends before Kai will talk to her again.&lt;br&gt;&lt;br&gt;&lt;/p&gt; &lt;p&gt;(Source: Doki)&lt;/p&gt;"
+                                    },
+                                    "season": "SPRING",
+                                    "year": 2019,
+                                    "numberOfEpisodes": 12,
+                                    "episodeDuration": 24,
+                                    "firstEpisodeReleaseDate": {
+                                        "date": "2019-4-6",
+                                        "year": 2019,
+                                        "month": 4,
+                                        "day": 6
+                                    },
+                                    "lastEpisodeReleaseDate": {
+                                        "date": "2019-6-22",
+                                        "year": 2019,
+                                        "month": 6,
+                                        "day": 22
+                                    },
+                                    "country": "JP",
+                                    "sourceType": "MANGA",
+                                    "licensed": true,
+                                    "hentai": false,
+                                    "twitterHashtag": "#ぼっち生活",
+                                    "averageScore": 74,
+                                    "coverImage": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101386-ZtlTugIEuorU.png",
+                                    "averageCoverColor": null,
+                                    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101386-Y1SeQi4BsBaO.jpg",
+                                    "trailer": "https://youtube.com/watch?v=6mbD6rjdqUM",
+                                    "genres": [
+                                        "Comedy",
+                                        "Slice of Life"
+                                    ],
+                                    "studios": [
+                                        {
+                                            "name": "C2C",
+                                            "isMain": true,
+                                            "isAnimationStudio": true,
+                                            "anilistID": 6052
+                                        }
+                                    ],
+                                    "tags": [
+                                        {
+                                            "name": "Female Protagonist",
+                                            "rank": 95,
+                                            "isSpoiler": false,
+                                            "isAdult": false,
+                                            "category": "Cast-Main Cast"
+                                        },
+                                        {
+                                            "name": "Cute Girls Doing Cute Things",
+                                            "rank": 94,
+                                            "isSpoiler": false,
+                                            "isAdult": false,
+                                            "category": "Theme-Slice of Life"
+                                        },
+                                        {
+                                            "name": "Ninja",
+                                            "rank": 30,
+                                            "isSpoiler": false,
+                                            "isAdult": false,
+                                            "category": "Cast-Traits"
+                                        }
+                                    ],
+                                    "relations": [
+                                        {
+                                            "title": "Hitoribocchi no Marumaru Seikatsu",
+                                            "relation": "ADAPTATION",
+                                            "anilistID": 86206
+                                        }
+                                    ],
+                                    "characters": [
+                                        {
+                                            "name": "Bocchi Hitori",
+                                            "nativeName": "一里ぼっち",
+                                            "role": "MAIN",
+                                            "anilistID": 128986
+                                        },
+                                        {
+                                            "name": "Nako Sunao",
+                                            "nativeName": "砂尾なこ",
+                                            "role": "MAIN",
+                                            "anilistID": 128984
+                                        },
+                                        {
+                                            "name": "Teruyo Oshie",
+                                            "nativeName": "押江照代",
+                                            "role": "SUPPORTING",
+                                            "anilistID": 128998
+                                        }
+                                    ],
+                                    "staff": [
+                                        {
+                                            "name": "Yuuji Ikeda",
+                                            "nativeName": "池田祐二",
+                                            "role": "Art Design",
+                                            "anilistID": 101824
+                                        },
+                                        {
+                                            "name": "Mio Ishiki ",
+                                            "nativeName": "一色美緒",
+                                            "role": "Art Director",
+                                            "anilistID": 134309
+                                        },
+                                        {
+                                            "name": "Yuuko Kurose",
+                                            "nativeName": "黒瀬ゆうこ",
+                                            "role": "Theme Song Performance (OP)",
+                                            "anilistID": 119860
+                                        }
+                                    ],
+                                    "recommendations": [
+                                        {
+                                            "title": "Non Non Biyori",
+                                            "anilistID": 17549
+                                        },
+                                        {
+                                            "title": "Mitsuboshi Colors",
+                                            "anilistID": 98439
+                                        },
+                                        {
+                                            "title": "Gabriel Dropout",
+                                            "anilistID": 21878
+                                        }
+                                    ],
+                                    "link": "https://anilist.co/anime/101386",
+                                    "streamingLinks": [
+                                        {
+                                            "link": "http://www.crunchyroll.com/hitoribocchi-no-marumaruseikatsu/episode-1-my-first-confession-788657",
+                                            "title": "My First Confession",
+                                            "episode": 1
+                                        },
+                                        {
+                                            "link": "http://www.crunchyroll.com/hitoribocchi-no-marumaruseikatsu/episode-2-actually-thank-you-788658",
+                                            "title": "Actually, Thank You",
+                                            "episode": 2
+                                        },
+                                        {
+                                            "link": "http://www.crunchyroll.com/hitoribocchi-no-marumaruseikatsu/episode-12-maybe-i-just-might-788677",
+                                            "title": "Maybe I Just Might",
+                                            "episode": 12
+                                        }
+                                    ],
+                                    "externalLinks": [
+                                        {
+                                            "link": "http://hitoribocchi.jp/",
+                                            "site": "Official Site"
+                                        },
+                                        {
+                                            "link": "https://twitter.com/bocchi_anime",
+                                            "site": "Twitter"
+                                        },
+                                        {
+                                            "link": "http://www.crunchyroll.com/hitoribocchi-no-marumaruseikatsu",
+                                            "site": "Crunchyroll"
+                                        },
+                                        {
+                                            "link": "https://vrv.co/series/GYEX47296/Hitoribocchi-no-Marumaruseikatsu",
+                                            "site": "VRV"
+                                        },
+                                        {
+                                            "link": "https://www.youtube.com/playlist?list=PLwLSw1_eDZl0ZiaSDAvwTj-UdetIHI6xm",
+                                            "site": "Youtube"
+                                        }
+                                    ],
+                                    "cacheTimestamp": {
+                                        "timestamp": 1608413746.862559,
+                                        "formatted": "2020-12-19 at 22:35:46"
+                                    },
+                                    "docType": "ANILIST"
+                                },
+                                "lowSimilarity": false,
+                                "docType": "IMAGE_SEARCH"
+                            },
+                            "cooldown": null
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
