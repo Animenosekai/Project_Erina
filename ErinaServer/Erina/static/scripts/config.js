@@ -300,10 +300,17 @@ function checkboxHandler(checkboxElement) {
             data = data.data
             if (data.value == true) {
                 checkboxElement.checked = true
+                document.getElementById(checkboxElement.id.replace("toggle", "toggleText")).innerText = "Enabled";
             } else {
                 checkboxElement.checked = false
+                document.getElementById(checkboxElement.id.replace("toggle", "toggleText")).innerText = "Disabled";
             }
             newSuccess("Successfully edited " + data.path + " to " + String(data.value))
+        } else if (data.error == "MISSING_CRITICAL_KEY"){
+            data = data.data
+            checkboxElement.checked = false
+            document.getElementById(checkboxElement.id.replace("toggle", "toggleText")).innerText = "Disabled";
+            newError("Could not run " + String(data.client) + " because the " + String(data.key) + " is missing.")
         } else {
             newError("An error occured while editing " + checkboxElement.getAttribute("config-path"))
         }
