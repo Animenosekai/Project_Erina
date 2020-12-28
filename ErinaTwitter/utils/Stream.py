@@ -8,10 +8,10 @@ from pattern.text.en import sentiment
 
 from Erina.config import Twitter as TwitterConfig
 from Erina.config import Erina as ErinaConfig
-from Erina.Errors import TwitterError
+from Erina.Errors import TwitterError, isAnError
 from ErinaTwitter.utils import Twitter
 from ErinaTwitter.erina_twitterbot import ErinaTwitter
-from ErinaTwitter.utils.Parser import makeTweet
+from ErinaTwitter.utils.Parser import makeTweet, makeImageResponse
 from ErinaSearch.erinasearch import imageSearch
 
 from Erina.erina_stats import StatsAppend
@@ -92,7 +92,16 @@ class Listener(tweepy.StreamListener):
             DM Receiving
             """
             log("ErinaTwitter", "New direct message from @" + str(message.user.screen_name))
-            StatsAppend(TwitterStats.directMessagingHit, str(message.user.screen_name))
+            if Twitter.dmAskingForSauce(message):
+                StatsAppend(TwitterStats.directMessagingHit, str(message.user.screen_name))
+                image = Twitter.getDirectMedia(message)
+                if image is not None:
+                    searchResult = imageSearch(image)
+                    ErinaTwitter.dm(makeImageResponse(searchResult), message.sender_id)
+                elif isAnError(image):
+                    ErinaTwitter.dm("An error occured while retrieving information on the anime", message.sender_id)
+                else:
+                    ErinaTwitter.dm("You did not send any image along with your message", message.sender_id)
 
 
 

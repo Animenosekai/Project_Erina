@@ -1,4 +1,8 @@
+from io import BytesIO
 from ErinaTwitter.erina_twitterbot import ErinaTwitter
+import requests
+from PIL import Image
+from Erina.Errors import TwitterError
 
 def findImage(tweet):
     """
@@ -83,4 +87,34 @@ def parentTweet(tweet):
     """
     if isReply(tweet):
         return ErinaTwitter.api.get_status(tweet.in_reply_to_status_id)
+    return None
+
+def dmAskingForSauce(dm):
+    """
+    Checks if the given direct message is asking for the sauce
+    """
+    cleanText = dm.text.replace(" ", '').lower()
+    if any([flag in cleanText for flag in ErinaTwitter._twitter_flags]):
+        return True
+
+def getDirectMedia(dm):
+    """
+    Returns the media associated with a direct message if existing
+    """
+    if "message_data" in dm.message_create and "attachment" in dm.message_create["message_data"]:
+        attachment = dm.message_create["message_data"]["attachment"]
+        if dict(attachment) != {} and "media" in attachment:
+            if "media_url_https" in attachment["media"]:
+                mediaURL = attachment["media"]["media_url_https"]
+            elif "media_url" in attachment["media"]:
+                mediaURL = attachment["media"]["media_url"]
+            else:
+                return None
+            mediaRequest = requests.get(mediaURL, auth=ErinaTwitter.authentification.apply_auth())
+            if mediaRequest.status_code == 200:
+                return Image.open(BytesIO(mediaRequest.content))
+            else:
+                return TwitterError(f"Not able to get DM media: Status Code {mediaRequest.status_code}")
+        else:
+            return None
     return None

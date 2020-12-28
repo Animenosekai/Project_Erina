@@ -48,14 +48,30 @@ class ErinaTwitterAPI():
             twitterImage = self.api.media_upload(filename=filename, file=image)
         
         if replyID is not None:
-            if twitterImage is None:
+            if twitterImage is not None:
                 return self.api.update_status(status=str(message)[:280], in_reply_to_status_id=replyID, auto_populate_reply_metadata=True, media_ids=[twitterImage.media_id])
             else:
                 return self.api.update_status(status=str(message)[:280], in_reply_to_status_id=replyID, auto_populate_reply_metadata=True)
         else:
-            if twitterImage is None:
-                return self.api.update_status(status=str(message)[:280])
-            else:
+            if twitterImage is not None:
                 return self.api.update_status(status=str(message)[:280], media_ids=[twitterImage.media_id])
+            else:
+                return self.api.update_status(status=str(message)[:280])
+
+    def dm(self, message, recipientID, imageURL=None):
+        """
+        DMs someone
+        """
+        twitterImage = None
+        if imageURL is not None:
+            image = BytesIO(requests.get(str(imageURL)).content)
+            filename = imageURL[imageURL.rfind("/"):]
+            twitterImage = self.api.media_upload(filename=filename, file=image)
+
+        if twitterImage is not None:
+            return self.api.send_direct_message(recipientID, str(message)[:10000], attachment_media_id=twitterImage.media_id)
+        else:
+            return self.api.send_direct_message(recipientID, str(message)[:10000])
+
 
 ErinaTwitter = ErinaTwitterAPI()
