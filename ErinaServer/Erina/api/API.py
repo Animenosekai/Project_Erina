@@ -30,6 +30,7 @@ from ErinaServer.Erina.auth.apiAuth import authReader
 
 import traceback
 
+
 apiEndpoint = "/erina/api"
 
 def error(result):
@@ -103,7 +104,7 @@ def makeResponse(request_args, cooldown=None, data=None, code=None, error=None, 
 
 
 @ErinaServer.route(apiEndpoint + "/auth", methods=["GET"])
-def auth():
+def ErinaServer_Endpoint_API_auth():
     try:
         if ServerConfig.public_api:
             return makeResponse(request_args=request.values, cooldown=None, data={"status": "Public API", "message": "This is a Public API"})
@@ -138,7 +139,7 @@ def auth():
 #@ErinaRateLimit(fromIP=True)
 rate_limiting_api_map = {}
 @ErinaServer.route(apiEndpoint + "/search", methods=["GET"])
-def search():
+def ErinaServer_Endpoint_API_search():
     cooldown = None
     try:
         if not ServerConfig.public_api:

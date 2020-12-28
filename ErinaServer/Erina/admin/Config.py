@@ -44,7 +44,6 @@ class ErinaUpdateError(Exception):
         super().__init__(message)
 
 
-
 def makeResponse(token_verification, request_args, data=None, code=None, error=None, error_message=None):
     """
     Shaping the response
@@ -83,7 +82,7 @@ def makeResponse(token_verification, request_args, data=None, code=None, error=N
 
 ### LOGS
 @ErinaServer.route("/erina/api/admin/logs")
-def logs():
+def ErinaServer_Endpoint_Admin_Config_logs():
     """
     Returns the logs
     """
@@ -108,7 +107,7 @@ def logs():
 
 ### STATS
 @ErinaServer.route("/erina/api/admin/stats")
-def stats():
+def ErinaServer_Endpoint_Admin_Config_stats():
     """
     Returns the stats
     """
@@ -122,7 +121,7 @@ def stats():
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/stats/overview")
-def overviewStats():
+def ErinaServer_Endpoint_Admin_Config_overviewStats():
     """
     Returns the stats for the overview page
     """
@@ -136,7 +135,7 @@ def overviewStats():
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/stats/pastMonthErrors")
-def errorsCountForPastMonth():
+def ErinaServer_Endpoint_Admin_Config_errorsCountForPastMonth():
     """
     Returns the past month errors
     """
@@ -150,7 +149,7 @@ def errorsCountForPastMonth():
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/stats/biggestUsers")
-def usersCount():
+def ErinaServer_Endpoint_Admin_Config_usersCount():
     """
     Returns a ranking of the users
     """
@@ -166,7 +165,7 @@ def usersCount():
 
 #### CONFIG
 @ErinaServer.route("/erina/api/admin/config")
-def getEndpoint():
+def ErinaServer_Endpoint_Admin_Config_getEndpoint():
     """
     Returns the configs
     """
@@ -181,7 +180,7 @@ def getEndpoint():
 
 
 @ErinaServer.route("/erina/api/admin/config/update", methods=["POST"])
-def updateEndpoint():
+def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
     """
     Updates the configs
     """
@@ -251,7 +250,7 @@ def updateEndpoint():
 ###### API AUTH
 
 @ErinaServer.route("/erina/api/admin/apiAuth")
-def getAPIAuths():
+def ErinaServer_Endpoint_Admin_Config_getAPIAuths():
     """
     Retrieves all of the API Auths
     """
@@ -271,7 +270,7 @@ def getAPIAuths():
 
 
 @ErinaServer.route("/erina/api/admin/apiAuth/new", methods=["POST"])
-def newAPIAuth():
+def ErinaServer_Endpoint_Admin_Config_newAPIAuth():
     """
     Adds a new API auth
     """
@@ -294,7 +293,7 @@ def newAPIAuth():
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/apiAuth/remove", methods=["POST"])
-def removeAPIAuth():
+def ErinaServer_Endpoint_Admin_Config_removeAPIAuth():
     """
     Removes an API auth
     """
@@ -330,7 +329,7 @@ def _restart():
     os.kill(os.getpid(), signal.SIGUSR1)
 
 @ErinaServer.route("/erina/api/admin/config/default", methods=["POST"])
-def defaultEndpoint():
+def ErinaServer_Endpoint_Admin_Config_defaultEndpoint():
     """
     Reverts the configs to its default value
     """
@@ -347,7 +346,7 @@ def defaultEndpoint():
 
 
 @ErinaServer.route("/erina/api/admin/stats/reset", methods=["POST"])
-def resetStats():
+def ErinaServer_Endpoint_Admin_Config_resetStats():
     """
     Reset the stats
     """
@@ -363,7 +362,7 @@ def resetStats():
 
 
 @ErinaServer.route("/erina/api/admin/logs/reset", methods=["POST"])
-def resetLogs():
+def ErinaServer_Endpoint_Admin_Config_resetLogs():
     """
     Resets the logs
     """
@@ -379,7 +378,7 @@ def resetLogs():
 
 
 @ErinaServer.route("/erina/api/admin/shutdown", methods=["POST"])
-def shutdownServer():
+def ErinaServer_Endpoint_Admin_Config_shutdownServer():
     """
     Shuts down ErinaServer
     """
@@ -395,7 +394,7 @@ def shutdownServer():
 
 
 @ErinaServer.route("/erina/api/admin/restart", methods=["POST"])
-def restartServer():
+def ErinaServer_Endpoint_Admin_Config_restartServer():
     """
     Restarts ErinaServer
     """
@@ -507,7 +506,7 @@ def _update():
         print(update_message)
 
 @ErinaServer.route("/erina/api/admin/update", methods=["POST"])
-def updateServer():
+def ErinaServer_Endpoint_Admin_Config_updateServer():
     """
     Updates and restarts the server
     """
@@ -532,7 +531,7 @@ def updateServer():
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/update/status")
-def updateStatus():
+def ErinaServer_Endpoint_Admin_Config_updateStatus():
     """
     Returns the status of the update
     """
@@ -548,7 +547,7 @@ def updateStatus():
 
 @ErinaServer.route("/erina/alive")
 @ErinaRateLimit(0.1)
-def alive():
+def ErinaServer_Endpoint_Admin_Config_alive():
     """
     Returns an answer if ErinaServer is alive
     """
@@ -556,7 +555,7 @@ def alive():
 
 
 @ErinaServer.route("/erina/api/admin/information")
-def information():
+def ErinaServer_Endpoint_Admin_Config_information():
     tokenVerification = authManagement.verifyToken(request.values)
     try:
         if tokenVerification.success:
@@ -575,7 +574,7 @@ def information():
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/state")
-def state():
+def ErinaServer_Endpoint_Admin_Config_state():
     tokenVerification = authManagement.verifyToken(request.values)
     try:
         if tokenVerification.success:

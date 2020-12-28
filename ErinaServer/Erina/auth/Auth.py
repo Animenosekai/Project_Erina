@@ -29,7 +29,7 @@ def makeResponse(responseBody, code, request_args):
 
 @ErinaServer.route(authEndpoint + "/login", methods=["POST"])
 @ErinaRateLimit(rate=1)
-def login():
+def ErinaServer_Endpoint_Auth_login():
     try:
         if "password" in request.values:
             if authManagement.verifyPassword(request.values.get("password")):
@@ -43,7 +43,7 @@ def login():
 
 @ErinaServer.route(authEndpoint + "/logout", methods=["POST"])
 @ErinaRateLimit(rate=1)
-def logout():
+def ErinaServer_Endpoint_Auth_logout():
     try:
         tokenVerification = authManagement.verifyToken(request.values)
         if not tokenVerification.success:
@@ -63,7 +63,7 @@ def logout():
 
 @ErinaServer.route(authEndpoint + "/set", methods=["POST"])
 @ErinaRateLimit(rate=1)
-def set():
+def ErinaServer_Endpoint_Auth_set():
     try:
         if "password" in request.values and "tempCode" in request.values:
             if request.values.get("tempCode") == authManagement.tempCode:
@@ -80,7 +80,7 @@ def set():
 
 @ErinaServer.route(authEndpoint + "/verify")
 @ErinaRateLimit(rate=1)
-def verify():
+def ErinaServer_Endpoint_Auth_verify():
     try:
         if TextFile(erina_dir + "/ErinaServer/Erina/auth/password.erina").read().replace(" ", "") == "":
             return makeResponse({"success": False, "error": "NOT_SET_PASSWORD", "message": "Password Is Not Set"}, 400, request.args)
@@ -101,7 +101,7 @@ def verify():
 
 @ErinaServer.route(authEndpoint + "/displayCode", methods=["POST"])
 @ErinaRateLimit(rate=1)
-def displayCode():
+def ErinaServer_Endpoint_Auth_displayCode():
     try:
         print("[ErinaAdmin] Your temp code is: " + authManagement.createTempCode())
         return makeResponse({"success": True, "message": "Check your console"}, 200, request.values)

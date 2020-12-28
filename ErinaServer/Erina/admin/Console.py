@@ -11,9 +11,8 @@ from Erina.erina_log import log
 from ErinaServer.WebSockets import ErinaSockets
 from ErinaServer.Erina.auth import authManagement
 
-
 @ErinaSockets.route("/erina/websockets/ErinaConsole")
-def ErinaConsole(ws):
+def ErinaServer_Endpoint_Admin_Console_ErinaConsole(ws):
     currentProcess = None
     message = ws.receive()
     try:

@@ -63,7 +63,7 @@ def checkForLogsTimeout():
 currentConnections = []
 
 @ErinaSockets.route("/erina/websockets/Logs")
-def WebSocketLogs(ws):
+def ErinaServer_Endpoint_Erina_Logs_WebSocketLogs(ws):
     message = ws.receive()
     try:
         data = json.loads(message) # retrieve a message from the client

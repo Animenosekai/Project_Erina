@@ -12,8 +12,9 @@ frontEndPath = "/erina/admin/"
 staticLocation = erina_dir + "/ErinaServer/Erina/static"
 htmlLocation = staticLocation + "/html"
 
+
 @ErinaServer.route("/erina/admin/resource/<page>/")
-def resourceEndpoint(page):
+def ErinaServer_Endpoint_Admin_Admin_resourceEndpoint(page):
     try:
         if page in ["overview", "api", "stats", "config"]:
             tokenVerification = authManagement.verifyToken(request.values)
