@@ -22,8 +22,7 @@ def convert_to_int(element):
     """
     Safely converts anything to an integer
     """
-    element = str(element).split('.')[0]
-    element = re.sub("[^0-9-]", "", str(element))
+    element = re.sub("[^0-9-]", "", str(element).split('.')[0])
     if element != '':
         return int(element)
     else:

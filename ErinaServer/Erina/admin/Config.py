@@ -28,6 +28,7 @@ from filecenter import delete, exists, files_in_dir, extension_from_base, isdir,
 from Erina.erina_log import logFile
 from Erina.erina_stats import StatsReset
 from Erina._config.files import configFile
+from Erina._config.classes import environ
 from Erina.config import update, default, Hash, Twitter, Discord, Line
 from ErinaServer.Erina.auth import authManagement
 from ErinaServer.Server import ErinaServer, ErinaRateLimit
@@ -188,7 +189,8 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
     try:
         if tokenVerification.success:
             if "path" in request.form and "value" in request.form:
-                value = str(request.form.get("value"))
+                originalValue = str(request.form.get("value"))
+                value = str(environ(request.form.get("value")))
                 path = str(request.form.get("path"))
                 if value == "null":
                     value = None
@@ -235,8 +237,12 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Line", "key": "Channel Access Token"}, code=400)
                     elif Line.keys.channel_secret is None:
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Line", "key": "Channel Secret"}, code=400)
-                update(path, value)
-                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"path": path, "value": value})
+                if str(value) == environ(originalValue):
+                    update(path, originalValue)
+                    return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"path": path, "value": originalValue})
+                else:
+                    update(path, value)
+                    return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"path": path, "value": value})
             else:
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_ARGS", data={"authorizedArgs": ["path", "value", "minify"], "optionalArgs": ["minify"]}, code=400)
         else:
