@@ -35,7 +35,7 @@ def isAskingForSauce(tweet):
     Checks if the given tweet is really asking for the sauce
     """
     accountsChain = []
-    currentStatus = "ErinaSauceRecursiveTweetSearching"
+    currentStatus = tweet
     while currentStatus is not None:
         accountsChain.append(currentStatus.user.id)
         currentStatus = parentTweet(currentStatus)
