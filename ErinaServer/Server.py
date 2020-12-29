@@ -14,12 +14,15 @@ Compress(ErinaServer)
 
 # Redirect to https for all requests
 @ErinaServer.before_request
-def before_request():
-    if request.url.startswith('http://'):
-        print(request.url)
-        print(request.url.startswith('http://'))
-        print(request.url.replace('http://', 'https://', 1))
-        return redirect(request.url.replace('http://', 'https://', 1), code=301)
+def force_https():
+    proxy_header = request.headers.get('X-Forwarded-Proto', None)
+    if proxy_header is not None:
+        if proxy_header == "http":
+            return redirect(request.url.replace('http://', 'https://', 1), code=301)
+    else:
+        if not request.is_secure:
+            return redirect(request.url.replace('http://', 'https://', 1), code=301)
+
 
 # Error handlers
 @ErinaServer.errorhandler(404)
