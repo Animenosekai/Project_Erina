@@ -161,7 +161,7 @@ def startStream():
         Erina.filter(follow=user_ids)
     else:
         if not isinstance(TwitterConfig.stream.flags, (list, tuple)) or len(TwitterConfig.stream.flags) <= 0:
-            log("ErinaDebug", (list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags)))
+            log("ErinaDebug", (list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags)).append(ErinaTwitter.me.screen_name))
             Erina.filter(languages=TwitterConfig.stream.languages, track=(list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags)))
         else:
             log("ErinaDebug", len(TwitterConfig.stream.flags))

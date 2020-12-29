@@ -87,9 +87,12 @@ def parentTweet(tweet):
     """
     Returns the parent tweet
     """
-    if isReply(tweet):
-        return ErinaTwitter.api.get_status(tweet.in_reply_to_status_id)
-    return None
+    try:
+        if isReply(tweet):
+            return ErinaTwitter.api.get_status(tweet.in_reply_to_status_id)
+        return None
+    except:
+        return None
 
 def dmAskingForSauce(dm):
     """
