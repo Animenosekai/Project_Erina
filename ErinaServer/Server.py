@@ -26,6 +26,7 @@ Talisman(ErinaServer, force_https_permanent=True, content_security_policy={
     'style-src': [
         "'self'"
     ],
+    "connect-src": ["'self'"],
     "object-src": ["'none'"]
 })
 
