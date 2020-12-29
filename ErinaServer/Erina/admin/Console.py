@@ -89,4 +89,7 @@ def _checkOutput(process, websocketConnection):
             websocketConnection.send(json.dumps({"message": output.decode("utf-8"), "code": 0})) # Send the new output
         time.sleep(0.1) # Wait a lil bit to avoid confusion from the computer
     ### EXITED THE LOOP ### (process exited)
-    websocketConnection.send(json.dumps({"message": f"ErinaConsole: The process has exited with code {str(process.returncode)}", "code": process.returncode})) # Send a disconnection message
+    try:
+        websocketConnection.send(json.dumps({"message": f"ErinaConsole: The process has exited with code {str(process.returncode)}", "code": process.returncode})) # Send a disconnection message
+    except:
+        log("ErinaAdmin", "Unable to send an exit message to ErinaConsole")

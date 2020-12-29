@@ -132,6 +132,9 @@ function loadErinaConsole(){
 
 
 function openErinaConsole() {
+    document.getElementById("hamburgerBtn").classList.remove("is-active")
+    document.getElementById("sidebarContainer").classList.remove("showMobileSidebar")
+    document.getElementById("ErinaAdminBody").classList.remove("avoidPointerEvent")
     if (WSConnection == null) {
         document.getElementById("erinaConsole").style.top = lastTopPosition
         setTimeout(
@@ -147,6 +150,9 @@ function openErinaConsole() {
 }
 
 function closeErinaConsole() {
+    document.getElementById("hamburgerBtn").classList.remove("is-active")
+    document.getElementById("sidebarContainer").classList.remove("showMobileSidebar")
+    document.getElementById("ErinaAdminBody").classList.remove("avoidPointerEvent")
     if (WSConnection != null) {
         document.getElementById("erinaConsole").style.transition = "all 500ms ease"
         setTimeout(

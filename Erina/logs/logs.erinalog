@@ -1228,3 +1228,19 @@
 1609205650    [Erina] ---> Initializing ErinaConsole
 1609205650    [Erina] Running ErinaServer...
 1609205650    [Erina] Starting to check for timeouts and updates...
+1609206123    [ErinaAdmin] > New ErinaConsole connection!
+1609206128    [ErinaAdmin] ErinaConsole >>> Failed to send a message
+1609206128    [ErinaAdmin] < ErinaConsole disconnected
+1609206197    [Erina] Restarting...
+1609206197    [Erina] Initializing Erina configuration...
+1609206197    [Erina] ---> Initializing Static File Endpoints
+1609206197    [Erina] ---> Initializing API
+1609206198    [Erina] ---> Initializing ErinaAdmin
+1609206198    [Erina] ---> Initializing Custom Endpoints
+1609206198    [Erina] ---> Initializing ErinaConsole
+1609206198    [Erina] Running ErinaServer...
+1609206198    [Erina] Starting to check for timeouts and updates...
+1609206203    [ErinaAdmin] > New ErinaConsole connection!
+1609206206    [ErinaAdmin] ErinaConsole >>> Failed to send a message
+1609206206    [ErinaAdmin] < ErinaConsole disconnected
+1609206206    [ErinaAdmin] Unable to send an exit message to ErinaConsole
