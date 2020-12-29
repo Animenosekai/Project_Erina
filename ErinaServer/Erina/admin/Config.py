@@ -32,8 +32,9 @@ from Erina._config.classes import environ
 from Erina.config import update, default, Hash, Twitter, Discord, Line
 from ErinaServer.Erina.auth import authManagement
 from ErinaServer.Server import ErinaServer, ErinaRateLimit
+from ErinaLine.erina_linebot import initHandler as initLine
 from ErinaServer.Erina.auth.apiAuth.authReader import APIAuth
-from ErinaTwitter.erina_twitterbot import latestResponses
+from ErinaTwitter.erina_twitterbot import latestResponses, ErinaTwitter
 from Erina.utils import convert_to_float, convert_to_int, get_scaled_size
 from Erina.env_information import erina_version, python_executable_path, erina_dir, python_version_info, pid, cpu_count
 from ErinaServer.Erina.admin.Stats import returnStats, pastMonthErrors, biggestUsers, returnOverviewStats
@@ -232,6 +233,7 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Twitter", "key": "Access Token Key"}, code=400)
                     elif Twitter.keys.access_token_secret is None:
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Twitter", "key": "Access Token Secret"}, code=400)
+                    ErinaTwitter.init()
                     from ErinaTwitter.utils import Stream
                     Stream.startStream()
                 elif path == "Twitter/run" and value == False and Twitter.run:
@@ -252,6 +254,8 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Line", "key": "Channel Access Token"}, code=400)
                     elif Line.keys.channel_secret is None:
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Line", "key": "Channel Secret"}, code=400)
+                    if not Line.run:
+                        initLine()
                 if str(value) == environ(originalValue):
                     update(path, originalValue)
                     return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"path": path, "value": originalValue})
