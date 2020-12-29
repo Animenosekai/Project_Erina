@@ -41,13 +41,13 @@ def isAskingForSauce(tweet):
         currentStatus = parentTweet(currentStatus)
     if ErinaTwitter.me.id in accountsChain:
         return False
-    if tweet.user.screen_name == ErinaTwitter._screen_name:
+    if tweet.user.id == ErinaTwitter.me.id:
         return False
 
     cleanText = tweet.text.replace(" ", '').lower()
     if '@' + ErinaTwitter._screen_name in cleanText:
         return True
-    elif any([flag in cleanText for flag in ErinaTwitter._twitter_flags]):
+    elif any([flag in cleanText for flag in ErinaTwitter._twitter_flags()]):
         return True
     return False
 
@@ -58,7 +58,7 @@ def isMention(tweet):
     cleanText = tweet.text.replace(" ", '').lower()
     if '@' + ErinaTwitter._screen_name in cleanText:
         return True
-    elif "user_mentions" in tweet._json and any([currentMention["screen_name"].replace("", "").lower() == ErinaTwitter._screen_name for currentMention in tweet._json["user_mentions"]]):
+    elif "user_mentions" in tweet._json and any([currentMention["id"] == ErinaTwitter.me.id for currentMention in tweet._json["user_mentions"]]):
         return True
     return False
 
@@ -94,7 +94,7 @@ def dmAskingForSauce(dm):
     Checks if the given direct message is asking for the sauce
     """
     cleanText = dm.text.replace(" ", '').lower()
-    if any([flag in cleanText for flag in ErinaTwitter._twitter_flags]):
+    if any([flag in cleanText for flag in ErinaTwitter._twitter_flags()]):
         return True
 
 def getDirectMedia(dm):

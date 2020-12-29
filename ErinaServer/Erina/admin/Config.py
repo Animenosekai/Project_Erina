@@ -33,6 +33,7 @@ from Erina.config import update, default, Hash, Twitter, Discord, Line
 from ErinaServer.Erina.auth import authManagement
 from ErinaServer.Server import ErinaServer, ErinaRateLimit
 from ErinaServer.Erina.auth.apiAuth.authReader import APIAuth
+from ErinaTwitter.erina_twitterbot import latestResponses
 from Erina.utils import convert_to_float, convert_to_int, get_scaled_size
 from Erina.env_information import erina_version, python_executable_path, erina_dir, python_version_info, pid, cpu_count
 from ErinaServer.Erina.admin.Stats import returnStats, pastMonthErrors, biggestUsers, returnOverviewStats
@@ -163,6 +164,20 @@ def ErinaServer_Endpoint_Admin_Config_usersCount():
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
+
+@ErinaServer.route("/erina/api/admin/twitter/latestResponses")
+def ErinaServer_Endpoint_Admin_Config_latestResponses():
+    """
+    Returns the latest tweets responses
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data=latestResponses)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 #### CONFIG
 @ErinaServer.route("/erina/api/admin/config")

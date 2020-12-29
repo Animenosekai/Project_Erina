@@ -35,7 +35,9 @@ class ErinaTwitterAPI():
         self.api = tweepy.API(self.authentification)
         self.me = self.api.me()
         self._screen_name = str(self.me.screen_name).lower().replace(" ", '')
-        self._twitter_flags = [flag.lower().replace(" ", '') for flag in (TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else Erina.flags)]
+        def returnTwitterTag():
+            return [flag.lower().replace(" ", '') for flag in (TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else Erina.flags)]
+        self._twitter_flags = returnTwitterTag
 
     def tweet(self, message, replyID=None, imageURL=None):
         """
@@ -73,5 +75,9 @@ class ErinaTwitterAPI():
         else:
             return self.api.send_direct_message(recipientID, str(message)[:10000])
 
+latestResponses = []
 
-ErinaTwitter = ErinaTwitterAPI()
+if __name__ == "__main__":
+    ErinaTwitter = ErinaTwitterAPI()
+else:
+    ErinaTwitter = None

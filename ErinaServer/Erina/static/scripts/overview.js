@@ -52,6 +52,42 @@ function PageInitialize(){
             logsContainer.insertBefore(newLog, logsContainer.firstChild)
         }
     }
+    
+    function addTwitterResponse(timestamp, user, message, sentiment, url) {
+        var newResponse = document.createElement("twitter-response")
+        var newTimestamp = document.createElement("twitter-response-timestamp")
+        newTimestamp.innerText = formatTime(new Date(timestamp * 1000))
+        var newUser = document.createElement("twitter-response-user")
+        newUser.innerText = String(user)
+        newUser.setAttribute("onclick", 'window.open("' + url + '")')
+        var newMessage = document.createElement("twitter-response-message")
+        newMessage.innerText = String(message)
+        var newSentiment = document.createElement("twitter-response-sentiment")
+        newSentiment.innerText = Math.round(sentiment * 100) / 100
+        newResponse.appendChild(newTimestamp)
+        newResponse.appendChild(newUser)
+        newResponse.appendChild(newMessage)
+        newResponse.appendChild(newSentiment)
+        var responsesContainer = document.getElementById("erinafeedbacks-container")
+        if (responsesContainer.childElementCount == 0) {
+            responsesContainer.appendChild(newResponse)
+        } else {
+            responsesContainer.insertBefore(newResponse, responsesContainer.firstChild)
+        }
+    }
+
+    fetch("/erina/api/admin/twitter/latestResponses?token=" + window.localStorage.getItem("erinaAdminToken"))
+    .then((resp) => resp.json())
+    .then(function(data){
+        if (data.success == true) {
+            data = data.data
+            for (index in data) {
+                addTwitterResponse(data[index].timestamp, data[index].user, data[index].text, data[index].sentiment, data[index].url)
+            }
+        } else {
+            newError("An error occured while retrieving the latest Twitter responses")
+        }
+    })
 
     fetch("/erina/api/admin/logs?token=" + window.localStorage.getItem("erinaAdminToken"))
     .then((resp) => resp.json())

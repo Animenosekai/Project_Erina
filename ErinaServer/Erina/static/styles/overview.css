@@ -208,6 +208,60 @@ erinalog-message {
     color: #808080d9;
 }
 
+
+#erinafeedbacks-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 20px;
+    margin-top: 10px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+twitter-response {
+    margin: 5px 0px;
+    width: 100%;
+    left: 15px;
+    position: relative;
+}
+
+twitter-response-timestamp {
+    color: gray;
+    margin-right: 10px;
+    font-size: 0.8em;
+}
+
+twitter-response-user {
+    color: black;
+    font-size: 1.05em;
+    margin-right: 5px;
+    font-weight: 550;
+}
+
+twitter-response-user::before {
+    content: "@"
+}
+
+twitter-response-message {
+    font-weight: 500;
+    font-size: 1em;
+    color: rgb(25, 25, 25);
+}
+
+twitter-response-sentiment {
+    color: grey;
+    margin-left: 5px;
+}
+
+twitter-response-sentiment::before {
+    content: "("
+}
+
+twitter-response-sentiment::after {
+    content: ")"
+}
+
 @media screen and (max-width: 800px) {
     .erinastats {
         flex-flow: wrap column;

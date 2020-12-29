@@ -2,6 +2,7 @@
 Twitter Stream Manager
 """
 
+from time import time
 from Erina.erina_log import log
 import tweepy
 from pattern.text.en import sentiment
@@ -10,7 +11,7 @@ from Erina.config import Twitter as TwitterConfig
 from Erina.config import Erina as ErinaConfig
 from Erina.Errors import TwitterError, isAnError
 from ErinaTwitter.utils import Twitter
-from ErinaTwitter.erina_twitterbot import ErinaTwitter
+from ErinaTwitter.erina_twitterbot import ErinaTwitter, latestResponses
 from ErinaTwitter.utils.Parser import makeTweet, makeImageResponse
 from ErinaSearch.erinasearch import imageSearch
 
@@ -41,7 +42,15 @@ class Listener(tweepy.StreamListener):
                 return
 
             if Twitter.isReplyingToErina(tweet): # If replying, analyze if it is a positive or a negative feedback
-                StatsAppend(TwitterStats.responsePolarity, sentiment(tweet.text)[0])
+                responseSentiment = sentiment(tweet.text)[0]
+                StatsAppend(TwitterStats.responsePolarity, responseSentiment)
+                latestResponses.append({
+                    "timestamp": time(),
+                    "user": tweet.user.screen_name,
+                    "text": tweet.text,
+                    "sentiment": responseSentiment,
+                    "url": "https://twitter.com/twitter/statuses/" + str(tweet.id),
+                })
                 
             
             if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
