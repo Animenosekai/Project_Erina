@@ -233,19 +233,23 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Twitter", "key": "Access Token Key"}, code=400)
                     elif Twitter.keys.access_token_secret is None:
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Twitter", "key": "Access Token Secret"}, code=400)
-                    ErinaTwitter.init()
-                    from ErinaTwitter.utils import Stream
-                    Stream.startStream()
+                    def startTwitter():
+                        ErinaTwitter.init()
+                        from ErinaTwitter.utils import Stream
+                        Stream.startStream()
+                    Thread(target=startTwitter, daemon=True).start()
                 elif path == "Twitter/run" and value == False and Twitter.run:
                     from ErinaTwitter.utils import Stream
                     Stream.endStream()
                 if path == "Discord/run" and value == True and not Discord.run:
                     if Discord.keys.token is None:
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Discord", "key": "Bot Token"}, code=400)
-                    import asyncio
-                    from ErinaDiscord.erina_discordbot import client as discordClient
-                    asyncio.get_event_loop().create_task(discordClient.start(Discord.keys.token))
-                    asyncio.get_event_loop().run_forever()
+                    def startDiscord():
+                        import asyncio
+                        from ErinaDiscord.erina_discordbot import client as discordClient
+                        asyncio.get_event_loop().create_task(discordClient.start(Discord.keys.token))
+                        asyncio.get_event_loop().run_forever()
+                    Thread(target=startDiscord, daemon=True).start()
                 elif path == "Discord/run" and value == False and Discord.run:
                     from ErinaDiscord.erina_discordbot import client as discordClient
                     discordClient.close()
@@ -255,7 +259,7 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                     elif Line.keys.channel_secret is None:
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Line", "key": "Channel Secret"}, code=400)
                     if not Line.run:
-                        initLine()
+                        Thread(target=initLine, daemon=True).start()
                 if str(value) == environ(originalValue):
                     update(path, originalValue)
                     return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"path": path, "value": originalValue})
