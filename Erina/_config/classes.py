@@ -18,10 +18,12 @@ def environ(erina_environ):
     """
     Returns an env variable if it has the correct erina environ format
     """
+    if erina_environ == "{{PORT}}":
+        return os.environ.get("PORT")
     if str(erina_environ)[:2] == "{{" and str(erina_environ)[-2:] == "}}":
-        if re.sub("[^0-9.-]", "", str(element)) != "":
+        if re.sub("[^0-9.-]", "", str(erina_environ)) == "":
             return convert_to_float(os.environ.get(str(erina_environ)[2:-2]))
-        elif re.sub("[^0-9-]", "", str(element)) != "":
+        elif re.sub("[^0-9-]", "", str(erina_environ)) == "":
             return convert_to_int(os.environ.get(str(erina_environ)[2:-2]))
         else:
             return os.environ.get(str(erina_environ)[2:-2])
