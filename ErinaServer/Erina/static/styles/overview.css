@@ -161,7 +161,13 @@ erinalog-timestamp {
 
 erinalog-message {
     font-weight: 500;
-    font-size: 1.05em;
+    font-size: 1em;
+}
+
+erinalog-api {
+    color: black;
+    font-size: 1em;
+    font-weight: 550;
 }
 
 .erinaLogType-error::before {
