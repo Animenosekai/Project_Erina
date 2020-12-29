@@ -15,7 +15,7 @@ ErinaServer = Flask(__name__)
 Compress(ErinaServer)
 
 # Secure ErinaServer
-Talisman(ErinaServer, content_security_policy={
+Talisman(ErinaServer, force_https_permanent=True, content_security_policy={
     'default-src': [
         '\'self\''
     ],
@@ -25,7 +25,8 @@ Talisman(ErinaServer, content_security_policy={
     ],
     'style-src': [
         "'self'"
-    ]
+    ],
+    "object-src": ["'none'"]
 })
 
 # Error handlers

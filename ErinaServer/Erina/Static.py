@@ -108,6 +108,10 @@ def ErinaServer_Endpoint_Static_externalStylesEndpoint(page):
     except:
         return send_from_directory(htmlLocation, "500.html"), 500
 
+@ErinaServer.route("/erina/admin/static/fonts/fontawesome-webfont.woff2?v=4.7.0")
+def ErinaServer_Endpoint_Static_fontawesome_font_woff2():
+    return send_from_directory(erina_dir + "/ErinaServer/Erina/static/external/fontawesome", "fontawesome-webfont.woff2")
+
 
 
 ##### FAVICONS
