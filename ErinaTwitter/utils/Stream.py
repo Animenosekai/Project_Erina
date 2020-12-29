@@ -31,7 +31,7 @@ class Listener(tweepy.StreamListener):
             """
             Connection
             """
-            print("ErinaTwitter is connected to the Twitter API")
+            log("ErinaTwitter", "ErinaTwitter is connected to the Twitter API")
 
         def on_status(self, tweet):
             """
