@@ -4,17 +4,25 @@ function PageInitialize() {
         try {
             if (currentCategory[subcategory]["success"] == true) {
                 var closestTimestamp = 0
+                var totalValue = 0
                 var results = []
                 for (timestamp in currentCategory[subcategory]["values"]) {
                     if (closestTimestamp < timestamp) {
                         closestTimestamp = timestamp
                     }
+                    totalValue += currentCategory[subcategory]["values"][timestamp]
                     results.push({ "date": new Date(timestamp * 1000), "value": currentCategory[subcategory]["values"][timestamp]})
                 }
                 var currentID = "erinaStat-" + category + "-" + subcategory
-                document.getElementById(currentID + "-Value").innerText = convert(currentCategory[subcategory]["values"][closestTimestamp])
+                if (["cacheFilesCount", "responsePolarity"].includes(subcategory)) {
+                    document.getElementById(currentID + "-Value").innerText = convert(currentCategory[subcategory]["values"][closestTimestamp])
+                } else {
+                    document.getElementById(currentID + "-Value").innerText = convert(totalValue)
+                }
                 createChart(currentID + "-Chart", results, am4core.color("#7ae2ff"))
-            }
+            } else w(
+                newError("An error occured on the server while retrieving " + String(subcategory))
+            )
         } catch {
             newError("Error while adding subcategory: " + String(subcategory))
         }
