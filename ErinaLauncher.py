@@ -8,6 +8,7 @@ Erina Project - 2020
 import os
 import sys
 import psutil
+import traceback
 
 def shutdownErinaServer(num, info):
     """
@@ -118,3 +119,4 @@ if __name__ == '__main__':
     except:
         logFile.blocking = True
         log("Erina", f"An error occured while running ErinaServer ({exc_info()[0]})", True)
+        traceback.print_exc()
