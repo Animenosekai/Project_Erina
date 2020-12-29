@@ -119,7 +119,6 @@ class Listener(tweepy.StreamListener):
             """
             Classic Error
             """
-            log("ErinaDebug", "Access Token Key: " + str(TwitterConfig.keys.access_token_key))
             return TwitterError("STREAM_HTTP_ERROR", f"A {str(status_code)} status code got received from Erina's Twitter Stream")
 
         def on_exception(self, exception):
@@ -162,8 +161,10 @@ def startStream():
         Erina.filter(follow=user_ids)
     else:
         if not isinstance(TwitterConfig.stream.flags, (list, tuple)) or len(TwitterConfig.stream.flags) <= 0:
+            log("ErinaDebug", (list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else list(ErinaConfig.flags)))
             Erina.filter(languages=TwitterConfig.stream.languages, track=(list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else list(ErinaConfig.flags)))
         else:
+            log("ErinaDebug", len(TwitterConfig.stream.flags))
             Erina.filter(languages=TwitterConfig.stream.languages, track=list(TwitterConfig.stream.flags))
 
 def endStream():
