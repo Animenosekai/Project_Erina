@@ -14,8 +14,15 @@ ErinaServer = Flask(__name__)
 # Enable compression for all requests
 Compress(ErinaServer)
 
-# Secure the ErinaServer
-Talisman(ErinaServer)
+# Secure ErinaServer
+Talisman(ErinaServer, content_security_policy={
+    'default-src': [
+        '\'self\''
+    ],
+    'script-src': [
+        "unsafe-inline"
+    ]
+})
 
 # Error handlers
 @ErinaServer.errorhandler(404)
