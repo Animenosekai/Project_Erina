@@ -11,11 +11,9 @@ from os.path import isfile
 
 import requests
 from safeIO import BinaryFile
-#import imagehash
-#from PIL import Image
-imagehash = None
-Image = None
-######### For Development Purposes, will be reverted when my Pillow installation will work again (issue: python-pillow/Pillow #5143)
+import imagehash
+from PIL import Image
+
 from Erina.Errors import HashingError
 
 from Erina.erina_log import log
