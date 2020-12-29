@@ -98,7 +98,7 @@ def ErinaServer_Endpoint_Static_externalScriptsEndpoint(page):
         return send_from_directory(htmlLocation, "500.html"), 500
 
 @ErinaServer.route("/erina/admin/static/external/<page>.css")
-def ErinaServer_Endpoint_Static_externalScriptsEndpoint(page):
+def ErinaServer_Endpoint_Static_externalStylesEndpoint(page):
     try:
         if page == "fontawesome":
             return send_from_directory(erina_dir + "/ErinaServer/Erina/static/external/fontawesome", "fontawesome.css")
