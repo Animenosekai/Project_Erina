@@ -184,7 +184,7 @@ def ErinaServer_Endpoint_API_search():
         else:
             return makeResponse(request_args=request.values, cooldown=cooldown, data={"authorizedArgs": ["anilistID", "anime", "image", "minify", "client", "format"], "optionalArgs": ["minify", "client", "format"]}, code=400, error="MISSING_ARG", error_message="An argument is missing from your request")
         
-        if isAnError(result):
+        if not isAnError(result):
             if format == "text" or format == "html":
                 return makeResponse(request_args=request.values, cooldown=cooldown, data=result.as_text())
             else:
