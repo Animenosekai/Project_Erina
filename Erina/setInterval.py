@@ -8,7 +8,7 @@ from Erina.env_information import erina_dir
 from Erina.erina_stats import erina
 from Erina.erina_stats import StatsAppend
 
-caches_path = [erina_dir + "/ErinaCaches/AniList_Cache", erina_dir + "/ErinaCaches/Erina_Cache", erina_dir + "/ErinaCaches/IQDB_Cache", erina_dir + "/ErinaCaches/SauceNAO_Cache", erina_dir + "/ErinaCaches/TraceMOE_Cache"]
+caches_path = [erina_dir + "/ErinaCaches/AniList_Cache", erina_dir + "/ErinaCaches/Erina_Cache", erina_dir + "/ErinaCaches/IQDB_Cache", erina_dir + "/ErinaCaches/SauceNAO_Cache", erina_dir + "/ErinaCaches/TraceMoe_Cache"]
 
 def checkForTimeout():
     """
