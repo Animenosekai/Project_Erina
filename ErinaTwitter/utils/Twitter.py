@@ -3,6 +3,8 @@ from ErinaTwitter.erina_twitterbot import ErinaTwitter
 import requests
 from PIL import Image
 from Erina.Errors import TwitterError
+from Erina.config import Twitter as TwitterConfig
+from Erina.config import Erina as ErinaConfig
 
 def findImage(tweet):
     """
@@ -47,7 +49,7 @@ def isAskingForSauce(tweet):
     cleanText = tweet.text.replace(" ", '').lower()
     if '@' + ErinaTwitter._screen_name in cleanText:
         return True
-    elif any([flag in cleanText for flag in ErinaTwitter._twitter_flags()]):
+    elif any([flag in cleanText for flag in ([str(word).lower().replace(" ", "") for word in list(TwitterConfig.flags)] if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else [str(word).lower().replace(" ", "") for word in list(ErinaConfig.flags)])]):
         return True
     return False
 
@@ -94,7 +96,7 @@ def dmAskingForSauce(dm):
     Checks if the given direct message is asking for the sauce
     """
     cleanText = dm.text.replace(" ", '').lower()
-    if any([flag in cleanText for flag in ErinaTwitter._twitter_flags()]):
+    if any([flag in cleanText for flag in ([str(word).lower().replace(" ", "") for word in list(TwitterConfig.flags)] if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else [str(word).lower().replace(" ", "") for word in list(ErinaConfig.flags)])]):
         return True
 
 def getDirectMedia(dm):
