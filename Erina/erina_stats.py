@@ -3,8 +3,12 @@ Erina Stats Managing API
 """
 
 from time import time
+
+from filecenter import extension_from_base, files_in_dir
+from safeIO import TextFile
 from Erina.stats import files
 from Erina.config import Erina as ErinaConfig
+from Erina.env_information import erina_dir
 
 api = files.apiStats()
 db = files.dbStats()
@@ -59,4 +63,7 @@ def StatsReset():
     twitter.responsePolarity.write("")
     twitter.responses.write("")
     twitter.streamHit.write("")
+    for file in files_in_dir(erina_dir + "/Erina/stats/userdefinedStats"):
+        if extension_from_base(file) == ".erinalog":
+            TextFile(erina_dir + "/Erina/stats/userdefinedStats").delete()
     

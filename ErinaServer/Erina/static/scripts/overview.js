@@ -5,30 +5,27 @@ function PageInitialize(){
         if (data.success == true) {
             data = data.data
             if (data.search.searchCount.success == true) {
-                var closestTimestamp = 0
+                var totalValue = 0
                 var results = []
                 for (timestamp in data.search.searchCount.values) {
-                    if (closestTimestamp < timestamp) {
-                        closestTimestamp = timestamp
-                    }
+                    totalValue += data.search.searchCount.values[timestamp]
                     results.push({ "date": new Date(timestamp * 1000), "value": data.search.searchCount.values[timestamp]})
                 }
-                document.getElementById("erinaStats-current-number-animesearch").innerText = data.search.searchCount.values[closestTimestamp]
+                document.getElementById("erinaStats-current-number-animesearch").innerText = convert(totalValue)
                 createChart("erinaChart-animesearch", results, am4core.color("#7ae2ff"))
             }
             
             if (data.twitter.responses.success == true) {
-                var closestTimestamp = 0
+                var totalValue = 0
                 var results = []
                 for (timestamp in data.twitter.responses.values) {
-                    if (closestTimestamp < timestamp) {
-                        closestTimestamp = timestamp
-                    }
+                    totalValue += data.twitter.responses.values[timestamp]
                     results.push({ "date": new Date(timestamp * 1000), "value": data.twitter.responses.values[timestamp]})
                 }
-                document.getElementById("erinaStats-current-number-tweets").innerText = data.twitter.responses.values[closestTimestamp]
+                document.getElementById("erinaStats-current-number-tweets").innerText = convert(totalValue)
                 createChart("erinaChart-tweets", results, am4core.color("#7ae2ff"))
             }
+            document.getElementById("erinaWidget-animeRank-value").innerText = Object.keys(data["animeSearchRank"][0])[0]
         } else {
             newError("An error occured while retrieving the stats")
         }

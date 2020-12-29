@@ -3,6 +3,7 @@ from os.path import isfile
 from datetime import datetime
 
 from safeIO import TextFile
+from filecenter import extension_from_base, files_in_dir
 
 from Erina import erina_stats
 from Erina import env_information
@@ -155,6 +156,7 @@ def returnStats():
                     else:
                         results[category][subcategory]["values"][timestamp] = [convert_to_float(element.split("    ")[1])]
 
+
             firstElementTimestamp = returnTimestamp(data[0])
             if firstElementTimestamp is not None:
                 results[category][subcategory]["success"] = True
@@ -274,6 +276,13 @@ def returnStats():
     results["search"]["searchCount"]["values"] = finalSearchCountResult
 
     results["uptime"] = env_information.startTime
+
+
+    #### User Defined Endpoints
+    for file in files_in_dir(erina_dir + "/Erina/stats/userdefinedStats"):
+        if extension_from_base(file) == ".erinalog":
+            data = TextFile(erina_dir + "/Erina/stats/userdefinedStats/" + file).readlines()
+            _retrieveStats("userDefinedEndpoints", file[:-9], data)
 
     return results
 

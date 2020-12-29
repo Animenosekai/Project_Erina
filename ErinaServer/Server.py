@@ -1,16 +1,17 @@
+import json
+from time import time
 from flask_compress import Compress
+from safeIO import TextFile
+from Erina.env_information import erina_version, erina_dir
 from flask import Flask, Response, request, send_from_directory
 
-from time import time
-import json
-from Erina.env_information import erina_version, erina_dir
 
+# Init ErinaServer
 ErinaServer = Flask(__name__)
 Compress(ErinaServer)
 
 
-
-
+# Error handlers
 @ErinaServer.errorhandler(404)
 def page_not_found(e):
     return send_from_directory(erina_dir + "/ErinaServer/Erina/static/html", "404.html"), 404
@@ -20,13 +21,15 @@ def server_error(e):
     return send_from_directory(erina_dir + "/ErinaServer/Erina/static/html", "500.html"), 500
 
 
+####### DECORATORS DEFINING
+decorator_index = 0
+
 rate_limit_map = {}
 ip_rate_limit_map = {}
-rate_limit_index = 0
 
 def ErinaRateLimit(rate=1, fromIP=False):
     def decorator(function):
-        global rate_limit_index
+        global decorator_index
         def decorated(*args, **kwargs):
             if not fromIP:
                 if function in rate_limit_map:
@@ -73,7 +76,21 @@ def ErinaRateLimit(rate=1, fromIP=False):
                     ip_rate_limit_map[function] = {}
             return function(*args, **kwargs)
         decoratedFunction = decorated
-        decoratedFunction.__name__ = "ErinaRateLimitedEndpoint_" + str(rate_limit_index)
-        rate_limit_index += 1
+        decoratedFunction.__name__ = "ErinaRateLimitedEndpoint_" + str(decorator_index)
+        decorator_index += 1
+        return decoratedFunction
+    return decorator
+
+
+
+def ErinaStats(name):
+    def decorator(function):
+        global decorator_index
+        def decorated(*args, **kwargs):
+            TextFile(erina_dir + "/Erina/stats/userdefinedStats/" + str(name).replace("/", "_") + ".erinalog").append(str(int(time())) + "\n")
+            return function(*args, **kwargs)
+        decoratedFunction = decorated
+        decoratedFunction.__name__ = "ErinaStatEndpoint_" + str(decorator_index)
+        decorator_index += 1
         return decoratedFunction
     return decorator
