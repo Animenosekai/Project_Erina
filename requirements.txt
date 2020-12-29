@@ -19,3 +19,4 @@ pattern
 Flask-Sockets
 psutil
 flask-compress
+pyOpenSSL
