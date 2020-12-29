@@ -7,6 +7,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+#ErinaExternalJS-Sources {
+    display: none;
+}
+
 .sidebar {
     position: fixed;
     display: flex;

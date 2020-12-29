@@ -24,7 +24,10 @@ Talisman(ErinaServer, force_https_permanent=True, content_security_policy={
         "'unsafe-inline'"
     ],
     'style-src': [
-        "'self'"
+        "'self'",
+        "'sha256-x0NIqs04b4yuj+/E4vuP2aNQteHzBMJ/wCCfJxl3jGk='",
+        "'sha256-oLfdK30G8JpdSOWdwR+G7yDvMIClgnclJ7PhEZR33ZE='",
+        "'sha256-OOsTvtsfuOoMZtftRLS40H4Y7hH6P4kYXIC6dGzh+Ls='",
     ],
     "connect-src": ["*"],
     "object-src": ["'none'"]
