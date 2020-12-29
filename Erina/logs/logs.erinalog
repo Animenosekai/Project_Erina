@@ -1245,3 +1245,21 @@
 1609206206    [ErinaAdmin] < ErinaConsole disconnected
 1609206206    [ErinaAdmin] Unable to send an exit message to ErinaConsole
 1609210055    [Erina] Goodbye!
+1609213004    [Erina] Initializing Erina configuration...
+1609213004    [Erina] ---> Initializing Static File Endpoints
+1609213004    [Erina] ---> Initializing API
+1609213004    [Erina] ---> Initializing ErinaAdmin
+1609213005    [Erina] ---> Initializing Custom Endpoints
+1609213005    [Erina] ---> Initializing ErinaConsole
+1609213005    [Erina] Running ErinaServer...
+1609213005    [Error]    [Erina] An error occured while running ErinaServer (<class 'TypeError'>)
+1609213005    [Erina] Starting to check for timeouts and updates...
+1609213050    [Erina] Initializing Erina configuration...
+1609213050    [Erina] ---> Initializing Static File Endpoints
+1609213050    [Erina] ---> Initializing API
+1609213051    [Erina] ---> Initializing ErinaAdmin
+1609213051    [Erina] ---> Initializing Custom Endpoints
+1609213051    [Erina] ---> Initializing ErinaConsole
+1609213051    [Erina] Running ErinaServer...
+1609213051    [Error]    [Erina] An error occured while running ErinaServer (<class 'TypeError'>)
+1609213051    [Erina] Starting to check for timeouts and updates...
