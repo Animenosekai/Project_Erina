@@ -119,6 +119,7 @@ class Listener(tweepy.StreamListener):
             """
             Classic Error
             """
+            log("ErinaDebug", "Access Token Key: " + str(TwitterConfig.keys.access_token_key))
             return TwitterError("STREAM_HTTP_ERROR", f"A {str(status_code)} status code got received from Erina's Twitter Stream")
 
         def on_exception(self, exception):
