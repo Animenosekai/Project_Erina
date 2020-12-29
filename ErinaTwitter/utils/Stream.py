@@ -42,16 +42,19 @@ class Listener(tweepy.StreamListener):
             if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
                 return
 
-            if Twitter.isReplyingToErina(tweet): # If replying, analyze if it is a positive or a negative feedback
-                responseSentiment = sentiment(tweet.text)[0]
-                StatsAppend(TwitterStats.responsePolarity, responseSentiment)
-                latestResponses.append({
-                    "timestamp": time(),
-                    "user": tweet.user.screen_name,
-                    "text": tweet.text,
-                    "sentiment": responseSentiment,
-                    "url": "https://twitter.com/twitter/statuses/" + str(tweet.id),
-                })
+            try:
+                if Twitter.isReplyingToErina(tweet): # If replying, analyze if it is a positive or a negative feedback
+                    responseSentiment = sentiment(tweet.text)[0]
+                    StatsAppend(TwitterStats.responsePolarity, responseSentiment)
+                    latestResponses.append({
+                        "timestamp": time(),
+                        "user": tweet.user.screen_name,
+                        "text": tweet.text,
+                        "sentiment": responseSentiment,
+                        "url": "https://twitter.com/twitter/statuses/" + str(tweet.id),
+                    })
+            except:
+                pass
                 
             
             if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
