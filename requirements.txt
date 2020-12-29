@@ -14,7 +14,7 @@ numpy
 beautifulsoup4
 discord
 Pillow
-safeIO==1.1
+safeIO==1.1.1
 pattern
 Flask-Sockets
 psutil
