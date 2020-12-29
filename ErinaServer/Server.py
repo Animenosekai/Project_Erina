@@ -21,14 +21,10 @@ Talisman(ErinaServer, content_security_policy={
     ],
     'script-src': [
         "'self'",
-        "unsafe-inline",
-        "cdnjs.cloudflare.com",
-        "cdn.amcharts.com"
+        "'unsafe-inline'"
     ],
     'style-src': [
-        "'self'",
-        "netdna.bootstrapcdn.com",
-        "cdnjs.cloudflare.com"
+        "'self'"
     ]
 })
 

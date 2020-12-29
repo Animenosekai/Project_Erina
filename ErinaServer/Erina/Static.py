@@ -60,7 +60,7 @@ def ErinaServer_Endpoint_Static_scriptsEndpoint(page):
         return send_from_directory(htmlLocation, "500.html"), 500
 
         
-@ErinaServer.route("/erina/api")
+@ErinaServer.route("/erina/api/")
 def ErinaServer_Endpoint_Static_apiDocs():
     try:
         if "format" in request.values and request.values.get("format").lower() == "json":
@@ -83,6 +83,30 @@ def ErinaServer_Endpoint_Static_ServerError():
 @ErinaServer.route("/erina/admin/static/images/Tenshi")
 def ErinaServer_Endpoint_Static_Tenshi():
     return send_from_directory(imagesLocation, "Tenshi.png")
+
+
+##### EXTERNAL LIBRAIRIES
+@ErinaServer.route("/erina/admin/static/external/<page>.js")
+def ErinaServer_Endpoint_Static_externalScriptsEndpoint(page):
+    try:
+        if page in ["amcharts_animated", "amcharts_charts", "amcharts_core"]:
+            return send_from_directory(erina_dir + "/ErinaServer/Erina/static/external/amcharts", page + ".js")
+        elif page in ["prism"]:
+            return send_from_directory(erina_dir + "/ErinaServer/Erina/static/external/prism", "prism.js")
+        return send_from_directory(htmlLocation, "404.html"), 404
+    except:
+        return send_from_directory(htmlLocation, "500.html"), 500
+
+@ErinaServer.route("/erina/admin/static/external/<page>.css")
+def ErinaServer_Endpoint_Static_externalScriptsEndpoint(page):
+    try:
+        if page == "fontawesome":
+            return send_from_directory(erina_dir + "/ErinaServer/Erina/static/external/fontawesome", "fontawesome.css")
+        elif page == "prism_tomorrow":
+            return send_from_directory(erina_dir + "/ErinaServer/Erina/static/external/prism", "prism_tomorrow.css")
+        return send_from_directory(htmlLocation, "404.html"), 404
+    except:
+        return send_from_directory(htmlLocation, "500.html"), 500
 
 
 
