@@ -1,10 +1,12 @@
 import json
 from time import time
-from flask_compress import Compress
+
 from safeIO import TextFile
-from Erina.env_information import erina_version, erina_dir
+from flask_compress import Compress
+from flask_talisman import Talisman
 from flask import Flask, Response, request, send_from_directory, redirect
 
+from Erina.env_information import erina_version, erina_dir
 
 # Init ErinaServer
 ErinaServer = Flask(__name__)
@@ -12,17 +14,8 @@ ErinaServer = Flask(__name__)
 # Enable compression for all requests
 Compress(ErinaServer)
 
-# Redirect to https for all requests
-@ErinaServer.before_request
-def force_https():
-    proxy_header = request.headers.get('X-Forwarded-Proto', None)
-    if proxy_header is not None:
-        if proxy_header == "http":
-            return redirect(request.url.replace('http://', 'https://', 1), code=301)
-    else:
-        if not request.is_secure:
-            return redirect(request.url.replace('http://', 'https://', 1), code=301)
-
+# Secure the ErinaServer
+Talisman(ErinaServer)
 
 # Error handlers
 @ErinaServer.errorhandler(404)
