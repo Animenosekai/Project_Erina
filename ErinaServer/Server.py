@@ -16,10 +16,11 @@ Compress(ErinaServer)
 @ErinaServer.before_request
 def before_request():
     if request.url.startswith('http://'):
-        url = request.url.replace('http://', 'https://', 1)
-        code = 301
-        return redirect(url, code=code)
-        
+        print(request.url)
+        print(request.url.startswith('http://'))
+        print(request.url.replace('http://', 'https://', 1))
+        return redirect(request.url.replace('http://', 'https://', 1), code=301)
+
 # Error handlers
 @ErinaServer.errorhandler(404)
 def page_not_found(e):
