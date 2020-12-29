@@ -38,6 +38,7 @@ class Listener(tweepy.StreamListener):
             Tweet Receiving
             """
             StatsAppend(TwitterStats.streamHit)
+            log("ErinaDebug", "Stream Hit")
             if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
                 return
 
@@ -80,14 +81,18 @@ class Listener(tweepy.StreamListener):
             
             
             else: # Monitor Mode OFF, Public Account
+                log("ErinaDebug", "Monitor Mode OFF, Public Account")
                 imageURL = Twitter.findImage(tweet)
                 if imageURL is None:
                     imageURL = Twitter.findParentImage(tweet)
+                log("ErinaDebug", imageURL)
                 if imageURL is not None and Twitter.isAskingForSauce(tweet):
                     log("ErinaTwitter", "New asking hit from @" + str(tweet.user.screen_name))
                     StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
                     searchResult = imageSearch(imageURL)
+                    log("ErinaDebug", searchResult)
                     tweetResponse = makeTweet(searchResult)
+                    log("ErinaDebug", tweetResponse)
                     if tweetResponse is not None:
                         StatsAppend(TwitterStats.responses)
                         ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
