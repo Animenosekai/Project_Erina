@@ -60,8 +60,7 @@ class ErinaTwitterAPI():
         twitterImage = None
         if imageURL is not None:
             image = BytesIO(requests.get(str(imageURL)).content)
-            filename = imageURL[imageURL.rfind("/"):]
-            twitterImage = self.api.media_upload(filename=filename, file=image)
+            twitterImage = self.api.media_upload(file=image, filename="ErinaSauce — trace.moe Image Preview")
         
         if replyID is not None:
             if twitterImage is not None:

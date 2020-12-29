@@ -2,7 +2,10 @@
 Twitter Stream Manager
 """
 
-from time import time
+from threading import Thread
+from ErinaParser.utils.tracemoe_parser import TraceMOECache
+from time import sleep, time
+import traceback
 from Erina.erina_log import log
 import tweepy
 from pattern.text.en import sentiment
@@ -20,147 +23,129 @@ from Erina.erina_stats import twitter as TwitterStats
 
 
 class Listener(tweepy.StreamListener):
+    """
+    Tweet Listener Class (Twitter Stream Handler)
+
+    Erina Project\n
+    © Anime no Sekai - 2020
+    """
+
+    def on_connect(self):
         """
-        Tweet Listener Class (Twitter Stream Handler)
-
-        Erina Project\n
-        © Anime no Sekai - 2020
+        Connection
         """
+        log("ErinaTwitter", "ErinaTwitter is connected to the Twitter API")
 
-        def on_connect(self):
-            """
-            Connection
-            """
-            log("ErinaTwitter", "ErinaTwitter is connected to the Twitter API")
-
-        def on_status(self, tweet):
-            """
-            Tweet Receiving
-            """
-            StatsAppend(TwitterStats.streamHit)
-            log("ErinaDebug", "Stream Hit")
-            if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
-                return
-
-            try:
-                if Twitter.isReplyingToErina(tweet): # If replying, analyze if it is a positive or a negative feedback
-                    responseSentiment = sentiment(tweet.text)[0]
-                    StatsAppend(TwitterStats.responsePolarity, responseSentiment)
-                    latestResponses.append({
-                        "timestamp": time(),
-                        "user": tweet.user.screen_name,
-                        "text": tweet.text,
-                        "sentiment": responseSentiment,
-                        "url": "https://twitter.com/twitter/statuses/" + str(tweet.id),
-                    })
-            except:
-                pass
-                
+    def on_status(self, tweet):
+        """
+        Tweet Receiving
+        """
+        StatsAppend(TwitterStats.streamHit)
+        if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
+            return
+        print("")
+        print("----------------------------")
+        log("ErinaDebug", tweet.text)
+        try:
+            if Twitter.isReplyingToErina(tweet): # If replying, analyze if it is a positive or a negative feedback
+                responseSentiment = sentiment(tweet.text)[0]
+                StatsAppend(TwitterStats.responsePolarity, responseSentiment)
+                latestResponses.append({
+                    "timestamp": time(),
+                    "user": tweet.user.screen_name,
+                    "text": tweet.text,
+                    "sentiment": responseSentiment,
+                    "url": "https://twitter.com/twitter/statuses/" + str(tweet.id),
+                })
+        except:
+            traceback.print_exc()
             
-            if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
-                if TwitterConfig.monitoring.check_replies and Twitter.isReplyingToErina(tweet): # Monitor Mode ON, Check Replies to Monitored ON
-                    log("ErinaTwitter", "New monitoring hit from @" + str(tweet.user.screen_name))
-                    StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
-                    imageURL = Twitter.findImage(tweet)
-                    if imageURL is None:
-                        imageURL = Twitter.findParentImage(tweet)
-                    if imageURL is not None:
-                        searchResult = imageSearch(imageURL)
-                        tweetResponse = makeTweet(searchResult)
-                        if tweetResponse is not None:
-                            StatsAppend(TwitterStats.responses)
-                            ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
-                elif tweet.user.screen_name in TwitterConfig.monitoring.accounts: # Monitor Mode ON, Check Replies to Monitored OFF
-                    log("ErinaTwitter", "New monitoring hit")
-                    StatsAppend(TwitterStats.askingHitstr(tweet.user.screen_name))
-                    imageURL = Twitter.findImage(tweet)
-                    if imageURL is not None:
-                        searchResult = imageSearch(imageURL)
-                        tweetResponse = makeTweet(searchResult)
-                        if tweetResponse is not None:
-                            StatsAppend(TwitterStats.responses)
-                            ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
-            
-            
-            
-            else: # Monitor Mode OFF, Public Account
-                log("ErinaDebug", "Monitor Mode OFF, Public Account")
+        
+        if isinstance(TwitterConfig.monitoring.accounts, (list, tuple)) and len(TwitterConfig.monitoring.accounts) > 0:
+            if TwitterConfig.monitoring.check_replies and Twitter.isReplyingToErina(tweet): # Monitor Mode ON, Check Replies to Monitored ON
+                log("ErinaTwitter", "New monitoring hit from @" + str(tweet.user.screen_name))
+                StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
                 imageURL = Twitter.findImage(tweet)
                 if imageURL is None:
                     imageURL = Twitter.findParentImage(tweet)
-                log("ErinaDebug", imageURL)
-                if imageURL is not None and Twitter.isAskingForSauce(tweet):
-                    log("ErinaTwitter", "New asking hit from @" + str(tweet.user.screen_name))
-                    StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
+                if imageURL is not None:
                     searchResult = imageSearch(imageURL)
-                    log("ErinaDebug", searchResult)
                     tweetResponse = makeTweet(searchResult)
-                    log("ErinaDebug", tweetResponse)
                     if tweetResponse is not None:
                         StatsAppend(TwitterStats.responses)
                         ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
-                    elif Twitter.isMention(tweet):
-                        ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
-            return
-
-
-        def on_direct_message(self, message):
-            """
-            DM Receiving
-            """
-            log("ErinaTwitter", "New direct message from @" + str(message.user.screen_name))
-            if Twitter.dmAskingForSauce(message):
-                StatsAppend(TwitterStats.directMessagingHit, str(message.user.screen_name))
-                image = Twitter.getDirectMedia(message)
-                if image is not None:
-                    searchResult = imageSearch(image)
-                    ErinaTwitter.dm(makeImageResponse(searchResult), message.sender_id)
-                elif isAnError(image):
-                    ErinaTwitter.dm("An error occured while retrieving information on the anime", message.sender_id)
-                else:
-                    ErinaTwitter.dm("You did not send any image along with your message", message.sender_id)
-
-
-
-        # Error handling
-        def on_error(self, status_code):
-            """
-            Classic Error
-            """
-            return TwitterError("STREAM_HTTP_ERROR", f"A {str(status_code)} status code got received from Erina's Twitter Stream")
-
-        def on_exception(self, exception):
-            """
-            Unknown Exception from Tweepy
-            """
-            return TwitterError("STREAM_EXCEPTION", f"A {str(exception)} error occured while handling Erina's Twitter Stream")
-
-        def on_warning(self, notice):
-            """
-            Disconnection Warning
-            """
-            return TwitterError("STREAM_DISCONNECTION_WARNING", f"A disconnection warning came: {str(notice)}")
-
-        def on_limit(self, track):
-            """
-            Limit Reached
-            """
-            return TwitterError("STREAM_LIMIT_REACHED", f"A limitation notice came: {str(track)}")
-
-        def on_timeout(self):
-            """
-            Connection Timeout
-            """
-            return TwitterError("STREAM_CONNECTION_TIMEOUT", f"Erina's Stream Connection timed out")
+            elif tweet.user.screen_name in TwitterConfig.monitoring.accounts: # Monitor Mode ON, Check Replies to Monitored OFF
+                log("ErinaTwitter", "New monitoring hit")
+                StatsAppend(TwitterStats.askingHitstr(tweet.user.screen_name))
+                imageURL = Twitter.findImage(tweet)
+                if imageURL is not None:
+                    searchResult = imageSearch(imageURL)
+                    tweetResponse = makeTweet(searchResult)
+                    if tweetResponse is not None:
+                        StatsAppend(TwitterStats.responses)
+                        ErinaTwitter.tweet(tweetResponse, replyID=tweet.id)
         
-        def on_disconnect(self, notice):
-            """
-            Disconnection from Twitter
-            """
-            return TwitterError("STREAM_DISCONNECTION", f"A disconnection notice came: {str(notice)}")
+        
+        
+        else: # Monitor Mode OFF, Public Account
+            imageURL = Twitter.findImage(tweet)
+            if imageURL is None:
+                imageURL = Twitter.findParentImage(tweet)
+            if imageURL is not None and Twitter.isAskingForSauce(tweet):
+                log("ErinaTwitter", "New asking hit from @" + str(tweet.user.screen_name))
+                StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
+                searchResult = imageSearch(imageURL)
+                tweetResponse = makeTweet(searchResult)
+                if tweetResponse is not None:
+                    StatsAppend(TwitterStats.responses)
+                    responseImageURL = None
+                    if isinstance(searchResult.detectionResult, TraceMOECache):
+                        if not searchResult.detectionResult.hentai:
+                            responseImageURL = f"https://trace.moe/thumbnail.php?anilist_id={str(searchResult.detectionResult.anilist_id)}&file={str(searchResult.detectionResult.filename)}&t={str(searchResult.detectionResult.timing.at)}&token={str(searchResult.detectionResult.tokenthumb)}"
+                    ErinaTwitter.tweet(tweetResponse, replyID=tweet.id, imageURL=responseImageURL)
+                elif Twitter.isMention(tweet):
+                    ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
+        return
+
+    # Error handling
+    def on_error(self, status_code):
+        """
+        Classic Error
+        """
+        return TwitterError("STREAM_HTTP_ERROR", f"A {str(status_code)} status code got received from Erina's Twitter Stream")
+
+    def on_exception(self, exception):
+        """
+        Unknown Exception from Tweepy
+        """
+        return TwitterError("STREAM_EXCEPTION", f"A {str(exception)} error occured while handling Erina's Twitter Stream")
+
+    def on_warning(self, notice):
+        """
+        Disconnection Warning
+        """
+        return TwitterError("STREAM_DISCONNECTION_WARNING", f"A disconnection warning came: {str(notice)}")
+
+    def on_limit(self, track):
+        """
+        Limit Reached
+        """
+        return TwitterError("STREAM_LIMIT_REACHED", f"A limitation notice came: {str(track)}")
+
+    def on_timeout(self):
+        """
+        Connection Timeout
+        """
+        return TwitterError("STREAM_CONNECTION_TIMEOUT", f"Erina's Stream Connection timed out")
+    
+    def on_disconnect(self, notice):
+        """
+        Disconnection from Twitter
+        """
+        return TwitterError("STREAM_DISCONNECTION", f"A disconnection notice came: {str(notice)}")
 
 Erina = tweepy.Stream(auth=ErinaTwitter.api.auth, listener=Listener())
-def startStream():
+def _startStream():
     """
     Starts the stream
     """
@@ -169,11 +154,42 @@ def startStream():
         Erina.filter(follow=user_ids)
     else:
         if not isinstance(TwitterConfig.stream.flags, (list, tuple)) or len(TwitterConfig.stream.flags) <= 0:
-            log("ErinaDebug", (list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags)).append(ErinaTwitter.me.screen_name))
-            Erina.filter(languages=TwitterConfig.stream.languages, track=(list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags)))
+            flags = (list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags))
+            flags.append(ErinaTwitter.me.screen_name)
+            flags.append("@" + str(ErinaTwitter.me.screen_name))
+            flags.append(str(ErinaTwitter.me.screen_name).lower())
+            log("ErinaDebug", flags)
+            Erina.filter(languages=TwitterConfig.stream.languages, track=flags)
         else:
             log("ErinaDebug", len(TwitterConfig.stream.flags))
             Erina.filter(languages=TwitterConfig.stream.languages, track=list(TwitterConfig.stream.flags))
+
+directMessagesHistory = []
+def on_direct_message(message):
+    """
+    DM Receiving
+    """
+    directMessagesHistory.append(message)
+    log("ErinaTwitter", "New direct message from @" + str(message.user.screen_name))
+    if Twitter.dmAskingForSauce(message):
+        StatsAppend(TwitterStats.directMessagingHit, str(message.user.screen_name))
+        image = Twitter.getDirectMedia(message)
+        if image is not None:
+            searchResult = imageSearch(image)
+            ErinaTwitter.dm(makeImageResponse(searchResult), message.sender_id)
+        elif isAnError(image):
+            ErinaTwitter.dm("An error occured while retrieving information on the anime", message.sender_id)
+        else:
+            ErinaTwitter.dm("You did not send any image along with your message", message.sender_id)
+
+def startStream():
+    Thread(target=_startStream, daemon=True).start()
+    while True:
+        for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages).items():
+            if message not in directMessagesHistory:
+                on_direct_message(message)
+        sleep(60)
+    
 
 def endStream():
     """

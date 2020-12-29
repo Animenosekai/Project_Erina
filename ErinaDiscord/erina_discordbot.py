@@ -8,7 +8,8 @@ import asyncio
 
 import filecenter
 import discord
-from discord.ext import commands as DiscordCommands
+#from discord.ext import commands as DiscordCommands
+from threading import Thread
 
 from Erina import config
 from ErinaSearch import erinasearch
@@ -16,6 +17,8 @@ from Erina import utils
 from ErinaDiscord.utils import Parser
 from ErinaDiscord.utils import StaticResponse
 from ErinaDiscord.utils.cosine_similarity import searchCommand
+
+from Erina.config import Discord as DiscordConfig
 
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import discord as DiscordStats
@@ -25,7 +28,19 @@ from Erina.erina_log import log
 roger_reaction = '<:easygif_roger:712005159676411914>'
 
 ### DEFINING CLIENT/BOT AND ITS PREFIX 
-client = DiscordCommands.Bot(command_prefix='')
+intents = discord.Intents(messages=True, guilds=True)
+client = discord.Client(intents=intents)
+
+def startDiscord():
+    """
+    Starts the discord bot
+    """
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    client.loop = loop
+    loop.create_task(client.start(DiscordConfig.keys.token))
+    Thread(target=loop.run_forever, daemon=True).start()
+
 
 # WHEN THE BOT IS UP
 @client.event
@@ -42,10 +57,11 @@ async def on_message(message):
     '''
     When the bot receives a message
     '''
-    await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND    
+    #await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND
+    if message.author.id == client.user.id:
+        return
     if message.content.startswith('.erina'): # ERINA SPECIFIC COMMAND
-        utils.removeSpaceBefore(str(message.content)[:6])
-        userCommand = utils.removeSpaceBefore(str(message.content)[:6])
+        userCommand = utils.removeSpaceBefore(str(message.content)[6:])
         commandLength = len(userCommand.split(" ")[0])
         command, commandSimilarity = searchCommand(userCommand.split(" ")[0].lower())
         if commandSimilarity < 0.75:
@@ -83,19 +99,19 @@ async def on_message(message):
                 else:
                     await message.channel.send("An error occured while searching for your anime: " + query)
             elif command == "dev":
-                StaticResponse.erinadev(message.channel)
+                await StaticResponse.erinadev(message.channel)
             elif command == "donate":
-                StaticResponse.erinadonate(message.channel)
+                await StaticResponse.erinadonate(message.channel)
             elif command == "help":
-                StaticResponse.erinahelp(message.channel, message.author)
+                await StaticResponse.erinahelp(message.channel, message.author)
             elif command == "stats":
-                StaticResponse.erinastats(message.channel)
+                await StaticResponse.erinastats(message.channel)
             elif command == "invite":
-                StaticResponse.erinainvite(message.channel)
+                await StaticResponse.erinainvite(message.channel)
     else:
-        if any([flag in str(message.content).lower() for flag in (config.Discord.flags if str(config.Discord.flags).replace(" ", "") not in ["None", ""] else config.Erina.flags)]):
+        if any([flag in str(message.content).lower() for flag in (config.Discord.flags if str(config.Discord.flags).replace(" ", "") not in ["None", "", "[]"] else config.Erina.flags)]):
             listOfResults = []
-            await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND
+            #await message.add_reaction(roger_reaction) # REACT TO SHOW THAT THE BOT HAS UNDESTAND HIS COMMAND
             log("ErinaDiscord", "New image search from @" + str(message.author))
             StatsAppend(DiscordStats.imageSearchHit, f"{str(message.author)}")
             for file in message.attachments:

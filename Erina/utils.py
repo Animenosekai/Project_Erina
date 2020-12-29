@@ -73,6 +73,25 @@ def removeSpaceBefore(string):
 
     return string
 
+def removeSpaceBeforeAndAfter(string):
+    """
+    Removes any space before and after a string.
+    """
+    new_text = string
+    for index, _ in enumerate(string):
+        if string[index] != ' ':
+            new_text = string[index:] + ' '
+            break
+    try:
+        if new_text[-1] == ' ':
+            for index, _ in enumerate(new_text):
+                if new_text[-int(index + 1)] != ' ':
+                    new_text = new_text[:-int(index)]
+                    break
+    except:
+        pass
+    return new_text
+
 def capitalize_string(string):
     """
     Capitalizes a string

@@ -10,10 +10,7 @@ def findImage(tweet):
     """
     Searches for an image in the tweet
     """
-    print("ErinaDebug — Twitter.py line 13: " + str(tweet.entities.get("media", [])))
     for media in tweet.entities.get("media", []):
-        print("ErinaDebug — Twitter.py line 15: " + str(media))
-        print("ErinaDebug — Twitter.py line 16: " + str(media.get("type", "None")))
         if media.get("type", None) == "photo":
             return media['media_url']
     return None
@@ -42,10 +39,8 @@ def isAskingForSauce(tweet):
     accountsChain = []
     currentStatus = tweet
     while currentStatus is not None:
-        print("ErinaDebug — Twitter.py line 45: " + str(currentStatus))
         accountsChain.append(currentStatus.user.id)
         currentStatus = parentTweet(currentStatus)
-    print("ErinaDebug — Twitter.py line 48: " + str(accountsChain))
     if ErinaTwitter.me.id in accountsChain:
         return False
     if tweet.user.id == ErinaTwitter.me.id:

@@ -15,7 +15,7 @@ Thumbnail: {thumbnail}
     indexID=str(api_results.index_id),
     indexName=str(api_results.index_name),
     title=str(api_results.title),
-    link=str(api_results.url),
+    link=str(api_results.urls[0]),
     author=str(api_results.author),
     thumbnail=str(api_results.thumbnail)
 )

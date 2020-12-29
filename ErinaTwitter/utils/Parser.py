@@ -5,7 +5,6 @@ Anime Database Information Parser (for Twitter) for the Erina Project
 Erina Project - 2020
 """
 from Erina.Errors import isAnError
-from Erina.utils import create_nice_list
 from ErinaParser.utils.saucenao_parser import SauceNAOCache
 
 def makeTweet(erinaSearchResponse):
@@ -40,7 +39,7 @@ Genres: {genres}
     episodes=(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?"),
     timing=(('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''),
     studios=(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown"),
-    genres=((str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"),
+    genres=((str(animeResult.genres)) if animeResult.genres is not None else "Unknown"),
     link=((str(animeResult.link)) if animeResult.link is not None else ""),
     description=((str(animeResult.description)) if animeResult.description is not None else "")
 )
@@ -117,7 +116,7 @@ Similarity: {similarity}%
     episodes=(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?"),
     timestamp=(('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''),
     studios=(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown"),
-    genres=((str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"),
+    genres=((str(animeResult.genres)) if animeResult.genres is not None else "Unknown"),
     similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
     link=((str(animeResult.link)) if animeResult.link is not None else ""),
     description=((str(animeResult.description)) if animeResult.description is not None else "")

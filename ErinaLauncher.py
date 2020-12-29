@@ -10,6 +10,11 @@ import sys
 import psutil
 import traceback
 
+"""
+import logging
+logging.basicConfig(level=logging.DEBUG)
+"""
+
 def shutdownErinaServer(num, info):
     """
     SIGTERM, SIGQUIT, SIGINT signals handler --> Shutdowns Erina
@@ -100,9 +105,8 @@ if __name__ == '__main__':
 
         if config.Discord.run:
             log("Erina", "Running the ErinaDiscord Client...")
-            from ErinaDiscord.erina_discordbot import client as discordClient
-            asyncio.get_event_loop().create_task(discordClient.start(config.Discord.keys.token))
-            asyncio.get_event_loop().run_forever()
+            from ErinaDiscord.erina_discordbot import startDiscord
+            startDiscord()
 
     from threading import Thread
     Thread(target=runClients, daemon=True).start()

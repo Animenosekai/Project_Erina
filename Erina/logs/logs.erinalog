@@ -1263,3 +1263,2180 @@
 1609213051    [Erina] Running ErinaServer...
 1609213051    [Error]    [Erina] An error occured while running ErinaServer (<class 'TypeError'>)
 1609213051    [Erina] Starting to check for timeouts and updates...
+1609255895    [Erina] Initializing Erina configuration...
+1609255895    [Erina] ---> Initializing Static File Endpoints
+1609255895    [Erina] ---> Initializing API
+1609255896    [Erina] ---> Initializing ErinaAdmin
+1609255896    [Erina] ---> Initializing Custom Endpoints
+1609255896    [Erina] ---> Initializing ErinaConsole
+1609255896    [Erina] Running ErinaServer...
+1609255896    [Erina] Starting to check for timeouts and updates...
+1609255983    [ErinaDebug] None
+1609255984    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609255989    [ErinaDebug] Stream Hit
+1609255990    [ErinaDebug] Stream Hit
+1609255990    [ErinaDebug] Monitor Mode OFF, Public Account
+1609255990    [ErinaDebug] None
+1609255996    [ErinaDebug] Stream Hit
+1609255998    [ErinaDebug] Stream Hit
+1609255999    [ErinaDebug] Stream Hit
+1609256006    [ErinaDebug] Stream Hit
+1609256010    [ErinaDebug] Stream Hit
+1609256010    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256010    [ErinaDebug] None
+1609256010    [ErinaDebug] Stream Hit
+1609256010    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256010    [ErinaDebug] None
+1609256010    [ErinaDebug] Stream Hit
+1609256010    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256010    [ErinaDebug] None
+1609256012    [ErinaDebug] Stream Hit
+1609256012    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256012    [ErinaDebug] http://pbs.twimg.com/media/EqalEHEWMAERYbV.jpg
+1609256015    [ErinaDebug] Stream Hit
+1609256015    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256016    [ErinaDebug] http://pbs.twimg.com/ext_tw_video_thumb/926293109457276928/pu/img/AMCDKVJrhrd0uYOE.jpg
+1609256025    [ErinaDebug] Stream Hit
+1609256025    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256025    [ErinaDebug] None
+1609256035    [ErinaDebug] Stream Hit
+1609256038    [ErinaDebug] Stream Hit
+1609256038    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256038    [ErinaDebug] None
+1609256041    [ErinaDebug] Stream Hit
+1609256041    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256041    [ErinaDebug] None
+1609256044    [ErinaDebug] Stream Hit
+1609256044    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256044    [ErinaDebug] None
+1609256050    [ErinaDebug] Stream Hit
+1609256057    [ErinaDebug] Stream Hit
+1609256066    [ErinaDebug] Stream Hit
+1609256066    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256066    [ErinaDebug] None
+1609256071    [ErinaDebug] Stream Hit
+1609256071    [ErinaDebug] Stream Hit
+1609256092    [ErinaDebug] Stream Hit
+1609256093    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256093    [ErinaDebug] None
+1609256100    [ErinaDebug] Stream Hit
+1609256100    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256100    [ErinaDebug] None
+1609256103    [ErinaDebug] Stream Hit
+1609256105    [ErinaDebug] Stream Hit
+1609256111    [ErinaDebug] Stream Hit
+1609256118    [ErinaDebug] Stream Hit
+1609256121    [ErinaDebug] Stream Hit
+1609256121    [ErinaDebug] Stream Hit
+1609256122    [ErinaDebug] Stream Hit
+1609256126    [ErinaDebug] Stream Hit
+1609256127    [ErinaDebug] Stream Hit
+1609256128    [ErinaDebug] Stream Hit
+1609256129    [ErinaDebug] Stream Hit
+1609256134    [ErinaDebug] Stream Hit
+1609256134    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256134    [ErinaDebug] None
+1609256135    [Erina] Restarting...
+1609256136    [Erina] Initializing Erina configuration...
+1609256136    [Erina] ---> Initializing Static File Endpoints
+1609256136    [Erina] ---> Initializing API
+1609256136    [Erina] ---> Initializing ErinaAdmin
+1609256137    [Erina] ---> Initializing Custom Endpoints
+1609256137    [Erina] ---> Initializing ErinaConsole
+1609256137    [Erina] Running ErinaServer...
+1609256137    [Erina] Starting to check for timeouts and updates...
+1609256138    [ErinaDebug] None
+1609256138    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609256139    [ErinaDebug] RT @AUnhingedGamer: Hey Rean, let's go to this famous place in Japan called Kamurocho, I heard they had Ultimate drip and anime! https://t.…
+1609256146    [ErinaDebug] RT @acarboni: Guys, get over here. We’re recommending anime to Jim Belushi.
+1609256146    [ErinaDebug] Jim Belushi is a weeb!
+1609256146    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256146    [ErinaDebug] None
+1609256146    [ErinaDebug] RT @thisivanguevara: We have reached the “Jim Belushi asking for Anime recommendations” part of the pandemic
+1609256151    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256154    [ErinaDebug] I feel like Cowboy Bebop is the easy recommend here. Different in tone certainly, but the music is such a part of t… https://t.co/j1d9hbi1Ee
+1609256154    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256154    [ErinaDebug] None
+1609256161    [ErinaDebug] RT @micah_gj: Did not have "Jim Belushi is a secret weeb" on my 2020 bingo card https://t.co/5lVwNSfeyz
+1609256166    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256170    [ErinaDebug] RT @pattonoswalt: Film Twitter, ASSEMBLE. Always a good thing to point someone toward good anime. https://t.co/iOvhuOWCwK
+1609256176    [ErinaDebug] RT @AUnhingedGamer: Hey Rean, let's go to this famous place in Japan called Kamurocho, I heard they had Ultimate drip and anime! https://t.…
+1609256181    [ErinaDebug] what anime is this?
+1609256181    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256181    [ErinaDebug] None
+1609256183    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256189    [ErinaDebug] This makes me so happy haha. Btw Belushi was amazing in My Neighbors the Yamadas.
+1609256189    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256189    [ErinaDebug] None
+1609256191    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256207    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256207    [ErinaDebug] ....why did I think Jim Belushi died? Where tf have you been
+1609256207    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256207    [ErinaDebug] None
+1609256210    [ErinaDebug] RT @kukuruyo: I see the comments and i see the same mistake i always critizice. Dudes, if the anime this guy likes are Ghibli and Your Name…
+1609256212    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256213    [ErinaDebug] rewatching HXH.Ghad, this anime is really top-tier for making me feel like I'm watching it for the very first tim… https://t.co/K7qojYoQLp
+1609256213    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256213    [ErinaDebug] None
+1609256215    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256215    [ErinaDebug] what anime is this? https://t.co/Yzv3LwDSL8
+1609256215    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256215    [ErinaDebug] http://pbs.twimg.com/media/EqamAMKXUAEv56Q.jpg
+1609256215    [ErinaTwitter] New asking hit from @animenosekai_
+1609256215    [ErinaSearch] Searching for an image...
+1609256215    [ErinaHash] Hashing an image...
+1609256216    [ErinaCaches] Caching bebe3e3e3a3a3c28 trace.moe data...
+1609256220    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x124440fd0>
+1609256220    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A object of type 'AnimeGenres' has no len() error occured while handling Erina's Twitter Stream
+1609256374    [Erina] Restarting...
+1609256374    [Erina] Initializing Erina configuration...
+1609256374    [Erina] ---> Initializing Static File Endpoints
+1609256374    [Erina] ---> Initializing API
+1609256375    [Erina] ---> Initializing ErinaAdmin
+1609256375    [Erina] ---> Initializing Custom Endpoints
+1609256375    [Erina] ---> Initializing ErinaConsole
+1609256375    [Erina] Running ErinaServer...
+1609256375    [Erina] Starting to check for timeouts and updates...
+1609256376    [ErinaDebug] None
+1609256377    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609256379    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256381    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256390    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256391    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256394    [ErinaDebug] Gon. I don't know why y'all are willing to extend loving and open hands to killua and Kurapika and even that goddam… https://t.co/auZLS1HT9J
+1609256394    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256394    [ErinaDebug] None
+1609256397    [ErinaDebug] RT @RiseFallNick: @JimBelushi Jim, a really good Anime I can recommend is Keep Your Hands Off Eizouken! Not only a visual marvel, but it's…
+1609256399    [ErinaDebug] They got them all on HBO Max
+1609256399    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256399    [ErinaDebug] None
+1609256400    [ErinaDebug] Get Him hip 😂😂😂 https://t.co/jATEbFAv1D
+1609256400    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256400    [ErinaDebug] http://pbs.twimg.com/tweet_video_thumb/EqamtO4WMAEKuT7.jpg
+1609256405    [ErinaDebug] RT @Danny8bit: let’s all get Jim Belushi to watch Cowboy Bebop and Trigun, y’all
+1609256410    [ErinaDebug] like this is my general gaming/anime/hobby acct so i talk about everything ((including my hatred of stardew)) but j… https://t.co/Xw2CvVIbr7
+1609256410    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256410    [ErinaDebug] None
+1609256419    [ErinaDebug] i love it here
+1609256419    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256419    [ErinaDebug] None
+1609256426    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256426    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256427    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256427    [ErinaDebug] Dude... I honestly don't care that you watch anime. Go on! Watch it all day long! I don't care!What I do care abo… https://t.co/ipPFSH9Xlo
+1609256427    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256427    [ErinaDebug] None
+1609256430    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256438    [ErinaDebug] RT @adultswim: Come by Saturday at midnight https://t.co/Y0cTJfbkL6 https://t.co/zBJRqcN91z
+1609256441    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256443    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256446    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256453    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256461    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256463    [ErinaDebug] RT @thisivanguevara: We have reached the “Jim Belushi asking for Anime recommendations” part of the pandemic
+1609256463    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256470    [ErinaDebug] Jim is like "I like Studio Ghibli and Your Name" and twitter is like I KNOW THIS ANIME WHERE GIRLs FIGHT BY BAsHING… https://t.co/d2DsL05fQw
+1609256470    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256470    [ErinaDebug] None
+1609256479    [ErinaDebug] Let's get Jim Belushi to watch Beastars https://t.co/26kX5XpAWV
+1609256479    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256479    [ErinaDebug] http://pbs.twimg.com/tweet_video_thumb/EqanA0GVgAEHYkx.jpg
+1609256480    [ErinaDebug] I literally cannot fathom what I see here.
+1609256480    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256480    [ErinaDebug] None
+1609256482    [ErinaDebug] the world: yay 2021 is almost here2020: BUT BEFORE YOU GO
+1609256482    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256482    [ErinaDebug] None
+1609256482    [ErinaDebug] Evangelion! Really cute story about angels.
+1609256482    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256482    [ErinaDebug] None
+1609256483    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256502    [ErinaDebug] This made me big smile.
+1609256502    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256502    [ErinaDebug] None
+1609256504    [ErinaDebug] @davidjtg08 safe to say anime is mainstream as it can be now
+1609256504    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256504    [ErinaDebug] None
+1609256513    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256532    [ErinaDebug] There is a lot of characters that I want to defend since some people don't really understand them, especially with… https://t.co/6CZ1zMnXdR
+1609256532    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256532    [ErinaDebug] None
+1609256535    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256542    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256543    [ErinaDebug] Not only does @JimBelushi operate a #cannabis farm, he also enjoys amine in his free time.
+1609256543    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256543    [ErinaDebug] None
+1609256543    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256546    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256549    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256551    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256551    [ErinaDebug] @MBNHedger How does it not?? He likes Ghibli and Your name and those two are a very particular kind of anime.It's… https://t.co/5sBShGGaCK
+1609256551    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256552    [ErinaDebug] None
+1609256552    [ErinaDebug] What timeline are we in
+1609256552    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256552    [ErinaDebug] None
+1609256555    [ErinaDebug] At this weekend, I plan to watch Anime Features type of movie,then I will read a book named &lt;Into the Wild&gt; , and l… https://t.co/8f0dLZbCmj
+1609256555    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256555    [ErinaDebug] None
+1609256559    [ErinaDebug] God give me the blessed, sweet and pure innocence of Jim Belushi going on the internet and asking, sincerely, if th… https://t.co/Pl1puTMMeZ
+1609256559    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256559    [ErinaDebug] None
+1609256559    [ErinaDebug] RT @adultswim: Come by Saturday at midnight https://t.co/zBJRqcN91z
+1609256563    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256577    [ErinaDebug] RT @nomchompskey: Let's get Jim Belushi to watch Beastars https://t.co/26kX5XpAWV
+1609256583    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256589    [ErinaDebug] Your Name had me ugly crying HARD.
+1609256589    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256589    [ErinaDebug] None
+1609256592    [ErinaDebug] how many of the replues are gonna be recommending shonen to this dude and how many are gonna be recommending hentai
+1609256592    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256592    [ErinaDebug] None
+1609256602    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256605    [ErinaDebug] RT @acarboni: Guys, get over here. We’re recommending anime to Jim Belushi.
+1609256610    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256613    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256614    [ErinaDebug] RT @adultswim: Come by Saturday at midnight https://t.co/Y0cTJfbkL6 https://t.co/zBJRqcN91z
+1609256616    [ErinaDebug] RT @FutureDream1997: When I get a beagle puppy - I would love to name her; Touka from the manga and anime series; Tokyo Ghoul as she's one…
+1609256617    [ErinaDebug] fuck off to people who make fun of ppl who can’t afford name brands, depop resellers, straight ppl without pronouns… https://t.co/bJevPl37QI
+1609256617    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256617    [ErinaDebug] None
+1609256619    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256621    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256623    [ErinaDebug] @Riggs_225 Have you tried watching Bloom Into You it is the best Yuri anime.I can't say anything about this one be… https://t.co/nKV7Vz89Ud
+1609256623    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256624    [ErinaDebug] None
+1609256624    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256627    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256631    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256636    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256637    [ErinaDebug] RT @cliptarine: fuck off to people who make fun of ppl who can’t afford name brands, depop resellers, straight ppl without pronouns in bio,…
+1609256643    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256643    [ErinaDebug] I feel like Jim Belushi needing anime recommendations from Twitter is the best Chaotic Neutral timeline we could’ve… https://t.co/TP31H7UUdk
+1609256643    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256643    [ErinaDebug] None
+1609256647    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256648    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256653    [ErinaDebug] RT @acarboni: Guys, get over here. We’re recommending anime to Jim Belushi. https://t.co/wSwM0Bf4YA
+1609256655    [ErinaDebug] Jim Belushi is trending because he asked the Internet to make anime recommendations. It took until December 29th… https://t.co/ovo8sAgS5j
+1609256655    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256655    [ErinaDebug] None
+1609256660    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256660    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256674    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256683    [ErinaDebug] RT @acarboni: Guys, get over here. We’re recommending anime to Jim Belushi.
+1609256688    [ErinaDebug] RT @JimBelushi: Any anime fans out there? I always loved Studio Ghibli after I worked with them - however I don’t know much else. But, I…
+1609256689    [Erina] Restarting...
+1609256690    [Erina] Initializing Erina configuration...
+1609256690    [Erina] ---> Initializing Static File Endpoints
+1609256690    [Erina] ---> Initializing API
+1609256690    [Erina] ---> Initializing ErinaAdmin
+1609256691    [Erina] ---> Initializing Custom Endpoints
+1609256691    [Erina] ---> Initializing ErinaConsole
+1609256691    [Erina] Running ErinaServer...
+1609256691    [Erina] Starting to check for timeouts and updates...
+1609256691    [Erina] Running the ErinaTwitter Client...
+1609256692    [ErinaDebug] None
+1609256693    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609256701    [ErinaDebug] Is this some 2020 joke?
+1609256701    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256701    [ErinaDebug] None
+1609256704    [ErinaDebug] Maybe you guys wanna help out
+1609256704    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256704    [ErinaDebug] None
+1609256717    [ErinaDebug] @JimBelushi Anime planet - reviews, info, sorting by type etc.Violet Evergarden is amazing.With a lot of things… https://t.co/DJpI8Pjejc
+1609256717    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256718    [ErinaDebug] None
+1609256719    [ErinaDebug] Bruh people recommending Jim Belushi hot garbage
+1609256719    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256719    [ErinaDebug] None
+1609256719    [ErinaDebug] Jim Belushi is now the uncle you unintentionally got into anime after he saw you watching Samurai Champloo that one… https://t.co/91lGqhinMR
+1609256719    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256719    [ErinaDebug] None
+1609256722    [ErinaDebug] 2020 is so wild.
+1609256722    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256722    [ErinaDebug] None
+1609256790    [ErinaDebug] @JimBelushi Hi Jim. As a 41 year old who got into anime 3 years ago, I'd recommend A Silent Voice, Weathering With… https://t.co/IlI1LptydX
+1609256791    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256791    [ErinaDebug] None
+1609256793    [ErinaDebug] Bruh it’s 2020 that joke is DEAD
+1609256793    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256793    [ErinaDebug] None
+1609256816    [ErinaDebug] @AnimesSources @HamzaMacabago The name of anime pls
+1609256816    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256816    [ErinaDebug] http://pbs.twimg.com/media/EqaOlH9W4AIJ1oj.jpg
+1609256817    [ErinaTwitter] New asking hit from @MyLeftUrRight1
+1609256817    [ErinaSearch] Searching for an image...
+1609256817    [ErinaHash] Hashing an image...
+1609256817    [Erina] Restarting...
+1609256817    [Erina] Initializing Erina configuration...
+1609256817    [Erina] ---> Initializing Static File Endpoints
+1609256817    [Erina] ---> Initializing API
+1609256818    [Erina] ---> Initializing ErinaAdmin
+1609256818    [Erina] ---> Initializing Custom Endpoints
+1609256818    [Erina] ---> Initializing ErinaConsole
+1609256818    [Erina] Running ErinaServer...
+1609256818    [Erina] Starting to check for timeouts and updates...
+1609256819    [ErinaDebug] None
+1609256820    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609256822    [ErinaDebug] ONE PIECE and JOJO’S BIZARRE ADVENTURE
+1609256822    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256822    [ErinaDebug] None
+1609256824    [ErinaDebug] I got you Jim, this is the just the start of a new journey ;) https://t.co/dg3iC3m2eB
+1609256824    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256824    [ErinaDebug] http://pbs.twimg.com/media/EqaoVCAXIAAVMXb.jpg
+1609256827    [ErinaDebug] hunter x hunter or my hero academia are some good ones
+1609256827    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256827    [ErinaDebug] None
+1609256838    [ErinaDebug] BRUH. I don't get this idea. You're only allowed to speak if you praise the anime otherwise keep quiet. What kind o… https://t.co/C0PXghhiLH
+1609256838    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256838    [ErinaDebug] None
+1609256879    [ErinaDebug] Omg, never thought I'd be alive to see this day. 🤗
+1609256879    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256879    [ErinaDebug] None
+1609256892    [ErinaDebug] @JimBelushi Weathering with You is by the same people as Your Name.  Not quite as good, but still excellent!Also:… https://t.co/SRjL8p3kcc
+1609256892    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256892    [ErinaDebug] None
+1609256902    [ErinaDebug] What anime is this????? https://t.co/WCgrWuzZyA
+1609256902    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256902    [ErinaDebug] http://pbs.twimg.com/media/Eqaon0LXcAEBPdf.jpg
+1609256902    [ErinaTwitter] New asking hit from @animenosekai_
+1609256902    [ErinaSearch] Searching for an image...
+1609256902    [ErinaHash] Hashing an image...
+1609256902    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x14df55c10>
+1609256902    [ErinaDebug] Here is the sauce!Anime: Hitoribocchi no Marumaru SeikatsuEpisode: 1/12 (at around 0:21:14.170000)Studio: [C2C]Genres: Comedy, Slice Of Lifehttps://anilist.co/anime/101386Hitori Bocchi suffers from extreme social anxiety, she’s not good at talking to people, takes pret...
+1609256902    [ErinaDebug] Jim, watch A Silent Voice  thank me later.
+1609256902    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256902    [ErinaDebug] None
+1609256907    [ErinaDebug] @animenosekai_ Here is the sauce!Anime: Hitoribocchi no Marumaru SeikatsuEpisode: 1/12 (at around 0:21:14.170000… https://t.co/M999DLyp1P
+1609256908    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256908    [ErinaDebug] http://pbs.twimg.com/media/Eqaon0LXcAEBPdf.jpg
+1609256914    [ErinaDebug] If you don't mind older works... Tenchi Muyo! Ryo-Ohki (first 3 OVA series)Lupin III: Castle of CagliostroVandr… https://t.co/o40sbkpnl4
+1609256914    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256914    [ErinaDebug] None
+1609256916    [ErinaDebug] Oh. Oh no. No no no. As a reformed otaku...this is a bad question. Anime has different genres ranging from cute kid… https://t.co/p6A42cEKuO
+1609256916    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256916    [ErinaDebug] None
+1609256959    [ErinaDebug] @lol_lavocado @hasanthehun I mean I'm not opposed to animation but king of the hill isn't anime and south park isn'… https://t.co/uGa9y6HQND
+1609256959    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256959    [ErinaDebug] None
+1609256960    [ErinaDebug] @littlediva0921 :000 heres my application:my name's teegan, toby, or bow ! i play minecraft, roblox, among us, e… https://t.co/3ZznzVyiOu
+1609256960    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256960    [ErinaDebug] None
+1609256971    [ErinaDebug] i should really give my other favorite anime some attention but....people... penguindrum is so good . ik its alre… https://t.co/uOLSlxxUPt
+1609256971    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256971    [ErinaDebug] None
+1609256974    [ErinaDebug] @yofriendmarcus This was one of the first anime series I watched from start to finish. The theme is what caught my… https://t.co/rPgPq8Jg96
+1609256975    [ErinaDebug] Monitor Mode OFF, Public Account
+1609256975    [ErinaDebug] None
+1609257004    [ErinaDebug] 5 Centimeters Per Second
+1609257004    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257004    [ErinaDebug] None
+1609257009    [ErinaDebug] @sdshan8 @Sippin_Cocoa Anime Sauce for the last two
+1609257009    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257009    [ErinaDebug] http://pbs.twimg.com/media/EqQP3BxVQAEAqir.jpg
+1609257010    [ErinaTwitter] New asking hit from @CJ215600286919
+1609257010    [ErinaSearch] Searching for an image...
+1609257010    [ErinaHash] Hashing an image...
+1609257011    [ErinaCaches] Caching 1c1c3c3c3c180000 trace.moe data...
+1609257014    [ErinaCaches] Caching 1c1c3c3c3c180000 SauceNAO data...
+1609257015    [Error]    [ErinaCaches] ERINA_CONVERSION: An error occured while converting SauceNAO API Data to a caching format
+1609257015    [Error]    [ErinaCaches] NOT_IMPLEMENTED: Not implemented yet.
+1609257015    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A 'NoneType' object has no attribute 'similarity' error occured while handling Erina's Twitter Stream
+1609257246    [Erina] Restarting...
+1609257247    [Erina] Initializing Erina configuration...
+1609257247    [Erina] ---> Initializing Static File Endpoints
+1609257247    [Erina] ---> Initializing API
+1609257248    [Erina] ---> Initializing ErinaAdmin
+1609257250    [Erina] ---> Initializing Custom Endpoints
+1609257250    [Erina] ---> Initializing ErinaConsole
+1609257250    [Erina] Running ErinaServer...
+1609257250    [Erina] Starting to check for timeouts and updates...
+1609257250    [Erina] Running the ErinaTwitter Client...
+1609257251    [ErinaDebug] None
+1609257252    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609257294    [ErinaDebug] @marjolycookies On console, yeah and it’s sad. The last F-Zero game was the lesser talked about GP Legend on GameBo… https://t.co/p4PKN8djAq
+1609257294    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257295    [ErinaDebug] None
+1609257301    [ErinaDebug] Watch anything by Satoshi Kon. Mindblowing stuff.
+1609257301    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257301    [ErinaDebug] None
+1609257341    [ErinaDebug] Hear us out, there’s a block every Saturday night at midnight on adult swim#Toonami
+1609257341    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257341    [ErinaDebug] None
+1609257357    [ErinaDebug] Help him out guys!
+1609257357    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257357    [ErinaDebug] None
+1609257369    [ErinaDebug] bye this is how i do my notes to study and i get so flustered anytime someone asks for my notes wkdjwjdjwi LIKE OKA… https://t.co/XX8gPwIzxc
+1609257369    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257369    [ErinaDebug] None
+1609257370    [ErinaDebug] Oh, I'm sure this will go over well.Anime is a cool medium, if you keep away from the painfully weird stuff. Atta… https://t.co/BND6ISXjQV
+1609257370    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257370    [ErinaDebug] None
+1609257427    [ErinaDebug] This is what quarantine has done to the weebs *moment of silence*
+1609257427    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257427    [ErinaDebug] None
+1609257431    [ErinaDebug] Oh, I'm sure this will go over well.Anime is a cool medium, if you keep away from the painfully weird stuff. Atta… https://t.co/oAhu953Nt1
+1609257431    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257431    [ErinaDebug] None
+1609257432    [ErinaDebug] Mushishi
+1609257432    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257432    [ErinaDebug] None
+1609257436    [ErinaDebug] Perfect Blue, Paprika, Weathering With You, Ghost in the Shell.
+1609257436    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257436    [ErinaDebug] None
+1609257483    [ErinaDebug] man said he enjoyed studio ghibli and your name and ppl on here went straight to evangelion this is why i hate anim… https://t.co/v345iJRZGF
+1609257483    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257483    [ErinaDebug] None
+1609257487    [ErinaDebug] Never thought that i would see a post of jim belushi becoming an anime fan.✨I would recommend:keep your hands off… https://t.co/RpTLULKV7W
+1609257487    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257487    [ErinaDebug] None
+1609257494    [ErinaDebug] Looks so good, I can’t wait to continue anime wano arc later
+1609257494    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257494    [ErinaDebug] None
+1609257526    [ErinaDebug] @JimBelushi If you are entering this world, first you should know It is so vast and versatile as cinema. There’s an… https://t.co/ALon3haiBH
+1609257527    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257527    [ErinaDebug] None
+1609257528    [ErinaDebug] Karakuri circusYou will love that one
+1609257528    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257528    [ErinaDebug] None
+1609257530    [ErinaDebug] @idoruler My guess is that he’s trying to make a reference on how people attribute anime fans to pedophilia because… https://t.co/U1hlLsIwhQ
+1609257530    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257531    [ErinaDebug] None
+1609257532    [ErinaDebug] Your Name is trending, I'm glad it is it's personally my favorite anime of all time
+1609257532    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257532    [ErinaDebug] None
+1609257545    [ErinaDebug] @GameOverGreggy, what is happening here? I guess we'll send him @BlessingJr &amp; @SadBoyBarrett's way...
+1609257545    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257545    [ErinaDebug] None
+1609257547    [ErinaDebug] The only Final Fantasy game in the last 25 years that has any soul or creativity is Final Fantasy 9. Everything els… https://t.co/L2ohSuZCWB
+1609257547    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257547    [ErinaDebug] None
+1609257555    [ErinaDebug] Did not have “Jim Belushi gets into anime” on my 2020 bingo card. But it’s a pleasant surprise.
+1609257555    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257555    [ErinaDebug] None
+1609257580    [ErinaDebug] twin peaks changed this man
+1609257580    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257580    [ErinaDebug] None
+1609257595    [ErinaDebug] Spirited Away and Howl's Moving Castle are works my family enjoy watching all the time.
+1609257595    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257595    [ErinaDebug] None
+1609257613    [ErinaDebug] Can I recommend the work of Satoshi Kon. Tokyo Godfathers (great time around Christmas)
+1609257613    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257613    [ErinaDebug] None
+1609257615    [ErinaDebug] Not me but wow. Jim Belushi?
+1609257615    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257615    [ErinaDebug] None
+1609257647    [ErinaDebug] GUYS! THIS IS IT! THIS IS THE MOMENT WE'VE BEEN WAITING FOR! GO!
+1609257647    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257647    [ErinaDebug] None
+1609257666    [ErinaDebug] I step out of looking at anime on twitter for one moment and this is what i get????
+1609257666    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257666    [ErinaDebug] None
+1609257666    [ErinaDebug] Movies: Perfect Blue, Summer Wars, Wolf Children, Children of the Sea, A Silent Voice, Ghost in the Shell, Akira, W… https://t.co/YUyJAlq5ui
+1609257666    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257666    [ErinaDebug] None
+1609257668    [ErinaDebug] hi jim and anyone in the qrts Kaiji is a is a Japanese manga series written and illustrated by Nobuyuki Fukumoto. I… https://t.co/YLN0x3HOEu
+1609257668    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257668    [ErinaDebug] None
+1609257727    [ErinaDebug] Why is this so amusing?!
+1609257727    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257727    [ErinaDebug] None
+1609257732    [ErinaDebug] @grantthethief It's adorable how he said he hadn't really thought about it since **working** on Spirited Away and t… https://t.co/aFZ6mjF7Mk
+1609257732    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257733    [ErinaDebug] None
+1609257733    [ErinaDebug] entire characters from highschool of the dead
+1609257733    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257733    [ErinaDebug] None
+1609257738    [ErinaDebug] i love this
+1609257738    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257738    [ErinaDebug] None
+1609257769    [ErinaDebug] Your name literally from dragon ball bruv aint no way you wanna talk about quality wearin that badge of shame 😭😭
+1609257769    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257769    [ErinaDebug] None
+1609257784    [ErinaDebug] [Mobile] Mash Kyrielight [Fate/GO] (2880x5120)Note: A lower resolution image was used for this tweetSource:… https://t.co/1DB42M8G27
+1609257784    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257784    [ErinaDebug] None
+1609257796    [ErinaDebug] Me coming up with a list of anime to send to Jim. https://t.co/nYgmQd7UcA
+1609257796    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257796    [ErinaDebug] http://pbs.twimg.com/tweet_video_thumb/EqasCbgW8AI1xVI.jpg
+1609257800    [ErinaDebug] Did you know Mr Belushi has a cannabis farm?I'm sure he's got a lot of suggestions but I was hoping some of my an… https://t.co/2YZ6ilZDlb
+1609257800    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257800    [ErinaDebug] None
+1609257803    [ErinaDebug] Petition to get Jim Belushi to watch the entire (one) season of Prison School
+1609257803    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257803    [ErinaDebug] None
+1609257812    [ErinaDebug] @JimBelushi pls start doing anime english dubs
+1609257812    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257812    [ErinaDebug] None
+1609257817    [ErinaDebug] In my adventures of binge watching shows I’ve come across one that I’ve heard about but never seen and the name is… https://t.co/Y9JFeNySYI
+1609257817    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257817    [ErinaDebug] None
+1609257832    [ErinaDebug] This is fuckin' wholesome
+1609257832    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257832    [ErinaDebug] None
+1609257858    [ErinaDebug] What's your top 10 favorite anime songs?Mine's:- Peace Sign- Gurenge- Fight Together- Hero too- Is There Sti… https://t.co/hOkye5MTnx
+1609257858    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257858    [ErinaDebug] None
+1609257865    [ErinaDebug] Come check out this podcast now!
+1609257865    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257865    [ErinaDebug] None
+1609257878    [ErinaDebug] I MEAN WHAT IS THE MAIN CHARACTER'S DEAL? ONE AFTER THE OTHER LIKE THAT SO EASILY? THOSE POOR DECISIONS REALLY THRO… https://t.co/hG1YsBjSxS
+1609257879    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257879    [ErinaDebug] None
+1609257879    [ErinaDebug] @HentaiAdvisor @Goddess_BigBoob @Slaytal @TypicalHentai Need the sauce? I found it in the H-Anime database!𝗧𝗶𝘁𝗹𝗲:… https://t.co/kpNlOvsaEG
+1609257879    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257879    [ErinaDebug] None
+1609257896    [ErinaDebug] i told my sisters bf that i started watching owari no seraph some time ago, and he didnt know what it is and my sis… https://t.co/aHmTWuP3OF
+1609257896    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257896    [ErinaDebug] None
+1609257914    [ErinaDebug] Jim Belushi, watch Love Live you coward
+1609257914    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257914    [ErinaDebug] None
+1609257920    [ErinaDebug] @Jushin would recommend High Score Girl
+1609257920    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257920    [ErinaDebug] None
+1609257923    [ErinaDebug] That isn't what he means, he's not saying you can't criticize an anime.He's saying you shouldn't slander an anime,… https://t.co/9c3frOO7AK
+1609257923    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257923    [ErinaDebug] None
+1609257924    [ErinaDebug] Finishing 2020 by recommending anime to Jim Belushi
+1609257924    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257924    [ErinaDebug] None
+1609257924    [ErinaDebug] Please, please tell me someone tricked him into watching Fruits Basket or Bible Black
+1609257924    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257924    [ErinaDebug] None
+1609257933    [ErinaDebug] Some characters are said to be white in the show so i go with what is said but if its a japanese girl or dude i aut… https://t.co/gbeeRy4Hg1
+1609257933    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257933    [ErinaDebug] None
+1609257937    [ErinaDebug] [Desktop] Winter Photography [Original] (5120x2880)Note: A lower resolution image was used for this tweetSource… https://t.co/GkLXJwqw3g
+1609257937    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257937    [ErinaDebug] None
+1609257937    [ErinaDebug] All the anime suggestions in the thread https://t.co/xKpCIOvGDW
+1609257937    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257937    [ErinaDebug] http://pbs.twimg.com/tweet_video_thumb/EqaskyHVQAE960H.jpg
+1609257945    [ErinaDebug] @JimBelushi @CowboyBebop is a solid Space Western show.  I've held this as my Standard to all other anime shows.L… https://t.co/x9SFEyBn8z
+1609257945    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257946    [ErinaDebug] None
+1609257950    [ErinaDebug] explore it yourselfit's a jungle of anime. find for yourself what blows you awayi mean, how do you find out "yo… https://t.co/fgQR9WnzSn
+1609257950    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257950    [ErinaDebug] None
+1609257955    [ErinaDebug] stan trigun
+1609257955    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257955    [ErinaDebug] None
+1609257965    [ErinaDebug] this is so funny anyways sailor moon sailor moon sailor mooooooon
+1609257965    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257965    [ErinaDebug] None
+1609257976    [ErinaDebug] @AttackonLegend not something I'd have ever expected to see
+1609257976    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257976    [ErinaDebug] None
+1609257996    [ErinaDebug] If you haven’t watched Wolf Children you are doing yourself a disservice
+1609257996    [ErinaDebug] Monitor Mode OFF, Public Account
+1609257996    [ErinaDebug] None
+1609258006    [ErinaDebug] You weebs gonna give him some weird hentai to watch lol
+1609258006    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258006    [ErinaDebug] None
+1609258016    [ErinaDebug] I shed a tear whenever a weeb is born.
+1609258016    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258016    [ErinaDebug] None
+1609258017    [ErinaDebug] Start with the big 3 Jim 😂 DBZ, One Piece and Naruto, then move on to what you feel
+1609258017    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258017    [ErinaDebug] None
+1609258026    [ErinaDebug] @dbeschon @hasanthehun It is a form of cartoon, just a different style. Hasan is right though, there are some maste… https://t.co/eSrUpim3bZ
+1609258036    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258042    [ErinaDebug] None
+1609258042    [ErinaDebug] I shed a tear whenever a weeb is born.
+1609258042    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258042    [ErinaDebug] None
+1609258042    [ErinaDebug] @dbeschon @hasanthehun It is a form of cartoon, just a different style. Hasan is right though, there are some maste… https://t.co/eSrUpim3bZ
+1609258051    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258058    [ErinaDebug] None
+1609258058    [ErinaDebug] Start with the big 3 Jim 😂 DBZ, One Piece and Naruto, then move on to what you feel
+1609258058    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258058    [ErinaDebug] None
+1609258070    [ErinaDebug] love live
+1609258070    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258070    [ErinaDebug] None
+1609258125    [ErinaDebug] For anyone looking for anime recommendations check out the comments 😊
+1609258125    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258125    [ErinaDebug] None
+1609258144    [ErinaDebug] somewhere a father is disappointed in his son
+1609258144    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258144    [ErinaDebug] None
+1609258148    [ErinaDebug] Gonna do what I always do when waiting for new anime seasons to begin.That is to wait for all the shows I'm intere… https://t.co/BcEZiCEZWH
+1609258148    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258148    [ErinaDebug] None
+1609258168    [ErinaDebug] Loved #YourName and just ordered #WeatheringWithYou on bluray. Looks like in the game genre. Also consider watching… https://t.co/11xJEE2YGM
+1609258168    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258168    [ErinaDebug] None
+1609258182    [ErinaDebug] this is not daiya or anime related but what the eff... haseul coming home... 🥺
+1609258182    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258182    [ErinaDebug] None
+1609258184    [ErinaDebug] @7awliet @hasanthehun But WHAT is the style? That's what I'm trying to ask. No anime fan has ever been able to tell… https://t.co/ktzbhIvJce
+1609258184    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258185    [ErinaDebug] None
+1609258192    [ErinaDebug] What is your favorite anime moment from this decade https://t.co/bMPm7haJNZ
+1609258192    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258192    [ErinaDebug] http://pbs.twimg.com/media/EqatjBhXAAY7L9S.jpg
+1609258195    [ErinaDebug] I certainly did not have this on my "WTF 2020" bingo card.
+1609258195    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258195    [ErinaDebug] None
+1609258207    [ErinaDebug] @MBNHedger @kukuruyo "you should try harder man testicle in cum sauce" p.s. yos asked for suggestions - generic ech… https://t.co/1YMJjAIXOJ
+1609258207    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258207    [ErinaDebug] None
+1609258212    [ErinaDebug] I LOOKED UP ANIME HALBERD BC THOSE ARE TWO THINGS I LIKE AND I FOUND THE WORST POSSIBLE IMAGE EVER AAA IM IN PAIN W… https://t.co/PnpmyR23Wn
+1609258212    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258212    [ErinaDebug] None
+1609258230    [ErinaDebug] A Silent voice
+1609258230    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258230    [ErinaDebug] None
+1609258232    [ErinaDebug] OK but what anime is this? https://t.co/4E4Gs3ZJRn
+1609258232    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258232    [ErinaDebug] None
+1609258237    [ErinaDebug] @JimBelushi To name some of my favorites: Your lie in April, Toradora!, March Comes in Like a Lion, and Naruto of c… https://t.co/HvHcHVod7j
+1609258237    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258238    [ErinaDebug] None
+1609258254    [ErinaDebug] Oh man.  You do not know what tsunami you have just called down upon yourself.
+1609258254    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258254    [ErinaDebug] None
+1609258272    [ErinaDebug] this isn't the timeline I thought I'd wake up in today
+1609258272    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258272    [ErinaDebug] None
+1609258282    [ErinaDebug] release the hounds
+1609258282    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258282    [ErinaDebug] None
+1609258285    [ErinaDebug] This is so funny wtf
+1609258285    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258285    [ErinaDebug] None
+1609258296    [ErinaDebug] @greenanimegirls Is the name of this anime 'fire emblem: radiant dawn'?
+1609258296    [ErinaDebug] Monitor Mode OFF, Public Account
+1609258297    [ErinaDebug] http://pbs.twimg.com/media/EqaL408W4AEYXd9.png
+1609258297    [ErinaTwitter] New asking hit from @be_Sa10
+1609258297    [ErinaSearch] Searching for an image...
+1609258297    [ErinaHash] Hashing an image...
+1609258298    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A cannot write mode RGBA as JPEG error occured while handling Erina's Twitter Stream
+1609259298    [Erina] Goodbye!
+1609259301    [Erina] Initializing Erina configuration...
+1609259301    [Erina] ---> Initializing Static File Endpoints
+1609259301    [Erina] ---> Initializing API
+1609259302    [Erina] ---> Initializing ErinaAdmin
+1609259302    [Erina] ---> Initializing Custom Endpoints
+1609259302    [Erina] ---> Initializing ErinaConsole
+1609259302    [Erina] Running ErinaServer...
+1609259302    [Erina] Starting to check for timeouts and updates...
+1609259303    [ErinaDebug] None
+1609259304    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609259338    [ErinaDebug] Weathering With You. The superior Shinkai Movie. https://t.co/ei8XJ4DZqm
+1609259338    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259338    [ErinaDebug] http://pbs.twimg.com/ext_tw_video_thumb/1337625816797237249/pu/img/LZ8wlyetZ0OQh-QV.jpg
+1609259350    [ErinaDebug] First Manga Appearance: Chapter 3First Anime Appearance: Episode 1Name Meaning: Uchiha = "Fan" Sasuke = Name of legendary ninja
+1609259350    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259350    [ErinaDebug] None
+1609259354    [ErinaDebug] @TheSmashWaffle after doing this and looking back on it, i think i couldve exaggerated this liketenfold. without t… https://t.co/GOKb5N84XR
+1609259355    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259355    [ErinaDebug] None
+1609259360    [ErinaDebug] FLCL. It's like a "survey of anime" short course.
+1609259360    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259360    [ErinaDebug] None
+1609259373    [ErinaDebug] Shield hero is super good. Extremely invigorating and interesting
+1609259373    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259373    [ErinaDebug] None
+1609259383    [ErinaDebug] What’s your recommendation?
+1609259383    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259383    [ErinaDebug] None
+1609259396    [ErinaDebug] What’s this one called 👀
+1609259396    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259396    [ErinaDebug] None
+1609259397    [ErinaDebug] Weathering with you, Perfect Blue, A Silent Voice, I want to eat your Pancreas, The Garden of Words, Paprika, 5 Cen… https://t.co/yIcuPAZHFT
+1609259397    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259397    [ErinaDebug] None
+1609259403    [ErinaDebug] the weirdest timeline
+1609259403    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259403    [ErinaDebug] None
+1609259413    [ErinaDebug] anime please @ARCTICMONKEYS buat lah comeback hshshs
+1609259413    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259413    [ErinaDebug] None
+1609259413    [ErinaDebug] @Rakugoat Looks like I gotta drop bunny and OP and start a new anime 😍Sauce?
+1609259414    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259414    [ErinaDebug] http://pbs.twimg.com/media/EqacPy8UwAA_Syz.jpg
+1609259415    [ErinaDebug] Weathering With You, the better Shinkai Film https://t.co/Bj6acJdWaT
+1609259415    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259415    [ErinaDebug] http://pbs.twimg.com/ext_tw_video_thumb/1336327451840897025/pu/img/vTgEBnLIX7xLXZu8.jpg
+1609259424    [ErinaDebug] What is the best anime ED of all time and why is it Glorious Days from Gintama? https://t.co/zIw5dabM9N
+1609259424    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259424    [ErinaDebug] None
+1609259432    [ErinaDebug] I think the only Anime I’ve ever seen I actually enjoyed was Ghost in the Shell and Akira. Someone bought me Cowboy… https://t.co/D94U3FCRgj
+1609259432    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259432    [ErinaDebug] None
+1609259446    [ErinaDebug] A Silent Voice is so good and its on Netflix
+1609259446    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259446    [ErinaDebug] None
+1609259467    [ErinaDebug] Citrus is a terrible anime for bringing a bad name to both yuri as a genre and also the objectively best kind of fruit
+1609259467    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259467    [ErinaDebug] None
+1609259473    [Erina] Goodbye!
+1609259475    [Erina] Initializing Erina configuration...
+1609259475    [Erina] ---> Initializing Static File Endpoints
+1609259475    [Erina] ---> Initializing API
+1609259476    [Erina] ---> Initializing ErinaAdmin
+1609259477    [Erina] ---> Initializing Custom Endpoints
+1609259477    [Erina] ---> Initializing ErinaConsole
+1609259477    [Erina] Running ErinaServer...
+1609259477    [Erina] Starting to check for timeouts and updates...
+1609259477    [Erina] Running the ErinaTwitter Client...
+1609259478    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', 'erinasauce']
+1609259478    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609259490    [ErinaDebug] Violet Evergarden. 🥺🥺😭😭😭
+1609259490    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259490    [ErinaDebug] None
+1609259543    [ErinaDebug] @Ward_Bone @sneazee23 What anime is this
+1609259553    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259555    [ErinaDebug] http://pbs.twimg.com/media/EqZtljCU8AENm_P.jpg
+1609259556    [ErinaTwitter] New asking hit from @anime_is_lifefr
+1609259556    [ErinaSearch] Searching for an image...
+1609259556    [ErinaHash] Hashing an image...
+1609259556    [ErinaCaches] Caching 0000ffff007ffe00 trace.moe data...
+1609259562    [ErinaCaches] Caching 0000ffff007ffe00 SauceNAO data...
+1609259563    [Error]    [ErinaCaches] ERINA_CONVERSION: An error occured while converting SauceNAO API Data to a caching format
+1609259564    [ErinaCaches] Searching for IQDB Data...
+1609259570    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609259570    [ErinaCaches] Caching 1157 from AniList API...
+1609259570    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x14547bbb0>
+1609259570    [ErinaDebug] Here is the sauce!Anime: Final Fantasy: UnlimitedEpisode: 1/25 (at around 0:04:08.670000)Studio: [GONZO]Genres: Action, Adventure, Fantasyhttps://anilist.co/anime/1157Ai and Yu, after reading their parent's research and after their parents' disappearance, they decided ...
+1609259570    [ErinaDebug] I can't wait to see what develops outta this.
+1609259570    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259570    [ErinaDebug] None
+1609259570    [ErinaDebug] "Neon Genesis Evangelion" will change you
+1609259570    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259570    [ErinaDebug] None
+1609259575    [ErinaDebug] @anime_is_lifefr @Ward_Bone @sneazee23 Here is the sauce!Anime: Final Fantasy: UnlimitedEpisode: 1/25 (at around… https://t.co/ABiHqXduvU
+1609259576    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259576    [ErinaDebug] None
+1609259577    [ErinaDebug] Fire at will, weebs.
+1609259577    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259577    [ErinaDebug] None
+1609259589    [ErinaDebug] Gundam Wing. Classic 90’s required viewing material.
+1609259589    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259589    [ErinaDebug] None
+1609259616    [ErinaDebug] Please stop recommending your weird niche anime to this man, just say the works of Satoshi Kon, Miyazaki, A Silent… https://t.co/iqUjRitjpn
+1609259616    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259616    [ErinaDebug] None
+1609259620    [ErinaDebug] @antiheretic it's ok when the anime is used to tell an actual story as a captivating, beautiful art form and style… https://t.co/29HbJTD6ZF
+1609259621    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259621    [ErinaDebug] None
+1609259649    [ErinaDebug] Watch bleach, darling in the franxx, steins gate, any of the fate series, noragami, attack on Titan, Cowboy bebop,… https://t.co/nkmkTTbdmO
+1609259649    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259649    [ErinaDebug] None
+1609259663    [ErinaDebug] What anime is this??
+1609259663    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259663    [ErinaDebug] None
+1609259665    [ErinaDebug] I want to drop my unpopular opinion but i'm scared that i'll get hated on jshshshs I'm very fragile, don't attack m… https://t.co/EvRNVg7zzx
+1609259665    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259665    [ErinaDebug] None
+1609259670    [ErinaDebug] @houjichass yeah bby Yuta &lt;3 I feel it would work better as a movie since it's additional info for JJK, but it's pr… https://t.co/2Hx1BRZAGD
+1609259673    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259683    [ErinaDebug] None
+1609259708    [ErinaDebug] I didn't have "Jim Belushi becomes pandemic weeb" on my 2020 bingo card
+1609259708    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259708    [ErinaDebug] None
+1609259714    [ErinaDebug] Jim Belushi: "I like these very specifically not trope heavy and generally considered to be serious cinema anime."… https://t.co/lIfzhy3pGN
+1609259714    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259714    [ErinaDebug] None
+1609259791    [ErinaDebug] We're sure you all have some suggestions...especially you @EliseBaughman?
+1609259791    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259791    [ErinaDebug] None
+1609259794    [ErinaDebug] Me when I see this anime:
+1609259794    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259794    [ErinaDebug] None
+1609259811    [ErinaDebug] I need to know what anime this is and where I can find it.
+1609259811    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259811    [ErinaDebug] None
+1609259814    [ErinaDebug] Jim Belushi nooooo. Run before the weebs come 😭😭😭
+1609259814    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259814    [ErinaDebug] None
+1609259830    [ErinaDebug] This delights me.  Jim Belushi is growing weed &amp; watching anime.   #Blessed
+1609259830    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259830    [ErinaDebug] None
+1609259832    [ErinaDebug] Me when I see these anime:
+1609259832    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259832    [ErinaDebug] None
+1609259836    [ErinaDebug] The 2020s marks my fifth decade of watching anime, but I'm not a real fan if I don't consume every weird fetish sho… https://t.co/XUDIHw0z53
+1609259836    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259836    [ErinaDebug] None
+1609259836    [ErinaDebug] Mr. Belushi please watch parasyte
+1609259836    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259836    [ErinaDebug] None
+1609259847    [ErinaDebug] Best tweet of 2020
+1609259847    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259847    [ErinaDebug] None
+1609259854    [ErinaDebug] Me when I saw these anime:
+1609259854    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259854    [ErinaDebug] None
+1609259887    [ErinaDebug] Ok, I know some of you have amazing suggestions.  @osuperwins @MusicEyeQ  @richiebranson
+1609259887    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259887    [ErinaDebug] None
+1609259904    [Erina] Restarting...
+1609259904    [Erina] Initializing Erina configuration...
+1609259904    [Erina] ---> Initializing Static File Endpoints
+1609259904    [Erina] ---> Initializing API
+1609259905    [Erina] ---> Initializing ErinaAdmin
+1609259930    [Erina] ---> Initializing Custom Endpoints
+1609259930    [Erina] ---> Initializing ErinaConsole
+1609259930    [Erina] Running ErinaServer...
+1609259930    [Erina] Starting to check for timeouts and updates...
+1609259930    [Erina] Running the ErinaTwitter Client...
+1609259932    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609259949    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609259953    [ErinaDebug] @ChristinaTasty What About me? I'm the pervy weeb that wears ahegao shirts, and thinks buying anime figures whose c… https://t.co/fq3urJc36E
+1609259958    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259967    [ErinaDebug] None
+1609259967    [ErinaDebug] None. what the fuck is this
+1609259967    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259967    [ErinaDebug] None
+1609259967    [ErinaDebug] What a legend.
+1609259967    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259967    [ErinaDebug] None
+1609259971    [ErinaDebug] @oasisoverwatch What anime is this?
+1609259977    [ErinaDebug] Monitor Mode OFF, Public Account
+1609259985    [ErinaDebug] http://pbs.twimg.com/media/EqajVaWUUAIVtMb.jpg
+1609259998    [ErinaTwitter] New asking hit from @bassdrumjay
+1609259998    [ErinaSearch] Searching for an image...
+1609259998    [ErinaHash] Hashing an image...
+1609260005    [ErinaCaches] Caching fefe7e7c7c3c1818 trace.moe data...
+1609260018    [ErinaCaches] Caching fefe7e7c7c3c1818 SauceNAO data...
+1609260019    [Error]    [ErinaCaches] ERINA_CONVERSION: An error occured while converting SauceNAO API Data to a caching format
+1609260019    [ErinaCaches] Searching for IQDB Data...
+1609260024    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609260024    [ErinaCaches] Caching 98449 from AniList API...
+1609260025    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x131806460>
+1609260025    [ErinaDebug] Here is the sauce!Anime: Kujira no Kora wa Sajou ni UtauEpisode: 6/12 (at around 0:17:38.750000)Studio: [J.C. Staff]Genres: Adventure, Drama, Fantasyhttps://anilist.co/anime/98449Chakuro is the 14-year-old archivist of the Mud Whale, a nigh-utopian island that floats a...
+1609260025    [ErinaDebug] Your fun little journey's become a nightmare :D
+1609260025    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260025    [ErinaDebug] None
+1609260025    [ErinaDebug] before naruto got an english dub i told this girl that i got called an Anime Protagonist a lot at school and she sa… https://t.co/C91mIOgmMb
+1609260025    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260025    [ErinaDebug] None
+1609260025    [ErinaDebug] Spark your blunt and watch #DemonSlayer (Side note: I really wanna try your weed soooo badly!)
+1609260025    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260025    [ErinaDebug] None
+1609260030    [ErinaDebug] @bassdrumjay @oasisoverwatch Here is the sauce!Anime: Kujira no Kora wa Sajou ni UtauEpisode: 6/12 (at around 0:… https://t.co/LeOUaZdwmN
+1609260031    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260031    [ErinaDebug] None
+1609260034    [ErinaDebug] Bruh
+1609260034    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260034    [ErinaDebug] None
+1609260043    [ErinaDebug] This question is for my artist friends. What drawing site or app do you use?I just got a new drawing tablet and w… https://t.co/rXK5GrEuDs
+1609260043    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260043    [ErinaDebug] None
+1609260051    [ErinaDebug] ????????????HOLLY
+1609260051    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260051    [ErinaDebug] None
+1609260054    [ErinaDebug] Your Name is trending. It is one of the few anime movies i have seen. https://t.co/dDvwaj4ZDP
+1609260054    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260054    [ErinaDebug] http://pbs.twimg.com/tweet_video_thumb/Eqa0pjEXMAcJZI0.jpg
+1609260082    [ErinaDebug] @hisoandso It also is a great way to disprove the "everyone's voice should be heard" line of reasoning.Nobody rea… https://t.co/2kt0m8BRRQ
+1609260082    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260083    [ErinaDebug] None
+1609260151    [ErinaDebug] "you're not an anime fan unless you like loli's and rape" says proud anime fan.
+1609260151    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260151    [ErinaDebug] None
+1609260161    [ErinaDebug] Ok, hear me out...Keijo.
+1609260161    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260161    [ErinaDebug] None
+1609260165    [ErinaDebug] Haha wow this kinda blew up
+1609260165    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260165    [ErinaDebug] None
+1609260175    [ErinaDebug] I recommend you Jujutsu Kaisen and Attack on Titan sir ☝️
+1609260175    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260175    [ErinaDebug] None
+1609260198    [ErinaDebug] Some days the timeline is good, my easiest recommendation for an anime movie:Summer Warsshow: FullMetal Alchemist… https://t.co/j6OKa4c5gN
+1609260198    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260198    [ErinaDebug] None
+1609260224    [ErinaDebug] JIM BELUSHI LOVES YOUR NAMETHIS IS NOT A DRILL
+1609260224    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260224    [ErinaDebug] None
+1609260226    [ErinaDebug] Pleeeeaasse stop recommending some weird shit omg the guy only saw studio ghibli and your name why would you recomm… https://t.co/uh5lybly5X
+1609260226    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260226    [ErinaDebug] None
+1609260235    [ErinaDebug] If someone had told me that I would follow Jim Belushi on Twitter because he suddenly became interested in anime, I… https://t.co/vQvpg4LTOX
+1609260235    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260235    [ErinaDebug] None
+1609260237    [ErinaDebug] Well, since you asked, I'd recommend Wolf Children, Summer Wars, The Girl Who Leapt Through Time, Cowboy Bebop, the… https://t.co/ddVdaUWkiP
+1609260237    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260237    [ErinaDebug] None
+1609260284    [ErinaDebug] Your Name is my fav of all time!
+1609260284    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260284    [ErinaDebug] None
+1609260291    [ErinaDebug] You've gotta watch Cowboy Bebop, Jim.
+1609260291    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260291    [ErinaDebug] None
+1609260293    [ErinaDebug] Fess up!
+1609260293    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260293    [ErinaDebug] None
+1609260299    [ErinaDebug] One piece is all you need
+1609260299    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260299    [ErinaDebug] None
+1609260321    [ErinaDebug] I hate it here @pikakillu
+1609260321    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260321    [ErinaDebug] None
+1609260335    [ErinaDebug] All you have to do is help Lorne Michaels cover up the death of your brother and you too will be given a lucrative… https://t.co/i0CaLr9KpT
+1609260335    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260335    [ErinaDebug] None
+1609260355    [ErinaDebug] Hunter X Hunter, The promised Neverland 🥺
+1609260355    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260355    [ErinaDebug] None
+1609260356    [ErinaDebug] what a cute sailor moon :)
+1609260356    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260356    [ErinaDebug] None
+1609260376    [ErinaDebug] @nodrugsnoluv @TheFunny_mp4 what anime is this
+1609260376    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260376    [ErinaDebug] http://pbs.twimg.com/ext_tw_video_thumb/1343804563724193792/pu/img/m9zAF7qimrEzu7lY.jpg
+1609260377    [ErinaTwitter] New asking hit from @Bblaze18
+1609260377    [ErinaSearch] Searching for an image...
+1609260377    [ErinaHash] Hashing an image...
+1609260377    [ErinaCaches] Caching fcf818185c0c0c1c trace.moe data...
+1609260385    [ErinaCaches] Caching fcf818185c0c0c1c SauceNAO data...
+1609260386    [Error]    [ErinaCaches] ERINA_CONVERSION: An error occured while converting SauceNAO API Data to a caching format
+1609260386    [ErinaCaches] Searching for IQDB Data...
+1609260393    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609260393    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x1316dbdf0>
+1609260393    [ErinaDebug] Here is the sauce!Anime: Love Live! School idol projectEpisode: 9/13 (at around 0:15:51.750000)Studio: [Sunrise]Genres: Music, Slice Of Lifehttps://anilist.co/anime/15051Otonokizaka High School stands on the border of three cities: Akihabara&mdash;a pop culture mecca t...
+1609260393    [ErinaDebug] when we get jim belushi into im@s and he tweets about the complex intra-character dynamics of noctchill and strayli… https://t.co/J5IVvYfIlc
+1609260393    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260393    [ErinaDebug] None
+1609260393    [ErinaDebug] @KapiKGameR @FNAnimeGirl I don't think lexa is an anime thoughi think it's a combination of borderland's filteran… https://t.co/V1IWKopXci
+1609260394    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260394    [ErinaDebug] http://pbs.twimg.com/ext_tw_video_thumb/1343931207722135552/pu/img/NOYEW8qOwZlHRWGJ.jpg
+1609260394    [ErinaDebug] The only anime I recommend to anyone not knowing anime but wanting a good experience and doesn’t mind action is FUL… https://t.co/bcnkr9e3Nj
+1609260394    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260394    [ErinaDebug] None
+1609260398    [ErinaDebug] @Bblaze18 @nodrugsnoluv @TheFunny_mp4 Here is the sauce!Anime: Love Live! School idol projectEpisode: 9/13 (at a… https://t.co/lHWBwwNYKj
+1609260398    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260399    [ErinaDebug] None
+1609260425    [ErinaDebug] @ErinaSauce @nodrugsnoluv @TheFunny_mp4 where the fuck did you come from
+1609260425    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260426    [ErinaDebug] None
+1609260462    [ErinaDebug] This makes me so happy... the Renaissance is here!Hit me up if you’re looking to start. Off the bat, I’d recommen… https://t.co/UYL0HYdbbm
+1609260462    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260462    [ErinaDebug] None
+1609260468    [ErinaDebug] hear me out...one piece
+1609260468    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260468    [ErinaDebug] None
+1609260485    [ErinaDebug] Wholesome tweet (Your Name is really really good)
+1609260485    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260485    [ErinaDebug] None
+1609260502    [ErinaDebug] What kind of sound is the sound of mind?Sounds of joy, sounds of sadness.Surely it will be an orchestra.Always… https://t.co/HMYnGBhSz9
+1609260502    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260502    [ErinaDebug] None
+1609260521    [ErinaDebug] watch akira also marry me
+1609260521    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260521    [ErinaDebug] None
+1609260531    [ErinaDebug] Gal Gadot - war crimes - stars in a bad movie - I keep mistaking her last name for GodotGal &amp; Dino + combinat… https://t.co/CphHrYFhAx
+1609260531    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260531    [ErinaDebug] None
+1609260542    [ErinaDebug] @the_blueprint what makes these (and a lot of anime adaptations) not the ideal telling of the story imo is limitati… https://t.co/XQRhXy4hiB
+1609260543    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260543    [ErinaDebug] None
+1609260551    [ErinaDebug] @ErinaSauce @desirestae @KUGIS9KI Huh? That is NOT from Hunter Hunter.
+1609260552    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260552    [ErinaDebug] None
+1609260562    [ErinaDebug] Jim Belushi, don't do it. Your Name emotionally broke me that I needed to buy the manga and regular books to see if… https://t.co/9vh30a9siG
+1609260562    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260562    [ErinaDebug] None
+1609260594    [ErinaDebug] This isn't a Throwback Thursday pic since today is Tuesday. Lol Its just a look back. This was 2014! At the time my… https://t.co/STC8njfxv6
+1609260594    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260594    [ErinaDebug] None
+1609260609    [ErinaDebug] @JimBelushi Haikyu is a volleyball anime that I didn't think I'd like, but the animation and character development… https://t.co/cLRfskgUGJ
+1609260609    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260609    [ErinaDebug] None
+1609260620    [Erina] Goodbye!
+1609260735    [Erina] Initializing Erina configuration...
+1609260735    [Erina] ---> Initializing Static File Endpoints
+1609260735    [Erina] ---> Initializing API
+1609260736    [Erina] ---> Initializing ErinaAdmin
+1609260737    [Erina] ---> Initializing Custom Endpoints
+1609260737    [Erina] ---> Initializing ErinaConsole
+1609260737    [Erina] Running ErinaServer...
+1609260737    [Erina] Starting to check for timeouts and updates...
+1609260738    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609260738    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609260774    [ErinaDebug] Bleach will forever be my favorite anime. https://t.co/5KSUHYbu3m
+1609260774    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260774    [ErinaDebug] http://pbs.twimg.com/tweet_video_thumb/Eqa3ZRNWMAAoPeR.jpg
+1609260815    [ErinaDebug] according to jim asking for anime recs is the highlight of 2020 anyways jim, i recommend Erased and Future Diary
+1609260815    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260815    [ErinaDebug] None
+1609260820    [ErinaDebug] I find it annoying when ppl are like “watching anime is childish,you’re an adult now”. Ok and? Do you want me to wo… https://t.co/pONsl07rQc
+1609260820    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260820    [ErinaDebug] None
+1609260826    [ErinaDebug] As much as I enjoy the medium in general, I am very very frightened for this man. I hope he is able to adequately f… https://t.co/eqdhk2L3VO
+1609260826    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260826    [ErinaDebug] None
+1609260843    [ErinaDebug] There’s no actual way this is happening, bro I’m speechless at this fucking stranger things for a mobile game colla… https://t.co/PL5jTTNWms
+1609260843    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260843    [ErinaDebug] None
+1609260871    [ErinaDebug] #SpiritedAway is the best @StudioGhibliUS 👌🏻👌🏻
+1609260871    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260871    [ErinaDebug] None
+1609260871    [ErinaDebug] Start an anime review Youtube page Jim.
+1609260871    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260871    [ErinaDebug] None
+1609260880    [ErinaDebug] @nakwaati Ah😂😂I thought as much 😂D’you know I was shocked 😂cos I’m like ah 😂this negga doesn’t watch anime so what is he saying 😂😂😂😂😂😂😂😂😂
+1609260898    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260899    [Erina] Restarting...
+1609260900    [Erina] Initializing Erina configuration...
+1609260900    [Erina] ---> Initializing Static File Endpoints
+1609260900    [Erina] ---> Initializing API
+1609260900    [Erina] ---> Initializing ErinaAdmin
+1609260933    [Erina] ---> Initializing Custom Endpoints
+1609260933    [Erina] ---> Initializing ErinaConsole
+1609260933    [Erina] Running ErinaServer...
+1609260933    [Erina] Starting to check for timeouts and updates...
+1609260933    [Erina] Running the ErinaTwitter Client...
+1609260934    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609260946    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609260948    [ErinaDebug] can someone tell me the name of the anime for that last song ignore the actual video
+1609260957    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260965    [ErinaDebug] None
+1609260992    [ErinaDebug] Well, that’s one that wasn’t on my 2020 Pandemic bingo card. https://t.co/8nsiCXyVSs
+1609260992    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260992    [ErinaDebug] http://pbs.twimg.com/tweet_video_thumb/Eqa4ODqW4AAmQWq.jpg
+1609260994    [ErinaDebug] What is this ffs?!!!😭😭🤣🤣
+1609260994    [ErinaDebug] Monitor Mode OFF, Public Account
+1609260994    [ErinaDebug] None
+1609261019    [ErinaDebug] Holy shit
+1609261019    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261019    [ErinaDebug] None
+1609261030    [ErinaDebug] @SatanWantsU U-ummmMy name is Ysiek... I LOVE cats and anime... I sometimes read mangas and sometimes draw but I d… https://t.co/nNlSo6stV2
+1609261040    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261057    [ErinaDebug] None
+1609261082    [ErinaDebug] Never said that. I calling Shippuden trash cause I fucking disliked it and Sasuke's entire dumbass arc. Ninja Storm… https://t.co/zbglLwB68p
+1609261082    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261082    [ErinaDebug] None
+1609261108    [ErinaDebug] @emeraldsora_ Is this a new anime? What is it called? I recognise the blonde girl from j stars ps4 game
+1609261117    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261166    [ErinaDebug] None
+1609261166    [ErinaDebug] Now this one is interesting anime and comic heads what’s your thoughts ?
+1609261166    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261166    [ErinaDebug] None
+1609261166    [ErinaDebug] Does anyone know what the new higurashi anime is trying to do? Or why? It seems to be actively anti-thematic
+1609261166    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261166    [ErinaDebug] None
+1609261195    [ErinaDebug] I am witness to the fact that you both have Hearts of Gold.
+1609261195    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261195    [ErinaDebug] None
+1609261199    [ErinaDebug] Do we find out in the end what our name is?
+1609261199    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261199    [ErinaDebug] None
+1609261224    [ErinaDebug] Jim Belushi watch Clannad challenge
+1609261224    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261224    [ErinaDebug] None
+1609261237    [ErinaDebug] This one anime you were in was pretty amazing :Phttps://t.co/PYdfnlDfPZ
+1609261237    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261237    [ErinaDebug] None
+1609261237    [ErinaDebug] Not surprised he liked “Your Name” but shocked he saw it altogether.
+1609261237    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261237    [ErinaDebug] None
+1609261262    [ErinaDebug] Remember kyungsoo cried watching this anime 😭😂
+1609261262    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261262    [ErinaDebug] None
+1609261282    [ErinaDebug] @Kenkira12 @BestGirlAnime @Crunchyroll that's the name of the anime https://t.co/QBG5MevWxl
+1609261282    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261282    [ErinaDebug] http://pbs.twimg.com/media/Eqa5VcZXMAYU_Y6.jpg
+1609261303    [ErinaDebug] @PhantomYinamu What is it? an anime?
+1609261303    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261303    [ErinaDebug] None
+1609261304    [ErinaDebug] @kxhunx @BestGirlAnime @Crunchyroll that's the name of the anime https://t.co/L6FEL17eiP
+1609261305    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261305    [ErinaDebug] http://pbs.twimg.com/media/Eqa5azmXMAM-8Bf.jpg
+1609261348    [ErinaDebug] Anime fans are the worst. Suggestions are supposed to be what you think that person will like not what you like. Re… https://t.co/dwj9hJBD5h
+1609261348    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261348    [ErinaDebug] None
+1609261356    [ErinaDebug] this rules
+1609261356    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261356    [ErinaDebug] None
+1609261391    [ErinaDebug] @Walpknut @TAHK0 coming out of his hands sob softly after a meaningful death that took half a season of setup is pr… https://t.co/saDztdXVoU
+1609261392    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261392    [ErinaDebug] None
+1609261392    [ErinaDebug] This one anime you were in was pretty amazing. :P https://t.co/kDZO5ibSaC
+1609261392    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261392    [ErinaDebug] http://pbs.twimg.com/media/Eqa5rz7XIAE8Cgp.jpg
+1609261406    [ErinaDebug] What?
+1609261406    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261406    [ErinaDebug] None
+1609261409    [ErinaDebug] Btw, I don't know how much thr anime follows the source material, but I wouldn't be surprised when she actually mak… https://t.co/iZBCFSmBzj
+1609261409    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261410    [ErinaDebug] None
+1609261439    [ErinaDebug] Spirited Away, The World of Arrietty, Nausicaä of the Valley of the Wind, Ponyo, Howl's Moving Castle, Kiki's Deliv… https://t.co/ViDtDZAxYL
+1609261439    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261439    [ErinaDebug] None
+1609261443    [ErinaDebug] Okay, given the fact that this year is almost done with, I'd like to know as to how many of you out here have seen… https://t.co/R5gWmvTYJ0
+1609261443    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261443    [ErinaDebug] None
+1609261477    [ErinaDebug] @neesi what anime is this from
+1609261477    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261478    [ErinaDebug] http://pbs.twimg.com/media/EqabzqrXAAAjvR7.jpg
+1609261478    [ErinaTwitter] New asking hit from @frogmaster4201
+1609261478    [ErinaSearch] Searching for an image...
+1609261478    [ErinaHash] Hashing an image...
+1609261479    [ErinaCaches] Caching 0000ffffc3e7f7e7 trace.moe data...
+1609261483    [ErinaCaches] Caching 0000ffffc3e7f7e7 SauceNAO data...
+1609261484    [ErinaCaches] Searching for IQDB Data...
+1609261495    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609261495    [ErinaCaches] Caching 6 from AniList API...
+1609261495    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x14b701550>
+1609261495    [ErinaDebug] Here is the sauce!Anime: TrigunEpisode: 15/26 (at around 0:09:24.170000)Studio: [MADHOUSE]Genres: Action, Adventure, Comedyhttps://anilist.co/anime/6Trigun takes place in the distant future on a deserted planet. Vash the Stampede is a gunfighter with a legend so ruthle...
+1609261496    [ErinaDebug] Nobody tell him about furries.
+1609261496    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261496    [ErinaDebug] None
+1609261496    [ErinaDebug] 2020 is full of surprises
+1609261496    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261496    [ErinaDebug] None
+1609261496    [ErinaDebug] There’s this one anime called “According to Jim” that’s really solid. It’s definitely worth checking out!
+1609261496    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261496    [ErinaDebug] None
+1609261501    [ErinaDebug] Jim Belushi asking for Anime recommendations 😭 please sit down sir, get some paper and a pen.. let’s get started 📝💖
+1609261501    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261501    [ErinaDebug] None
+1609261501    [ErinaDebug] @frogmaster4201 @neesi Here is the sauce!Anime: TrigunEpisode: 15/26 (at around 0:09:24.170000)Studio: [MADHOUS… https://t.co/qYu8wyFhHV
+1609261501    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261502    [ErinaDebug] None
+1609261509    [ErinaDebug] @xxMasterCJ21xx @ntrylo @robersora @T00lian @trunkschan90 @JimBelushi Then why not just enjoy it with the guy inste… https://t.co/SnVv7GjYa9
+1609261509    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261510    [ErinaDebug] None
+1609261529    [ErinaDebug] @iloveurbumbum what anime is this
+1609261529    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261530    [ErinaDebug] http://pbs.twimg.com/ext_tw_video_thumb/1343766907435048960/pu/img/AH-KZDlsMBOFJ3J6.jpg
+1609261530    [ErinaTwitter] New asking hit from @hopesterrr
+1609261530    [ErinaSearch] Searching for an image...
+1609261530    [ErinaHash] Hashing an image...
+1609261530    [ErinaCaches] Caching 17171f1f1f1f0c0c trace.moe data...
+1609261536    [ErinaCaches] Caching 17171f1f1f1f0c0c SauceNAO data...
+1609261537    [Error]    [ErinaCaches] UNKNOWN: An unknown error occured while caching SauceNAO API Data
+1609261537    [ErinaCaches] Searching for IQDB Data...
+1609261547    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609261547    [ErinaCaches] Caching 282 from AniList API...
+1609261548    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x14b74e940>
+1609261548    [ErinaDebug] Here is the sauce!Anime: Angel HeartEpisode: 0/50 (at around 0:19:26.500000)Studio: [TMS Entertainment]Genres: Action, Romancehttps://anilist.co/anime/282A young Taiwanese assassin codenamed &quot;Glass Heart&quot; committed suicide by jumping off a building, and her h...
+1609261548    [ErinaDebug] I ALWAYS FORGET HES THE DAD IN MY NEIGHBOR THE YAMADAS!!!!!!!!!!!!!!!
+1609261548    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261548    [ErinaDebug] None
+1609261553    [ErinaDebug] @hopesterrr @iloveurbumbum Here is the sauce!Anime: Angel HeartEpisode: 0/50 (at around 0:19:26.500000)Studio:… https://t.co/YkvrSl4FKO
+1609261554    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261554    [ErinaDebug] None
+1609261578    [ErinaDebug] Full top 30 with anime and series. SOURCE: @flixpatrol https://t.co/iQlUsPnKko
+1609261579    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261579    [ErinaDebug] http://pbs.twimg.com/media/Eqa6d59WMAAVBMi.jpg
+1609261614    [ErinaDebug] W H O L E S O M E
+1609261614    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261614    [ErinaDebug] None
+1609261623    [ErinaDebug] Does this mean anime's mainstream now?
+1609261623    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261623    [ErinaDebug] None
+1609261636    [ErinaDebug] “is it bc of anime again” AGAIN??? what other phases have there been
+1609261636    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261636    [ErinaDebug] None
+1609261636    [ErinaDebug] i hope this counts https://t.co/uVmEa7r7eo
+1609261636    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261636    [ErinaDebug] http://pbs.twimg.com/media/Eqa6rF0XYAAkg-7.jpg
+1609261658    [ErinaDebug] ANINERDS, ASSEMBLE! lolll
+1609261658    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261658    [ErinaDebug] None
+1609261664    [ErinaDebug] i’m lmao he’s like i love ghibli and this romance movie any recs? and people in here are like ya watch this one sho… https://t.co/wRkAbD6PSa
+1609261664    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261664    [ErinaDebug] None
+1609261685    [ErinaDebug] hot takeLegend of the Galactic Heroes is actually a pretty good recommendation for someone who loves space opera… https://t.co/zEhugftT1a
+1609261685    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261685    [ErinaDebug] None
+1609261707    [ErinaDebug] hot takeLegend of the Galactic Heroes is actually a pretty good recommendation for someone who loves space opera… https://t.co/Fr51r6018U
+1609261707    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261707    [ErinaDebug] None
+1609261749    [ErinaDebug] A Silent Voice is the only piece of media I’ve watched that has had me go from absolutely hating a character (they… https://t.co/FJNqiQiWDF
+1609261749    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261749    [ErinaDebug] None
+1609261771    [ErinaDebug] what the fuck is wrong with all of you
+1609261771    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261771    [ErinaDebug] None
+1609261786    [ErinaDebug] Demon Slayer, Soul Eater, Death Note, Dragon Ball (there's a lot), Attack on Titan, Full Metal Alchemist, 7 Deadly… https://t.co/x9G4RSQHDu
+1609261786    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261786    [ErinaDebug] None
+1609261796    [ErinaDebug] Watch Neon Genesis Evangelion. It’s about a happy go lucky kid that likes to pilot robots. https://t.co/HVi27k008j
+1609261796    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261796    [ErinaDebug] http://pbs.twimg.com/media/Eqa7TJqVoAAbcTx.jpg
+1609261808    [ErinaDebug] I only know Jim Belushi from a single conversation in Community were he’s made fun of twice in a row, and seeing th… https://t.co/zCFyXABP3y
+1609261808    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261808    [ErinaDebug] None
+1609261846    [ErinaDebug] Who’s 2020 bingo card had “finish the year by recommending anime to Jim Belushi”?
+1609261846    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261846    [ErinaDebug] None
+1609261894    [ErinaSearch] Searching for 魔法科高校の優等生... (title search)
+1609261903    [ErinaSearch] Searching for an image...
+1609261903    [ErinaHash] Hashing an image...
+1609261922    [ErinaDebug] @thaliarchus It's actually funny as hell to see anglos warn about making anime recommendations that are too anime f… https://t.co/L3V2AdQQxy
+1609261923    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261923    [ErinaDebug] None
+1609261927    [ErinaDebug] first off. the anime is a very different story structure than a series of movies, they are completely different art… https://t.co/K3bPr1anBa
+1609261927    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261927    [ErinaDebug] None
+1609261931    [ErinaDebug] @thaliarchus (But also I'm not really sure by what metric people consider things to be "too anime" beyond "this mig… https://t.co/FVEKdM8Kot
+1609261932    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261932    [ErinaDebug] None
+1609261979    [ErinaDebug] There are two wolves inside of me. One wolf wants to ask for anime recommendations. The other wolf keeps saying tha… https://t.co/tdLkcZ1WUT
+1609261979    [ErinaDebug] Monitor Mode OFF, Public Account
+1609261979    [ErinaDebug] None
+1609262026    [ErinaDebug] @babvfan @KoyasuYasuko12 They’re from the anime Banana Fish, but I do warn you that the show is very intense and ca… https://t.co/b6Dn8AWsIY
+1609262027    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262027    [ErinaDebug] None
+1609262047    [ErinaDebug] fruits basket made me feel again what is this fuckery i thought oh wild funky anime and now ive been crying over a… https://t.co/6kc1ze9rII
+1609262047    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262047    [ErinaDebug] None
+1609262054    [ErinaDebug] The Lack Of Boku No Pico In the comments is sad. Thought Twitter was more reckless than what It is 😪
+1609262054    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262054    [ErinaDebug] None
+1609262066    [ErinaDebug] No way 💀 And the terrorists in the replies lobbing the ecchi stuff, Jesus 😭😭😭Aye man, I think Kids on the Slope i… https://t.co/0XWPZFir0Y
+1609262066    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262066    [ErinaDebug] None
+1609262075    [ErinaDebug] @Dameshek have feeney watch. It’s a fantastic film
+1609262075    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262075    [ErinaDebug] None
+1609262107    [ErinaDebug] Watch Full Metal Alchemist Brotherhood and Naruto. Also, A Silent Voice is also a great movie
+1609262107    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262107    [ErinaDebug] None
+1609262118    [ErinaDebug] Anything from Satoshi Kon. You could easily jump into Tokyo Godfathers since it's Christmas related and start from… https://t.co/dYdq0PZqjD
+1609262118    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262118    [ErinaDebug] None
+1609262121    [ErinaDebug] @lacemonsterbats Dude yes there's a reason why that shit is what's always recommendedI've met tons of people who… https://t.co/5dohNdtfX9
+1609262122    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262122    [ErinaDebug] None
+1609262125    [ErinaDebug] @nocontxtsonic This is from a real, official anime project called “Hi-sCoool! SeHa Girls!” The project re-imagines… https://t.co/P6xKWZQo89
+1609262125    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262125    [ErinaDebug] http://pbs.twimg.com/media/Eqa07weW8AIyFve.jpg
+1609262151    [ErinaDebug] @bigdissy even w all of that it's still an American anime so idk what the point is you're making rn😅
+1609262152    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262152    [ErinaDebug] None
+1609262159    [ErinaDebug] @poisxn_ivy Anilist is great because is gives you nice detailed stats of what you've watched and you can rate anime… https://t.co/1o6D5zEou7
+1609262160    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262160    [ErinaDebug] None
+1609262178    [ErinaDebug] I'll go first.Hello! My name is Shiny Piece and I enjoy making reviews on cartoons, anime and music. I'm currentl… https://t.co/70996XjME5
+1609262179    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262179    [ErinaDebug] None
+1609262183    [ErinaDebug] @_Tridd @VikkiKitty I gotta ask what anime this is?
+1609262184    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262184    [ErinaDebug] http://pbs.twimg.com/ext_tw_video_thumb/1327266594100310019/pu/img/2kkEIygzONNQ1kiB.jpg
+1609262184    [ErinaTwitter] New asking hit from @frodo28f
+1609262184    [ErinaSearch] Searching for an image...
+1609262184    [ErinaHash] Hashing an image...
+1609262184    [ErinaCaches] Caching ffe7dba5a5dbe7ff trace.moe data...
+1609262186    [ErinaCaches] Caching 113415 from AniList API...
+1609262187    [ErinaDebug] <ErinaSearch.utils.hash_search.ImageSearchResult object at 0x14b74be20>
+1609262187    [ErinaDebug] Here is the sauce!Anime: Jujutsu KaisenEpisode: 5/24 (at around 0:21:15.420000)Studio: [MAPPA]Genres: Action, Drama, Supernaturalhttps://anilist.co/anime/113415A boy fights... for &quot;the right death.&quot;  Hardship, regret, shame: the negative feelings that humans ...
+1609262189    [ErinaDebug] Note to myself, watch em all
+1609262189    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262189    [ErinaDebug] None
+1609262189    [ErinaDebug] Cowboy Bebop, Trigun, Inuyasha, and Yu Yu Hakusho are all fantastic 💖
+1609262189    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262189    [ErinaDebug] None
+1609262192    [ErinaDebug] @frodo28f @_Tridd @VikkiKitty Here is the sauce!Anime: Jujutsu KaisenEpisode: 5/24 (at around 0:21:15.420000)St… https://t.co/zr0fcdOf1C
+1609262192    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262193    [ErinaDebug] None
+1609262210    [ErinaDebug] brb gonna go watch more anime and cast sex spells in the name of satan
+1609262210    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262210    [ErinaDebug] None
+1609262211    [ErinaDebug] Oh, Bleach is a classic, Fruits Basket is my favorite, and Demon Slayer is new and FANTASTIC.
+1609262211    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262211    [ErinaDebug] None
+1609262259    [ErinaDebug] First Twin Peaks: The Return. Now this. Awesome.
+1609262259    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262259    [ErinaDebug] None
+1609262261    [ErinaDebug] @Sinoru5 I just wanna say, that it's fun drawing your oc (≧▽≦)I basically don't know what to do with Shrade becaus… https://t.co/8coPhETuTa
+1609262261    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262261    [ErinaDebug] None
+1609262326    [ErinaDebug] @rondawwn SAME OMFGIf they animate this, we'll see, because "shounen" "boy" starts with s, and Kou starts with "k… https://t.co/FRAognCaIW
+1609262326    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262326    [ErinaDebug] http://pbs.twimg.com/media/Eqa8xnAXMAEBuf4.jpg
+1609262351    [ErinaDebug] Just another example why Your Name is so perfect
+1609262351    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262351    [ErinaDebug] None
+1609262367    [ErinaDebug] bf has a name with a background to match while i got all of my previous names from anime characters..
+1609262367    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262367    [ErinaDebug] None
+1609262389    [ErinaDebug] Please watch Serial Experiments: Lain, Mister Belushi
+1609262389    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262389    [ErinaDebug] None
+1609262391    [ErinaDebug] Pop some corn, because this should be fun to watch.
+1609262391    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262391    [ErinaDebug] None
+1609262401    [ErinaDebug] YOUR NAME T-T
+1609262401    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262401    [ErinaDebug] None
+1609262419    [ErinaDebug] @mihoso_ Just got the news this year that the anime adaptation is close and I found this tweet...so what does Josei means?
+1609262419    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262419    [ErinaDebug] None
+1609262430    [ErinaDebug] If we’re talking standalone movies:* 5 Centimeters Per Second (2007)* The Girl Who Lept Through Time (2006)* I W… https://t.co/SJ9FdWO6LE
+1609262430    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262430    [ErinaDebug] None
+1609262446    [ErinaDebug] It's actually Violet Evergarden
+1609262446    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262446    [ErinaDebug] None
+1609262459    [ErinaDebug] Oh @JimBelushi, where do I even begin?Cowboy BebopAttack on TitanNeon Genesis EvangelionDragon Ball /DBZ / DB… https://t.co/fQPxC4tm6w
+1609262459    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262459    [ErinaDebug] None
+1609262474    [ErinaDebug] @Negoxuu_ Yeah :OOO And I also meant that it’s weird because my art style is very anime-ish so yup :OWhat anime’… https://t.co/Rroi6zXXk5
+1609262474    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262475    [ErinaDebug] None
+1609262480    [ErinaDebug] It's actually Violet Evergarden, not Champloo
+1609262480    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262480    [ErinaDebug] None
+1609262483    [ErinaDebug] I also just saw Your Name and had the same experience. What a coincidence.
+1609262483    [ErinaDebug] Monitor Mode OFF, Public Account
+1609262483    [ErinaDebug] None
+1609262486    [Erina] Goodbye!
+1609262488    [Erina] Initializing Erina configuration...
+1609262488    [Erina] ---> Initializing Static File Endpoints
+1609262489    [Erina] ---> Initializing API
+1609262489    [Erina] ---> Initializing ErinaAdmin
+1609262490    [Erina] ---> Initializing Custom Endpoints
+1609262490    [Erina] ---> Initializing ErinaConsole
+1609262490    [Erina] Running ErinaServer...
+1609262490    [Erina] Starting to check for timeouts and updates...
+1609262490    [Erina] Running the ErinaTwitter Client...
+1609262491    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609262492    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609262530    [ErinaDebug] Jim Belushi about to become a full weeb on the TL
+1609262533    [Erina] Goodbye!
+1609262534    [Erina] Initializing Erina configuration...
+1609262534    [Erina] ---> Initializing Static File Endpoints
+1609262534    [Erina] ---> Initializing API
+1609262535    [Erina] ---> Initializing ErinaAdmin
+1609262536    [Erina] ---> Initializing Custom Endpoints
+1609262536    [Erina] ---> Initializing ErinaConsole
+1609262536    [Erina] Running ErinaServer...
+1609262536    [Erina] Starting to check for timeouts and updates...
+1609262536    [Erina] Running the ErinaTwitter Client...
+1609262537    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609262537    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609262542    [ErinaDebug] Omg I just got HBO Max and it has a Studio Ghibli section 😭😭😭♥️♥️♥️♥️♥️
+1609262549    [ErinaDebug] Jim Belushi? Really?
+1609262554    [ErinaDebug] @maruten20 Is It A Game Or Anime Or What And Can You Make A Video If Him Masturbating?
+1609262556    [ErinaDebug] this is wholesome
+1609262563    [ErinaDebug] ☕: also just started watching this anime called BOFURI, actually pretty good!
+1609262590    [ErinaDebug] [NSFW][Mobile] Yukino Yukinoshita looking way too good on this one. [My Youth Romantic Comedy Is Wrong, As I Expect… https://t.co/Luoksl9f7a
+1609262628    [ErinaDebug] This is probably the coolest thing ever.
+1609262655    [ErinaDebug] @wissewords You may want to re-read what I said I’m saying someone will get more out of it on their first viewing… https://t.co/BhjPV9099n
+1609262702    [ErinaDebug] Good start to 2021
+1609262723    [ErinaDebug] Everyone in the replies are out there recommending all sorts of anime but none are recommending him "March comes in… https://t.co/X1cFyCz8NP
+1609262754    [ErinaDebug] Cowboy Bebop, Mob Psycho, Bungo Stray Dogs
+1609262771    [ErinaDebug] Anime fan here!• Parasyte• One-Punch Man• Cowboy BebopStart with those!🤓
+1609262802    [ErinaDebug] // for older ones, I recommend Initial D, Inyasha, Cowboy Bebop... for newer ones I recommend Fire Force and Food W… https://t.co/1CDiGf6soi
+1609262846    [ErinaDebug] A lot of these suggestions are trash or not something that he would be interested in lol
+1609262846    [ErinaDebug] First off, I wish Wild Palms was on Netflix, great miniseries from back before miniseries became cool. This is a gr… https://t.co/plBW9uiMFf
+1609262853    [ErinaDebug] @JimBelushi There's a whole huge world of anime out there. Viz media and Funimation are 2 big name studios to check out.
+1609262900    [ErinaDebug] @JimBelushi we got you covered, friend! There are so many to exolore!Y'all know what to do. Let's help Jim out!
+1609262912    [ErinaDebug] Jim Belushi addressing the internet with "some of you guys have to be nerds" is the dad-est dad moment of 2020 and… https://t.co/wtzao9Q84j
+1609262939    [ErinaDebug] /   now this is a headline.
+1609262962    [ErinaDebug] you know what I'm glad we got to see Jim belushi ask people for anime recommendations before 2021at least this yea… https://t.co/1bgSmQRnCQ
+1609262983    [ErinaDebug] Disappointed by the # of recs for A Silent Voice. If anything it’s meant to make able-bodied people feel like the t… https://t.co/USSPCKSlo4
+1609263058    [ErinaDebug] #7 jibaku shounen Hanako-kun also called the toilet anime this entire year 😭😭 the art was very unique, charming… https://t.co/xbM1BRnMjB
+1609263087    [ErinaDebug] they hyping mid again
+1609263099    [Erina] Restarting...
+1609263099    [Erina] Initializing Erina configuration...
+1609263099    [Erina] ---> Initializing Static File Endpoints
+1609263099    [Erina] ---> Initializing API
+1609263100    [Erina] ---> Initializing ErinaAdmin
+1609263101    [Erina] ---> Initializing Custom Endpoints
+1609263101    [Erina] ---> Initializing ErinaConsole
+1609263101    [Erina] Starting to check for timeouts and updates...
+1609263101    [Erina] Running ErinaServer...
+1609263101    [Erina] Running the ErinaTwitter Client...
+1609263102    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609263102    [Erina] Running the ErinaDiscord Client...
+1609263102    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609263122    [ErinaDebug] oh my god.. jim belushi likes anime.. NARUTO, ATTACK ON TITAN, DRAGON SLAYER, DRAGON BALL Z (cell saga)
+1609263129    [ErinaDebug] Kaguya sama or Rezero. Whichever is liked more.
+1609263136    [ErinaDebug] Your Name creates another anime fan. Praise be. https://t.co/mvyBdUMwcN
+1609263152    [ErinaDebug] Your Name out here enchanting peoples lives years after its release. I love that movie 😭
+1609263162    [ErinaDebug] Revolutionary Girl Utena and its movie counterpart Adolescence of Utena. The storytelling holds up incredibly well… https://t.co/uYVgZD8VDe
+1609263169    [ErinaDebug] If I had only seen Ghibli films/ Your Name and some suggested I watch AoT/One Piece/ any of the weird seasonals fro… https://t.co/0y1vtKtxfQ
+1609263218    [ErinaDebug] @HappyMasqueMan It's also a conversation confused by the way that what seems 'very anime' to one person is rarely e… https://t.co/3mEcYEfN6w
+1609263224    [ErinaDebug] Jim, Jim, my dude. Listen. Classic 90's animes. Start there. Like... Inuyasha, DBZ, YuYu Hakusho, cyborg 009, and a… https://t.co/FaTKyseDpz
+1609263256    [Erina] Restarting...
+1609263256    [Erina] Initializing Erina configuration...
+1609263256    [Erina] ---> Initializing Static File Endpoints
+1609263256    [Erina] ---> Initializing API
+1609263257    [Erina] ---> Initializing ErinaAdmin
+1609263257    [Erina] ---> Initializing Custom Endpoints
+1609263257    [Erina] ---> Initializing ErinaConsole
+1609263257    [Erina] Starting to check for timeouts and updates...
+1609263257    [Erina] Running ErinaServer...
+1609263257    [Erina] Running the ErinaTwitter Client...
+1609263259    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609263259    [Erina] Running the ErinaDiscord Client...
+1609263259    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609263295    [Erina] Goodbye!
+1609263297    [Erina] Initializing Erina configuration...
+1609263297    [Erina] ---> Initializing Static File Endpoints
+1609263297    [Erina] ---> Initializing API
+1609263298    [Erina] ---> Initializing ErinaAdmin
+1609263299    [Erina] ---> Initializing Custom Endpoints
+1609263299    [Erina] ---> Initializing ErinaConsole
+1609263299    [Erina] Starting to check for timeouts and updates...
+1609263299    [Erina] Running ErinaServer...
+1609263299    [Erina] Running the ErinaTwitter Client...
+1609263300    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609263300    [Erina] Running the ErinaDiscord Client...
+1609263301    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609263331    [ErinaDebug] @JimBelushi Madoka Magica is a sublime anime that is not what it appears on the surface. It takes you from joy, des… https://t.co/Qq2uxPrEb6
+1609263345    [ErinaDebug] Haruhi Suzumiya's the only one, I think I got into it too late to fully appreciate it
+1609263353    [ErinaDebug] Wait, don't a have a tier list for him somewhere at the ready?
+1609263356    [ErinaDebug] @BerlunoJupiter @SaycheeseDGTL what anime is this?
+1609263358    [ErinaTwitter] New asking hit from @mansaofall
+1609263358    [ErinaSearch] Searching for an image...
+1609263358    [ErinaHash] Hashing an image...
+1609263358    [ErinaCaches] Caching ffe7fffcc3928008 trace.moe data...
+1609263361    [ErinaCaches] Caching ffe7fffcc3928008 SauceNAO data...
+1609263362    [ErinaCaches] Searching for IQDB Data...
+1609263370    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609263372    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A [Errno 2] No such file or directory: '/thumbnail.php?anilist_id=269&file=273.mp4&t=910.5&token=SyQZV5hD5Ue8av0zA6nhHQ' error occured while handling Erina's Twitter Stream
+1609263446    [Erina] Goodbye!
+1609263448    [Erina] Initializing Erina configuration...
+1609263448    [Erina] ---> Initializing Static File Endpoints
+1609263448    [Erina] ---> Initializing API
+1609263449    [Erina] ---> Initializing ErinaAdmin
+1609263450    [Erina] ---> Initializing Custom Endpoints
+1609263450    [Erina] ---> Initializing ErinaConsole
+1609263450    [Erina] Starting to check for timeouts and updates...
+1609263450    [Erina] Running ErinaServer...
+1609263450    [Erina] Running the ErinaTwitter Client...
+1609263451    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609263451    [Erina] Running the ErinaDiscord Client...
+1609263451    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609263468    [ErinaDebug] If your profile picture is from an anime, your opinion doesn't count.
+1609263475    [ErinaDebug] “Your name” will forever be my favorite anime movie. I highly suggest it. Be ready to cry.
+1609263476    [ErinaDebug] Full metal alchemist, hunterxhunter
+1609263487    [Erina] Goodbye!
+1609263489    [Erina] Initializing Erina configuration...
+1609263489    [Erina] ---> Initializing Static File Endpoints
+1609263489    [Erina] ---> Initializing API
+1609263489    [Erina] ---> Initializing ErinaAdmin
+1609263490    [Erina] ---> Initializing Custom Endpoints
+1609263490    [Erina] ---> Initializing ErinaConsole
+1609263490    [Erina] Starting to check for timeouts and updates...
+1609263490    [Erina] Running ErinaServer...
+1609263490    [Erina] Running the ErinaTwitter Client...
+1609263491    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609263491    [Erina] Running the ErinaDiscord Client...
+1609263492    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609263562    [ErinaDebug] @animesvibing @Spoo_Kay what is this anime?
+1609263563    [ErinaTwitter] New asking hit from @charadreame
+1609263563    [ErinaSearch] Searching for an image...
+1609263563    [ErinaHash] Hashing an image...
+1609263563    [ErinaCaches] Caching 4e1bdbff7e3e0000 trace.moe data...
+1609263566    [ErinaCaches] Caching 4e1bdbff7e3e0000 SauceNAO data...
+1609263568    [ErinaCaches] Searching for IQDB Data...
+1609263576    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609263578    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A media_upload() missing 1 required positional argument: 'filename' error occured while handling Erina's Twitter Stream
+1609263731    [Erina] Goodbye!
+1609263733    [Erina] Initializing Erina configuration...
+1609263733    [Erina] ---> Initializing Static File Endpoints
+1609263733    [Erina] ---> Initializing API
+1609263733    [Erina] ---> Initializing ErinaAdmin
+1609263734    [Erina] ---> Initializing Custom Endpoints
+1609263734    [Erina] ---> Initializing ErinaConsole
+1609263734    [Erina] Starting to check for timeouts and updates...
+1609263734    [Erina] Running ErinaServer...
+1609263734    [Erina] Running the ErinaTwitter Client...
+1609263735    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609263735    [Erina] Running the ErinaDiscord Client...
+1609263736    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609263778    [ErinaDebug] Jim Belushi is talking about anime!
+1609263778    [ErinaDebug] V-Tubers are fucking rancid. Sure there are exceptions for what is and isn’t good content. But the over saturation… https://t.co/h6fu3JqpRW
+1609263796    [ErinaDebug] Gonna bully Jim Belushi into watching or reading Monster like I bully everyone else out there.
+1609263800    [ErinaDebug] Bottom line: you can’t bandwagon. It’s just not cool. Don’t put frys at the end of your name. It’s old everyone is… https://t.co/B7JlUpDhrX
+1609263800    [ErinaDebug] I can't tell if people are being ironic or brainworms are making them recommend underage panty quest 2 : violent se… https://t.co/ql5QqIYCZI
+1609263838    [ErinaDebug] You know when a grown adult says they like anime maybe suggesting them shonen isn't the wisest idea. Like those are… https://t.co/Bv0iD6gRDM
+1609263850    [ErinaDebug] Your Name?? What a real one tbh
+1609263855    [ErinaDebug] I really appreciate the fact that they poured a lot of effort into bringing out the expressions in the fuyu play be… https://t.co/e8hoaSGqHk
+1609263889    [ErinaDebug] Serial Experiments Lain still holds up, very good cyberpunk adjacent series. Also Summer Wars, just because it's fun
+1609263901    [ErinaDebug] @FavAnimesexual @Yourandomcospl1 okay but what we’re NOT gonna do is make Anime your whole lifestyle. Animesexual i… https://t.co/DOdcrg55cU
+1609263910    [ErinaDebug] Full Metal Alchemists 👍
+1609263948    [ErinaDebug] You know when a grown adult says they like anime maybe suggesting them shonen isn't the wisest idea. Like those are… https://t.co/nQ4oi33e5t
+1609263957    [ErinaDebug] Full Metal Alchemist would be on my list of recommendations. What would you recommend?#anime
+1609263957    [ErinaDebug] @CEOofRoss @LoremIpsumTXT2 @BasedRyoko @53ArisBoch @Dead_tryhard @Le_Silmarils &gt;gets humiliated on the internet by… https://t.co/iPmViNvefH
+1609263958    [ErinaDebug] the one I downrated some that would annoy people the most is evathe biggest score gaps would be deen higurashi or… https://t.co/HKiWpi9ItE
+1609263960    [ErinaDebug] Well Some good supernatural/historical anime I would recommend would be "Mushishi" and "Mononoke" (especially for t… https://t.co/IfVnmKAVzu
+1609263961    [ErinaDebug] Tsuyu Asui - #My hero Academy. Hi guys, I came up with the idea of combining #TsuyuAsui with the toad hermit mode… https://t.co/nAH9A98vnq
+1609263963    [ErinaDebug] Hey just please come down you whore
+1609263968    [ErinaDebug] Highschool DxD is always a solid pick mr belushi
+1609264023    [Erina] Goodbye!
+1609264024    [Erina] Initializing Erina configuration...
+1609264024    [Erina] ---> Initializing Static File Endpoints
+1609264024    [Erina] ---> Initializing API
+1609264025    [Erina] ---> Initializing ErinaAdmin
+1609264026    [Erina] ---> Initializing Custom Endpoints
+1609264026    [Erina] ---> Initializing ErinaConsole
+1609264026    [Erina] Starting to check for timeouts and updates...
+1609264026    [Erina] Running ErinaServer...
+1609264026    [Erina] Running the ErinaTwitter Client...
+1609264027    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609264027    [Erina] Running the ErinaDiscord Client...
+1609264028    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609264037    [ErinaDebug] I've been on the internet since 10-11 yo, I watch anime, I know what loli/shota character trope is but it never cam… https://t.co/8NCX9X7lnC
+1609264056    [ErinaDebug] it's sad thinking that anime is my only source of happiness and comfort and no other more, but I'm glad :&gt;
+1609264112    [ErinaDebug] @goIdenpinecone six becomes wait is the name zed based off of puyo puyo tetris or is it just a name either way its… https://t.co/GWjPCCJzGT
+1609264130    [Erina] Goodbye!
+1609264132    [Erina] Initializing Erina configuration...
+1609264132    [Erina] ---> Initializing Static File Endpoints
+1609264132    [Erina] ---> Initializing API
+1609264132    [Erina] ---> Initializing ErinaAdmin
+1609264133    [Erina] ---> Initializing Custom Endpoints
+1609264133    [Erina] ---> Initializing ErinaConsole
+1609264133    [Erina] Starting to check for timeouts and updates...
+1609264133    [Erina] Running ErinaServer...
+1609264134    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609264134    [Erina] Running the ErinaDiscord Client...
+1609264134    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609264136    [ErinaDebug] See...it really depends on what ppl see as short. 24 episodes, 1 season is short, right?
+1609264156    [Erina] Goodbye!
+1609264210    [Erina] Initializing Erina configuration...
+1609264210    [Erina] ---> Initializing Static File Endpoints
+1609264210    [Erina] ---> Initializing API
+1609264211    [Erina] ---> Initializing ErinaAdmin
+1609264211    [Erina] ---> Initializing Custom Endpoints
+1609264211    [Erina] ---> Initializing ErinaConsole
+1609264211    [Erina] Starting to check for timeouts and updates...
+1609264211    [Erina] Running ErinaServer...
+1609264211    [Erina] Running the ErinaTwitter Client...
+1609264212    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609264212    [Erina] Running the ErinaDiscord Client...
+1609264213    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609264223    [ErinaDebug] @almightyaids @iinogang @FUNimation @JimBelushi @StudioChizu This “better understanding of anime” is what gets me.… https://t.co/MnnXRCUN90
+1609264256    [ErinaDebug] What is it with how American cartoons and how they depict JapanObviously I don't expect orientalism or a sobering… https://t.co/c3SpPH1Ujx
+1609264271    [Erina] Goodbye!
+1609264273    [Erina] Initializing Erina configuration...
+1609264273    [Erina] ---> Initializing Static File Endpoints
+1609264273    [Erina] ---> Initializing API
+1609264274    [Erina] ---> Initializing ErinaAdmin
+1609264274    [Erina] ---> Initializing Custom Endpoints
+1609264274    [Erina] ---> Initializing ErinaConsole
+1609264274    [Erina] Starting to check for timeouts and updates...
+1609264274    [Erina] Running ErinaServer...
+1609264274    [Erina] Running the ErinaTwitter Client...
+1609264275    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609264275    [Erina] Running the ErinaDiscord Client...
+1609264276    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609264282    [ErinaDebug] What anime is this 👁
+1609264292    [ErinaDebug] @HatokTalk @envinyon It can’t be that insane if Mickey is allowed to get put into a fucking anime microwave hallway… https://t.co/xy3HDii9Bx
+1609264330    [ErinaDebug] guys i watched the entire anime.... what else did i miss holy shit
+1609264373    [ErinaDebug] poor jim.i laud his goal.
+1609264387    [ErinaDebug] Finding out Jim Belushi is getting into anime is a diamond in the rough that’s is 2020. I’m gonna follow him to see… https://t.co/7ceJbQWJNs
+1609264411    [ErinaDebug] @MiaLeJax @chocodamiix @itnahsat_ What anime is this?
+1609264473    [ErinaDebug] @flametheavgeek It’s from a anime I can’t spell the name of it I used to have a friend who liked it. I tried watchi… https://t.co/uAHGG1cXWQ
+1609264509    [ErinaDebug] @manufnbr7 @rvssi2 What anime  is it?
+1609264510    [ErinaTwitter] New asking hit from @metaalfn
+1609264510    [ErinaSearch] Searching for an image...
+1609264510    [ErinaHash] Hashing an image...
+1609264510    [ErinaCaches] Caching ffdef47e26241430 trace.moe data...
+1609264516    [ErinaCaches] Caching ffdef47e26241430 SauceNAO data...
+1609264517    [ErinaCaches] Searching for IQDB Data...
+1609264523    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609264525    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A [Errno 2] No such file or directory: 'ErinaSauce — TraceMOE Image Preview' error occured while handling Erina's Twitter Stream
+1609264731    [Erina] Goodbye!
+1609264743    [Erina] Initializing Erina configuration...
+1609264743    [Erina] ---> Initializing Static File Endpoints
+1609264743    [Erina] ---> Initializing API
+1609264743    [Erina] ---> Initializing ErinaAdmin
+1609264744    [Erina] ---> Initializing Custom Endpoints
+1609264744    [Erina] ---> Initializing ErinaConsole
+1609264744    [Erina] Starting to check for timeouts and updates...
+1609264744    [Erina] Running ErinaServer...
+1609264744    [Erina] Running the ErinaTwitter Client...
+1609264745    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609264745    [Erina] Running the ErinaDiscord Client...
+1609264746    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609264782    [ErinaDebug] Fox Girl, Turtleneck, and Pocky [original]Sauce via: kemonomimi - https://t.co/EGYOPdmtANHD Picture:… https://t.co/CIeTmiJ8RH
+1609264789    [ErinaDebug] Jim Belushi asking for anime reccomendations was not expected but i love it.
+1609264803    [ErinaDebug] i didn't anime openongs or intros. The  i saw a youtube video about anime openings and i feel the same what the you… https://t.co/14oOit5HG3
+1609264851    [ErinaDebug] you should ask David Cross...
+1609264857    [ErinaDebug] i didn't watch anime openings or intros. Then i saw a youtube video about anime openings and i feel the same what t… https://t.co/QazpKJaJOt
+1609264884    [ErinaDebug] At this weekend, I plan to watch Anime Fantasy type of movie,then I will read a book named &lt;Me Talk Pretty One Day&gt;… https://t.co/nATU0Wyc0x
+1609264988    [ErinaDebug] yall i am so fucking excited for this anime you don’t even know (btw it’s called sk8 the infinity and comes out jan… https://t.co/4NvC1HJ0po
+1609265000    [ErinaDebug] Monster. A story revolves around genius surgeon, dr. Kenzo Tenma and a young boy he saved under the name, Johann Li… https://t.co/7XlJVnno1B
+1609265010    [ErinaDebug] Jim Belushi is about to find out Cat Girls. Best time-line
+1609265034    [ErinaDebug] 👀#HentaiPorn #Anime #HentaiCommunitySauce:Fate Stay Night or Grand Order https://t.co/4GdGR1itEA
+1609265041    [ErinaDebug] Jim Belushi got a Twitter???? *Cracks knuckles*Let's begin... Fullmetal alchemist brotherhoodyu yu hakushoDemo… https://t.co/0zwvuIYKBp
+1609265093    [ErinaDebug] @HentaiAdvisor @Goddess_BigBoob @Slaytal @TypicalHentai Need the sauce? I found it in the H-Anime database!𝗧𝗶𝘁𝗹𝗲:… https://t.co/00vtQ5NDdr
+1609265126    [ErinaDebug] 🙋 Violet Evergarden, sir. and Psycho-Pass. 🙏
+1609265171    [ErinaDebug] terrible list tbh. i didnt ever like cowboy bebop til after i got a feel for what anime actually is supposed to be… https://t.co/dZ1kiScSYP
+1609265189    [ErinaDebug] A Silent Voice &gt; Your Name. And this is coming from someone who isn't a huge anime fan. While the animation may be… https://t.co/gl4JJ2K5ZJ
+1609265253    [ErinaDebug] I saw Your Name in theatres and LOVED IT
+1609265258    [Erina] Goodbye!
+1609265260    [Erina] Initializing Erina configuration...
+1609265260    [Erina] ---> Initializing Static File Endpoints
+1609265260    [Erina] ---> Initializing API
+1609265260    [Erina] ---> Initializing ErinaAdmin
+1609265261    [Erina] ---> Initializing Custom Endpoints
+1609265261    [Erina] ---> Initializing ErinaConsole
+1609265261    [Erina] Starting to check for timeouts and updates...
+1609265261    [Erina] Running ErinaServer...
+1609265261    [Erina] Running the ErinaTwitter Client...
+1609265262    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265262    [Erina] Running the ErinaDiscord Client...
+1609265264    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265275    [Erina] Goodbye!
+1609265277    [Erina] Initializing Erina configuration...
+1609265277    [Erina] ---> Initializing Static File Endpoints
+1609265277    [Erina] ---> Initializing API
+1609265277    [Erina] ---> Initializing ErinaAdmin
+1609265278    [Erina] ---> Initializing Custom Endpoints
+1609265278    [Erina] ---> Initializing ErinaConsole
+1609265278    [Erina] Starting to check for timeouts and updates...
+1609265278    [Erina] Running ErinaServer...
+1609265278    [Erina] Running the ErinaTwitter Client...
+1609265279    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265279    [Erina] Running the ErinaDiscord Client...
+1609265280    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265324    [Erina] Goodbye!
+1609265325    [Erina] Initializing Erina configuration...
+1609265325    [Erina] ---> Initializing Static File Endpoints
+1609265325    [Erina] ---> Initializing API
+1609265326    [Erina] ---> Initializing ErinaAdmin
+1609265326    [Erina] ---> Initializing Custom Endpoints
+1609265326    [Erina] ---> Initializing ErinaConsole
+1609265326    [Erina] Starting to check for timeouts and updates...
+1609265326    [Erina] Running ErinaServer...
+1609265326    [Erina] Running the ErinaTwitter Client...
+1609265327    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265327    [Erina] Running the ErinaDiscord Client...
+1609265328    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265359    [ErinaDebug] this is so wholesome I cry 😭
+1609265379    [ErinaDebug] fullmetal ass
+1609265380    [Erina] Goodbye!
+1609265382    [Erina] Initializing Erina configuration...
+1609265382    [Erina] ---> Initializing Static File Endpoints
+1609265382    [Erina] ---> Initializing API
+1609265382    [Erina] ---> Initializing ErinaAdmin
+1609265383    [Erina] ---> Initializing Custom Endpoints
+1609265383    [Erina] ---> Initializing ErinaConsole
+1609265383    [Erina] Starting to check for timeouts and updates...
+1609265383    [Erina] Running ErinaServer...
+1609265383    [Erina] Running the ErinaTwitter Client...
+1609265384    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265384    [Erina] Running the ErinaDiscord Client...
+1609265385    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265435    [ErinaDebug] Jim Belushi said weeb rights
+1609265436    [Erina] Goodbye!
+1609265439    [Erina] Initializing Erina configuration...
+1609265439    [Erina] ---> Initializing Static File Endpoints
+1609265439    [Erina] ---> Initializing API
+1609265439    [Erina] ---> Initializing ErinaAdmin
+1609265440    [Erina] ---> Initializing Custom Endpoints
+1609265440    [Erina] ---> Initializing ErinaConsole
+1609265440    [Erina] Starting to check for timeouts and updates...
+1609265440    [Erina] Running ErinaServer...
+1609265440    [Erina] Running the ErinaTwitter Client...
+1609265441    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265441    [Erina] Running the ErinaDiscord Client...
+1609265441    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265453    [ErinaDebug] Got hooked on anime at a very young age, and it served as my intro into Japanese culture. Love seeing how much it's… https://t.co/4J2SoareCY
+1609265466    [ErinaDebug] No one could predict how 2020 would end
+1609265480    [Erina] Goodbye!
+1609265482    [Erina] Initializing Erina configuration...
+1609265482    [Erina] ---> Initializing Static File Endpoints
+1609265482    [Erina] ---> Initializing API
+1609265483    [Erina] ---> Initializing ErinaAdmin
+1609265483    [Erina] ---> Initializing Custom Endpoints
+1609265483    [Erina] ---> Initializing ErinaConsole
+1609265483    [Erina] Starting to check for timeouts and updates...
+1609265483    [Erina] Running ErinaServer...
+1609265484    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265484    [Erina] Running the ErinaDiscord Client...
+1609265485    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265497    [ErinaDebug] @JimBelushi My daughter (11) is a huge anime fan! I never would have seen “Your Name” without her and it’s SO good.… https://t.co/dMpjHYFNT9
+1609265509    [ErinaDebug] watch bible black ! https://t.co/FvWn8NYJBz
+1609265514    [Erina] Goodbye!
+1609265515    [Erina] Initializing Erina configuration...
+1609265515    [Erina] ---> Initializing Static File Endpoints
+1609265515    [Erina] ---> Initializing API
+1609265516    [Erina] ---> Initializing ErinaAdmin
+1609265517    [Erina] ---> Initializing Custom Endpoints
+1609265517    [Erina] ---> Initializing ErinaConsole
+1609265517    [Erina] Starting to check for timeouts and updates...
+1609265517    [Erina] Running ErinaServer...
+1609265518    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265518    [Erina] Running the ErinaDiscord Client...
+1609265518    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265536    [ErinaDebug] lotta just average shit. nah.we want that prime shit.watch maquia. no slime no overlord no fuckin sao. maquia. wa… https://t.co/fipdohMxff
+1609265553    [ErinaDebug] @NightSCrow Well, most anime these days adapt the source material pretty closely, so I didn't notice the difference… https://t.co/512Jq1E3L4
+1609265559    [ErinaDebug] @LululuRom It’s kind of ridiculous to make fun of someone for watching anime because it’s like making fun of someon… https://t.co/aVQVajCHom
+1609265587    [ErinaDebug] @FavAnimesexual @Yourandomcospl1 Okay but if you look up Xenogenders where the fuck is Anime mentioned. “Animegende… https://t.co/Ii0mv76E6m
+1609265604    [Erina] Goodbye!
+1609265605    [Erina] Initializing Erina configuration...
+1609265605    [Erina] ---> Initializing Static File Endpoints
+1609265605    [Erina] ---> Initializing API
+1609265606    [Erina] ---> Initializing ErinaAdmin
+1609265608    [Erina] ---> Initializing Custom Endpoints
+1609265608    [Erina] ---> Initializing ErinaConsole
+1609265608    [Erina] Starting to check for timeouts and updates...
+1609265608    [Erina] Running ErinaServer...
+1609265608    [Erina] Running the ErinaTwitter Client...
+1609265609    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265609    [Erina] Running the ErinaDiscord Client...
+1609265610    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265620    [ErinaDebug] @DJJarrenGee What anime is that? I don’t think I’ve seen it before
+1609265641    [ErinaDebug] The biggest one is defenetly Attack on Titan. And in the same vein (even though i don't think It's an actual anime… https://t.co/GnUdAIwgjB
+1609265662    [Erina] Goodbye!
+1609265663    [Erina] Initializing Erina configuration...
+1609265663    [Erina] ---> Initializing Static File Endpoints
+1609265663    [Erina] ---> Initializing API
+1609265663    [Erina] ---> Initializing ErinaAdmin
+1609265664    [Erina] ---> Initializing Custom Endpoints
+1609265664    [Erina] ---> Initializing ErinaConsole
+1609265664    [Erina] Starting to check for timeouts and updates...
+1609265664    [Erina] Running ErinaServer...
+1609265665    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265665    [Erina] Running the ErinaDiscord Client...
+1609265666    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265671    [Erina] Goodbye!
+1609265672    [Erina] Initializing Erina configuration...
+1609265672    [Erina] ---> Initializing Static File Endpoints
+1609265672    [Erina] ---> Initializing API
+1609265673    [Erina] ---> Initializing ErinaAdmin
+1609265674    [Erina] ---> Initializing Custom Endpoints
+1609265674    [Erina] ---> Initializing ErinaConsole
+1609265674    [Erina] Starting to check for timeouts and updates...
+1609265674    [Erina] Running ErinaServer...
+1609265674    [Erina] Running the ErinaTwitter Client...
+1609265675    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265675    [Erina] Running the ErinaDiscord Client...
+1609265675    [Error]    [ErinaTwitter] STREAM_HTTP_ERROR: A 420 status code got received from Erina's Twitter Stream
+1609265682    [Erina] Goodbye!
+1609265748    [Erina] Initializing Erina configuration...
+1609265748    [Erina] ---> Initializing Static File Endpoints
+1609265748    [Erina] ---> Initializing API
+1609265748    [Erina] ---> Initializing ErinaAdmin
+1609265749    [Erina] ---> Initializing Custom Endpoints
+1609265749    [Erina] ---> Initializing ErinaConsole
+1609265749    [Erina] Starting to check for timeouts and updates...
+1609265749    [Erina] Running ErinaServer...
+1609265749    [Erina] Running the ErinaTwitter Client...
+1609265750    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609265750    [Erina] Running the ErinaDiscord Client...
+1609265751    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609265779    [ErinaDebug] @VladimirGluten you could become an honorary blues brother.
+1609265866    [ErinaDebug] “My Name”?
+1609265882    [ErinaDebug] Bro both this and Nazo Unleashed was some of the coolest things ever as a kid. I still love Mecha Sonic in Super Ma… https://t.co/Vp6zYQFDyh
+1609265899    [ErinaDebug] @SouIMana @animexvibez What anime is this ? Asking for a friend 🥴
+1609266020    [ErinaDebug] You might not like it. But this is what peak masculinity looks like.(Anime: Patalliro!) https://t.co/HktchcXNL0
+1609266023    [ErinaDebug] @tntdoodles what anime is this? 👀👀
+1609266024    [ErinaTwitter] New asking hit from @kiyomimoo
+1609266024    [ErinaSearch] Searching for an image...
+1609266024    [ErinaHash] Hashing an image...
+1609266025    [ErinaCaches] Caching 7edbff802400f67e trace.moe data...
+1609266029    [ErinaCaches] Caching 7edbff802400f67e SauceNAO data...
+1609266030    [ErinaCaches] Searching for IQDB Data...
+1609266042    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609266042    [ErinaCaches] Caching 101043 from AniList API...
+1609266050    [ErinaDebug] @kiyomimoo @tntdoodles Here is the sauce!Anime: Aikatsu Friends!Episode: 44/50 (at around 0:20:46.170000)Studio… https://t.co/R9SlBwfcf2
+1609266050    [ErinaDebug] We’re really going mainstream now.
+1609266072    [ErinaDebug] @lewd_aesthetics Name of anime
+1609266073    [ErinaTwitter] New asking hit from @Frankie79980981
+1609266073    [ErinaSearch] Searching for an image...
+1609266073    [ErinaHash] Hashing an image...
+1609266074    [ErinaCaches] Caching 20203e3f7e7f3d3d trace.moe data...
+1609266084    [ErinaDebug] @Frankie79980981 @lewd_aesthetics Here is the sauce!Anime: Yuragi-sou no Yuuna-sanEpisode: 2/12 (at around 0:20:… https://t.co/HWf7HXD9Gk
+1609266105    [ErinaDebug] Omg. xD This is fantastic. Start with 90s and early 2000s anime. Best storylines hands down! And the art was its ow… https://t.co/lXGzWGSHPG
+1609266119    [ErinaDebug] @RealAndrewVo @JimBelushi This was my first anime when I was like 11 and would get up to watch tv in the middle of… https://t.co/0hNK9RoVg1
+1609266122    [ErinaDebug] This is what I’m doing if someone says they hate anime but hasn’t watched any💀💀 https://t.co/IlDjxJluI0
+1609266129    [ErinaDebug] Man said he likes Ghibli and Your Name and the comments are recommending him shit like Mob Psycho 100. Smh my head.
+1609266135    [ErinaDebug] @DragonulSef @ErinaSauce @chaosezy @Izuku_shonen @AoTshots Ohhh that makes sense I had a feeling. This is one bot I don’t mind at all tbh
+1609266139    [ErinaDebug] Tokyo Godfathers by the late Satoshi Kon.
+1609266160    [ErinaDebug] @FUTAKAJlYAMA @HeyMilf NEEK NO DIABOLIK LOVERS IS HOT SHIT DONT DO IT, IF YOU’D WATCH THE ANIME YOU’D SEE WHAT SHES TALKING ABOUT
+1609266211    [ErinaDebug] For @jimbelushi or anyone else seeking answers to this, several years ago when Miyazaki announced his retirement we… https://t.co/UrUBhjk7np
+1609266212    [ErinaDebug] Help him (and me) out ☺️
+1609266280    [ErinaDebug] @_bennyadenugbah @ferserker2 @thechillninjas It was a pretty high-energy, battle-heavy event, which is fine. I was… https://t.co/4KRMzPLTsE
+1609266306    [ErinaDebug] Another has been enlightened
+1609266325    [ErinaDebug] Ladies and gentlemen!Episode 1 is finally complete and has been uploaded. Make sure to check it out and see what's… https://t.co/jxCPKCTjMP
+1609266338    [Erina] Goodbye!
+1609266352    [Erina] Initializing Erina configuration...
+1609266352    [Erina] ---> Initializing Static File Endpoints
+1609266352    [Erina] ---> Initializing API
+1609266353    [Erina] ---> Initializing ErinaAdmin
+1609266354    [Erina] ---> Initializing Custom Endpoints
+1609266354    [Erina] ---> Initializing ErinaConsole
+1609266354    [Erina] Starting to check for timeouts and updates...
+1609266354    [Erina] Running ErinaServer...
+1609266355    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609266355    [Erina] Running the ErinaDiscord Client...
+1609266355    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609266361    [ErinaDebug] @JimBelushi Your Name is so good of an anime movie that it actually causes physical pain in your heart. Same way so… https://t.co/KF3HUy9M9m
+1609266365    [Erina] Goodbye!
+1609266386    [Erina] Initializing Erina configuration...
+1609266386    [Erina] ---> Initializing Static File Endpoints
+1609266386    [Erina] ---> Initializing API
+1609266387    [Erina] ---> Initializing ErinaAdmin
+1609266388    [Erina] ---> Initializing Custom Endpoints
+1609266388    [Erina] ---> Initializing ErinaConsole
+1609266388    [Erina] Starting to check for timeouts and updates...
+1609266388    [Erina] Running ErinaServer...
+1609266388    [Erina] Running the ErinaTwitter Client...
+1609266389    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609266389    [Erina] Running the ErinaDiscord Client...
+1609266389    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609266409    [ErinaDebug] People recommending DBZ https://t.co/E5V5JHzATl
+1609266438    [Erina] Goodbye!
+1609266441    [Erina] Initializing Erina configuration...
+1609266441    [Erina] ---> Initializing Static File Endpoints
+1609266441    [Erina] ---> Initializing API
+1609266442    [Erina] ---> Initializing ErinaAdmin
+1609266442    [Erina] ---> Initializing Custom Endpoints
+1609266442    [Erina] ---> Initializing ErinaConsole
+1609266442    [Erina] Starting to check for timeouts and updates...
+1609266442    [Erina] Running ErinaServer...
+1609266442    [Erina] Running the ErinaTwitter Client...
+1609266443    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609266443    [Erina] Running the ErinaDiscord Client...
+1609266444    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609266452    [ErinaDebug] @irarugii @raynetoons Hi! I'm a digital artist who is currently in an anime style art phase... I think. Most of the… https://t.co/zyzkXLBnZD
+1609266464    [ErinaDebug] Jim Belushi becoming a weeb in 2020; the simulation is breaking
+1609266473    [ErinaDebug] i'm pretty sure no one with a shred of sanity likes Victory Gundam but it's one of the worst anime i've ever watched
+1609266492    [Erina] Goodbye!
+1609266493    [Erina] Initializing Erina configuration...
+1609266493    [Erina] ---> Initializing Static File Endpoints
+1609266493    [Erina] ---> Initializing API
+1609266494    [Erina] ---> Initializing ErinaAdmin
+1609266495    [Erina] ---> Initializing Custom Endpoints
+1609266495    [Erina] ---> Initializing ErinaConsole
+1609266495    [Erina] Starting to check for timeouts and updates...
+1609266495    [Erina] Running ErinaServer...
+1609266495    [Erina] Running the ErinaTwitter Client...
+1609266496    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609266496    [Erina] Running the ErinaDiscord Client...
+1609266496    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609266556    [ErinaDebug] @irarugii @raynetoons Hi! I'm a digital artist who is currently in an anime style art phase... I think. Most of the… https://t.co/p2Jmt3hWT2
+1609266573    [ErinaDebug] @JimBelushi It’s too late for this advice, but I would recommend against asking if there are anime fans available o… https://t.co/Kr904g69lG
+1609266576    [Erina] Goodbye!
+1609266577    [Erina] Initializing Erina configuration...
+1609266577    [Erina] ---> Initializing Static File Endpoints
+1609266577    [Erina] ---> Initializing API
+1609266578    [Erina] ---> Initializing ErinaAdmin
+1609266579    [Erina] ---> Initializing Custom Endpoints
+1609266579    [Erina] ---> Initializing ErinaConsole
+1609266579    [Erina] Starting to check for timeouts and updates...
+1609266579    [Erina] Running ErinaServer...
+1609266580    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609266580    [Erina] Running the ErinaDiscord Client...
+1609266581    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609266583    [ErinaDebug] @ireidbooks95 @1jcmaxwell @redlettermedia Have wished for this for years. There are so many fantastic anime films a… https://t.co/repHXLqJtX
+1609266602    [ErinaDebug] YesYESEveryone Embrace the Anime
+1609266606    [ErinaDebug] This tweet is wholesome
+1609266613    [ErinaDebug] Hey guys this is my first tweet I want to be an anime tweeter so if you see this consider following and liking and… https://t.co/ez8L7bZ58I
+1609266627    [ErinaDebug] @ohyasky @Abrasionary What anime is this?
+1609266630    [ErinaTwitter] New asking hit from @wolfe_icy
+1609266630    [ErinaSearch] Searching for an image...
+1609266630    [ErinaHash] Hashing an image...
+1609266630    [ErinaCaches] Caching e7e3e3e1e1e1e1a1 trace.moe data...
+1609266634    [ErinaCaches] Caching e7e3e3e1e1e1e1a1 SauceNAO data...
+1609266635    [Error]    [ErinaCaches] ERINA_CONVERSION: An error occured while converting SauceNAO API Data to a caching format
+1609266635    [ErinaCaches] Searching for IQDB Data...
+1609266642    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609266649    [ErinaDebug] @wolfe_icy @ohyasky @Abrasionary Here is the sauce!Anime: Kaguya-sama wa Kokurasetai: Tensai-tachi no Renai Zunou… https://t.co/EEDFiUyHK6
+1609266657    [ErinaDebug] @q_terra_ but it's not real lol, no one cares, by your logic it's OK if an anime girl is a 500 year old dragon. wha… https://t.co/4vPKlesvwV
+1609266695    [ErinaDebug] @plaqzzy_ Love all of themI'm Anime Fan as maybe you can see in My name and PFP
+1609266706    [ErinaDebug] @lesbiankyoka yeah sorry my tweet felt targeted towards you when I didn’t know what you went through.. it is just an anime after all
+1609266728    [Erina] Goodbye!
+1609266730    [Erina] Initializing Erina configuration...
+1609266730    [Erina] ---> Initializing Static File Endpoints
+1609266730    [Erina] ---> Initializing API
+1609266731    [Erina] ---> Initializing ErinaAdmin
+1609266731    [Erina] ---> Initializing Custom Endpoints
+1609266731    [Erina] ---> Initializing ErinaConsole
+1609266731    [Erina] Starting to check for timeouts and updates...
+1609266731    [Erina] Running ErinaServer...
+1609266731    [Erina] Running the ErinaTwitter Client...
+1609266732    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609266732    [Erina] Running the ErinaDiscord Client...
+1609266733    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609266743    [Erina] Goodbye!
+1609266746    [Erina] Initializing Erina configuration...
+1609266746    [Erina] ---> Initializing Static File Endpoints
+1609266746    [Erina] ---> Initializing API
+1609266747    [Erina] ---> Initializing ErinaAdmin
+1609266747    [Erina] ---> Initializing Custom Endpoints
+1609266747    [Erina] ---> Initializing ErinaConsole
+1609266747    [Erina] Starting to check for timeouts and updates...
+1609266747    [Erina] Running ErinaServer...
+1609266747    [Erina] Running the ErinaTwitter Client...
+1609266748    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609266748    [Erina] Running the ErinaDiscord Client...
+1609266749    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609266772    [ErinaDebug] Y'know what this coud get me to do costuming again ....
+1609266791    [ErinaDebug] @mushroomk1ng @xeephah What anime is this?
+1609266794    [ErinaTwitter] New asking hit from @Jayti_el
+1609266794    [ErinaSearch] Searching for an image...
+1609266794    [ErinaHash] Hashing an image...
+1609266794    [ErinaCaches] Caching ffc1c3c3c3030707 trace.moe data...
+1609266797    [ErinaCaches] Caching ffc1c3c3c3030707 SauceNAO data...
+1609266798    [ErinaCaches] Searching for IQDB Data...
+1609266806    [Error]    [ErinaCaches] IQDB_NO_RELEVANT_MATCH: No relevant matches was found with IQDB
+1609266806    [ErinaCaches] Caching 20520 from AniList API...
+1609266808    [ErinaDebug] @salati00 @dogparkdesu The only way to sorta guess what pallets the characters will have in the anime is figures (e… https://t.co/nVVKRB8OfF
+1609266813    [ErinaDebug] @Jayti_el @mushroomk1ng @xeephah Here is the sauce!Anime: Love Stage!!Episode: 2/10 (at around 0:12:19.920000)S… https://t.co/WYCjv4N8ct
+1609266835    [ErinaDebug] Perfect time to relieve some stress~ 😊#Hentai #Anime #HentaicommunitySauce:Fate Stay Night or Grand Order https://t.co/HTOolEHsZI
+1609266907    [ErinaDebug] Any Anime fans out there...
+1609266945    [ErinaDebug] @Animesznn Okay, please don't take this in the wrong way... but what's with that anime that made everybody so crazy?
+1609267021    [ErinaDebug] @SusanArendt This ^Jim Belushi said he liked Ghibli movies and Your Name... one of the top replies was suggesting… https://t.co/PNA51sUowD
+1609267032    [ErinaDebug] it’s j&amp;h porn...
+1609267058    [ErinaDebug] before the twitter hiatus I took in november i was telling y’all about the anime body pillow i commissioned of myse… https://t.co/QJJfhWL0K6
+1609267083    [ErinaDebug] @LyteSydeBill Full Metal all da way baybeee! However, I have no idea what the other one is. What's the title of tha… https://t.co/mjBuNW9OME
+1609267087    [ErinaDebug] @DataErase I'm dying for context, what?? Is it like a Robin Williams thing where he was actually an anime fat the whole time?
+1609267110    [ErinaDebug] @DataErase I'm dying for context, what?? Is it like a Robin Williams thing where he was actually an anime fan the whole time?
+1609267112    [Erina] Goodbye!
+1609267113    [Erina] Initializing Erina configuration...
+1609267113    [Erina] ---> Initializing Static File Endpoints
+1609267113    [Erina] ---> Initializing API
+1609267114    [Erina] ---> Initializing ErinaAdmin
+1609267115    [Erina] ---> Initializing Custom Endpoints
+1609267115    [Erina] ---> Initializing ErinaConsole
+1609267115    [Erina] Starting to check for timeouts and updates...
+1609267115    [Erina] Running ErinaServer...
+1609267115    [Erina] Running the ErinaTwitter Client...
+1609267116    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609267116    [Erina] Running the ErinaDiscord Client...
+1609267116    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609267123    [ErinaDebug] @Murillos14 I mean...it said full-length in the original tweet..
+1609267130    [ErinaDebug] Ok I get it. What you like is what you like. And that’s totally awesome!! But when we are in a conversation, if all… https://t.co/IGT5fCpMpI
+1609267137    [ErinaDebug] @Jekkus Watch then read. The anime has done a real good job of adapting the source. It's possible to get it done be… https://t.co/r9tU7pWTj1
+1609267188    [ErinaDebug] @SlapageX What anime is this? https://t.co/hBOcSxonqQ
+1609267189    [ErinaTwitter] New asking hit from @MREvolutionary2
+1609267189    [ErinaSearch] Searching for an image...
+1609267189    [ErinaHash] Hashing an image...
+1609267189    [ErinaCaches] Caching b0b460f0f4ccc6e7 trace.moe data...
+1609267194    [ErinaCaches] Caching b0b460f0f4ccc6e7 SauceNAO data...
+1609267196    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A [{'code': 170, 'message': 'Missing required parameter: status.'}] error occured while handling Erina's Twitter Stream
+1609267285    [Erina] Goodbye!
+1609267286    [Erina] Initializing Erina configuration...
+1609267286    [Erina] ---> Initializing Static File Endpoints
+1609267286    [Erina] ---> Initializing API
+1609267287    [Erina] ---> Initializing ErinaAdmin
+1609267288    [Erina] ---> Initializing Custom Endpoints
+1609267288    [Erina] ---> Initializing ErinaConsole
+1609267288    [Erina] Starting to check for timeouts and updates...
+1609267288    [Erina] Running ErinaServer...
+1609267288    [Erina] Running the ErinaTwitter Client...
+1609267289    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609267289    [Erina] Running the ErinaDiscord Client...
+1609267289    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609267306    [ErinaDebug] Jim Belushi please watch Steins;Gate
+1609267317    [Erina] Goodbye!
+1609267318    [Erina] Initializing Erina configuration...
+1609267318    [Erina] ---> Initializing Static File Endpoints
+1609267318    [Erina] ---> Initializing API
+1609267319    [Erina] ---> Initializing ErinaAdmin
+1609267319    [Erina] ---> Initializing Custom Endpoints
+1609267319    [Erina] ---> Initializing ErinaConsole
+1609267319    [Erina] Starting to check for timeouts and updates...
+1609267319    [Erina] Running ErinaServer...
+1609267319    [Erina] Running the ErinaTwitter Client...
+1609267320    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609267320    [Erina] Running the ErinaDiscord Client...
+1609267322    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609267342    [ErinaDebug] @zenlovesxiao ❄ its the name of the anime https://t.co/328zAwo5zx
+1609267346    [ErinaDebug] Seen people recommending Jojo and why the FUCK would you recommend Jojo as someone first first anime
+1609267360    [Erina] Goodbye!
+1609267362    [Erina] Initializing Erina configuration...
+1609267362    [Erina] ---> Initializing Static File Endpoints
+1609267362    [Erina] ---> Initializing API
+1609267363    [Erina] ---> Initializing ErinaAdmin
+1609267364    [Erina] ---> Initializing Custom Endpoints
+1609267364    [Erina] ---> Initializing ErinaConsole
+1609267364    [Erina] Starting to check for timeouts and updates...
+1609267364    [Erina] Running ErinaServer...
+1609267364    [Erina] Running the ErinaTwitter Client...
+1609267365    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609267365    [Erina] Running the ErinaDiscord Client...
+1609267366    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609267380    [ErinaDiscord] New info hit from @Niichan!｜[Anime no Sekai]#3449 (asking for Kakegurui)
+1609267380    [ErinaSearch] Searching for Kakegurui... (title search)
+1609267404    [Erina] Goodbye!
+1609267407    [Erina] Initializing Erina configuration...
+1609267407    [Erina] ---> Initializing Static File Endpoints
+1609267407    [Erina] ---> Initializing API
+1609267407    [Erina] ---> Initializing ErinaAdmin
+1609267408    [Erina] ---> Initializing Custom Endpoints
+1609267408    [Erina] ---> Initializing ErinaConsole
+1609267408    [Erina] Starting to check for timeouts and updates...
+1609267408    [Erina] Running ErinaServer...
+1609267408    [Erina] Running the ErinaTwitter Client...
+1609267409    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609267409    [Erina] Running the ErinaDiscord Client...
+1609267410    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609267421    [ErinaDebug] ass eater
+1609267423    [ErinaDiscord] New info hit from @Niichan!｜[Anime no Sekai]#3449 (asking for Kaguya-Sama)
+1609267423    [ErinaSearch] Searching for Kaguya-Sama... (title search)
+1609267423    [ErinaCaches] Caching Kaguya-Sama from AniList Search API...
+1609267424    [ErinaDebug] jim belushi may i interest you in the 17 year old franchise Pretty Cure shortened as Precure but especially the 16t… https://t.co/JkjuAI6SS3
+1609267444    [ErinaDebug] Seen some people recommending Jojo, why the FUCK would you recommend Jojo as someone’s first anime?
+1609267448    [ErinaDiscord] New image search from @Niichan!｜[Anime no Sekai]#3449
+1609267448    [ErinaSearch] Searching for an image...
+1609267448    [ErinaHash] Hashing an image...
+1609267469    [ErinaDebug] a certain magical ass
+1609267476    [ErinaDebug] @JimBelushi Kentaro Miura’s Berserk.The 1997 anime is a loose adaptation of the 1989 manga of the same name. It’s… https://t.co/UQvvBonPyr
+1609267487    [ErinaDiscord] New info hit from @Niichan!｜[Anime no Sekai]#3449 (asking for kakegurui)
+1609267487    [ErinaSearch] Searching for kakegurui... (title search)
+1609267516    [Erina] Goodbye!
+1609267519    [Erina] Initializing Erina configuration...
+1609267519    [Erina] ---> Initializing Static File Endpoints
+1609267519    [Erina] ---> Initializing API
+1609267519    [Erina] ---> Initializing ErinaAdmin
+1609267520    [Erina] ---> Initializing Custom Endpoints
+1609267520    [Erina] ---> Initializing ErinaConsole
+1609267520    [Erina] Starting to check for timeouts and updates...
+1609267520    [Erina] Running ErinaServer...
+1609267520    [Erina] Running the ErinaTwitter Client...
+1609267521    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609267521    [Erina] Running the ErinaDiscord Client...
+1609267522    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609267542    [ErinaDebug] For those wondering why Death Note is trending... This is why.
+1609267585    [ErinaDebug] sir jim belushi sir if you watch kill la kill you'll see it might look like it's really horny for its teenage chara… https://t.co/qiZh5zfy2Y
+1609267626    [ErinaDebug] king's ass
+1609267633    [ErinaDebug] Jim Belushi is stanning Your Name okay I see you king
+1609267641    [Erina] Goodbye!
+1609267643    [Erina] Initializing Erina configuration...
+1609267643    [Erina] ---> Initializing Static File Endpoints
+1609267643    [Erina] ---> Initializing API
+1609267643    [Erina] ---> Initializing ErinaAdmin
+1609267644    [Erina] ---> Initializing Custom Endpoints
+1609267644    [Erina] ---> Initializing ErinaConsole
+1609267644    [Erina] Starting to check for timeouts and updates...
+1609267644    [Erina] Running ErinaServer...
+1609267644    [Erina] Running the ErinaTwitter Client...
+1609267645    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609267645    [Erina] Running the ErinaDiscord Client...
+1609267645    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609267651    [ErinaDebug] @atsuover What you could be doing is using your Nord VPN subscription to download Raid Shadow legends, and as it do… https://t.co/EzT4aQ9h0i
+1609267685    [ErinaDebug] Watch Beastars, Death Note, Mob Psycho, Attack on Titan, Haikyuu, My Hero Academia, and Kill la Kill
+1609267699    [ErinaDebug] You claim to be an anime fan but you don’t know who Jim Belushi is???
+1609267706    [ErinaDebug] What site is this?Might try to count mineLess than 50 though
+1609267753    [ErinaDebug] @JimBelushi A lot of the anime community is very divided and subjective. There are so many genres within anime that… https://t.co/ekbcm4jwpn
+1609267779    [ErinaDebug] It seems like the ladies love Attack on Titan more harder than the dudes.What is up with that?I thought chicks li… https://t.co/X4KOaiyJfj
+1609267790    [ErinaDebug] Today, I will teach him about Jormungand https://t.co/Aa9y0i4TvO
+1609267802    [ErinaDebug] ass:invaded
+1609267880    [ErinaDebug] @ted1613 @Littlelolikat Thanks also I’m not a minor just because someone likes an anime character doesn’t mean he’s… https://t.co/VugjCoxDW8
+1609267886    [ErinaDebug] Strangely I started to noticed. Players would stop in stride before while I was leading with the sniper. To a dead… https://t.co/2x1gQshG6L
+1609267903    [ErinaDebug] This guy had been asking for ONE SINGLE piece of evidence from history of the Hindu deity Ram for the last 3-4 hour… https://t.co/9n7tTfJyCn
+1609267969    [ErinaDebug] @PhxDrylix @Dailyanime___ what anime is this from, the colours are so vibrant ? ❤️
+1609267970    [ErinaTwitter] New asking hit from @kattastrophes
+1609267970    [ErinaSearch] Searching for an image...
+1609267970    [ErinaHash] Hashing an image...
+1609267971    [ErinaCaches] Caching e3e1c1e1f3f3f3fc trace.moe data...
+1609267975    [Error]    [ErinaTwitter] STREAM_EXCEPTION: A Could not determine file type error occured while handling Erina's Twitter Stream
+1609269099    [Erina] Goodbye!
+1609269101    [Erina] Initializing Erina configuration...
+1609269101    [Erina] ---> Initializing Static File Endpoints
+1609269101    [Erina] ---> Initializing API
+1609269101    [Erina] ---> Initializing ErinaAdmin
+1609269102    [Erina] ---> Initializing Custom Endpoints
+1609269102    [Erina] ---> Initializing ErinaConsole
+1609269102    [Erina] Starting to check for timeouts and updates...
+1609269102    [Erina] Running ErinaServer...
+1609269102    [Erina] Running the ErinaTwitter Client...
+1609269103    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609269103    [Erina] Running the ErinaDiscord Client...
+1609269104    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609269117    [ErinaDebug] Same
+1609269141    [Erina] Goodbye!
+1609269142    [Erina] Initializing Erina configuration...
+1609269142    [Erina] ---> Initializing Static File Endpoints
+1609269142    [Erina] ---> Initializing API
+1609269143    [Erina] ---> Initializing ErinaAdmin
+1609269144    [Erina] ---> Initializing Custom Endpoints
+1609269144    [Erina] ---> Initializing ErinaConsole
+1609269144    [Erina] Starting to check for timeouts and updates...
+1609269144    [Erina] Running ErinaServer...
+1609269144    [Erina] Running the ErinaTwitter Client...
+1609269145    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609269145    [Erina] Running the ErinaDiscord Client...
+1609269145    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609269164    [Erina] Goodbye!
+1609269165    [Erina] Initializing Erina configuration...
+1609269165    [Erina] ---> Initializing Static File Endpoints
+1609269165    [Erina] ---> Initializing API
+1609269166    [Erina] ---> Initializing ErinaAdmin
+1609269167    [Erina] ---> Initializing Custom Endpoints
+1609269167    [Erina] ---> Initializing ErinaConsole
+1609269167    [Erina] Starting to check for timeouts and updates...
+1609269167    [Erina] Running ErinaServer...
+1609269168    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609269168    [Erina] Running the ErinaDiscord Client...
+1609269168    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609269184    [Erina] Goodbye!
+1609269185    [Erina] Initializing Erina configuration...
+1609269185    [Erina] ---> Initializing Static File Endpoints
+1609269185    [Erina] ---> Initializing API
+1609269186    [Erina] ---> Initializing ErinaAdmin
+1609269187    [Erina] ---> Initializing Custom Endpoints
+1609269187    [Erina] ---> Initializing ErinaConsole
+1609269187    [Erina] Starting to check for timeouts and updates...
+1609269187    [Erina] Running ErinaServer...
+1609269188    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609269188    [Erina] Running the ErinaDiscord Client...
+1609269189    [Error]    [ErinaTwitter] STREAM_HTTP_ERROR: A 420 status code got received from Erina's Twitter Stream
+1609269249    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609269292    [ErinaDebug] devil man crybaby yupyup
+1609269294    [ErinaDebug] Your Name is a modern classic
+1609269322    [Erina] Goodbye!
+1609269324    [Erina] Initializing Erina configuration...
+1609269324    [Erina] ---> Initializing Static File Endpoints
+1609269324    [Erina] ---> Initializing API
+1609269325    [Erina] ---> Initializing ErinaAdmin
+1609269325    [Erina] ---> Initializing Custom Endpoints
+1609269325    [Erina] ---> Initializing ErinaConsole
+1609269325    [Erina] Starting to check for timeouts and updates...
+1609269325    [Erina] Running ErinaServer...
+1609269325    [Erina] Running the ErinaTwitter Client...
+1609269326    [Erina] Running the ErinaDiscord Client...
+1609269326    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609269327    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609269338    [Erina] Goodbye!
+1609269346    [Erina] Initializing Erina configuration...
+1609269346    [Erina] ---> Initializing Static File Endpoints
+1609269346    [Erina] ---> Initializing API
+1609269347    [Erina] ---> Initializing ErinaAdmin
+1609269348    [Erina] ---> Initializing Custom Endpoints
+1609269348    [Erina] ---> Initializing ErinaConsole
+1609269348    [Erina] Starting to check for timeouts and updates...
+1609269348    [Erina] Running ErinaServer...
+1609269348    [Erina] Running the ErinaTwitter Client...
+1609269349    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609269349    [Erina] Running the ErinaDiscord Client...
+1609269349    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609269357    [Erina] Goodbye!
+1609269489    [Erina] Initializing Erina configuration...
+1609269489    [Erina] ---> Initializing Static File Endpoints
+1609269489    [Erina] ---> Initializing API
+1609269490    [Erina] ---> Initializing ErinaAdmin
+1609269490    [Erina] ---> Initializing Custom Endpoints
+1609269490    [Erina] ---> Initializing ErinaConsole
+1609269490    [Erina] Starting to check for timeouts and updates...
+1609269490    [Erina] Running ErinaServer...
+1609269490    [Erina] Running the ErinaTwitter Client...
+1609269491    [Erina] Running the ErinaDiscord Client...
+1609269491    [ErinaDebug] ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime', 'ErinaSauce', '@ErinaSauce', 'erinasauce']
+1609269492    [ErinaTwitter] ErinaTwitter is connected to the Twitter API
+1609269498    [ErinaDebug] WHAT IS THIS ANIMEWHAT ARE THEY DOING https://t.co/xcEUYY5eU3
+1609269498    [ErinaTwitter] New asking hit from @culturedniichan
+1609269498    [ErinaSearch] Searching for an image...
+1609269498    [ErinaHash] Hashing an image...
+1609269498    [ErinaCaches] Caching 0905c4c0f0feefff trace.moe data...
+1609269501    [ErinaCaches] Caching 18497 from AniList API...
+1609269509    [ErinaDebug] @culturedniichan Here is the sauce!Anime: Yozakura Quartet: Hana no UtaEpisode: 4/13 (at around 0:06:53.750000)… https://t.co/jQ0Ps48pAx
+1609269524    [ErinaDebug] this is the best timeline
+1609269540    [ErinaDebug] God I hope Jim gets to see Satoshi Kon works and not some ecchi isekai.
+1609269581    [ErinaDebug] @Lost_Pause_  would you look at this?
+1609269599    [ErinaDebug] @GodGabriel42 what kind of game is steins gate i only know the animeis it good?
+1609269629    [ErinaDebug] Decided to check the anime action figures of Xiumin ..my inner anime addiction has been unleashed 😉 #introvertfeels… https://t.co/SZgNxAWvP7
+1609269654    [ErinaDebug] What's a non-negotiable prerequisite you have for a partner?Mine is that she needs to be okay with *me* playing v… https://t.co/etzGQs5Ma0
+1609269676    [ErinaDebug] @emthreegee @WaifuAlert Is that the name of the series and is it anime or hentai
+1609269682    [ErinaDebug] Jim just opened Pandora's box. Here's what I recommend for newbies:Sci-Fi: Ghost in the ShellAction: Fist of the… https://t.co/8V8q67GcLT
+1609269704    [ErinaDebug] @FavAnimesexual What the actual heck. This is mocking the lgbtq+ community and anime sexual is completely JOKE. You… https://t.co/UgPaD8teNi
+1609269749    [ErinaDebug] At this weekend, I plan to watch Anime Dramas and I called my weekend plan ACG-Dramas Teen Spirit because this week… https://t.co/I2arPTkhZT
+1609269754    [ErinaDebug] I'd seriously recommend checking out the work of director Masaaki Yuasa. He's probably one of the best directors in… https://t.co/GmhLjGOftO

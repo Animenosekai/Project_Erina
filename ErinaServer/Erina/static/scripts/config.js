@@ -33,6 +33,22 @@ document.getElementById("resetLogs").onclick = function() {
     }
 }
 
+document.getElementById("cleanCaches").onclick = function() {
+    if (confirm("Do you really want to clean all of the caches?") == true) {
+        fetch("/erina/api/admin/caches/clean?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                newSuccess("Successfully cleaned ErinaCaches")
+            } else {
+                newError("An error occured while cleaning the caches")
+            }
+        })
+    }
+}
+
 document.getElementById("revertConfig").onclick = function() {
     if (confirm("Do you really want to revert ErinaConfig to its default values?") == true) {
         fetch("/erina/api/admin/config/default?token=" + window.localStorage.getItem("erinaAdminToken"), {

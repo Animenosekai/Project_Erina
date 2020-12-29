@@ -33,6 +33,7 @@ class HashObject():
         self.ImageHash = hashobj
         self.Image = ImageObj
         self.ImageIO = BytesIO()
+        self.Image.convert('RGB')
         self.Image.save(self.ImageIO, format="JPEG")
         self.hash = str(self.ImageHash)
         self.base64 = str(base64.b64encode(self.ImageIO.getvalue()).decode("utf-8"))

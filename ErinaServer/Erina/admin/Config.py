@@ -1,3 +1,4 @@
+from ErinaDiscord.erina_discordbot import startDiscord
 import sys
 import traceback
 
@@ -244,12 +245,7 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                 if path == "Discord/run" and value == True and not Discord.run:
                     if Discord.keys.token is None:
                         return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_CRITICAL_KEY", data={"client": "Discord", "key": "Bot Token"}, code=400)
-                    def startDiscord():
-                        import asyncio
-                        from ErinaDiscord.erina_discordbot import client as discordClient
-                        asyncio.get_event_loop().create_task(discordClient.start(Discord.keys.token))
-                        asyncio.get_event_loop().run_forever()
-                    Thread(target=startDiscord, daemon=True).start()
+                    startDiscord()
                 elif path == "Discord/run" and value == False and Discord.run:
                     from ErinaDiscord.erina_discordbot import client as discordClient
                     discordClient.close()
@@ -399,6 +395,36 @@ def ErinaServer_Endpoint_Admin_Config_resetLogs():
     try:
         if tokenVerification.success:
             logFile.write("")
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+    
+
+@ErinaServer.route("/erina/api/admin/caches/clean", methods=["POST"])
+def ErinaServer_Endpoint_Admin_Config_cleanCaches():
+    """
+    Cleans the caches
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            for file in files_in_dir(erina_dir + "/ErinaCaches/AniList_Cache"):
+                if extension_from_base(file) == ".erina":
+                    TextFile(erina_dir + "/ErinaCaches/AniList_Cache/" + file).delete()
+            for file in files_in_dir(erina_dir + "/ErinaCaches/Erina_Cache"):
+                if extension_from_base(file) == ".erina":
+                    TextFile(erina_dir + "/ErinaCaches/Erina_Cache/" + file).delete()
+            for file in files_in_dir(erina_dir + "/ErinaCaches/IQDB_Cache"):
+                if extension_from_base(file) == ".erina":
+                    TextFile(erina_dir + "/ErinaCaches/IQDB_Cache/" + file).delete()
+            for file in files_in_dir(erina_dir + "/ErinaCaches/SauceNAO_Cache"):
+                if extension_from_base(file) == ".erina":
+                    TextFile(erina_dir + "/ErinaCaches/SauceNAO_Cache/" + file).delete()
+            for file in files_in_dir(erina_dir + "/ErinaCaches/TraceMoe_Cache"):
+                if extension_from_base(file) == ".erina":
+                    TextFile(erina_dir + "/ErinaCaches/TraceMoe_Cache/" + file).delete()
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)

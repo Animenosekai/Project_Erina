@@ -2,6 +2,9 @@
 IQDB Results Parser\n
 Also get results from iqdb database's sites\n
 
+
+** DEPRECATED **
+
 Erina Project\n
 © Anime no Sekai - 2020
 """

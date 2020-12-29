@@ -185,11 +185,11 @@ def search_anime_by_hash(image_hash):
                                         bestResult = max(similaritiesDict.items(), key=operator.itemgetter(1))[0]
                                         
                                         if isinstance(bestResult, TraceMOECache):
-                                            return ImageSearchResult(tracemoe_cache_result, tracemoe_cache_result.similarity, anilist_id_search.search_anime_by_anilist_id(tracemoe_cache_result.anilist_id), low_similarity=True)
+                                            return ImageSearchResult(bestResult, bestResult.similarity, anilist_id_search.search_anime_by_anilist_id(bestResult.anilist_id), low_similarity=True)
                                         elif isinstance(bestResult, SauceNAOCache):
-                                            return ImageSearchResult(saucenao_cache_result, saucenao_cache_result.similarity, (title_search.searchAnime(saucenao_cache_result.title) if saucenao_cache_result.is_anime else None), low_similarity=True)
+                                            return ImageSearchResult(bestResult, bestResult.similarity, (title_search.searchAnime(bestResult.title) if bestResult.is_anime else None), low_similarity=True)
                                         elif isinstance(bestResult, IQDBCache):
-                                            return ImageSearchResult(iqdb_cache_result, iqdb_cache_result.similarity, None, low_similarity=True)
+                                            return ImageSearchResult(bestResult, bestResult.similarity, None, low_similarity=True)
                                         else: #### IF NO RESULT ARE LEFT
                                             return SearchingError("NO_RESULT", "No result found.")
                                     

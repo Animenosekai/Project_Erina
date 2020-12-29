@@ -1,7 +1,6 @@
 """
 Parses ErinaSearch for Discord
 """
-from Erina.utils import create_nice_list
 from ErinaParser.utils.saucenao_parser import SauceNAOCache
 from Erina.Errors import isAnError
 
@@ -26,7 +25,7 @@ def makeInfoResponse(erinaSearchResponse):
     episodes=(str(erinaSearchResponse.number_of_episodes) if erinaSearchResponse.number_of_episodes is not None else "??"),
     duration=(str(erinaSearchResponse.episode_duration) if erinaSearchResponse.episode_duration is not None else "??"),
     status=(str(erinaSearchResponse.status) if erinaSearchResponse.status is not None else "Unknown"),
-    genres=(str(create_nice_list(erinaSearchResponse.genres))),
+    genres=(str(erinaSearchResponse.genres)),
     studios=(str([studio for studio in erinaSearchResponse.studios if studio.is_animation_studio]) if erinaSearchResponse.studios is not None else "Unknown"),
     description=(str(erinaSearchResponse.description) if len(str(erinaSearchResponse.description)) <= 200 else str(erinaSearchResponse.description)[:177] + "..."),
     link=(str(erinaSearchResponse.link) if erinaSearchResponse.link is not None else "")
@@ -79,7 +78,7 @@ def makeImageResponse(erinaSearchResponse):
     episodes=(str(animeResult.number_of_episodes) if animeResult.number_of_episodes is not None else "?"),
     timestamp=(('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''),
     studios=(str([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown"),
-    genres=((str(create_nice_list(animeResult.genres))) if animeResult.genres is not None else "Unknown"),
+    genres=((str(animeResult.genres)) if animeResult.genres is not None else "Unknown"),
     similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
     link=((str(animeResult.link)) if animeResult.link is not None else ""),
     description=((str(animeResult.description)) if animeResult.description is not None else "")

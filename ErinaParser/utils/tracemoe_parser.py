@@ -86,19 +86,19 @@ class TraceMOECache():
         def __init__(self, from_time=None, to=None, at=None) -> None:
             if from_time is not None:
                 self.from_time = utils.convert_to_float(from_time)
-                self.from_formatted = str(datetime.timedelta(seconds=self.from_time))
+                self.from_formatted = str(datetime.timedelta(seconds=self.from_time)).split(".")[0]
             else:
                 self.from_time = None
                 self.from_formatted = None
             if to is not None:
                 self.to = utils.convert_to_float(to)
-                self.to_formatted = str(datetime.timedelta(seconds=self.to))
+                self.to_formatted = str(datetime.timedelta(seconds=self.to)).split(".")[0]
             else:
                 self.to = None
                 self.to_formatted = None
             if at is not None:
                 self.at = utils.convert_to_float(at)
-                self.at_formatted = str(datetime.timedelta(seconds=self.at))
+                self.at_formatted = str(datetime.timedelta(seconds=self.at)).split(".")[0]
             else:
                 self.at = None
                 self.at_formatted = None
@@ -106,19 +106,19 @@ class TraceMOECache():
         def addTiming(self, from_time=None, to=None, at=None) -> None:
             if from_time is not None:
                 self.from_time = utils.convert_to_float(from_time)
-                self.from_formatted = str(datetime.timedelta(seconds=self.from_time))
+                self.from_formatted = str(datetime.timedelta(seconds=self.from_time)).split(".")[0]
             else:
                 self.from_time = None
                 self.from_formatted = None
             if to is not None:
                 self.to = utils.convert_to_float(to)
-                self.to_formatted = str(datetime.timedelta(seconds=self.to))
+                self.to_formatted = str(datetime.timedelta(seconds=self.to)).split(".")[0]
             else:
                 self.to = None
                 self.to_formatted = None
             if at is not None:
                 self.at = utils.convert_to_float(at)
-                self.at_formatted = str(datetime.timedelta(seconds=self.at))
+                self.at_formatted = str(datetime.timedelta(seconds=self.at)).split(".")[0]
             else:
                 self.at = None
                 self.at_formatted = None
