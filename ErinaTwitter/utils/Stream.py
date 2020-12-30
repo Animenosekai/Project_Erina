@@ -50,9 +50,6 @@ class Listener(tweepy.StreamListener):
         StatsAppend(TwitterStats.streamHit)
         if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
             return
-        print("")
-        print("----------------------------")
-        log("ErinaDebug", tweet.text)
         try:
             if Twitter.isReplyingToErina(tweet): # If replying, analyze if it is a positive or a negative feedback
                 responseSentiment = sentiment(tweet.text)[0]
@@ -204,9 +201,10 @@ def startStream():
                 sinceID = message.id
 
         for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages).items():
-            if message not in directMessagesHistory and message.created_timestamp > lastDM:
+            timestamp = convert_to_int(message.created_timestamp)
+            if message not in directMessagesHistory and timestamp > lastDM:
                 on_direct_message(message)
-                lastDM = message.created_timestamp
+                lastDM = timestamp
         sleep(60)
     
 

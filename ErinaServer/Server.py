@@ -17,7 +17,8 @@ Compress(ErinaServer)
 # Secure ErinaServer
 Talisman(ErinaServer, force_https_permanent=True, content_security_policy={
     'default-src': [
-        '\'self\''
+        '\'self\'',
+        "'unsafe-inline'"
     ],
     'script-src': [
         "'self'",
