@@ -63,7 +63,7 @@ function _goTo() {
     if ("undefined" !== typeof history.pushState) {
         try {
             var url = window.location.href.substring(window.location.href.lastIndexOf("/") + 1)
-            fetch("/erina/admin/resource/" + url + "?token=" + window.localStorage.getItem("erinaAdminToken"))
+            fetch("https://" + window.location.host + "/erina/admin/resource/" + url + "?token=" + window.localStorage.getItem("erinaAdminToken"))
             .then(function(data){
                 return data.text()
             })
