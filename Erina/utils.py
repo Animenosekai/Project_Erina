@@ -103,14 +103,17 @@ def create_nice_list(input_list):
     """
     Creates a nice string from a list
     """
-    if len(input_list) == 0:
-        return "Unknown"
-    elif len(input_list) == 1:
-        return capitalize_string(input_list[0])
-    elif len(input_list) == 2:
-        return capitalize_string(input_list[0]) + ", " + capitalize_string(input_list[1])
+    if isinstance(input_list, (list, tuple)):
+        if len(input_list) == 0:
+            return "Unknown"
+        elif len(input_list) == 1:
+            return capitalize_string(input_list[0])
+        elif len(input_list) == 2:
+            return capitalize_string(input_list[0]) + ", " + capitalize_string(input_list[1])
+        else:
+            return capitalize_string(input_list[0]) + ", " + capitalize_string(input_list[1] + ", " + capitalize_string(input_list[2]))
     else:
-        return capitalize_string(input_list[0]) + ", " + capitalize_string(input_list[1] + ", " + capitalize_string(input_list[2]))
+        return str(input_list)
 
 
 def get_scaled_size(bytes, suffix="B"):
