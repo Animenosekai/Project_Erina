@@ -5,6 +5,7 @@ Erina Clients Wrapper for the Erina Project
 Erina Project - 2020
 """
 
+from ErinaLine.erina_linebot import initHandler
 import os
 import sys
 import psutil
@@ -107,6 +108,9 @@ if __name__ == '__main__':
             log("Erina", "Running the ErinaDiscord Client...")
             from ErinaDiscord.erina_discordbot import startDiscord
             startDiscord()
+
+        if config.Line.run:
+            initHandler()
 
     from threading import Thread
     Thread(target=runClients, daemon=True).start()
