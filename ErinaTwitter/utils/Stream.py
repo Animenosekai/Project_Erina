@@ -195,6 +195,7 @@ def startStream():
     global lastDM
     Thread(target=_startStream, daemon=True).start()
     while True:
+        """
         try:
             if sinceID is not None and sinceID != "":
                 for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, since_id=sinceID, count=200, include_entities=True).items():
@@ -216,6 +217,8 @@ def startStream():
             log("ErinaTwitter", f"Error while reading mentions {str(sys.exc_info()[0])}", True)
             if str(sys.exc_info()[0]) == "<class 'tweepy.error.RateLimitError'>":
                 sleep(3600)
+
+        """
         try:
             for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages, count=50).items():
                 try:

@@ -47,9 +47,7 @@ def isAskingForSauce(tweet):
         return False
 
     cleanText = tweet.text.replace(" ", '').lower()
-    if ErinaTwitter._screen_name in cleanText:
-        return True
-    elif any([flag in cleanText for flag in ([str(word).lower().replace(" ", "") for word in list(TwitterConfig.flags)] if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else [str(word).lower().replace(" ", "") for word in list(ErinaConfig.flags)])]):
+    if any([flag in cleanText for flag in ([str(word).lower().replace(" ", "") for word in list(TwitterConfig.flags)] if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else [str(word).lower().replace(" ", "") for word in list(ErinaConfig.flags)])]):
         return True
     return False
 
