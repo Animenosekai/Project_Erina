@@ -67,7 +67,7 @@ def isReplyingToErina(tweet):
     Checks if the given tweet is replying to Erina
     """
     if isReply(tweet):
-        if ErinaTwitter.api.get_status(tweet.in_reply_to_status_id).user.id == ErinaTwitter.me.id:
+        if tweet.in_reply_to_user_id == ErinaTwitter.me.id:
             return True
     return False
 
