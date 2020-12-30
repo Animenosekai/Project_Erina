@@ -84,7 +84,7 @@ if LineConfig.run:
     log("Erina", "Running the ErinaLine Client...")
 
 # Connecting to LINE API
-@ErinaServer.route("/callback", methods=['POST'])
+@ErinaServer.route("/erina/line/callback", methods=['POST'])
 def callback():
     print(LineConfig.run)
     print("New callback from Line")
