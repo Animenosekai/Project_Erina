@@ -20,15 +20,15 @@
         "logsTimeout": 604800
     }, 
     "Twitter": {
-        "run": false, 
+        "run": true, 
         "ignoredUsers": [], 
         "flags": [], 
         "ignoreRT": true, 
         "keys": {
-            "consumerKey": null, 
-            "consumerSecret": null, 
-            "accessTokenKey": null, 
-            "accessTokenSecret": null
+            "consumerKey": "{{twitter_consumer_key}}", 
+            "consumerSecret": "{{twitter_consumer_secret}}", 
+            "accessTokenKey": "{{twitter_access_token_key}}", 
+            "accessTokenSecret": "{{twitter_access_token_secret}}"
         }, 
         "stream": {
             "languages": [
@@ -42,18 +42,18 @@
         }
     }, 
     "Discord": {
-        "run": false, 
+        "run": true, 
         "flags": [], 
         "keys": {
-            "token": null
+            "token": "{{discord_bot_token}}"
         }
     }, 
     "Line": {
-        "run": false, 
+        "run": true, 
         "flags": [], 
         "keys": {
-            "channelAccessToken": null, 
-            "channelSecret": null
+            "channelAccessToken": "{{line_channel_access_token}}", 
+            "channelSecret": "{{line_channel_secret}}"
         }, 
         "imagesTimeout": 3600
     }, 
@@ -61,7 +61,7 @@
         "encoding": "utf-8", 
         "keys": {
             "tracemoe": null, 
-            "saucenao": null
+            "saucenao": "{{saucenao_api_key}}"
         }
     }, 
     "Database": {}, 
