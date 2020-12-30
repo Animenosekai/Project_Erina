@@ -2,6 +2,7 @@
 Twitter Stream Manager
 """
 
+import sys
 from threading import Thread
 
 from safeIO import TextFile
@@ -176,17 +177,17 @@ def on_direct_message(message):
     DM Receiving
     """
     directMessagesHistory.append(message)
-    log("ErinaTwitter", "New direct message from @" + str(message.user.screen_name))
+    log("ErinaTwitter", "New direct message from @" + str(message.message_create['sender_id']))
     if Twitter.dmAskingForSauce(message):
-        StatsAppend(TwitterStats.directMessagingHit, str(message.user.screen_name))
+        StatsAppend(TwitterStats.directMessagingHit, str(message.message_create['sender_id']))
         image = Twitter.getDirectMedia(message)
         if image is not None:
             searchResult = imageSearch(image)
-            ErinaTwitter.dm(makeImageResponse(searchResult), message.sender_id)
+            ErinaTwitter.dm(makeImageResponse(searchResult), message.message_create['sender_id'])
         elif isAnError(image):
-            ErinaTwitter.dm("An error occured while retrieving information on the anime", message.sender_id)
+            ErinaTwitter.dm("An error occured while retrieving information on the anime", message.message_create['sender_id'])
         else:
-            ErinaTwitter.dm("You did not send any image along with your message", message.sender_id)
+            ErinaTwitter.dm("You did not send any image along with your message", message.message_create['sender_id'])
 
 
 def startStream():
@@ -194,17 +195,28 @@ def startStream():
     global lastDM
     Thread(target=_startStream, daemon=True).start()
     while True:
-        if sinceID is not None and sinceID != "":
-            for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, since_id=sinceID, count=200, include_entities=True).items():
-                ErinaStreamListener.on_status(message)
-                TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(message.id))
-                sinceID = message.id
-
-        for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages).items():
-            timestamp = convert_to_int(message.created_timestamp)
-            if message not in directMessagesHistory and timestamp > lastDM:
-                on_direct_message(message)
-                lastDM = timestamp
+        try:
+            if sinceID is not None and sinceID != "":
+                for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, since_id=sinceID, count=200, include_entities=True).items():
+                    try:
+                        ErinaStreamListener.on_status(message)
+                        TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(message.id))
+                        sinceID = message.id
+                    except:
+                        log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
+        except:
+            log("ErinaTwitter", f"Error while reading mentions {str(sys.exc_info()[0])}", True)
+        try:
+            for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages, count=50).items():
+                try:
+                    timestamp = convert_to_int(message.created_timestamp)
+                    if message not in directMessagesHistory and timestamp > lastDM:
+                        on_direct_message(message)
+                        lastDM = timestamp
+                except:
+                    log("ErinaTwitter", f"Error while reading a DM {str(sys.exc_info()[0])}", True)
+        except:
+            log("ErinaTwitter", f"Error while reading DMs {str(sys.exc_info()[0])}", True)
         sleep(60)
     
 

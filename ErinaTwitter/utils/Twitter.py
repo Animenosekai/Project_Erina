@@ -98,7 +98,7 @@ def dmAskingForSauce(dm):
     """
     Checks if the given direct message is asking for the sauce
     """
-    cleanText = dm.text.replace(" ", '').lower()
+    cleanText = dm.message_create['message_data']['text'].replace(" ", '').lower()
     if any([flag in cleanText for flag in ([str(word).lower().replace(" ", "") for word in list(TwitterConfig.flags)] if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else [str(word).lower().replace(" ", "") for word in list(ErinaConfig.flags)])]):
         return True
 
