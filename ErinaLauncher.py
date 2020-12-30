@@ -5,11 +5,13 @@ Erina Clients Wrapper for the Erina Project
 Erina Project - 2020
 """
 
+from safeIO import TextFile
 from ErinaLine.erina_linebot import initHandler
 import os
 import sys
 import psutil
 import traceback
+from Erina.env_information import erina_dir
 
 """
 import logging
@@ -40,6 +42,9 @@ def restartErinaServer(num, info):
             os.close(handler.fd)
     except:
         pass
+
+    from ErinaTwitter.utils.Stream import lastDM
+    TextFile(erina_dir + "/ErinaTwitter/lastDM.erina").write(str(lastDM))
 
     ErinaWSGIServer.stop()
     ErinaWSGIServer.close()

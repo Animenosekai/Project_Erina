@@ -93,6 +93,8 @@ def callback():
         body = request.get_data(as_text=True)
         # handle webhook body
         try:
+            print("ErinaLine Debug: /callback")
+            print(body)
             handler.handle(body, signature)
         except InvalidSignatureError:
             LineError("INVALID_SIGNATURE", "Please check your channel access token/channel secret.")
@@ -109,7 +111,10 @@ def initHandler():
     
     @handler.add(MessageEvent)
     def handle_message(event):
+        print("Handling an event")
+        print(event)
         displayName = line_bot_api.get_profile(event.source.user_id).display_name
+        print(displayName)
 
         if event.message.type == 'image': # If it is an image
             image_message_content = line_bot_api.get_message_content(event.message.id) # Get the image

@@ -3,6 +3,8 @@ Twitter Stream Manager
 """
 
 from threading import Thread
+
+from safeIO import TextFile
 from ErinaParser.utils.tracemoe_parser import TraceMOECache
 from time import sleep, time
 import traceback
@@ -17,10 +19,14 @@ from ErinaTwitter.utils import Twitter
 from ErinaTwitter.erina_twitterbot import ErinaTwitter, latestResponses
 from ErinaTwitter.utils.Parser import makeTweet, makeImageResponse
 from ErinaSearch.erinasearch import imageSearch
+from Erina.env_information import erina_dir
 
 from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import twitter as TwitterStats
+from Erina.utils import convert_to_int
 
+sinceID = TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").read().replace("\n", "")
+lastDM = convert_to_int(TextFile(erina_dir + "/ErinaTwitter/lastDM.erina").read().replace("\n", ""))
 
 class Listener(tweepy.StreamListener):
     """
@@ -40,6 +46,7 @@ class Listener(tweepy.StreamListener):
         """
         Tweet Receiving
         """
+        global sinceID
         StatsAppend(TwitterStats.streamHit)
         if TwitterConfig.ignore_rt and Twitter.isRetweet(tweet):
             return
@@ -104,6 +111,8 @@ class Listener(tweepy.StreamListener):
                             responseImageURL = f"https://trace.moe/thumbnail.php?anilist_id={str(searchResult.detectionResult.anilist_id)}&file={str(searchResult.detectionResult.filename)}&t={str(searchResult.detectionResult.timing.at)}&token={str(searchResult.detectionResult.tokenthumb)}"
                     ErinaTwitter.tweet(tweetResponse, replyID=tweet.id, imageURL=responseImageURL)
                 elif Twitter.isMention(tweet):
+                    TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(tweet.id))
+                    sinceID = tweet.id
                     ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
         return
 
@@ -144,7 +153,8 @@ class Listener(tweepy.StreamListener):
         """
         return TwitterError("STREAM_DISCONNECTION", f"A disconnection notice came: {str(notice)}")
 
-Erina = tweepy.Stream(auth=ErinaTwitter.api.auth, listener=Listener())
+ErinaStreamListener = Listener()
+Erina = tweepy.Stream(auth=ErinaTwitter.api.auth, listener=ErinaStreamListener)
 def _startStream():
     """
     Starts the stream
@@ -156,7 +166,6 @@ def _startStream():
         if not isinstance(TwitterConfig.stream.flags, (list, tuple)) or len(TwitterConfig.stream.flags) <= 0:
             flags = (list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags))
             flags.append(ErinaTwitter.me.screen_name)
-            flags.append("@" + str(ErinaTwitter.me.screen_name))
             flags.append(str(ErinaTwitter.me.screen_name).lower())
             log("ErinaDebug", flags)
             Erina.filter(languages=TwitterConfig.stream.languages, track=flags)
@@ -182,12 +191,22 @@ def on_direct_message(message):
         else:
             ErinaTwitter.dm("You did not send any image along with your message", message.sender_id)
 
+
 def startStream():
+    global sinceID
+    global lastDM
     Thread(target=_startStream, daemon=True).start()
     while True:
+        if sinceID is not None and sinceID != "":
+            for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, since_id=sinceID, count=200, include_entities=True).items():
+                ErinaStreamListener.on_status(message)
+                TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(message.id))
+                sinceID = message.id
+
         for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages).items():
-            if message not in directMessagesHistory:
+            if message not in directMessagesHistory and message.created_timestamp > lastDM:
                 on_direct_message(message)
+                lastDM = message.created_timestamp
         sleep(60)
     
 
