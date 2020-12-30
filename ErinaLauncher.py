@@ -44,7 +44,9 @@ def restartErinaServer(num, info):
         pass
 
     from ErinaTwitter.utils.Stream import lastDM
+    from ErinaTwitter.utils.Stream import sinceID
     TextFile(erina_dir + "/ErinaTwitter/lastDM.erina").write(str(lastDM))
+    TextFile(erina_dir + "/ErinaTwitter/lastStatusID.erina").write(str(sinceID))
 
     ErinaWSGIServer.stop()
     ErinaWSGIServer.close()

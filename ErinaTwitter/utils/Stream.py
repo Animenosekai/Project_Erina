@@ -26,7 +26,7 @@ from Erina.erina_stats import StatsAppend
 from Erina.erina_stats import twitter as TwitterStats
 from Erina.utils import convert_to_int
 
-sinceID = TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").read().replace("\n", "")
+sinceID = TextFile(erina_dir + "/ErinaTwitter/lastStatusID.erina").read().replace("\n", "")
 lastDM = convert_to_int(TextFile(erina_dir + "/ErinaTwitter/lastDM.erina").read().replace("\n", ""))
 
 class Listener(tweepy.StreamListener):
@@ -111,8 +111,8 @@ class Listener(tweepy.StreamListener):
                     ErinaTwitter.tweet(tweetResponse, replyID=tweet.id, imageURL=responseImageURL)
                 elif Twitter.isMention(tweet):
                     ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
-                TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(tweet.id))
-                sinceID = tweet.id
+        TextFile(erina_dir + "/ErinaTwitter/lastStatusID.erina").write(str(tweet.id))
+        sinceID = tweet.id
         return
 
     # Error handling
@@ -166,10 +166,8 @@ def _startStream():
             flags = (list(TwitterConfig.flags) if str(TwitterConfig.flags).replace(" ", "") not in ["None", "", "[]"] else list(ErinaConfig.flags))
             flags.append(ErinaTwitter.me.screen_name)
             flags.append(str(ErinaTwitter.me.screen_name).lower())
-            log("ErinaDebug", flags)
             Erina.filter(languages=TwitterConfig.stream.languages, track=flags)
         else:
-            log("ErinaDebug", len(TwitterConfig.stream.flags))
             Erina.filter(languages=TwitterConfig.stream.languages, track=list(TwitterConfig.stream.flags))
 
 directMessagesHistory = []
@@ -196,22 +194,17 @@ def startStream():
     global lastDM
     Thread(target=_startStream, daemon=True).start()
     while True:
-        """
         try:
             if sinceID is not None and sinceID != "":
                 for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, since_id=sinceID, count=200, include_entities=True).items():
                     try:
                         ErinaStreamListener.on_status(message)
-                        TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(message.id))
-                        sinceID = message.id
                     except:
                         log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
             else:
                 for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, count=200, include_entities=True).items():
                     try:
                         ErinaStreamListener.on_status(message)
-                        TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(message.id))
-                        sinceID = message.id
                     except:
                         log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
         except:
@@ -219,7 +212,6 @@ def startStream():
             if str(sys.exc_info()[0]) == "<class 'tweepy.error.RateLimitError'>":
                 sleep(3600)
 
-        """
         try:
             for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages, count=50).items():
                 try:

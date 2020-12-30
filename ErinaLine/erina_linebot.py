@@ -86,6 +86,8 @@ if LineConfig.run:
 # Connecting to LINE API
 @ErinaServer.route("/callback", methods=['POST'])
 def callback():
+    print(LineConfig.run)
+    print("New callback from Line")
     if LineConfig.run:
         # get X-Line-Signature header value
         signature = request.headers['X-Line-Signature']
