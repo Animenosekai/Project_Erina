@@ -347,7 +347,6 @@ function PageInitialize() {
             data = data.data
 ///////////////////// PASTING JS MADE WITH CONFIGPAGESETUP.PY
 
-
         for (element in data.Erina.flags) { createNewTag(document.getElementById('tagsContainer-erinaflags'), data.Erina.flags[element]) };
         if (data.Erina.consoleLog == true) { document.getElementById('toggle-erinaconsolelog').checked = true; document.getElementById('toggleText-erinaconsolelog').innerText = 'Enabled' };
         if (data.Erina.fileLog == true) { document.getElementById('toggle-erinafilelog').checked = true; document.getElementById('toggleText-erinafilelog').innerText = 'Enabled' };
@@ -357,6 +356,7 @@ function PageInitialize() {
         for (element in data.Twitter.ignoredUsers) { createNewTag(document.getElementById('tagsContainer-twitterignoredusers'), data.Twitter.ignoredUsers[element]) };
         for (element in data.Twitter.flags) { createNewTag(document.getElementById('tagsContainer-twitterflags'), data.Twitter.flags[element]) };
         if (data.Twitter.ignoreRT == true) { document.getElementById('toggle-twitterignorert').checked = true; document.getElementById('toggleText-twitterignorert').innerText = 'Enabled' };
+        if (data.Twitter.imagePreview == true) { document.getElementById('toggle-twitterimagepreview').checked = true; document.getElementById('toggleText-twitterimagepreview').innerText = 'Enabled' };
         document.getElementById('twitterkeysconsumerkey').value = data.Twitter.keys.consumerKey;
         document.getElementById('twitterkeysconsumersecret').value = data.Twitter.keys.consumerSecret;
         document.getElementById('twitterkeysaccesstokenkey').value = data.Twitter.keys.accessTokenKey;
@@ -384,7 +384,6 @@ function PageInitialize() {
         document.getElementById('serverhost').value = data.Server.host;
         document.getElementById('serverport').value = data.Server.port;
         if (data.Server.publicAPI == true) { document.getElementById('toggle-serverpublicapi').checked = true; document.getElementById('toggleText-serverpublicapi').innerText = 'Enabled' };
-                
                 
         //////////////////
         } else if (data.error == "login") {

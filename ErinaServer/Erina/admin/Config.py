@@ -36,8 +36,8 @@ from ErinaServer.Server import ErinaServer, ErinaRateLimit
 from ErinaLine.erina_linebot import initHandler as initLine
 from ErinaServer.Erina.auth.apiAuth.authReader import APIAuth
 from ErinaTwitter.erina_twitterbot import latestResponses, ErinaTwitter
-from Erina.utils import convert_to_float, convert_to_int, get_scaled_size
-from Erina.env_information import erina_version, python_executable_path, erina_dir, python_version_info, pid, cpu_count
+from Erina.utils import convert_to_float, convert_to_int, get_scaled_size, convert_to_boolean
+from Erina.env_information import erina_version, erina_dir, python_version_info, pid, cpu_count
 from ErinaServer.Erina.admin.Stats import returnStats, pastMonthErrors, biggestUsers, returnOverviewStats
 
 class ErinaUpdateError(Exception):
@@ -217,8 +217,8 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                     value = convert_to_int(value)
                 elif path in ["Server/host"]:
                     value = re.sub("[^0-9.]", "", value)
-                elif path in ["Erina/consoleLog", "Erina/fileLog", "Erina/stats", "Twitter/run", "Twitter/ignoreRT", "Twitter/monitoring/checkReplies", "Discord/run", "Line/run", "Server/publicAPI"]:
-                    value = (True if value.lower().replace(" ", "") == "true" else False)
+                elif path in ["Erina/consoleLog", "Erina/fileLog", "Erina/stats", "Twitter/run", "Twitter/ignoreRT", "Twitter/monitoring/checkReplies", "Discord/run", "Line/run", "Server/publicAPI", "Twitter/imagePreview"]:
+                    value = convert_to_boolean(value)
                 elif path in ["Erina/flags", "Twitter/ignoredUsers", "Twitter/flags", "Twitter/stream/languages", "Twitter/stream/flags", "Twitter/monitoring/accounts", "Discord/flags", "Line/flags"]:
                     value = value.split(":::")
                 elif path in ["Hash/algorithm"]:

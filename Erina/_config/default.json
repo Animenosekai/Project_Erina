@@ -24,6 +24,7 @@
         "ignoredUsers": [], 
         "flags": [], 
         "ignoreRT": true, 
+        "imagePreview": false,
         "keys": {
             "consumerKey": null, 
             "consumerSecret": null, 

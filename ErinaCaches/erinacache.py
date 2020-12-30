@@ -233,7 +233,7 @@ def iqdb_caching(image_hash):
         ##### Verify if the result is relevant or not
             iqdb_tags = []
             if search_result == 'No relevant matches':
-                return CachingError("IQDB_NO_RELEVANT_MATCH", "No relevant matches was found with IQDB")
+                return CachingError("IQDB_NO_RELEVANT_MATCH", "No relevant matches was found with IQDB", no_log=True)
             else:
                 try:
                     ### Getting the tags from IQDB

@@ -105,13 +105,14 @@ class Listener(tweepy.StreamListener):
                     StatsAppend(TwitterStats.responses)
                     responseImageURL = None
                     if isinstance(searchResult.detectionResult, TraceMOECache):
-                        if not searchResult.detectionResult.hentai:
-                            responseImageURL = f"https://trace.moe/thumbnail.php?anilist_id={str(searchResult.detectionResult.anilist_id)}&file={str(searchResult.detectionResult.filename)}&t={str(searchResult.detectionResult.timing.at)}&token={str(searchResult.detectionResult.tokenthumb)}"
+                        if TwitterConfig.image_preview:
+                            if not searchResult.detectionResult.hentai:
+                                responseImageURL = f"https://trace.moe/thumbnail.php?anilist_id={str(searchResult.detectionResult.anilist_id)}&file={str(searchResult.detectionResult.filename)}&t={str(searchResult.detectionResult.timing.at)}&token={str(searchResult.detectionResult.tokenthumb)}"
                     ErinaTwitter.tweet(tweetResponse, replyID=tweet.id, imageURL=responseImageURL)
                 elif Twitter.isMention(tweet):
-                    TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(tweet.id))
-                    sinceID = tweet.id
                     ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
+                TextFile(erina_dir + "/ErinaTwitter/lastMentionID.erina").write(str(tweet.id))
+                sinceID = tweet.id
         return
 
     # Error handling

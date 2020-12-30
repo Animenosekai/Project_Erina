@@ -23,7 +23,8 @@
         "run": true, 
         "ignoredUsers": [], 
         "flags": [], 
-        "ignoreRT": true, 
+        "ignoreRT": true,
+        "imagePreview": false, 
         "keys": {
             "consumerKey": "{{twitter_consumer_key}}", 
             "consumerSecret": "{{twitter_consumer_secret}}", 

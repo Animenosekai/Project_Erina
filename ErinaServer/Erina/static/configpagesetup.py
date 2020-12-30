@@ -26,6 +26,7 @@ jsonData = """{
         "ignoredUsers": [], 
         "flags": [], 
         "ignoreRT": true, 
+        "imagePreview": false,
         "keys": {
             "consumerKey": null, 
             "consumerSecret": null, 
@@ -82,7 +83,7 @@ jsonData = """{
     "Server": {
         "host": "127.0.0.1", 
         "port": 5000, 
-        "disableConsoleMessages": true
+        "publicAPI": true
     }
 }
 """
@@ -267,6 +268,9 @@ htmlResult += """
     </action-button-container>
     <action-button-container>
         <action-button id="resetLogs">Reset Logs</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="resetLogs">Clean Caches</action-button>
     </action-button-container>
     <action-button-container>
         <action-button id="revertConfig">Revert Config to default</action-button>

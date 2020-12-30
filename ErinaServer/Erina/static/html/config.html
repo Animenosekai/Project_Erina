@@ -151,6 +151,22 @@
     </erinaconfig-list-item>
 
 
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Image Preview</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/imagePreview" id="toggle-twitterimagepreview">
+                <label for="toggle-twitterimagepreview">
+                    <div class="switch">
+                        <div class="dot"></div>
+                    </div>
+                    <span id="toggleText-twitterimagepreview">Disabled</span>
+                </label>
+            </div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+
 <div class="expandableItem">
     <div class="expandableItem-tab">
         <input id="expandableItem-input-twitterkeysaccesstokensecret" type="checkbox" class="expandableItem-input" name="expandableItem">
@@ -610,6 +626,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <category-title>
