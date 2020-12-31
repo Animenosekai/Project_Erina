@@ -302,6 +302,99 @@ document.getElementById("downloadBackup").onclick = function() {
     }
 }
 
+function backupToBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+}
+
+function _importBackup(event) {
+
+    function verifyAfterDown() {
+        var _erinaAliveInterval = setInterval(function() {
+            fetch("/erina/alive")
+            .then(function() {
+                newSuccess("Import Complete!\nErina successfully imported new backup data!")
+                clearInterval(_erinaAliveInterval)
+            })
+            .catch(function() {
+                console.log("Waiting for ErinaServer")
+            })
+        }, 500)
+        intervalsRegistry.push(_erinaAliveInterval)
+    }
+
+    var file = event.target.files[0];
+    if (!file) {
+        return;
+    }
+    backupToBase64(file)
+    .then(function(base64) {
+        document.getElementById("_ErinaBackupImport_FileInput").remove()
+        fetch("/erina/api/admin/backup/import?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                data = data.data
+                if (data.status == "IMPORT_STARTED" || data.status == "ALREADY_REQUESTED") {
+                    if (data.status == "IMPORT_STARTED") {
+                        newSuccess(data.message)
+                    } else {
+                        newInfo(data.message)
+                    }
+                    var lastStatus = ""
+                    var _updateInterval = setInterval(function() {
+                        fetch("/erina/api/admin/import/status?token=" + window.localStorage.getItem("erinaAdminToken"))
+                        .then((resp) => resp.json())
+                        .then(function(data) {
+                            if (data.success == true) {
+                                data = data.data
+                                if (data.status == "LAST_IMPORT_FAILED") {
+                                    clearInterval(_updateInterval)
+                                }
+                                else if (data.status != lastStatus){
+                                    lastStatus = data.status
+                                    newInfo(data.message)
+                                }
+                            } else {
+                                newError("An error occured while retrieving the status of the backup")
+                            }
+                        })
+                        .catch(function() {
+                            verifyAfterDown()
+                            clearInterval(_updateInterval)
+                            newInfo("Import: Waiting for ErinaServer to be back...")
+                        })
+                    }, 1000)
+                    intervalsRegistry.push(_updateInterval)
+                } else {
+                    newError(data.message)
+                }
+            } else {
+                newError("An error occured while updating Erina")
+            }
+        })
+
+    })
+    
+}
+
+document.getElementById("importBackup").onclick = function() {
+
+    if (confirm("Do you want to import a backup to Erina?\nMake sure to have enough space on your hard drive before doing so.\n") == true) {
+        var newFile = document.createElement("input")
+        newFile.setAttribute("type", "file")
+        newFile.setAttribute("id", "_ErinaBackupImport_FileInput")
+        newFile.setAttribute("accept", "application/zip,application/octet-stream,application/x-zip-compressed,multipart/x-zip,.zip,.erinazip")
+        newFile.addEventListener("change", _importBackup, false)
+        document.body.appendChild(newFile)
+        newFile.click()
+    }
+}
+
 /////// TAGS
 
 function updateTags(container) {

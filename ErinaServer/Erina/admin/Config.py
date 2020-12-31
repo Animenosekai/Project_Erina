@@ -17,6 +17,7 @@ from time import sleep
 from pathlib import Path
 from sys import exc_info
 from zipfile import ZipFile
+from base64 import b64decode
 from threading import Thread
 from distutils.dir_util import copy_tree
 from shutil import copyfile, make_archive
@@ -501,6 +502,11 @@ def ErinaServer_Endpoint_Admin_Config_restartServer():
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
+
+
+
+######## UPDATES
+
 update_status = "NOT_UPDATING"
 update_message = "Erina is currently not updating"
 
@@ -614,8 +620,15 @@ def ErinaServer_Endpoint_Admin_Config_updateServer():
             if newVersion == erina_version.replace(" ", ""):
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "NO_UPDATE", "message": "Erina is already up to date!", "newVersion": newVersion, "currentVersion": erina_version})
             else:
+                if update_status not in ["NOT_UPDATING", "LAST_UPDATE_FAILED"]:
+                    return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "ALREADY_UPDATING", "message": "Erina is already updating"})    
+                if import_status not in ["NOT_IMPORTING", "LAST_IMPORT_FAILED"]:
+                    return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "CURRENTLY_IMPORTING", "message": "Erina is currently importing a backup"}, error="CURRENTLY_IMPORTING", code=400)
+                if backup_status not in ["NOT_BACKING_UP", "LAST_BACKUP_FAILED"]:
+                    return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "CURRENTLY_BACKING_UP", "message": "Erina is currently backing up"}, error="CURRENTLY_BACKING_UP", code=400)
                 Thread(target=_update, daemon=True).start()
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "UPDATE_STARTED", "message": "Updating Erina..."})
+                    
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
@@ -636,6 +649,12 @@ def ErinaServer_Endpoint_Admin_Config_updateStatus():
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
+
+
+
+
+
+######## BACKUPS
 backup_status = "NOT_BACKING_UP"
 backup_message = "There is currently no backup planned"
 
@@ -645,7 +664,7 @@ def _createBackup():
 
     try:
         backup_status = "BACKING_UP"
-        backup_message = "Erina is currently preparing a backup"
+        backup_message = "Backup: Erina is currently preparing a backup"
         print(backup_message)
         if isdir(erina_dir + "/Erina/update/keep"):
             if delete(erina_dir + "/Erina/update/keep") != 0:
@@ -664,19 +683,19 @@ def _createBackup():
                 copyfile(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
 
         backup_status = "ZIPPING"
-        backup_message = "Erina is currently zipping the backup"
+        backup_message = "Backup: Erina is currently zipping the backup"
         print(backup_message)
 
         make_archive(erina_dir + "/ErinaServer/Erina/admin/backups/ErinaBackup", "zip", erina_dir + "/Erina/update/keep")
 
         backup_status = "CLEANING"
-        backup_message = "Erina is currently cleaning the backup"
+        backup_message = "Backup: Erina is currently cleaning the backup"
         print(backup_message)
         if isdir(erina_dir + "/Erina/update/keep"):
             delete(erina_dir + "/Erina/update/keep")
 
         backup_status = "READY_FOR_DOWNLOAD"
-        backup_message = "Erina is ready to send the archive"
+        backup_message = "Backup: Erina is ready to send the archive"
         print(backup_message)
 
     except:
@@ -685,6 +704,80 @@ def _createBackup():
         backup_message = f"Backup: The backup failed ({str(exc_info()[0])})"
         print("ERINA BACKUP ERROR")
         print(backup_message)
+
+import_status = "NOT_IMPORTING"
+import_message = "Erina is currently not importing any backup data"
+
+def _importBackup(backupfile):
+    global import_status
+    global import_message
+
+    try:
+        if backupfile is None:
+            import_status = "LAST_IMPORT_FAILED"
+            import_message = "Import: The import failed (BackupFileNotFound)"
+            print("ERINA IMPORT ERROR")
+            print(import_message)
+
+        update_status = "EXTRACTING_UPDATE"
+        update_message = "Update: Extracting the new update..."
+        print(update_message)
+        ZipFile(BytesIO(b64decode(str(backupfile)))).extractall(erina_dir + "/Erina/update/keep")
+
+        import_status = "RESTORING_FILES"
+        import_message = "Import: Restoring the files..."
+        print(import_message)
+        newMapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
+
+        for fileID in newMapping:
+            if exists(erina_dir + "/update/keep/" + fileID):
+                move(erina_dir + "/update/keep/" + fileID, erina_dir + "/" + newMapping[fileID])
+
+        
+        import_status = "CLEANING"
+        import_message = "Import: Cleaning the update..."
+        print(import_message)
+        delete(erina_dir + "/Erina/update/keep")
+        delete(erina_dir + "/Erina/update/archive_container")
+        
+
+        import_status = "RESTARTING"
+        import_message = "Import: Erina is restarting to finish the import..."
+        print(import_message)
+        TextFile(erina_dir + "/ErinaServer/Erina/auth/lastToken.erina").write(authManagement.currentToken)
+        Thread(target=_restart, daemon=True).start()
+
+    except:
+        traceback.print_exc()
+        import_status = "LAST_IMPORT_FAILED"
+        import_message = f"Import: The import failed ({str(exc_info()[0])})"
+        print("ERINA IMPORT ERROR")
+        print(import_message)
+
+#
+@ErinaServer.route("/erina/api/admin/backup/import", methods=["POST"])
+def ErinaServer_Endpoint_Admin_Config_backupImport():
+    """
+    Imports a backup archive
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            if import_status not in ["NOT_IMPORTING", "LAST_IMPORT_FAILED"]:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "ALREADY_REQUESTED", "message": "Erina is currently preparing your backup"}, error="CURRENTLY_BACKING_UP", code=400)
+            if update_status not in ["NOT_UPDATING", "LAST_UPDATE_FAILED"]:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "CURRENTLY_UPDATING", "message": "Erina is currently updating"}, error="CURRENTLY_UPDATING", code=400)
+            if backup_status not in ["NOT_BACKING_UP", "LAST_BACKUP_FAILED"]:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "CURRENTLY_BACKING_UP", "message": "Erina is currently backing up"}, error="CURRENTLY_BACKING_UP", code=400)
+            if "backupBase64Data" in request.values:
+                Thread(target=_importBackup, daemon=True, args=[request.values.get("backupBase64Data", None)]).start()
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "IMPORT_STARTED", "message": "Importing your backup..."})
+            else:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "ARCHIVE_NOT_RECEIVED", "message": "No ErinaBackup archive got received"}, code=400, error="ARCHIVE_NOT_RECEIVED")
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/backup/request", methods=["POST"])
 def ErinaServer_Endpoint_Admin_Config_backupRequest():
@@ -696,11 +789,12 @@ def ErinaServer_Endpoint_Admin_Config_backupRequest():
         if tokenVerification.success:
             if backup_status not in ["NOT_BACKING_UP", "LAST_BACKUP_FAILED"]:
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "ALREADY_REQUESTED", "message": "Erina is currently preparing your backup"}, error="CURRENTLY_BACKING_UP", code=400)
-            if update_status in ["NOT_UPDATING", "LAST_UPDATE_FAILED"]:
-                Thread(target=_createBackup, daemon=True).start()
-                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "BACKUP_STARTED", "message": "Preparing your backup..."})
-            else:
+            if import_status not in ["NOT_IMPORTING", "LAST_IMPORT_FAILED"]:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "CURRENTLY_IMPORTING", "message": "Erina is currently importing a backup"}, error="CURRENTLY_IMPORTING", code=400)
+            if update_status not in ["NOT_UPDATING", "LAST_UPDATE_FAILED"]:
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "CURRENTLY_UPDATING", "message": "Erina is currently updating"}, error="CURRENTLY_UPDATING", code=400)
+            Thread(target=_createBackup, daemon=True).start()
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "BACKUP_STARTED", "message": "Preparing your backup..."})
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
@@ -738,6 +832,21 @@ def ErinaServer_Endpoint_Admin_Config_backupDownload():
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+@ErinaServer.route("/erina/api/admin/import/status")
+def ErinaServer_Endpoint_Admin_Config_importStatus():
+    """
+    Returns the status of the import
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": import_status, "message": import_message})
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
 
 @ErinaServer.route("/erina/alive")
 @ErinaRateLimit(0.1)

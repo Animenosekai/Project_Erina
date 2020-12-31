@@ -288,6 +288,12 @@ htmlResult += """
         <action-button id="updateErina">Update Erina</action-button>
     </action-button-container>
     <action-button-container>
+        <action-button id="downloadBackup">Download Backup</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="importBackup">Import Backup</action-button>
+    </action-button-container>
+    <action-button-container>
         <action-button id="restartErinaServer">Restart ErinaServer</action-button>
     </action-button-container>
     <action-button-container>
