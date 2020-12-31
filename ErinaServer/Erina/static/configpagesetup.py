@@ -272,7 +272,7 @@ htmlResult += """
         <action-button id="resetLogs">Reset Logs</action-button>
     </action-button-container>
     <action-button-container>
-        <action-button id="resetLogs">Clean Caches</action-button>
+        <action-button id="cleanCaches">Clean Caches</action-button>
     </action-button-container>
     <action-button-container>
         <action-button id="revertConfig">Revert Config to default</action-button>
