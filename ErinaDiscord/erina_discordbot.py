@@ -105,7 +105,7 @@ async def on_message(message):
             elif command == "help":
                 await StaticResponse.erinahelp(message.channel, message.author)
             elif command == "stats":
-                await StaticResponse.erinastats(message.channel)
+                await StaticResponse.erinastats(message.channel, client)
             elif command == "invite":
                 await StaticResponse.erinainvite(message.channel)
     else:

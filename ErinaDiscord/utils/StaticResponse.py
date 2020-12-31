@@ -7,7 +7,7 @@ async def erinainvite(channel):
     await channel.send(content="I'm glad that you wanna share me with your friends!")
     await channel.send(content="Here is the link: **https://bit.ly/invite-erina-discord**")
 
-async def erinastats(channel):
+async def erinastats(channel, client):
     '''
     When someone wants to know the bot's stats
     '''
@@ -31,7 +31,7 @@ async def erinahelp(channel, author):
     When someone wants some help with the bot commands
     '''
     embed = discord.Embed(title='ErinaSauce Help Center', colour=discord.Colour.blue())
-    embed.add_field(name='Available Commands', value="`.erina search <anime title>`: Gives you information on the given anime.\n`.erina description`: Gives you the full description of the given anime.\nAsk `'what anime is it?'` or other variants to get the source of the anime of the given image (attachment) or the last messages.\n`.erina invite`: Gives you a link to invite ErinaSauce on any discord server.\n`.erina stats`: Gives ErinaSauce bot stats\n`.erina dev`: Gives you a link to ErinaSauce GitHub repo.\n`.erina help`: Sends the message you are currently reading.")
+    embed.add_field(name='Available Commands', value="`.erina search <anime title>`: Gives you information on the given anime.\n`.erina description <anime title>`: Gives you the full description of the given anime.\nAsk `'what anime is it?'` or other variants to get the source of the anime of the given image (attachment) or the last messages.\n`.erina invite`: Gives you a link to invite ErinaSauce on any discord server.\n`.erina stats`: Gives ErinaSauce bot stats\n`.erina dev`: Gives you a link to ErinaSauce GitHub repo.\n`.erina help`: Sends the message you are currently reading.")
     embed.set_author(name=f"Requested by {author}")
     embed.set_footer(text="ErinaSauce by Anime no Sekai - 2020")
     await channel.send(embed=embed)
