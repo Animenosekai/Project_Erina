@@ -667,7 +667,7 @@ def _createBackup():
         backup_message = "Erina is currently zipping the backup"
         print(backup_message)
 
-        make_archive(erina_dir + "/ErinaServer/Erina/admin/backups/ErinaBackup.zip", "zip", erina_dir + "/Erina/update/keep")
+        make_archive(erina_dir + "/ErinaServer/Erina/admin/backups/ErinaBackup", "zip", erina_dir + "/Erina/update/keep")
 
         backup_status = "CLEANING"
         backup_message = "Erina is currently cleaning the backup"

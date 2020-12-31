@@ -255,7 +255,7 @@ document.getElementById("downloadBackup").onclick = function() {
                                 }
                                 else if (data.status == "READY_FOR_DOWNLOAD") {
                                     clearInterval(_updateInterval)
-                                    fetch("/erina/api/admin/backup/download", {
+                                    fetch("/erina/api/admin/backup/download?token=" + window.localStorage.getItem("erinaAdminToken"), {
                                         method: 'GET'
                                     })
                                     .then(function(response) {
