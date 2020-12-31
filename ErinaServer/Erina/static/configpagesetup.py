@@ -27,6 +27,8 @@ jsonData = """{
         "flags": [], 
         "ignoreRT": true, 
         "imagePreview": false,
+        "checkMentions": false,
+        "checkDM": false,
         "keys": {
             "consumerKey": null, 
             "consumerSecret": null, 

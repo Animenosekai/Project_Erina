@@ -194,37 +194,39 @@ def startStream():
     global lastDM
     Thread(target=_startStream, daemon=True).start()
     while True:
-        try:
-            if sinceID is not None and sinceID != "":
-                for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, since_id=sinceID, count=200, include_entities=True).items():
+        if TwitterConfig.check_mentions:
+            try:
+                if sinceID is not None and sinceID != "":
+                    for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, since_id=sinceID, count=200, include_entities=True).items():
+                        try:
+                            ErinaStreamListener.on_status(message)
+                        except:
+                            log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
+                else:
+                    for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, count=200, include_entities=True).items():
+                        try:
+                            ErinaStreamListener.on_status(message)
+                        except:
+                            log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
+            except:
+                log("ErinaTwitter", f"Error while reading mentions {str(sys.exc_info()[0])}", True)
+                if str(sys.exc_info()[0]).replace(" ", "").lower() == "<class'tweepy.error.ratelimiterror'>":
+                    sleep(3600)
+        
+        if TwitterConfig.check_dm:
+            try:
+                for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages, count=50).items():
                     try:
-                        ErinaStreamListener.on_status(message)
+                        timestamp = convert_to_int(message.created_timestamp)
+                        if message not in directMessagesHistory and timestamp > lastDM:
+                            on_direct_message(message)
+                            lastDM = timestamp
                     except:
-                        log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
-            else:
-                for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, count=200, include_entities=True).items():
-                    try:
-                        ErinaStreamListener.on_status(message)
-                    except:
-                        log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
-        except:
-            log("ErinaTwitter", f"Error while reading mentions {str(sys.exc_info()[0])}", True)
-            if str(sys.exc_info()[0]) == "<class 'tweepy.error.RateLimitError'>":
-                sleep(3600)
-
-        try:
-            for message in tweepy.Cursor(ErinaTwitter.api.list_direct_messages, count=50).items():
-                try:
-                    timestamp = convert_to_int(message.created_timestamp)
-                    if message not in directMessagesHistory and timestamp > lastDM:
-                        on_direct_message(message)
-                        lastDM = timestamp
-                except:
-                    log("ErinaTwitter", f"Error while reading a DM {str(sys.exc_info()[0])}", True)
-        except:
-            log("ErinaTwitter", f"Error while reading DMs {str(sys.exc_info()[0])}", True)
-            if str(sys.exc_info()[0]) == "<class 'tweepy.error.RateLimitError'>":
-                sleep(3600)
+                        log("ErinaTwitter", f"Error while reading a DM {str(sys.exc_info()[0])}", True)
+            except:
+                log("ErinaTwitter", f"Error while reading DMs {str(sys.exc_info()[0])}", True)
+                if str(sys.exc_info()[0]).replace(" ", "").lower() == "<class'tweepy.error.ratelimiterror'>":
+                    sleep(3600)
         sleep(60)
     
 

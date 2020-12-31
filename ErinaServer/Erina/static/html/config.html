@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/erina/admin/static/styles/config.css">
-<import id="ErinaExternalJS-Sources">
+<import id="ErinaExternalJS-Sources" style="display: none;">
     [
         "/erina/admin/static/scripts/config.js"
     ]
@@ -161,6 +161,38 @@
                         <div class="dot"></div>
                     </div>
                     <span id="toggleText-twitterimagepreview">Disabled</span>
+                </label>
+            </div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Check Mentions</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/checkMentions" id="toggle-twittercheckmentions">
+                <label for="toggle-twittercheckmentions">
+                    <div class="switch">
+                        <div class="dot"></div>
+                    </div>
+                    <span id="toggleText-twittercheckmentions">Disabled</span>
+                </label>
+            </div>
+        </erinaconfig-list-item-value-container>
+    </erinaconfig-list-item>
+
+
+    <erinaconfig-list-item class="erinaConfig-ListItem">
+        <erinaconfig-list-item-title>Check DM</erinaconfig-list-item-title>
+        <erinaconfig-list-item-value-container>
+            <div class="neumorphism-toggle">
+                <input type="checkbox" onclick="checkboxHandler(this);" config-path="Twitter/checkDM" id="toggle-twittercheckdm">
+                <label for="toggle-twittercheckdm">
+                    <div class="switch">
+                        <div class="dot"></div>
+                    </div>
+                    <span id="toggleText-twittercheckdm">Disabled</span>
                 </label>
             </div>
         </erinaconfig-list-item-value-container>

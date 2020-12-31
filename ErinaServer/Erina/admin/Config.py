@@ -217,7 +217,7 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                     value = convert_to_int(value)
                 elif path in ["Server/host"]:
                     value = re.sub("[^0-9.]", "", value)
-                elif path in ["Erina/consoleLog", "Erina/fileLog", "Erina/stats", "Twitter/run", "Twitter/ignoreRT", "Twitter/monitoring/checkReplies", "Discord/run", "Line/run", "Server/publicAPI", "Twitter/imagePreview"]:
+                elif path in ["Erina/consoleLog", "Erina/fileLog", "Erina/stats", "Twitter/run", "Twitter/ignoreRT", "Twitter/monitoring/checkReplies", "Discord/run", "Line/run", "Server/publicAPI", "Twitter/imagePreview", "Twitter/checkMentions", "Twitter/checkDM"]:
                     value = convert_to_boolean(value)
                 elif path in ["Erina/flags", "Twitter/ignoredUsers", "Twitter/flags", "Twitter/stream/languages", "Twitter/stream/flags", "Twitter/monitoring/accounts", "Discord/flags", "Line/flags"]:
                     value = value.split(":::")

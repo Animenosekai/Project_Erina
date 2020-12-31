@@ -357,6 +357,8 @@ function PageInitialize() {
         for (element in data.Twitter.flags) { createNewTag(document.getElementById('tagsContainer-twitterflags'), data.Twitter.flags[element]) };
         if (data.Twitter.ignoreRT == true) { document.getElementById('toggle-twitterignorert').checked = true; document.getElementById('toggleText-twitterignorert').innerText = 'Enabled' };
         if (data.Twitter.imagePreview == true) { document.getElementById('toggle-twitterimagepreview').checked = true; document.getElementById('toggleText-twitterimagepreview').innerText = 'Enabled' };
+        if (data.Twitter.checkMentions == true) { document.getElementById('toggle-twittercheckmentions').checked = true; document.getElementById('toggleText-twittercheckmentions').innerText = 'Enabled' };
+        if (data.Twitter.checkDM == true) { document.getElementById('toggle-twittercheckdm').checked = true; document.getElementById('toggleText-twittercheckdm').innerText = 'Enabled' };
         document.getElementById('twitterkeysconsumerkey').value = data.Twitter.keys.consumerKey;
         document.getElementById('twitterkeysconsumersecret').value = data.Twitter.keys.consumerSecret;
         document.getElementById('twitterkeysaccesstokenkey').value = data.Twitter.keys.accessTokenKey;
@@ -384,7 +386,7 @@ function PageInitialize() {
         document.getElementById('serverhost').value = data.Server.host;
         document.getElementById('serverport').value = data.Server.port;
         if (data.Server.publicAPI == true) { document.getElementById('toggle-serverpublicapi').checked = true; document.getElementById('toggleText-serverpublicapi').innerText = 'Enabled' };
-                
+
         //////////////////
         } else if (data.error == "login") {
             window.location.assign("/erina/admin/login")

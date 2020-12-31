@@ -25,6 +25,8 @@
         "flags": [], 
         "ignoreRT": true,
         "imagePreview": false, 
+        "checkMentions": true, 
+        "checkDM": false, 
         "keys": {
             "consumerKey": "{{twitter_consumer_key}}", 
             "consumerSecret": "{{twitter_consumer_secret}}", 

@@ -139,11 +139,16 @@ function logout() {
 
 
 function convert(value) {
+    if (value == 0) {
+        return value
+    }
     if ( value >= 1000000000 ) {
         value = (Math.round((value / 1000000000  + Number.EPSILON) * 100) / 100) + "B"
     } else if ( value >= 1000000 ) {
         value = (Math.round((value / 1000000 + Number.EPSILON) * 100) / 100) + "M"
     } else if ( value >= 1000 ) {
+        value = (Math.round((value / 1000 + Number.EPSILON) * 100) / 100)+ "K";
+    } else {
         value = (Math.round((value / 1000 + Number.EPSILON) * 100) / 100)+ "K";
     }
     return value;
