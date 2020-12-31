@@ -30,11 +30,13 @@ from Erina.erina_log import logFile
 from Erina.erina_stats import StatsReset
 from Erina._config.files import configFile
 from Erina._config.classes import environ
-from Erina.config import update, default, Hash, Twitter, Discord, Line
 from ErinaServer.Erina.auth import authManagement
 from ErinaServer.Server import ErinaServer, ErinaRateLimit
 from ErinaLine.erina_linebot import initHandler as initLine
 from ErinaServer.Erina.auth.apiAuth.authReader import APIAuth
+from ErinaDB.ManamiDB.manami_db_verification import verify_manami_adb
+from ErinaDB.ManamiDB.manami_db_data import Database as ManamiDatabase
+from Erina.config import update, default, Hash, Twitter, Discord, Line
 from ErinaTwitter.erina_twitterbot import latestResponses, ErinaTwitter
 from Erina.utils import convert_to_float, convert_to_int, get_scaled_size, convert_to_boolean
 from Erina.env_information import erina_version, erina_dir, python_version_info, pid, cpu_count
@@ -410,9 +412,10 @@ def ErinaServer_Endpoint_Admin_Config_cleanCaches():
     tokenVerification = authManagement.verifyToken(request.values)
     try:
         if tokenVerification.success:
-            for file in files_in_dir(erina_dir + "/ErinaCaches/AniList_Cache"):
-                if extension_from_base(file) == ".erina":
-                    TextFile(erina_dir + "/ErinaCaches/AniList_Cache/" + file).delete()
+            if "anilist" in request.values and convert_to_boolean(request.values.get("anilist", False)) == True:
+                for file in files_in_dir(erina_dir + "/ErinaCaches/AniList_Cache"):
+                    if extension_from_base(file) == ".erina":
+                        TextFile(erina_dir + "/ErinaCaches/AniList_Cache/" + file).delete()
             for file in files_in_dir(erina_dir + "/ErinaCaches/Erina_Cache"):
                 if extension_from_base(file) == ".erina":
                     TextFile(erina_dir + "/ErinaCaches/Erina_Cache/" + file).delete()
@@ -426,6 +429,38 @@ def ErinaServer_Endpoint_Admin_Config_cleanCaches():
                 if extension_from_base(file) == ".erina":
                     TextFile(erina_dir + "/ErinaCaches/TraceMoe_Cache/" + file).delete()
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+
+@ErinaServer.route("/erina/api/admin/database/clean", methods=["POST"])
+def ErinaServer_Endpoint_Admin_Config_cleanDatabase():
+    """
+    Cleans the database
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            for file in files_in_dir(erina_dir + "/ErinaDB/ErinaDatabase"):
+                delete(erina_dir + "/ErinaDB/ErinaDatabase/" + file)
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+@ErinaServer.route("/erina/api/admin/database/updateManami", methods=["POST"])
+def ErinaServer_Endpoint_Admin_Config_verifyManami():
+    """
+    Updates ManamiDB
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            verify_manami_adb(force=True)
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"manami": str(ManamiDatabase)})
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:

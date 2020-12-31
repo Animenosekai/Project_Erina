@@ -35,18 +35,64 @@ document.getElementById("resetLogs").onclick = function() {
 
 document.getElementById("cleanCaches").onclick = function() {
     if (confirm("Do you really want to clean all of the caches?") == true) {
-        fetch("/erina/api/admin/caches/clean?token=" + window.localStorage.getItem("erinaAdminToken"), {
+        if (confirm("Do you want to delete AniList Caches?") == false) {
+            fetch("/erina/api/admin/caches/clean?token=" + window.localStorage.getItem("erinaAdminToken"), {
+                method: "POST"
+            })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                if (data.success == true) {
+                    newSuccess("Successfully cleaned ErinaCaches")
+                } else {
+                    newError("An error occured while cleaning the caches")
+                }
+            })
+        } else {
+            if (confirm("[Warning] AniList Caches Data is even more important because used by all of the ErinaSearch endpoints, make sure not to get rate limited\nDo you want to proceed?") == true) {
+                fetch("/erina/api/admin/caches/clean?anilist=true&token=" + window.localStorage.getItem("erinaAdminToken"), {
+                    method: "POST"
+                })
+                .then((resp) => resp.json())
+                .then(function(data) {
+                    if (data.success == true) {
+                        newSuccess("Successfully cleaned ErinaCaches")
+                    } else {
+                        newError("An error occured while cleaning the caches")
+                    }
+                })
+            }
+        }
+    }
+}
+
+document.getElementById("cleanDB").onclick = function() {
+    if (confirm("Do you really want to clean all of the files in your ErinaDatabase?") == true) {
+        fetch("/erina/api/admin/database/clean?token=" + window.localStorage.getItem("erinaAdminToken"), {
             method: "POST"
         })
         .then((resp) => resp.json())
         .then(function(data) {
             if (data.success == true) {
-                newSuccess("Successfully cleaned ErinaCaches")
+                newSuccess("Successfully cleaned ErinaDatabase")
             } else {
-                newError("An error occured while cleaning the caches")
+                newError("An error occured while cleaning ErinaDatabase")
             }
         })
     }
+}
+
+document.getElementById("updateManami").onclick = function() {
+    fetch("/erina/api/admin/database/updateManami?token=" + window.localStorage.getItem("erinaAdminToken"), {
+        method: "POST"
+    })
+    .then((resp) => resp.json())
+    .then(function(data) {
+        if (data.success == true) {
+            newSuccess("Successfully updated ManamiDatabase: " + String(data.data.manami))
+        } else {
+            newError("An error occured while updating ManamiDatabase")
+        }
+    })
 }
 
 document.getElementById("revertConfig").onclick = function() {

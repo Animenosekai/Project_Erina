@@ -26,7 +26,7 @@ def convert_to_int(element):
         return 0
 
 
-def verify_manami_adb():
+def verify_manami_adb(force=False):
     """
     Checks for a new version of the database on GitHub
     """
@@ -35,7 +35,7 @@ def verify_manami_adb():
     iso_calendar = datetime.date.today().isocalendar()
     current_week = str(iso_calendar[0]) + '-' + str(iso_calendar[1])
     
-    if current_release_week != current_week: # If new week
+    if current_release_week != current_week and not force: # If new week
         manami_adb = json.loads(requests.get('https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database.json').text)
         data = {}
         for anime in manami_adb["data"]:
