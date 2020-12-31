@@ -25,6 +25,7 @@ import tweepy
 import requests
 from io import BytesIO
 
+from Erina.erina_log import log
 from Erina.config import Erina, Twitter as TwitterConfig
 
 class ErinaTwitterAPI():
@@ -63,11 +64,13 @@ class ErinaTwitterAPI():
             twitterImage = self.api.media_upload(file=image, filename="ErinaSauce — trace.moe Image Preview")
         
         if replyID is not None:
+            log("ErinaTwitter", "Replying to " + str(replyID))
             if twitterImage is not None:
                 return self.api.update_status(status=str(message)[:280], in_reply_to_status_id=replyID, auto_populate_reply_metadata=True, media_ids=[twitterImage.media_id])
             else:
                 return self.api.update_status(status=str(message)[:280], in_reply_to_status_id=replyID, auto_populate_reply_metadata=True)
         else:
+            log("ErinaTwitter", "Sending a tweet...")
             if twitterImage is not None:
                 return self.api.update_status(status=str(message)[:280], media_ids=[twitterImage.media_id])
             else:
@@ -82,7 +85,8 @@ class ErinaTwitterAPI():
             image = BytesIO(requests.get(str(imageURL)).content)
             filename = imageURL[imageURL.rfind("/"):]
             twitterImage = self.api.media_upload(filename=filename, file=image)
-
+        
+        log("ErinaTwitter", "Sending a direct message to " + str(recipientID))
         if twitterImage is not None:
             return self.api.send_direct_message(recipientID, str(message)[:10000], attachment_media_id=twitterImage.media_id)
         else:

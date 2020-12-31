@@ -1,33 +1,33 @@
-import sys
-import traceback
-
-from flask.helpers import send_from_directory
-from ErinaDiscord.erina_discordbot import startDiscord
-
+"""
+Main ErinaConfig endpoints\n
+Project Erina
+"""
 
 import re
 import os
 import json
-import shlex
 import signal
 import platform
-import subprocess
+import traceback
 from io import BytesIO
 from time import sleep
-from pathlib import Path
 from sys import exc_info
 from zipfile import ZipFile
 from base64 import b64decode
 from threading import Thread
+from urllib.parse import urlparse
 from distutils.dir_util import copy_tree
 from shutil import copyfile, make_archive
 from threading import active_count as current_threads
 
 import psutil
 import requests
-from safeIO import JSONFile, TextFile
 from flask import request, Response
+from safeIO import JSONFile, TextFile
+from flask.helpers import send_from_directory
+from ErinaDiscord.erina_discordbot import startDiscord
 from filecenter import delete, exists, files_in_dir, extension_from_base, isdir, isfile, make_dir, move
+
 
 from Erina.erina_log import logFile
 from Erina.erina_stats import StatsReset
@@ -36,6 +36,7 @@ from Erina._config.classes import environ
 from ErinaServer.Erina.auth import authManagement
 from ErinaServer.Server import ErinaServer, ErinaRateLimit
 from ErinaLine.erina_linebot import initHandler as initLine
+from ErinaTwitter.utils.Stream import ErinaStreamListener
 from ErinaServer.Erina.auth.apiAuth.authReader import APIAuth
 from ErinaDB.ManamiDB.manami_db_verification import verify_manami_adb
 from ErinaDB.ManamiDB.manami_db_data import Database as ManamiDatabase
@@ -945,3 +946,21 @@ def ErinaServer_Endpoint_Admin_Config_state():
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+@ErinaServer.route("/erina/api/admin/twitter/checkTweet", methods=["POST"])
+def ErinaServer_Endpoint_Admin_Config_checkTweet():
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            if "tweet" in request.values:
+                tweetID = urlparse(request.values.get("tweet")).path.split("/")[-1]
+                tweet = ErinaTwitter.api.get_status(tweetID)
+                ErinaStreamListener.on_status(tweet)
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"message": "Successfully sent the tweet to ErinaTwitter"})
+            else:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_ARGS", data={"authorizedArgs": ["tweet", "minify"], "optionalArgs": ["minify"]}, code=400, error_message="No Tweet URL were sent")
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+

@@ -395,6 +395,23 @@ document.getElementById("importBackup").onclick = function() {
     }
 }
 
+
+document.getElementById("checkTweet").onclick = function() {
+    var tweetInput = prompt("Enter the URL of the tweet you want to check")
+    if (tweetInput != null) {
+        fetch("/erina/api/admin/twitter/checkTweet?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                newSuccess("Checking tweet...")
+            } else {
+                newError(data.message)
+            }
+        })
+    }
+}
 /////// TAGS
 
 function updateTags(container) {
