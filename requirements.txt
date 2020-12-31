@@ -9,6 +9,7 @@ discord
 Pattern
 requests
 lifeeasy
+pyOpenSSL
 ImageHash
 filecenter
 discord.py
