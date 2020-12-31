@@ -149,7 +149,7 @@ function convert(value) {
     } else if ( value >= 1000 ) {
         value = (Math.round((value / 1000 + Number.EPSILON) * 100) / 100)+ "K";
     } else {
-        value = (Math.round((value / 1000 + Number.EPSILON) * 100) / 100)+ "K";
+        value = (Math.round((value + Number.EPSILON) * 100) / 100);
     }
     return value;
 }
