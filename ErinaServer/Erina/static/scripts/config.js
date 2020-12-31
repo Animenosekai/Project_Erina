@@ -422,6 +422,7 @@ function PageInitialize() {
         document.getElementById('linekeyschannelsecret').value = data.Line.keys.channelSecret;
         document.getElementById('lineimagestimeout').value = data.Line.imagesTimeout;
         document.getElementById('cachesencoding').value = data.Caches.encoding;
+        document.getElementById('cachesanilistexpiration').value = data.Caches.anilistExpiration;
         document.getElementById('cacheskeystracemoe').value = data.Caches.keys.tracemoe;
         document.getElementById('cacheskeyssaucenao').value = data.Caches.keys.saucenao;
         document.getElementById('hashalgorithm').value = data.Hash.algorithm;
@@ -432,6 +433,7 @@ function PageInitialize() {
         document.getElementById('serverhost').value = data.Server.host;
         document.getElementById('serverport').value = data.Server.port;
         if (data.Server.publicAPI == true) { document.getElementById('toggle-serverpublicapi').checked = true; document.getElementById('toggleText-serverpublicapi').innerText = 'Enabled' };
+
 
         //////////////////
         } else if (data.error == "login") {

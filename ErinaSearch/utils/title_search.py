@@ -4,7 +4,9 @@ Erina Anime Title Searching API for the Erina Project
 © Anime no Sekai
 """
 
+from Erina.config import Caches as CachesConfig
 from os.path import isfile
+from time import time
 
 from safeIO import TextFile
 
@@ -27,7 +29,11 @@ def searchAnime(query):
     if similarity > 0.95:
         if isfile(anilistCachesPath + str(anilistID) + ".erina"):
             data = TextFile(anilistCachesPath + str(anilistID) + ".erina").read()
-            return AnilistCache(data)
+            anilistCacheData = AnilistCache(data)
+            if time() - anilistCacheData.cache_timestamp.timestamp > CachesConfig.anilist_expiration:
+                return anilist_caching(anilistID)
+            else:
+                return anilistCacheData
         else:
             return anilist_caching(anilistID)
 

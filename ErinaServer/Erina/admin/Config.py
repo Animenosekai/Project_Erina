@@ -213,7 +213,7 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
                 path = str(request.form.get("path"))
                 if value == "null":
                     value = None
-                elif path in ["Erina/logsTimeout", "Line/imagesTimeout", "Search/thresholds/erinaSimilarity", "Search/thresholds/tracemoeSimilarity", "Search/thresholds/saucenaoSimilarity", "Search/thresholds/iqdbSimilarity"]:
+                elif path in ["Erina/logsTimeout", "Line/imagesTimeout", "Search/thresholds/erinaSimilarity", "Search/thresholds/tracemoeSimilarity", "Search/thresholds/saucenaoSimilarity", "Search/thresholds/iqdbSimilarity", "Caches/anilistExpiration"]:
                     value = convert_to_float(value)
                 elif path in ["Server/port"]:
                     value = convert_to_int(value)

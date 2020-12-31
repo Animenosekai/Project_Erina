@@ -61,7 +61,8 @@
         "imagesTimeout": 3600
     }, 
     "Caches": {
-        "encoding": "utf-8", 
+        "encoding": "utf-8",
+        "anilistExpiration": 604800,
         "keys": {
             "tracemoe": null, 
             "saucenao": null

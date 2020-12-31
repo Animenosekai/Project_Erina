@@ -6,7 +6,7 @@ Erina Project — 2020
 """
 import os
 from Erina._config.files import configFile
-storedData = {'Erina': {'flags': ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime'], 'consoleLog': True, 'fileLog': True, 'stats': True, 'logsTimeout': 604800}, 'Twitter': {'run': False, 'ignoredUsers': [], 'flags': [], 'ignoreRT': True, 'imagePreview': False, 'checkMentions': False, 'checkDM': False, 'keys': {'consumerKey': None, 'consumerSecret': None, 'accessTokenKey': None, 'accessTokenSecret': None}, 'stream': {'languages': ['en'], 'flags': []}, 'monitoring': {'accounts': [], 'checkReplies': False}}, 'Discord': {'run': False, 'flags': [], 'keys': {'token': None}}, 'Line': {'run': False, 'flags': [], 'keys': {'channelAccessToken': None, 'channelSecret': None}, 'imagesTimeout': 3600}, 'Caches': {'encoding': 'utf-8', 'keys': {'tracemoe': None, 'saucenao': None}}, 'Database': {}, 'Hash': {'algorithm': 'Average Hash'}, 'Parser': {}, 'Search': {'thresholds': {'erinaSimilarity': 100, 'tracemoeSimilarity': 90, 'saucenaoSimilarity': 90, 'iqdbSimilarity': 90}}, 'Server': {'host': '127.0.0.1', 'port': 5000, 'publicAPI': True}}
+storedData = {'Erina': {'flags': ['what is this anime', "what's this anime", 'anime sauce', 'anime source', 'what anime this is', 'what anime is this', 'called this anime', 'name of this anime', "what's that anime", 'what anime is it', 'name of anime', 'sauce to that anime'], 'consoleLog': True, 'fileLog': True, 'stats': True, 'logsTimeout': 604800}, 'Twitter': {'run': False, 'ignoredUsers': [], 'flags': [], 'ignoreRT': True, 'imagePreview': False, 'checkMentions': False, 'checkDM': False, 'keys': {'consumerKey': None, 'consumerSecret': None, 'accessTokenKey': None, 'accessTokenSecret': None}, 'stream': {'languages': ['en'], 'flags': []}, 'monitoring': {'accounts': [], 'checkReplies': False}}, 'Discord': {'run': False, 'flags': [], 'keys': {'token': None}}, 'Line': {'run': False, 'flags': [], 'keys': {'channelAccessToken': None, 'channelSecret': None}, 'imagesTimeout': 3600}, 'Caches': {'encoding': 'utf-8', 'anilistExpiration': 604800, 'keys': {'tracemoe': None, 'saucenao': None}}, 'Database': {}, 'Hash': {'algorithm': 'Average Hash'}, 'Parser': {}, 'Search': {'thresholds': {'erinaSimilarity': 100, 'tracemoeSimilarity': 90, 'saucenaoSimilarity': 90, 'iqdbSimilarity': 90}}, 'Server': {'host': '127.0.0.1', 'port': 5000, 'publicAPI': True}}
 tempData = configFile.read()
 for element in tempData:
     storedData[element] = tempData[element]
@@ -263,6 +263,7 @@ class CachesConfig():
     def __init__(self) -> None:
         self.as_dict = storedData["Caches"]
         self.encoding = environ(self.as_dict["encoding"])
+        self.anilist_expiration = environ(self.as_dict["anilistExpiration"])
         self.keys = self.Keys()
 
 
@@ -273,6 +274,9 @@ class CachesConfig():
         if path[0] == "encoding":
             self.encoding = environ(value)
             self.as_dict["encoding"] = value
+        if path[0] == "anilistExpiration":
+            self.anilist_expiration = environ(value)
+            self.as_dict["anilistExpiration"] = value
         elif path[0] == "keys":
             self.keys.update(path[1:], value)
             self.as_dict["keys"] = self.keys.as_dict

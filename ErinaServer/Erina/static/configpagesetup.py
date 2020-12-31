@@ -63,7 +63,8 @@ jsonData = """{
         "imagesTimeout": 3600
     }, 
     "Caches": {
-        "encoding": "utf-8", 
+        "encoding": "utf-8",
+        "anilistExpiration": 604800,
         "keys": {
             "tracemoe": null, 
             "saucenao": null
@@ -275,6 +276,12 @@ htmlResult += """
         <action-button id="cleanCaches">Clean Caches</action-button>
     </action-button-container>
     <action-button-container>
+        <action-button id="cleanDB">Clean ErinaDatabase</action-button>
+    </action-button-container>
+    <action-button-container>
+        <action-button id="updateManami">Update Manami</action-button>
+    </action-button-container>
+    <action-button-container>
         <action-button id="revertConfig">Revert Config to default</action-button>
     </action-button-container>
     <action-button-container>
@@ -289,4 +296,10 @@ htmlResult += """
 </actions>"""
 
 print(htmlResult)
+print("")
+print("")
+print("")
+print("")
+print("")
+print("")
 print(jsResult)
