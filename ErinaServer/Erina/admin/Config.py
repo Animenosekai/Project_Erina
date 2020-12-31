@@ -1,6 +1,8 @@
-from ErinaDiscord.erina_discordbot import startDiscord
 import sys
 import traceback
+
+from flask.helpers import send_from_directory
+from ErinaDiscord.erina_discordbot import startDiscord
 
 
 import re
@@ -14,11 +16,11 @@ from io import BytesIO
 from time import sleep
 from pathlib import Path
 from sys import exc_info
-from shutil import copyfile
 from zipfile import ZipFile
 from threading import Thread
-from threading import active_count as current_threads
 from distutils.dir_util import copy_tree
+from shutil import copyfile, make_archive
+from threading import active_count as current_threads
 
 import psutil
 import requests
@@ -634,6 +636,108 @@ def ErinaServer_Endpoint_Admin_Config_updateStatus():
     except:
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
+backup_status = "NOT_BACKING_UP"
+backup_message = "There is currently no backup planned"
+
+def _createBackup():
+    global backup_status
+    global backup_message
+
+    try:
+        backup_status = "BACKING_UP"
+        backup_message = "Erina is currently preparing a backup"
+        print(backup_message)
+        if isdir(erina_dir + "/Erina/update/keep"):
+            if delete(erina_dir + "/Erina/update/keep") != 0:
+                raise ErinaUpdateError("Unable to delete the previous keep folder")
+        if make_dir(erina_dir + "/Erina/update/keep") == "Error while making the new folder":
+            raise ErinaUpdateError("Unable to create the keep folder")
+
+        mapping = JSONFile(erina_dir + "/Erina/update/keep_mapping.json").read()
+        for fileID in mapping:
+            file = mapping[fileID]
+            if isdir(erina_dir + "/" + file):
+                if make_dir(erina_dir + "/Erina/update/keep/" + fileID) == "Error while making the new folder":
+                    raise ErinaUpdateError("Error while making a backup folder")
+                copy_tree(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
+            elif isfile(erina_dir + "/" + file):
+                copyfile(erina_dir + "/" + file, erina_dir + "/Erina/update/keep/" + fileID)
+
+        backup_status = "ZIPPING"
+        backup_message = "Erina is currently zipping the backup"
+        print(backup_message)
+
+        make_archive(erina_dir + "/ErinaServer/Erina/admin/backups/ErinaBackup.zip", "zip", erina_dir + "/Erina/update/keep")
+
+        backup_status = "CLEANING"
+        backup_message = "Erina is currently cleaning the backup"
+        print(backup_message)
+        if isdir(erina_dir + "/Erina/update/keep"):
+            delete(erina_dir + "/Erina/update/keep")
+
+        backup_status = "READY_FOR_DOWNLOAD"
+        backup_message = "Erina is ready to send the archive"
+        print(backup_message)
+
+    except:
+        traceback.print_exc()
+        backup_status = "LAST_BACKUP_FAILED"
+        backup_message = f"Backup: The backup failed ({str(exc_info()[0])})"
+        print("ERINA BACKUP ERROR")
+        print(backup_message)
+
+@ErinaServer.route("/erina/api/admin/backup/request", methods=["POST"])
+def ErinaServer_Endpoint_Admin_Config_backupRequest():
+    """
+    Sends a backup archive
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            if backup_status not in ["NOT_BACKING_UP", "LAST_BACKUP_FAILED"]:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "ALREADY_REQUESTED", "message": "Erina is currently preparing your backup"}, error="CURRENTLY_BACKING_UP", code=400)
+            if update_status in ["NOT_UPDATING", "LAST_UPDATE_FAILED"]:
+                Thread(target=_createBackup, daemon=True).start()
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "BACKUP_STARTED", "message": "Preparing your backup..."})
+            else:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": "CURRENTLY_UPDATING", "message": "Erina is currently updating"}, error="CURRENTLY_UPDATING", code=400)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+@ErinaServer.route("/erina/api/admin/backup/status")
+def ErinaServer_Endpoint_Admin_Config_backupStatus():
+    """
+    Returns the status of the backup
+    """
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": backup_status, "message": backup_message})
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
+
+@ErinaServer.route("/erina/api/admin/backup/download")
+def ErinaServer_Endpoint_Admin_Config_backupDownload():
+    """
+    Returns the content of the backup
+    """
+    global backup_status
+    tokenVerification = authManagement.verifyToken(request.values)
+    try:
+        if tokenVerification.success:
+            if backup_status == "READY_FOR_DOWNLOAD":
+                backup_status = "NOT_BACKING_UP"
+                return send_from_directory(erina_dir + "/ErinaServer/Erina/admin/backups/", "ErinaBackup.zip")
+            else:
+                return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"status": backup_status, "message": backup_message}, error="NOT_READY_YET", code=204)
+        else:
+            return makeResponse(token_verification=tokenVerification, request_args=request.values)
+    except:
+        return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/alive")
 @ErinaRateLimit(0.1)

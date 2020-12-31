@@ -227,6 +227,81 @@ document.getElementById("updateErina").onclick = function() {
     }
 }
 
+document.getElementById("updateErina").onclick = function() {
+
+    if (confirm("Do you want to download a backup of the generated data?\nMake sure to have enough space on your hard drive before doing so.") == true) {
+        fetch("/erina/api/admin/backup/request?token=" + window.localStorage.getItem("erinaAdminToken"), {
+            method: "POST"
+        })
+        .then((resp) => resp.json())
+        .then(function(data) {
+            if (data.success == true) {
+                data = data.data
+                if (data.status == "BACKUP_STARTED" || data.status == "ALREADY_REQUESTED") {
+                    if (data.status == "BACKUP_STARTED") {
+                        newSuccess(data.message)
+                    } else {
+                        newInfo(data.message)
+                    }
+                    var lastStatus = ""
+                    var _updateInterval = setInterval(function() {
+                        fetch("/erina/api/admin/backup/status?token=" + window.localStorage.getItem("erinaAdminToken"))
+                        .then((resp) => resp.json())
+                        .then(function(data) {
+                            if (data.success == true) {
+                                data = data.data
+                                if (data.status == "LAST_BACKUP_FAILED") {
+                                    clearInterval(_updateInterval)
+                                }
+                                else if (data.status == "READY_FOR_DOWNLOAD") {
+                                    clearInterval(_updateInterval)
+                                    fetch("/erina/api/admin/backup/download", {
+                                        method: 'GET'
+                                    })
+                                    .then(function(response) {
+                                        if (response.status == 200) {
+                                            return response.blob()
+                                        } else if (response.status == 204) {
+                                            newError("Could not download the backup because it is not ready yet")
+                                            return null
+                                        } else {
+                                            newError("An error occured while downloading the backup")
+                                            return null
+                                        }
+                                    })
+                                    .then(blob => {
+                                        if (blob != null) {
+                                            var url = window.URL.createObjectURL(blob);
+                                            var a = document.createElement('a');
+                                            a.href = url;
+                                            a.download = "ErinaBackup.zip";
+                                            document.body.appendChild(a); // firefox compatibility
+                                            a.click();
+                                            a.remove();
+                                            clearInterval(_updateInterval)
+                                        }
+                                    });
+                                }
+                                else if (data.status != lastStatus){
+                                    lastStatus = data.status
+                                    newInfo(data.message)
+                                }
+                            } else {
+                                newError("An error occured while retrieving the status of the backup")
+                            }
+                        })
+                    }, 1000)
+                    intervalsRegistry.push(_updateInterval)
+                } else {
+                    newError(data.message)
+                }
+            } else {
+                newError("An error occured while updating Erina")
+            }
+        })
+    }
+}
+
 /////// TAGS
 
 function updateTags(container) {
