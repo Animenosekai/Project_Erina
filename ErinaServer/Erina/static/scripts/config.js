@@ -227,7 +227,7 @@ document.getElementById("updateErina").onclick = function() {
     }
 }
 
-document.getElementById("updateErina").onclick = function() {
+document.getElementById("downloadBackup").onclick = function() {
 
     if (confirm("Do you want to download a backup of the generated data?\nMake sure to have enough space on your hard drive before doing so.") == true) {
         fetch("/erina/api/admin/backup/request?token=" + window.localStorage.getItem("erinaAdminToken"), {
