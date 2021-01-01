@@ -128,6 +128,7 @@ def ErinaServer_Endpoint_Admin_Config_stats():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/stats/overview")
