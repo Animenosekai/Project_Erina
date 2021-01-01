@@ -296,6 +296,8 @@ def iqdb_caching(image_hash):
                 databaseWebsiteData = requests.get(url).text
                 databaseWebsite = BeautifulSoup(databaseWebsiteData.text, 'html.parser')
                 title = databaseWebsite.find("title").get_text()
+            except:
+                title = "Unkown"
         except:
             return CachingError("IQDB_PARSING", "An error occured while parsing the data from IQDB")
 
