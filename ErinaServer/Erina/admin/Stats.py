@@ -1,3 +1,4 @@
+import traceback
 from time import time
 from os.path import isfile
 from datetime import datetime
@@ -172,6 +173,7 @@ def returnStats():
                                         else:    
                                             addValue(currentTimestamp)
                                     except:
+                                        traceback.print_exc()
                                         pass
                             else:
                                 for element in data:
@@ -182,6 +184,7 @@ def returnStats():
                                         else:    
                                             addValue(currentTimestamp)
                                     except:
+                                        traceback.print_exc()
                                         pass
                         else:
                             for element in data:
@@ -192,6 +195,7 @@ def returnStats():
                                     else:    
                                         addValue(currentTimestamp)
                                 except:
+                                    traceback.print_exc()
                                     pass
                     else:
                         for element in data:
@@ -202,6 +206,7 @@ def returnStats():
                                 else:    
                                     addValue(currentTimestamp)
                             except:
+                                traceback.print_exc()
                                 pass
                 else:
                     for element in data:
@@ -212,6 +217,7 @@ def returnStats():
                             else:    
                                 addValue(currentTimestamp)
                         except:
+                            traceback.print_exc()
                             pass
             else:
                 results[category][subcategory]["success"] = False

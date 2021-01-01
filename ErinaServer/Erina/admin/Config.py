@@ -113,6 +113,7 @@ def ErinaServer_Endpoint_Admin_Config_logs():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 ### STATS
@@ -143,6 +144,7 @@ def ErinaServer_Endpoint_Admin_Config_overviewStats():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/stats/pastMonthErrors")
@@ -157,6 +159,7 @@ def ErinaServer_Endpoint_Admin_Config_errorsCountForPastMonth():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/stats/biggestUsers")
@@ -171,6 +174,7 @@ def ErinaServer_Endpoint_Admin_Config_usersCount():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -186,6 +190,7 @@ def ErinaServer_Endpoint_Admin_Config_latestResponses():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 #### CONFIG
@@ -201,6 +206,7 @@ def ErinaServer_Endpoint_Admin_Config_getEndpoint():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -274,6 +280,7 @@ def ErinaServer_Endpoint_Admin_Config_updateEndpoint():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -322,6 +329,7 @@ def ErinaServer_Endpoint_Admin_Config_newAPIAuth():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/apiAuth/remove", methods=["POST"])
@@ -340,6 +348,7 @@ def ErinaServer_Endpoint_Admin_Config_removeAPIAuth():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -373,6 +382,7 @@ def ErinaServer_Endpoint_Admin_Config_defaultEndpoint():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -390,6 +400,7 @@ def ErinaServer_Endpoint_Admin_Config_resetStats():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -406,6 +417,7 @@ def ErinaServer_Endpoint_Admin_Config_resetLogs():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
     
 
@@ -437,6 +449,7 @@ def ErinaServer_Endpoint_Admin_Config_cleanCaches():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -454,6 +467,7 @@ def ErinaServer_Endpoint_Admin_Config_cleanDatabase():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/database/updateManami", methods=["POST"])
@@ -469,6 +483,7 @@ def ErinaServer_Endpoint_Admin_Config_verifyManami():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -485,6 +500,7 @@ def ErinaServer_Endpoint_Admin_Config_shutdownServer():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -502,6 +518,7 @@ def ErinaServer_Endpoint_Admin_Config_restartServer():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -649,6 +666,7 @@ def ErinaServer_Endpoint_Admin_Config_updateStatus():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -779,6 +797,7 @@ def ErinaServer_Endpoint_Admin_Config_backupImport():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/backup/request", methods=["POST"])
@@ -800,6 +819,7 @@ def ErinaServer_Endpoint_Admin_Config_backupRequest():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/backup/status")
@@ -814,6 +834,7 @@ def ErinaServer_Endpoint_Admin_Config_backupStatus():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/backup/download")
@@ -833,6 +854,7 @@ def ErinaServer_Endpoint_Admin_Config_backupDownload():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/import/status")
@@ -847,6 +869,7 @@ def ErinaServer_Endpoint_Admin_Config_importStatus():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 
@@ -876,6 +899,7 @@ def ErinaServer_Endpoint_Admin_Config_information():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/state")
@@ -946,6 +970,7 @@ def ErinaServer_Endpoint_Admin_Config_state():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
 @ErinaServer.route("/erina/api/admin/twitter/checkTweet", methods=["POST"])
@@ -963,5 +988,6 @@ def ErinaServer_Endpoint_Admin_Config_checkTweet():
         else:
             return makeResponse(token_verification=tokenVerification, request_args=request.values)
     except:
+        traceback.print_exc()
         return makeResponse(token_verification=tokenVerification, request_args=request.values, code=500, error=str(exc_info()[0]))
 
