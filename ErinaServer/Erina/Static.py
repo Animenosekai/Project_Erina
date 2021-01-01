@@ -18,7 +18,7 @@ stylesPath = "/erina/admin/static/styles/"
 #         HTML        #
 #######################
 
-@ErinaServer.route("/erina/admin/<page>")
+@ErinaServer.route("/erina/admin/<page>/")
 def ErinaServer_Endpoint_Static_mainEndpoint(page):
     try:
         if str(page) == "login":
