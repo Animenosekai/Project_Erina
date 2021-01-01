@@ -46,14 +46,13 @@ Genres: {genres}
     link=((str(animeResult.link)) if animeResult.link is not None else ""),
     description=((str(animeResult.description)) if animeResult.description is not None else "")
 )
-        elif isinstance(detectionResult, SauceNAOCache): # if it comes from SauceNAO
-            if detectionResult.is_manga: # if it is a manga
-                tweetResult = """Here is the sauce!
+        elif isinstance(detectionResult, SauceNAOCache) and detectionResult.is_manga: # if it comes from SauceNAO and is a manga
+            tweetResult = """Here is the sauce!
 
-**Manga**: {manga}
-**Author**: {author}
-**Chapter**: {chapter}
-**Similarity**: {similarity}%
+Manga: {manga}
+Author: {author}
+Chapter: {chapter}
+Similarity: {similarity}%
 
 {link}
 """.format(
@@ -66,10 +65,10 @@ Genres: {genres}
         else:
             tweetResult = """Here is the sauce!
 
-**Title**: {title}
-**Author**: {author}
-**Database**: {database}
-**Similarity**: {similarity}%
+Title: {title}
+Author: {author}
+Database: {database}
+Similarity: {similarity}%
 
 {link}
 """.format(

@@ -290,6 +290,12 @@ def iqdb_caching(image_hash):
 
             elif url.find('e-shuushuu') != -1:
                 database = 'E-Shuushuu'
+
+            title = "Unknown"
+            try:
+                databaseWebsiteData = requests.get(url).text
+                databaseWebsite = BeautifulSoup(databaseWebsiteData.text, 'html.parser')
+                title = databaseWebsite.find("title").get_text()
         except:
             return CachingError("IQDB_PARSING", "An error occured while parsing the data from IQDB")
 
@@ -301,6 +307,7 @@ def iqdb_caching(image_hash):
             
             newCacheFile.append('IQDB Tags: ' + ":::".join(iqdb_tags) + "\n")
             newCacheFile.append('URL: ' + str(url) + "\n")
+            newCacheFile.append('Title: ' + str(title) + "\n")
             newCacheFile.append('Size: ' + str(size)  + "\n")
             newCacheFile.append('isSafe: ' + str(is_safe) + "\n")
             newCacheFile.append('Similarity: ' + str(similarity) + "\n")

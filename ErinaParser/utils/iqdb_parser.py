@@ -53,6 +53,7 @@ class IQDBCache():
 
         self.tags = None
         self.link = None
+        self.title = None
         self.size = None
         self.hentai = None
         self.similarity = None
@@ -65,6 +66,8 @@ class IQDBCache():
                 self.tags = [utils.capitalize_string(tag) for tag in str(element[11:]).split(':::')]
             elif element[:4] == 'URL:':
                 self.link = str(element[5:])
+            elif element[:6] == 'Title:':
+                self.title = str(element[7:])
             elif element[:5] == 'Size:':
                 self.size = self.Size(element[6:])
             elif element[:7] == 'isSafe:':
