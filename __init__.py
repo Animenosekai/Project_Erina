@@ -2,7 +2,7 @@
 Erina __init__ file\n
 
 This file is used by Python to define the directory as a module.
-Erina Prject\n
+Erina Project\n
 © Anime no Sekai - 2020
 """
 
