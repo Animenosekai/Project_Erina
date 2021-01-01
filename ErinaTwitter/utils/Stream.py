@@ -43,7 +43,7 @@ class Listener(tweepy.StreamListener):
         """
         log("ErinaTwitter", "ErinaTwitter is connected to the Twitter API")
 
-    def on_status(self, tweet):
+    def on_status(self, tweet, force=False):
         """
         Tweet Receiving
         """
@@ -96,7 +96,7 @@ class Listener(tweepy.StreamListener):
             imageURL = Twitter.findImage(tweet)
             if imageURL is None:
                 imageURL = Twitter.findParentImage(tweet)
-            if imageURL is not None and Twitter.isAskingForSauce(tweet):
+            if imageURL is not None and Twitter.isAskingForSauce(tweet) or force:
                 log("ErinaTwitter", "New asking hit from @" + str(tweet.user.screen_name))
                 StatsAppend(TwitterStats.askingHit, str(tweet.user.screen_name))
                 searchResult = imageSearch(imageURL)

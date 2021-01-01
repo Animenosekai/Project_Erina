@@ -981,7 +981,7 @@ def ErinaServer_Endpoint_Admin_Config_checkTweet():
             if "tweet" in request.values:
                 tweetID = urlparse(request.values.get("tweet")).path.split("/")[-1]
                 tweet = ErinaTwitter.api.get_status(tweetID)
-                ErinaStreamListener.on_status(tweet)
+                ErinaStreamListener.on_status(tweet, force=True)
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, data={"message": "Successfully sent the tweet to ErinaTwitter"})
             else:
                 return makeResponse(token_verification=tokenVerification, request_args=request.values, error="MISSING_ARGS", data={"authorizedArgs": ["tweet", "minify"], "optionalArgs": ["minify"]}, code=400, error_message="No Tweet URL were sent")
