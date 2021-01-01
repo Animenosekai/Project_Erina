@@ -35,7 +35,7 @@ def verify_manami_adb(force=False):
     iso_calendar = datetime.date.today().isocalendar()
     current_week = str(iso_calendar[0]) + '-' + str(iso_calendar[1])
     
-    if current_release_week != current_week and not force: # If new week
+    if current_release_week != current_week or force: # If new week
         manami_adb = json.loads(requests.get('https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database.json').text)
         data = {}
         for anime in manami_adb["data"]:
