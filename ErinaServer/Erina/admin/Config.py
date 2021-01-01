@@ -723,7 +723,7 @@ def _importBackup(backupfile):
         update_status = "EXTRACTING_UPDATE"
         update_message = "Update: Extracting the new update..."
         print(update_message)
-        ZipFile(BytesIO(b64decode(str(backupfile)))).extractall(erina_dir + "/Erina/update/keep")
+        ZipFile(BytesIO(b64decode(str(backupfile).replace("data:application/zip;base64,", "", 1)))).extractall(erina_dir + "/Erina/update/keep")
 
         import_status = "RESTORING_FILES"
         import_message = "Import: Restoring the files..."

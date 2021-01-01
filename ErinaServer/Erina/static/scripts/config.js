@@ -203,6 +203,7 @@ document.getElementById("updateErina").onclick = function() {
                                 data = data.data
                                 if (data.status == "LAST_UPDATE_FAILED") {
                                     clearInterval(_updateInterval)
+                                    newError("Update failed")
                                 }
                                 else if (data.status != lastStatus){
                                     lastStatus = data.status
@@ -252,6 +253,7 @@ document.getElementById("downloadBackup").onclick = function() {
                                 data = data.data
                                 if (data.status == "LAST_BACKUP_FAILED") {
                                     clearInterval(_updateInterval)
+                                    newError("Failed to backup")
                                 }
                                 else if (data.status == "READY_FOR_DOWNLOAD") {
                                     clearInterval(_updateInterval)
@@ -302,12 +304,12 @@ document.getElementById("downloadBackup").onclick = function() {
     }
 }
 
-function backupToBase64(file) {
+const backupToBase64 = file => new Promise((resolve, reject) => {
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
-}
+});
 
 function _importBackup(event) {
 
@@ -332,8 +334,11 @@ function _importBackup(event) {
     backupToBase64(file)
     .then(function(base64) {
         document.getElementById("_ErinaBackupImport_FileInput").remove()
+        var formData = new FormData();
+        formData.append("backupBase64Data", base64)
         fetch("/erina/api/admin/backup/import?token=" + window.localStorage.getItem("erinaAdminToken"), {
-            method: "POST"
+            method: "POST",
+            body: formData
         })
         .then((resp) => resp.json())
         .then(function(data) {
@@ -353,6 +358,7 @@ function _importBackup(event) {
                             if (data.success == true) {
                                 data = data.data
                                 if (data.status == "LAST_IMPORT_FAILED") {
+                                    newError("Import Failed")
                                     clearInterval(_updateInterval)
                                 }
                                 else if (data.status != lastStatus){
