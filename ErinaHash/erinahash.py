@@ -34,7 +34,13 @@ class HashObject():
         self.Image = ImageObj
         self.ImageIO = BytesIO()
         self.Image.convert('RGB')
-        self.Image.save(self.ImageIO, format="JPEG")
+        try:
+            self.Image.save(self.ImageIO, format="PNG")
+        except:
+            try:
+                self.Image.save(self.ImageIO, format="JPEG")
+            except:
+                pass
         self.hash = str(self.ImageHash)
         self.base64 = str(base64.b64encode(self.ImageIO.getvalue()).decode("utf-8"))
         if URL is not None:
