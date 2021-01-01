@@ -173,7 +173,6 @@ def returnStats():
                                         else:    
                                             addValue(currentTimestamp)
                                     except:
-                                        traceback.print_exc()
                                         pass
                             else:
                                 for element in data:
@@ -184,7 +183,6 @@ def returnStats():
                                         else:    
                                             addValue(currentTimestamp)
                                     except:
-                                        traceback.print_exc()
                                         pass
                         else:
                             for element in data:
@@ -195,7 +193,6 @@ def returnStats():
                                     else:    
                                         addValue(currentTimestamp)
                                 except:
-                                    traceback.print_exc()
                                     pass
                     else:
                         for element in data:
@@ -206,18 +203,16 @@ def returnStats():
                                 else:    
                                     addValue(currentTimestamp)
                             except:
-                                traceback.print_exc()
                                 pass
                 else:
                     for element in data:
                         try:
-                            currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=0)
+                            currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=1)
                             if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                 addValue(currentTimestamp, element)
                             else:    
                                 addValue(currentTimestamp)
                         except:
-                            traceback.print_exc()
                             pass
             else:
                 results[category][subcategory]["success"] = False
