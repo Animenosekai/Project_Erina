@@ -165,39 +165,54 @@ def returnStats():
                         if firstElementTimestamp.hour == currentTime.hour:
                             if firstElementTimestamp.minute == currentTime.minute:
                                 for element in data:
-                                    currentTimestamp = returnTimestamp(element).replace(microsecond=0)
-                                    if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
-                                        addValue(currentTimestamp, element)
-                                    else:    
-                                        addValue(currentTimestamp)
+                                    try:
+                                        currentTimestamp = returnTimestamp(element).replace(microsecond=0)
+                                        if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
+                                            addValue(currentTimestamp, element)
+                                        else:    
+                                            addValue(currentTimestamp)
+                                    except:
+                                        pass
                             else:
                                 for element in data:
-                                    currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0)
+                                    try:
+                                        currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0)
+                                        if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
+                                            addValue(currentTimestamp, element)
+                                        else:    
+                                            addValue(currentTimestamp)
+                                    except:
+                                        pass
+                        else:
+                            for element in data:
+                                try:
+                                    currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0)
                                     if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                         addValue(currentTimestamp, element)
                                     else:    
                                         addValue(currentTimestamp)
-                        else:
-                            for element in data:
-                                currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0)
+                                except:
+                                    pass
+                    else:
+                        for element in data:
+                            try:
+                                currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0)
                                 if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                     addValue(currentTimestamp, element)
                                 else:    
                                     addValue(currentTimestamp)
-                    else:
-                        for element in data:
-                            currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0)
+                            except:
+                                pass
+                else:
+                    for element in data:
+                        try:
+                            currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=0)
                             if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                                 addValue(currentTimestamp, element)
                             else:    
                                 addValue(currentTimestamp)
-                else:
-                    for element in data:
-                        currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=0)
-                        if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
-                            addValue(currentTimestamp, element)
-                        else:    
-                            addValue(currentTimestamp)
+                        except:
+                            pass
             else:
                 results[category][subcategory]["success"] = False
                 return False
