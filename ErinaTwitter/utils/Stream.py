@@ -201,7 +201,7 @@ def startStream():
                         try:
                             ErinaStreamListener.on_status(message)
                         except:
-                            log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}", True)
+                            log("ErinaTwitter", f"Error while reading a mention {str(sys.exc_info()[0])}: {str(sys.exc_info()[1])}", True)
                 else:
                     for message in tweepy.Cursor(ErinaTwitter.api.mentions_timeline, count=200, include_entities=True).items():
                         try:

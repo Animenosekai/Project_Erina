@@ -408,7 +408,8 @@ document.getElementById("checkTweet").onclick = function() {
         var formData = new FormData();
         formData.append("tweet", tweetInput)
         fetch("/erina/api/admin/twitter/checkTweet?token=" + window.localStorage.getItem("erinaAdminToken"), {
-            method: "POST"
+            method: "POST",
+            body: formData
         })
         .then((resp) => resp.json())
         .then(function(data) {
