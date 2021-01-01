@@ -410,7 +410,7 @@ def returnOverviewStats():
                                 addValue(currentTimestamp)
                 else:
                     for element in data:
-                        currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=0)
+                        currentTimestamp = returnTimestamp(element).replace(microsecond=0, second=0, minute=0, hour=0, day=1)
                         if subcategory in ["manamiDBTitleVectorLookups", "erinaDatabaseLookups", "responsePolarity", "storedImages", "cacheFilesCount"]:
                             addValue(currentTimestamp, element)
                         else:    
