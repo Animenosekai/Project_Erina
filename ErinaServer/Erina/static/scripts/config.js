@@ -405,6 +405,8 @@ document.getElementById("importBackup").onclick = function() {
 document.getElementById("checkTweet").onclick = function() {
     var tweetInput = prompt("Enter the URL of the tweet you want to check")
     if (tweetInput != null) {
+        var formData = new FormData();
+        formData.append("tweet", tweetInput)
         fetch("/erina/api/admin/twitter/checkTweet?token=" + window.localStorage.getItem("erinaAdminToken"), {
             method: "POST"
         })
