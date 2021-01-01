@@ -111,7 +111,7 @@ def create_nice_list(input_list):
         elif len(input_list) == 2:
             return capitalize_string(input_list[0]) + ", " + capitalize_string(input_list[1])
         else:
-            return capitalize_string(input_list[0]) + ", " + capitalize_string(input_list[1] + ", " + capitalize_string(input_list[2]))
+            return capitalize_string(input_list[0]) + ", " + capitalize_string(input_list[1]) + ", " + capitalize_string(input_list[2])
     else:
         return str(input_list)
 
