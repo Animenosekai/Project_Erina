@@ -14,6 +14,8 @@ def makeTweet(erinaSearchResponse):
     """
     if isAnError(erinaSearchResponse) or isAnError(erinaSearchResponse.detectionResult) or isAnError(erinaSearchResponse.animeResult):
         return None
+    elif erinaSearchResponse.low_similarity:
+        return None
     else:
         tweetResult = ""
         animeResult = erinaSearchResponse.animeResult
@@ -91,7 +93,9 @@ def makeImageResponse(erinaSearchResponse):
     if isAnError(erinaSearchResponse) or isAnError(erinaSearchResponse.detectionResult) or isAnError(erinaSearchResponse.animeResult):
         return "Sorry an error occured while searching for your anime"
     else:
-        lineResult = ""
+        twitterResult = ""
+        if erinaSearchResponse.low_similarity:
+            twitterResult = "⚠️The similarity seems low\n"
         animeResult = erinaSearchResponse.animeResult
         detectionResult = erinaSearchResponse.detectionResult
         
@@ -101,7 +105,7 @@ def makeImageResponse(erinaSearchResponse):
                 episode = detectionResult.part
             elif detectionResult.episode is not None:
                 episode = detectionResult.episode
-            lineResult = """Here is the sauce!
+            twitterResult = """Here is the sauce!
 
 Anime: {anime}
 Episode: {episode}/{episodes} {timestamp}
@@ -124,7 +128,7 @@ Similarity: {similarity}%
 )
         elif isinstance(detectionResult, SauceNAOCache): # if it comes from SauceNAO
             if detectionResult.is_manga: # if it is a manga
-                lineResult = """Here is the sauce!
+                twitterResult = """Here is the sauce!
 
 Manga: {manga}
 Author: {author}
@@ -140,7 +144,7 @@ Similarity: {similarity}%
     link=((str(detectionResult.link)) if detectionResult.link is not None else "")
 )
         else:
-            lineResult = """Here is the sauce!
+            twitterResult = """Here is the sauce!
 
 Title: {title}
 Author: {author}
@@ -156,6 +160,6 @@ Similarity: {similarity}%
     link=((str(detectionResult.link)) if detectionResult.link is not None else "")
 )
 
-        if len(lineResult) >= 1000:
-            lineResult = lineResult[:997] + "..."
-        return lineResult
+        if len(twitterResult) >= 1000:
+            twitterResult = twitterResult[:997] + "..."
+        return twitterResult

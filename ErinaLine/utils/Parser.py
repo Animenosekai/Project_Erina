@@ -58,6 +58,8 @@ def makeImageResponse(erinaSearchResponse):
         return "Sorry an error occured while searching for your anime"
     else:
         lineResult = ""
+        if erinaSearchResponse.low_similarity:
+            lineResult = "⚠️The similarity seems low\n"
         animeResult = erinaSearchResponse.animeResult
         detectionResult = erinaSearchResponse.detectionResult
         

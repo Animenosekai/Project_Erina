@@ -54,6 +54,8 @@ def makeImageResponse(erinaSearchResponse):
         return None, None, None
     else:
         discordResult = ""
+        if erinaSearchResponse.low_similarity:
+            discordResult = "⚠️The similarity seems low\n"
         animeResult = erinaSearchResponse.animeResult
         detectionResult = erinaSearchResponse.detectionResult
         
