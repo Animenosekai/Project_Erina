@@ -58,6 +58,8 @@ class IQDBCache():
         self.hentai = None
         self.similarity = None
         self.database = None
+        
+        self.author = None
 
         for element in self.data:
             element = str(element).replace("\n", "")
