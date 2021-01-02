@@ -23,17 +23,19 @@ class ImageSearchResult():
     """
     An Image Search Result object containing the search result
     """
-    def __init__(self, detectionResut, similarity, animeResult, low_similarity=False) -> None:
+    def __init__(self, detectionResut, similarity, animeResult, image_hash, low_similarity=False) -> None:
         self.detectionResult = detectionResut
         self.similarity = similarity
         self.animeResult = animeResult
+        self.hash = image_hash
         self.low_similarity = low_similarity
     
     def as_dict(self):
         return {
             "detectionResult": self.detectionResult.as_dict(),
             "similarity": self.similarity,
-            "animeResult": self.animeResult.as_dict(),
+            "hash": str(self.hash),
+            "animeResult": (self.animeResult.as_dict() if self.animeResult is not None else None),
             "lowSimilarity": self.low_similarity,
             "docType": "IMAGE_SEARCH"
         }
@@ -185,11 +187,11 @@ def search_anime_by_hash(image_hash):
                                         bestResult = max(similaritiesDict.items(), key=operator.itemgetter(1))[0]
                                         
                                         if isinstance(bestResult, TraceMOECache):
-                                            return ImageSearchResult(bestResult, bestResult.similarity, anilist_id_search.search_anime_by_anilist_id(bestResult.anilist_id), low_similarity=True)
+                                            return ImageSearchResult(bestResult, bestResult.similarity, anilist_id_search.search_anime_by_anilist_id(bestResult.anilist_id), low_similarity=True, image_hash=image_hash)
                                         elif isinstance(bestResult, SauceNAOCache):
-                                            return ImageSearchResult(bestResult, bestResult.similarity, (title_search.searchAnime(bestResult.title) if bestResult.is_anime else None), low_similarity=True)
+                                            return ImageSearchResult(bestResult, bestResult.similarity, (title_search.searchAnime(bestResult.title) if bestResult.is_anime else None), low_similarity=True, image_hash=image_hash)
                                         elif isinstance(bestResult, IQDBCache):
-                                            return ImageSearchResult(bestResult, bestResult.similarity, None, low_similarity=True)
+                                            return ImageSearchResult(bestResult, bestResult.similarity, None, low_similarity=True, image_hash=image_hash)
                                         else: #### IF NO RESULT ARE LEFT
                                             return SearchingError("NO_RESULT", "No result found.")
                                     
@@ -197,28 +199,28 @@ def search_anime_by_hash(image_hash):
                                         return SearchingError("NO_RESULT", "No result found.")
 
                                 else: # IF FOUND IN IQDB API
-                                    return ImageSearchResult(iqdb_api_result, iqdb_api_result.similarity, None)
+                                    return ImageSearchResult(iqdb_api_result, iqdb_api_result.similarity, None, image_hash=image_hash)
                                     
                             else: # IF FOUND IN SAUCENAO API
-                                return ImageSearchResult(saucenao_api_result, saucenao_api_result.similarity, (title_search.searchAnime(saucenao_api_result.title) if saucenao_api_result.is_anime else None))
+                                return ImageSearchResult(saucenao_api_result, saucenao_api_result.similarity, (title_search.searchAnime(saucenao_api_result.title) if saucenao_api_result.is_anime else None), image_hash=image_hash)
 
                         else: # IF FOUND IN TRACEMOE API
-                            return ImageSearchResult(tracemoe_api_result, tracemoe_api_result.similarity, anilist_id_search.search_anime_by_anilist_id(tracemoe_api_result.anilist_id))
+                            return ImageSearchResult(tracemoe_api_result, tracemoe_api_result.similarity, anilist_id_search.search_anime_by_anilist_id(tracemoe_api_result.anilist_id), image_hash=image_hash)
                     
                     else: # IF FOUND IN IQDB CACHE
-                        return ImageSearchResult(iqdb_cache_result, iqdb_cache_result.similarity, None)
+                        return ImageSearchResult(iqdb_cache_result, iqdb_cache_result.similarity, None, image_hash=image_hash)
 
                 else: # IF FOUND IN SAUCE NAO CACHE
-                    return ImageSearchResult(saucenao_cache_result, saucenao_cache_result.similarity, (title_search.searchAnime(saucenao_cache_result.title) if saucenao_cache_result.is_anime else None))
+                    return ImageSearchResult(saucenao_cache_result, saucenao_cache_result.similarity, (title_search.searchAnime(saucenao_cache_result.title) if saucenao_cache_result.is_anime else None), image_hash=image_hash)
             
             else: # IF FOUND IN TRACEMOE CACHE
-                return ImageSearchResult(tracemoe_cache_result, tracemoe_cache_result.similarity, anilist_id_search.search_anime_by_anilist_id(tracemoe_cache_result.anilist_id))
+                return ImageSearchResult(tracemoe_cache_result, tracemoe_cache_result.similarity, anilist_id_search.search_anime_by_anilist_id(tracemoe_cache_result.anilist_id), image_hash=image_hash)
         
         else: # IF FOUND IN ERINA DATABASE
             erinacache.erina_caching(str(image_hash), erina_database_path, erina_database_similarity, erina_database_result.anilist_id)
-            return ImageSearchResult(erina_database_result, erina_database_similarity, anilist_id_search.search_anime_by_anilist_id(erina_database_result.anilist_id))
+            return ImageSearchResult(erina_database_result, erina_database_similarity, anilist_id_search.search_anime_by_anilist_id(erina_database_result.anilist_id), image_hash=image_hash)
             
     else: # IF FOUND IN ERINA CACHE
-        return ImageSearchResult(parser.ErinaFile("erina_database", erina_cache_result.path), erina_cache_result.similarity, anilist_id_search.search_anime_by_anilist_id(erina_cache_result.anilist_id))
+        return ImageSearchResult(parser.ErinaFile("erina_database", erina_cache_result.path), erina_cache_result.similarity, anilist_id_search.search_anime_by_anilist_id(erina_cache_result.anilist_id), image_hash=image_hash)
 
     return None
