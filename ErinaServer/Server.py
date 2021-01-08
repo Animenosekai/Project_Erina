@@ -23,7 +23,7 @@ Talisman(ErinaServer, force_https_permanent=True, content_security_policy={
         "'self'",
         "'unsafe-inline'"
     ],
-    'style-src': ["*"],
+    'style-src': ["*", "'unsafe-inline'"],
     'font-src': ["*"],
     'img-src': ["*"],
     "connect-src": ["*"],

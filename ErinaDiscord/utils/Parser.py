@@ -82,7 +82,7 @@ def makeImageResponse(erinaSearchResponse):
     timestamp=(('(at around ' + str(detectionResult.timing) + ')') if detectionResult.timing is not None else ''),
     studios=(create_nice_list([studio for studio in animeResult.studios if studio.is_animation_studio]) if animeResult.studios is not None else "Unknown"),
     genres=((str(animeResult.genres)) if animeResult.genres is not None else "Unknown"),
-    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    similarity=((str(round(detectionResult.similarity, 2))) if detectionResult.similarity is not None else "N/A"),
     link=((str(animeResult.link)) if animeResult.link is not None else ""),
     description=((str(animeResult.description)) if animeResult.description is not None else "")
 )
@@ -100,7 +100,7 @@ def makeImageResponse(erinaSearchResponse):
     manga=((str(detectionResult.title)) if detectionResult.title is not None else "Unknown"),
     author=((str(detectionResult.author)) if detectionResult.author is not None else "Unknown"),
     chapter=((str(detectionResult.part)) if detectionResult.part is not None else "??"),
-    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    similarity=((str(round(detectionResult.similarity, 2))) if detectionResult.similarity is not None else "N/A"),
     link=((str(detectionResult.link)) if detectionResult.link is not None else "")
 )
         else:
@@ -116,7 +116,7 @@ def makeImageResponse(erinaSearchResponse):
     title=((str(detectionResult.title)) if detectionResult.title is not None else "Unknown"),
     author=((str(detectionResult.author)) if detectionResult.author is not None else "Unknown"),
     database=((str(detectionResult.database)) if detectionResult.database is not None else "Unknown"),
-    similarity=((str(detectionResult.similarity)) if detectionResult.similarity is not None else "N/A"),
+    similarity=((str(round(detectionResult.similarity, 2))) if detectionResult.similarity is not None else "N/A"),
     link=((str(detectionResult.link)) if detectionResult.link is not None else "")
 )
 

@@ -59,54 +59,57 @@ function loadNextScript() {
     }
 }
 
-function _goTo() {
+function _reload() {
     if ("undefined" !== typeof history.pushState) {
         try {
             var url = window.location.href.substring(window.location.href.lastIndexOf("/") + 1)
-            fetch("https://" + window.location.host + "/erina/admin/resource/" + url + "/?token=" + window.localStorage.getItem("erinaAdminToken"))
-            .then(function(data){
-                return data.text()
-            })
-            .then(function(data){
-                if (data == "ErinaAdminLoginRedirect") {
-                    window.location.assign("/erina/admin/login")
-                } else {
-                    for (var i = 0; i < intervalsRegistry.length; i += 1) {
-                        var currentInterval = intervalsRegistry.pop()
-                        console.log(currentInterval)
+            if (String(url) != "") {
+
+                fetch("/erina/admin/resource/" + url + "/?token=" + window.localStorage.getItem("erinaAdminToken"))
+                .then(function(data){
+                    return data.text()
+                })
+                .then(function(data){
+                    if (data == "ErinaAdminLoginRedirect") {
+                        window.location.assign("/erina/admin/login")
+                    } else {
+                        for (var i = 0; i < intervalsRegistry.length; i += 1) {
+                            var currentInterval = intervalsRegistry.pop()
+                            console.log(currentInterval)
+                            try {
+                                clearInterval(currentInterval)
+                            } catch {
+                                console.log("Interval Already Cleared: " + String(currentInterval))
+                            }
+                        }
+                        _hideSelectionLine()
+                        document.getElementById("hamburgerBtn").classList.remove("is-active")
+                        document.getElementById("sidebarContainer").classList.remove("showMobileSidebar")
+                        document.getElementById("ErinaAdminBody").classList.remove("avoidPointerEvent")
                         try {
-                            clearInterval(currentInterval)
+                            document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
                         } catch {
-                            console.log("Interval Already Cleared: " + String(currentInterval))
+                            console.log("Error while adding selection line")
+                        }
+                        for (chart in chartsRegistry) {
+                            chartsRegistry[chart].dispose()
+                        }
+                        document.getElementById("ErinaAdminBody").innerHTML = data
+                        document.getElementById("ErinaAdminBody").scrollTop = 0
+    
+                        scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
+                        if (scriptsLoadingQueue.length == 0) {
+                            stopLoading()
+                        } else {
+                            var newScript = document.createElement("script");
+                            newScript.src = scriptsLoadingQueue[0]
+                            newScript.classList.add("ErinaExternalJS")
+                            newScript.addEventListener("load", loadNextScript)
+                            document.getElementsByTagName("head")[0].appendChild(newScript)
                         }
                     }
-                    _hideSelectionLine()
-                    document.getElementById("hamburgerBtn").classList.remove("is-active")
-                    document.getElementById("sidebarContainer").classList.remove("showMobileSidebar")
-                    document.getElementById("ErinaAdminBody").classList.remove("avoidPointerEvent")
-                    try {
-                        document.getElementById(url + "SelectionLine").classList.add("sidebarShow");
-                    } catch {
-                        console.log("Error while adding selection line")
-                    }
-                    for (chart in chartsRegistry) {
-                        chartsRegistry[chart].dispose()
-                    }
-                    document.getElementById("ErinaAdminBody").innerHTML = data
-                    document.getElementById("ErinaAdminBody").scrollTop = 0
-
-                    scriptsLoadingQueue = JSON.parse(document.getElementById("ErinaExternalJS-Sources").innerText)
-                    if (scriptsLoadingQueue.length == 0) {
-                        stopLoading()
-                    } else {
-                        var newScript = document.createElement("script");
-                        newScript.src = scriptsLoadingQueue[0]
-                        newScript.classList.add("ErinaExternalJS")
-                        newScript.addEventListener("load", loadNextScript)
-                        document.getElementsByTagName("head")[0].appendChild(newScript)
-                    }
-                }
-            })
+                })
+            }
         } catch {
             window.getElementById("ErinaAdminBody").innerHTML = "An error occured while loading the page"
         }
@@ -115,7 +118,7 @@ function _goTo() {
     }
 }
 
-window.onpopstate = _goTo()
+window.onpopstate = _reload()
 
 function goTo(title, url) {
     startLoading()
@@ -124,7 +127,7 @@ function goTo(title, url) {
         url = String(url)
         history.pushState({page: title}, title, "/erina/admin/" + url);
         document.title = title
-        _goTo()
+        _reload()
     } else {
         window.getElementById("ErinaAdminBody").innerHTML = "Please upgrade your browser"
         stopLoading()
