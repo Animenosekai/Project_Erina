@@ -39,6 +39,10 @@ def page_not_found(e):
 def server_error(e):
     return send_from_directory(erina_dir + "/ErinaServer/Erina/static/html", "500.html"), 500
 
+@ErinaServer.after_request
+def after_request(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
 
 ####### DECORATORS DEFINING
 decorator_index = 0
