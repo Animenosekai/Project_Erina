@@ -57,7 +57,7 @@ def restartErinaServer(num, info):
     os.execl(sys.executable, sys.executable, __file__, *sys.argv[1:])
     
 
-if __name__ == '__main__' or TextFile(erina_dir + "/launch.erina").read() == "0":
+if __name__ == '__main__' or TextFile(erina_dir + "/launch.erina").read().replace(" ", "") in ["", "0"]:
     TextFile(erina_dir + "/launch.erina").read() == "1"
 
     #### INITIALIZING ERINASERVER --> Manages the whole server
