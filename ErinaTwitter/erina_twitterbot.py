@@ -30,29 +30,41 @@ from Erina.config import Erina, Twitter as TwitterConfig
 
 class ErinaTwitterAPI():
     def __init__(self) -> None:
-        if TwitterConfig.keys.consumer_key is not None and TwitterConfig.keys.consumer_secret is not None and TwitterConfig.keys.access_token_key is not None and TwitterConfig.keys.access_token_secret is not None:
+        try:
+            if TwitterConfig.keys.consumer_key is not None and TwitterConfig.keys.consumer_secret is not None and TwitterConfig.keys.access_token_key is not None and TwitterConfig.keys.access_token_secret is not None:
+                self.authentification = tweepy.OAuthHandler(TwitterConfig.keys.consumer_key, TwitterConfig.keys.consumer_secret)
+                self.authentification.set_access_token(TwitterConfig.keys.access_token_key, TwitterConfig.keys.access_token_secret)
+
+                self.api = tweepy.API(self.authentification)
+                self.me = self.api.me()
+                self._screen_name = str(self.me.screen_name).lower().replace(" ", '')
+                def returnTwitterTag():
+                    return [flag.lower().replace(" ", '') for flag in (TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else Erina.flags)]
+                self._twitter_flags = returnTwitterTag
+        except:
+            print(TwitterConfig.keys.consumer_key)
+            print(TwitterConfig.keys.consumer_secret)
+            print(TwitterConfig.keys.access_token_key)
+            print(TwitterConfig.keys.access_token_secret)
+
+    def init(self):
+        """
+        Reinitizalizes ErinaTwitter
+        """
+        try:
             self.authentification = tweepy.OAuthHandler(TwitterConfig.keys.consumer_key, TwitterConfig.keys.consumer_secret)
             self.authentification.set_access_token(TwitterConfig.keys.access_token_key, TwitterConfig.keys.access_token_secret)
-
             self.api = tweepy.API(self.authentification)
             self.me = self.api.me()
             self._screen_name = str(self.me.screen_name).lower().replace(" ", '')
             def returnTwitterTag():
                 return [flag.lower().replace(" ", '') for flag in (TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else Erina.flags)]
             self._twitter_flags = returnTwitterTag
-
-    def init(self):
-        """
-        Reinitizalizes ErinaTwitter
-        """
-        self.authentification = tweepy.OAuthHandler(TwitterConfig.keys.consumer_key, TwitterConfig.keys.consumer_secret)
-        self.authentification.set_access_token(TwitterConfig.keys.access_token_key, TwitterConfig.keys.access_token_secret)
-        self.api = tweepy.API(self.authentification)
-        self.me = self.api.me()
-        self._screen_name = str(self.me.screen_name).lower().replace(" ", '')
-        def returnTwitterTag():
-            return [flag.lower().replace(" ", '') for flag in (TwitterConfig.flags if str(TwitterConfig.flags).replace(" ", "") not in ["None", ""] else Erina.flags)]
-        self._twitter_flags = returnTwitterTag
+        except:
+            print(TwitterConfig.keys.consumer_key)
+            print(TwitterConfig.keys.consumer_secret)
+            print(TwitterConfig.keys.access_token_key)
+            print(TwitterConfig.keys.access_token_secret)
 
     def tweet(self, message, replyID=None, imageURL=None):
         """
