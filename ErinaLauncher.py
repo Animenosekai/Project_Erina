@@ -27,6 +27,7 @@ def shutdownErinaServer(num, info):
             os.close(handler.fd)
     except:
         pass
+    TextFile(erina_dir + "/launch.erina").write("0")
 
     ErinaWSGIServer.stop()
     ErinaWSGIServer.close()
@@ -47,6 +48,7 @@ def restartErinaServer(num, info):
     from ErinaTwitter.utils.Stream import sinceID
     TextFile(erina_dir + "/ErinaTwitter/lastDM.erina").write(str(lastDM))
     TextFile(erina_dir + "/ErinaTwitter/lastStatusID.erina").write(str(sinceID))
+    TextFile(erina_dir + "/launch.erina").write("0")
 
     ErinaWSGIServer.stop()
     ErinaWSGIServer.close()
@@ -55,7 +57,8 @@ def restartErinaServer(num, info):
     os.execl(sys.executable, sys.executable, __file__, *sys.argv[1:])
     
 
-if __name__ == '__main__':
+if __name__ == '__main__' or TextFile(erina_dir + "/launch.erina").read() == "0":
+    TextFile(erina_dir + "/launch.erina").read() == "1"
 
     #### INITIALIZING ERINASERVER --> Manages the whole server
     print("[Erina]", "Initializing ErinaServer")
