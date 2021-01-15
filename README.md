@@ -1,6 +1,8 @@
 # Project Erina
  A source finder suite for anime!
  
+ [![CodeQL Checks Badge](https://img.shields.io/github/workflow/status/Animenosekai/Project_Erina/CodeQL?label=CodeQL%20Checks)](https://github.com/Animenosekai/Project_Erina/actions?query=workflow%3ACodeQL) [![UptimeRobot Status](https://img.shields.io/uptimerobot/status/m785548897-06f69aaa62df33194fc1d4f8?label=Status)](https://stats.uptimerobot.com/lMVyrUoqYq) [![UptimeRobot Uptime](https://img.shields.io/uptimerobot/ratio/m785548897-06f69aaa62df33194fc1d4f8?label=Uptime)](https://stats.uptimerobot.com/lMVyrUoqYq) [![Commits Number](https://img.shields.io/github/commits-since/Animenosekai/Project_Erina/v1.5?label=Commits%20since%20v1.5)](https://github.com/Animenosekai/Project_Erina/compare/v1.5...master) ![Code Size](https://img.shields.io/github/languages/code-size/Animenosekai/Project_Erina) ![Repo Size](https://img.shields.io/github/repo-size/Animenosekai/Project_Erina) ![Issues](https://img.shields.io/github/issues/Animenosekai/Project_Erina)
+ 
 # Information
 <img src="https://github.com/Animenosekai/Project_Erina/raw/master/ErinaServer/Erina/static/images/Tenshi.png" alt="Erina" width="250" height="250"></img>  
 **Version**: v2.0-022 (Beta)
