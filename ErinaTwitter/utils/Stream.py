@@ -110,7 +110,7 @@ class Listener(tweepy.StreamListener):
                                 responseImageURL = f"https://trace.moe/thumbnail.php?anilist_id={str(searchResult.detectionResult.anilist_id)}&file={str(searchResult.detectionResult.filename)}&t={str(searchResult.detectionResult.timing.at)}&token={str(searchResult.detectionResult.tokenthumb)}"
                     ErinaTwitter.tweet(tweetResponse, replyID=tweet.id, imageURL=responseImageURL)
                 elif Twitter.isMention(tweet):
-                    ErinaTwitter.tweet("Sorry, I searched everywhere but coudln't find it...", replyID=tweet.id)
+                    ErinaTwitter.tweet("Sorry, I searched everywhere but couldn't find it...", replyID=tweet.id)
         TextFile(erina_dir + "/ErinaTwitter/lastStatusID.erina").write(str(tweet.id))
         sinceID = tweet.id
         return
